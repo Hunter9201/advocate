@@ -100,7 +100,7 @@
             max-width: 800px;
         }
 
-        /* Search and Filters */
+        /* Search */
         .search-section {
             background-color: var(--card-bg);
             border-radius: 10px;
@@ -108,11 +108,13 @@
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
+            text-align: center;
         }
 
         .search-container {
             display: flex;
-            margin-bottom: 20px;
+            max-width: 600px;
+            margin: 0 auto;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -140,35 +142,6 @@
 
         .search-button:hover {
             background-color: #b91c1c;
-        }
-
-        .filters-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .filter-label {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 0.95rem;
-        }
-
-        .filter-select {
-            padding: 10px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background-color: white;
-            font-size: 0.95rem;
-            color: var(--dark-color);
-            cursor: pointer;
         }
 
         /* PDF Grid */
@@ -266,109 +239,26 @@
             padding: 15px 20px;
             background-color: #f8f9fa;
             border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 10px;
         }
 
         .pdf-button {
-            flex: 1;
+            display: block;
+            width: 100%;
             padding: 12px 20px;
             text-align: center;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            background-color: var(--primary-color);
+            color: white;
             border: none;
             cursor: pointer;
             font-size: 0.95rem;
         }
 
-        .pdf-button.open {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .pdf-button.open:hover {
+        .pdf-button:hover {
             background-color: var(--accent-color);
-        }
-
-        .pdf-button.preview {
-            background-color: white;
-            color: var(--primary-color);
-            border: 1px solid var(--border-color);
-        }
-
-        .pdf-button.preview:hover {
-            background-color: #f1f5f9;
-        }
-
-        /* PDF Preview Section */
-        .pdf-preview-section {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            margin-top: 40px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border-color);
-            display: none;
-        }
-
-        .preview-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .preview-header h3 {
-            font-size: 1.6rem;
-            color: var(--primary-color);
-        }
-
-        .preview-close {
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--dark-color);
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .preview-close:hover {
-            background-color: #f1f5f9;
-        }
-
-        .pdf-preview-container {
-            height: 600px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .pdf-preview-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .preview-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #718096;
-            padding: 40px;
-            text-align: center;
         }
 
         /* Footer */
@@ -444,6 +334,23 @@
             margin-right: 5px;
         }
 
+        /* Back to Library Button */
+        .back-to-library {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-library:hover {
+            background-color: var(--accent-color);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-container {
@@ -454,11 +361,6 @@
 
             .pdf-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .filters-container {
-                flex-direction: column;
-                align-items: flex-start;
             }
 
             .search-container {
@@ -475,23 +377,11 @@
                 flex-direction: column;
                 text-align: center;
             }
-
-            .pdf-preview-container {
-                height: 400px;
-            }
         }
 
         @media (max-width: 576px) {
             .page-header h2 {
                 font-size: 1.8rem;
-            }
-
-            .pdf-card-footer {
-                flex-direction: column;
-            }
-
-            .pdf-preview-container {
-                height: 350px;
             }
         }
     </style>
@@ -514,50 +404,14 @@
     <main class="main-container">
         <div class="page-header">
             <h2>📚 Legal Documents Collection</h2>
-            <p>Search, filter, and preview legal documents. All PDFs are stored in the <code>/pdfs</code> folder and can be opened directly in your browser.</p>
+            <p>Search and open legal documents. All PDFs are stored in the <code>/pdfs</code> folder and can be opened directly in your browser.</p>
         </div>
 
-        <!-- Search and Filters -->
+        <!-- Search -->
         <section class="search-section">
             <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search legal documents by title, keyword, or jurisdiction...">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search legal documents by title or description...">
                 <button class="search-button" id="searchButton">🔍 Search</button>
-            </div>
-            
-            <div class="filters-container">
-                <div class="filter-group">
-                    <span class="filter-label">Filter by:</span>
-                    <select class="filter-select" id="categoryFilter">
-                        <option value="all">All Categories</option>
-                        <option value="statutes">Statutes & Codes</option>
-                        <option value="regulations">Regulations</option>
-                        <option value="case-law">Case Law</option>
-                        <option value="constitutional">Constitutional</option>
-                        <option value="international">International Law</option>
-                        <option value="administrative">Administrative Law</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <span class="filter-label">Jurisdiction:</span>
-                    <select class="filter-select" id="jurisdictionFilter">
-                        <option value="all">All Jurisdictions</option>
-                        <option value="federal">Federal</option>
-                        <option value="state">State Level</option>
-                        <option value="local">Local Ordinances</option>
-                        <option value="international">International</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <span class="filter-label">Sort by:</span>
-                    <select class="filter-select" id="sortFilter">
-                        <option value="recent">Most Recent</option>
-                        <option value="title">Title (A-Z)</option>
-                        <option value="category">Category</option>
-                        <option value="jurisdiction">Jurisdiction</option>
-                    </select>
-                </div>
             </div>
         </section>
 
@@ -565,21 +419,6 @@
         <div class="pdf-grid" id="pdfGrid">
             <!-- PDF cards will be dynamically generated here -->
         </div>
-
-        <!-- PDF Preview Section -->
-        <section class="pdf-preview-section" id="pdfPreviewSection">
-            <div class="preview-header">
-                <h3 id="previewTitle">Document Preview</h3>
-                <button class="preview-close" id="closePreview">×</button>
-            </div>
-            <div class="pdf-preview-container" id="pdfPreviewContainer">
-                <div class="preview-placeholder">
-                    <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">📄</div>
-                    <h4>Select a document to preview</h4>
-                    <p>Click the "Preview" button on any document to view it here</p>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
@@ -604,7 +443,6 @@
                 description: "Comprehensive legislation governing traffic regulations, road safety measures, vehicle standards, and traffic law enforcement procedures.",
                 filename: "Traffic and Road Safety Cap 347 Act.pdf",
                 category: "statutes",
-                jurisdiction: "federal",
                 size: "1.8 MB",
                 pages: 47,
                 date: "2023-10-15",
@@ -616,7 +454,6 @@
                 description: "Federal statutes defining federal crimes and procedures for federal criminal prosecutions.",
                 filename: "usc-title-18.pdf",
                 category: "statutes",
-                jurisdiction: "federal",
                 size: "4.2 MB",
                 pages: 312,
                 date: "2023-11-15",
@@ -628,7 +465,6 @@
                 description: "Regulations governing the administration of the federal court system and Department of Justice.",
                 filename: "cfr-title-28.pdf",
                 category: "regulations",
-                jurisdiction: "federal",
                 size: "3.8 MB",
                 pages: 245,
                 date: "2023-10-22",
@@ -640,7 +476,6 @@
                 description: "Landmark 1954 Supreme Court case declaring state laws establishing separate public schools for black and white students unconstitutional.",
                 filename: "brown-v-board.pdf",
                 category: "case-law",
-                jurisdiction: "federal",
                 size: "2.1 MB",
                 pages: 58,
                 date: "2023-09-30",
@@ -652,7 +487,6 @@
                 description: "A statutory text developed by the American Law Institute to stimulate and assist U.S. state legislatures to update and standardize their criminal laws.",
                 filename: "model-penal-code.pdf",
                 category: "statutes",
-                jurisdiction: "state",
                 size: "5.7 MB",
                 pages: 420,
                 date: "2023-12-05",
@@ -664,7 +498,6 @@
                 description: "Governs transactions in goods, providing a comprehensive framework for sales contracts, warranties, and remedies.",
                 filename: "ucc-article-2.pdf",
                 category: "statutes",
-                jurisdiction: "state",
                 size: "3.3 MB",
                 pages: 189,
                 date: "2023-08-14",
@@ -676,7 +509,6 @@
                 description: "International agreement that codifies the rules and procedures for creating, amending, interpreting, and terminating treaties.",
                 filename: "vienna-convention.pdf",
                 category: "international",
-                jurisdiction: "international",
                 size: "2.9 MB",
                 pages: 134,
                 date: "2023-11-28",
@@ -688,7 +520,6 @@
                 description: "Federal statute governing the way federal administrative agencies may propose and establish regulations.",
                 filename: "administrative-procedure-act.pdf",
                 category: "administrative",
-                jurisdiction: "federal",
                 size: "2.5 MB",
                 pages: 87,
                 date: "2023-10-10",
@@ -700,7 +531,6 @@
                 description: "Example of local government regulations governing land use and property development.",
                 filename: "zoning-ordinance.pdf",
                 category: "regulations",
-                jurisdiction: "local",
                 size: "1.8 MB",
                 pages: 72,
                 date: "2023-07-19",
@@ -712,7 +542,6 @@
                 description: "Comprehensive analysis of the Bill of Rights and subsequent amendments with historical context.",
                 filename: "constitutional-amendments.pdf",
                 category: "constitutional",
-                jurisdiction: "federal",
                 size: "4.5 MB",
                 pages: 210,
                 date: "2023-12-12",
@@ -724,7 +553,6 @@
                 description: "Rules governing civil procedure in United States district courts, prescribing the process for civil lawsuits.",
                 filename: "frcp.pdf",
                 category: "regulations",
-                jurisdiction: "federal",
                 size: "3.1 MB",
                 pages: 156,
                 date: "2023-09-05",
@@ -736,49 +564,107 @@
         const pdfGrid = document.getElementById('pdfGrid');
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
-        const categoryFilter = document.getElementById('categoryFilter');
-        const jurisdictionFilter = document.getElementById('jurisdictionFilter');
-        const sortFilter = document.getElementById('sortFilter');
-        const pdfPreviewSection = document.getElementById('pdfPreviewSection');
-        const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
-        const previewTitle = document.getElementById('previewTitle');
-        const closePreview = document.getElementById('closePreview');
 
-        // Current filter state
-        let currentCategory = 'all';
-        let currentJurisdiction = 'all';
+        // Current search state
         let currentSearch = '';
-        let currentSort = 'recent';
+
+        // Function to open PDF with auto-return capability
+        function openPDF(pdfUrl, pdfTitle) {
+            // Create a download link element
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pdfUrl;
+            downloadLink.download = pdfUrl.split('/').pop();
+            downloadLink.target = '_blank';
+            downloadLink.rel = 'noopener noreferrer';
+            
+            // Add an event listener to handle the back-to-library functionality
+            downloadLink.addEventListener('click', function(e) {
+                // Store the current page URL in localStorage
+                localStorage.setItem('returnToLibrary', window.location.href);
+                
+                // Create a return button in the PDF page (this will work if the PDF opens in a new tab)
+                setTimeout(() => {
+                    // This message will be shown in the browser console for demonstration
+                    console.log(`To return to the library: ${window.location.href}`);
+                }, 1000);
+            });
+            
+            // Trigger the download/opening
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
+            // Show a toast message about how to return
+            showToastMessage(`Opening "${pdfTitle}". After viewing, close the PDF tab to return.`);
+        }
+
+        // Show toast message
+        function showToastMessage(message) {
+            // Remove any existing toast
+            const existingToast = document.querySelector('.toast-message');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'toast-message';
+            toast.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background-color: var(--primary-color);
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 1000;
+                    animation: slideIn 0.3s ease-out;
+                    max-width: 400px;
+                    border-left: 4px solid var(--secondary-color);
+                ">
+                    <strong>📄 Note:</strong> ${message}
+                </div>
+            `;
+            
+            // Add CSS for animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(toast);
+            
+            // Remove toast after 5 seconds
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
 
         // Initialize the PDF grid
         function renderDocuments() {
             pdfGrid.innerHTML = '';
             
-            // Filter documents
+            // Filter documents based on search
             let filteredDocs = legalDocuments.filter(doc => {
-                const matchesCategory = currentCategory === 'all' || doc.category === currentCategory;
-                const matchesJurisdiction = currentJurisdiction === 'all' || doc.jurisdiction === currentJurisdiction;
-                const matchesSearch = !currentSearch || 
-                    doc.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
-                    doc.description.toLowerCase().includes(currentSearch.toLowerCase()) ||
-                    doc.category.toLowerCase().includes(currentSearch.toLowerCase()) ||
-                    doc.jurisdiction.toLowerCase().includes(currentSearch.toLowerCase());
+                if (!currentSearch) return true;
                 
-                return matchesCategory && matchesJurisdiction && matchesSearch;
-            });
-            
-            // Sort documents
-            filteredDocs.sort((a, b) => {
-                if (currentSort === 'recent') {
-                    return new Date(b.date) - new Date(a.date);
-                } else if (currentSort === 'title') {
-                    return a.title.localeCompare(b.title);
-                } else if (currentSort === 'category') {
-                    return a.category.localeCompare(b.category) || a.title.localeCompare(b.title);
-                } else if (currentSort === 'jurisdiction') {
-                    return a.jurisdiction.localeCompare(b.jurisdiction) || a.title.localeCompare(b.title);
-                }
-                return 0;
+                const searchLower = currentSearch.toLowerCase();
+                return (
+                    doc.title.toLowerCase().includes(searchLower) ||
+                    doc.description.toLowerCase().includes(searchLower) ||
+                    doc.category.toLowerCase().includes(searchLower)
+                );
             });
             
             // Display message if no documents found
@@ -787,9 +673,9 @@
                     <div class="empty-state">
                         <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">🔍</div>
                         <h3>No Legal Documents Found</h3>
-                        <p>Try adjusting your search terms or filters to find what you're looking for.</p>
-                        <button class="pdf-button open" onclick="resetFilters()" style="width: auto; margin-top: 15px;">
-                            🔄 Reset All Filters
+                        <p>Try adjusting your search terms to find what you're looking for.</p>
+                        <button class="pdf-button" onclick="resetSearch()" style="width: auto; margin: 15px auto 0; display: block;">
+                            🔄 Clear Search
                         </button>
                     </div>
                 `;
@@ -818,38 +704,26 @@
                     administrative: "Administrative Law"
                 };
                 
-                // Map jurisdictions to display names
-                const jurisdictionNames = {
-                    federal: "Federal",
-                    state: "State",
-                    local: "Local",
-                    international: "International"
-                };
-                
                 docCard.innerHTML = `
                     <div class="pdf-card-header">
                         ${doc.updated ? '<span class="badge">Updated</span>' : ''}
                         <div class="pdf-category">${categoryNames[doc.category] || doc.category}</div>
                         <h3 class="pdf-title">${doc.title}</h3>
                         <div class="pdf-meta">
-                            <span>⚖️ ${jurisdictionNames[doc.jurisdiction] || doc.jurisdiction}</span>
                             <span>📅 ${formattedDate}</span>
+                            <span>📑 ${doc.pages} pages</span>
                         </div>
                     </div>
                     <div class="pdf-card-body">
                         <p class="pdf-description">${doc.description}</p>
                         <div class="pdf-details">
                             <span>📄 ${doc.size}</span>
-                            <span>📑 ${doc.pages} pages</span>
                             <span>🏷️ ${doc.category.charAt(0).toUpperCase() + doc.category.slice(1)}</span>
                         </div>
                     </div>
                     <div class="pdf-card-footer">
-                        <a href="${doc.filename}" class="pdf-button open" target="_blank">
+                        <button class="pdf-button" data-id="${doc.id}" data-title="${doc.title}" data-filename="${doc.filename}">
                             🔗 Open Document
-                        </a>
-                        <button class="pdf-button preview" data-id="${doc.id}">
-                            👁️ Preview
                         </button>
                     </div>
                 `;
@@ -857,82 +731,23 @@
                 pdfGrid.appendChild(docCard);
             });
             
-            // Add event listeners to preview buttons
-            document.querySelectorAll('.preview').forEach(btn => {
+            // Add event listeners to Open Document buttons
+            document.querySelectorAll('.pdf-button').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const docId = parseInt(this.getAttribute('data-id'));
-                    showDocumentPreview(docId);
+                    const docTitle = this.getAttribute('data-title');
+                    const filename = this.getAttribute('data-filename');
+                    openPDF(filename, docTitle);
                 });
             });
         }
 
-        // Show document preview
-        function showDocumentPreview(docId) {
-            const doc = legalDocuments.find(d => d.id === docId);
-            if (!doc) return;
-            
-            // Update preview title
-            previewTitle.textContent = `Preview: ${doc.title}`;
-            
-            // Use the actual PDF file for preview
-            const previewHTML = `
-                <iframe src="${doc.filename}" 
-                        title="${doc.title}" 
-                        style="width: 100%; height: 100%; border: none;">
-                </iframe>
-            `;
-            
-            pdfPreviewContainer.innerHTML = previewHTML;
-            
-            // Show the preview section
-            pdfPreviewSection.style.display = 'block';
-            
-            // Scroll to preview
-            pdfPreviewSection.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Close document preview
-        closePreview.addEventListener('click', function() {
-            pdfPreviewSection.style.display = 'none';
-            pdfPreviewContainer.innerHTML = `
-                <div class="preview-placeholder">
-                    <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">📄</div>
-                    <h4>Select a document to preview</h4>
-                    <p>Click the "Preview" button on any document to view it here</p>
-                </div>
-            `;
-        });
-
-        // Reset all filters
-        function resetFilters() {
-            categoryFilter.value = 'all';
-            jurisdictionFilter.value = 'all';
-            sortFilter.value = 'recent';
+        // Reset search
+        function resetSearch() {
             searchInput.value = '';
-            
-            currentCategory = 'all';
-            currentJurisdiction = 'all';
             currentSearch = '';
-            currentSort = 'recent';
-            
             renderDocuments();
         }
-
-        // Event Listeners for filters
-        categoryFilter.addEventListener('change', function() {
-            currentCategory = this.value;
-            renderDocuments();
-        });
-
-        jurisdictionFilter.addEventListener('change', function() {
-            currentJurisdiction = this.value;
-            renderDocuments();
-        });
-
-        sortFilter.addEventListener('change', function() {
-            currentSort = this.value;
-            renderDocuments();
-        });
 
         // Search functionality
         searchButton.addEventListener('click', function() {
@@ -944,6 +759,13 @@
             if (event.key === 'Enter') {
                 currentSearch = searchInput.value.trim();
                 renderDocuments();
+            }
+        });
+
+        // Clear search when clicking on the search input
+        searchInput.addEventListener('click', function() {
+            if (this.value === 'Search legal documents...') {
+                this.value = '';
             }
         });
 
