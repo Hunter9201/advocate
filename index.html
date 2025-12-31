@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal Documents Library</title>
+    <title>Uganda Legal Documents Library | LDCLionHunter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Variables for Colors */
         :root {
             --primary-color: #1a365d;
             --secondary-color: #c53030;
+            --accent-color: #2a4365;
             --light-color: #f7fafc;
             --dark-color: #2d3748;
             --border-color: #e2e8f0;
             --card-bg: #ffffff;
+            --success-color: #2f855a;
+            --warning-color: #d69e2e;
         }
 
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -28,25 +30,25 @@
             color: var(--dark-color);
             line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Header */
         .site-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             border-bottom: 4px solid var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
@@ -58,625 +60,1313 @@
 
         .logo-icon {
             color: var(--secondary-color);
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
 
         .logo-text h1 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
         }
 
-        /* Main Content */
+        .logo-text .tagline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .nav-links a.active {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+        }
+
         .main-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
-            transition: opacity 0.3s;
+            padding: 30px 20px 50px;
         }
 
         .page-header {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .page-header h2 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Search */
+        .page-header p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            max-width: 1000px;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #edf2f7;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
         .search-section {
             background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
-            text-align: center;
         }
 
         .search-container {
             display: flex;
-            max-width: 500px;
-            margin: 0 auto;
+            margin-bottom: 20px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
 
         .search-input {
             flex: 1;
-            padding: 12px 15px;
+            padding: 16px 20px;
             border: none;
             font-size: 1rem;
             outline: none;
-            background-color: white;
+            background-color: #f8f9fa;
         }
 
         .search-button {
             background-color: var(--secondary-color);
             color: white;
             border: none;
-            padding: 0 20px;
+            padding: 0 30px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* PDF Grid */
+        .search-button:hover {
+            background-color: #b91c1c;
+        }
+
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: white;
+            font-size: 0.95rem;
+            color: var(--dark-color);
+            cursor: pointer;
+            min-width: 150px;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+        }
+
+        .action-button {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: white;
+            color: var(--primary-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-button:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
         .pdf-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .pdf-card {
             background-color: var(--card-bg);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%;
         }
 
         .pdf-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
         .pdf-card-header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
-            padding: 15px;
+            padding: 20px;
             position: relative;
+        }
+
+        .pdf-card-header:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: var(--secondary-color);
         }
 
         .pdf-category {
             display: inline-block;
             background-color: rgba(255, 255, 255, 0.15);
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
         .pdf-title {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+            font-size: 1.35rem;
+            margin-bottom: 8px;
             font-weight: 600;
             line-height: 1.3;
+            min-height: 70px;
+        }
+
+        .pdf-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            opacity: 0.9;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .pdf-card-body {
-            padding: 15px;
+            padding: 20px;
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .pdf-description {
             color: #4a5568;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
         }
 
         .pdf-details {
             display: flex;
             justify-content: space-between;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #718096;
+            margin-top: auto;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        /* Footer */
-        .site-footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        /* Empty State */
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px 20px;
-            color: #718096;
-        }
-
-        .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        /* Full Screen PDF Viewer */
-        .pdf-viewer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 2000;
-            display: none;
-        }
-
-        .viewer-controls {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-            padding: 15px 20px;
+        .pdf-details span {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            z-index: 2001;
+            gap: 5px;
         }
 
-        .viewer-title {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            flex: 1;
-            margin-right: 15px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .viewer-buttons {
+        .pdf-card-footer {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid var(--border-color);
             display: flex;
             gap: 10px;
         }
 
-        .viewer-button {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
+        .pdf-button {
+            flex: 1;
+            padding: 12px 20px;
+            text-align: center;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
             cursor: pointer;
-            font-size: 0.9rem;
-            backdrop-filter: blur(5px);
-            transition: background 0.3s;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .viewer-button:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .pdf-button.open {
+            background-color: var(--primary-color);
+            color: white;
         }
 
-        .pdf-iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .pdf-button.open:hover {
+            background-color: var(--accent-color);
+        }
+
+        .pdf-button.preview {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .pdf-button.preview:hover {
+            background-color: #f1f5f9;
+        }
+
+        .pdf-button.download {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .pdf-button.download:hover {
+            background-color: #276749;
+        }
+
+        .pdf-preview-section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .preview-header h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+        }
+
+        .preview-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-color);
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .preview-close:hover {
+            background-color: #f1f5f9;
+        }
+
+        .pdf-preview-container {
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #f8f9fa;
+        }
+
+        .pdf-preview-container iframe {
             width: 100%;
             height: 100%;
             border: none;
-            z-index: 2000;
         }
 
-        /* Loading Indicator */
-        .loading-indicator {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 20px 30px;
-            border-radius: 8px;
-            z-index: 2002;
-            display: none;
+        .preview-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #718096;
+            padding: 40px;
             text-align: center;
         }
 
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
+        .preview-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #cbd5e0;
+        }
+
+        .site-footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-logo p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+
+        .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #718096;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #cbd5e0;
+        }
+
+        .empty-state h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .new-badge {
+            background-color: var(--success-color);
+        }
+
+        .category-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            border-top: 4px solid white;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .criminal-color { background-color: #e53e3e; }
+        .procedural-color { background-color: #3182ce; }
+        .judiciary-color { background-color: #805ad5; }
+        .constitutional-color { background-color: #38a169; }
+        .miscellaneous-color { background-color: #d69e2e; }
+
+        @media (max-width: 992px) {
+            .pdf-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
             .pdf-grid {
                 grid-template-columns: 1fr;
             }
-            
+
+            .filters-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
             .search-container {
                 flex-direction: column;
+                border-radius: 8px;
             }
-            
+
             .search-input, .search-button {
                 width: 100%;
+                border-radius: 0;
             }
-            
-            .viewer-title {
-                font-size: 1rem;
+
+            .quick-actions {
+                margin-left: 0;
+                width: 100%;
+                justify-content: center;
             }
-            
-            .viewer-buttons {
+
+            .footer-container {
                 flex-direction: column;
-                gap: 5px;
+                text-align: center;
             }
-            
-            .viewer-button {
-                padding: 6px 10px;
-                font-size: 0.8rem;
+
+            .footer-links {
+                margin-top: 15px;
+            }
+
+            .footer-links a {
+                margin: 0 10px;
+            }
+
+            .pdf-preview-container {
+                height: 400px;
             }
         }
 
-        @media (max-width: 480px) {
-            .viewer-controls {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
+        @media (max-width: 576px) {
+            .page-header h2 {
+                font-size: 1.8rem;
             }
-            
-            .viewer-title {
-                margin-right: 0;
-                margin-bottom: 10px;
+
+            .pdf-card-footer {
+                flex-direction: column;
+            }
+
+            .pdf-preview-container {
+                height: 350px;
+            }
+
+            .pdf-title {
+                min-height: auto;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="site-header">
         <div class="header-container">
             <div class="logo-container">
-                <div class="logo-icon">⚖️</div>
+                <i class="fas fa-gavel logo-icon"></i>
                 <div class="logo-text">
-                    <h1>Legal Documents Library</h1>
+                    <h1>LDCLionHunter</h1>
+                    <div class="tagline">Uganda Legal Research & Documentation</div>
                 </div>
             </div>
+            <nav class="nav-links">
+                <a href="https://ldclionhunter.com">Home</a>
+                <a href="#" class="active">Uganda Laws Library</a>
+                <a href="#">Research</a>
+                <a href="#">Case Law</a>
+                <a href="#">About</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-container" id="mainContent">
+    <main class="main-container">
         <div class="page-header">
-            <h2>📚 Legal Documents Collection</h2>
-            <p>Click any document to view it in full screen</p>
+            <h2><i class="fas fa-book"></i> Uganda Legal Documents Library</h2>
+            <p>Browse, search, and preview Uganda's key legal documents, statutes, and regulations. All documents are stored in the <code>/pdfs</code> folder and can be downloaded or previewed directly in your browser.</p>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <span id="totalDocuments">25 Documents</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Updated: 2024</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-folder-open"></i>
+                    <span>5 Categories</span>
+                </div>
+            </div>
+
+            <div class="category-legend">
+                <div class="legend-item">
+                    <div class="legend-color criminal-color"></div>
+                    <span>Criminal Law</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color procedural-color"></div>
+                    <span>Procedural Law</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color judiciary-color"></div>
+                    <span>Judiciary & Courts</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color constitutional-color"></div>
+                    <span>Constitutional Law</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color miscellaneous-color"></div>
+                    <span>Miscellaneous</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Search -->
         <section class="search-section">
             <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search documents...">
-                <button class="search-button" id="searchButton">🔍</button>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search Uganda legal documents by title, keyword, or category...">
+                <button class="search-button" id="searchButton">
+                    <i class="fas fa-search"></i> Search Laws
+                </button>
+            </div>
+            
+            <div class="filters-container">
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-filter"></i> Filter by:</span>
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="criminal">Criminal Law</option>
+                        <option value="procedural">Procedural Law</option>
+                        <option value="judiciary">Judiciary & Courts</option>
+                        <option value="constitutional">Constitutional</option>
+                        <option value="miscellaneous">Miscellaneous</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-calendar"></i> Year:</span>
+                    <select class="filter-select" id="yearFilter">
+                        <option value="all">All Years</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="older">Older</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-sort"></i> Sort by:</span>
+                    <select class="filter-select" id="sortFilter">
+                        <option value="recent">Most Recent</option>
+                        <option value="title">Title (A-Z)</option>
+                        <option value="category">Category</option>
+                        <option value="pages">Page Count</option>
+                    </select>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action-button" id="resetFilters">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <button class="action-button" id="viewAll">
+                        <i class="fas fa-eye"></i> View All
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- PDF Grid -->
         <div class="pdf-grid" id="pdfGrid">
             <!-- PDF cards will be dynamically generated here -->
         </div>
+
+        <section class="pdf-preview-section" id="pdfPreviewSection">
+            <div class="preview-header">
+                <h3 id="previewTitle">Document Preview</h3>
+                <button class="preview-close" id="closePreview">&times;</button>
+            </div>
+            <div class="pdf-preview-container" id="pdfPreviewContainer">
+                <div class="preview-placeholder">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>Select a document to preview</h4>
+                    <p>Click the "Preview" button on any document to view it here</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Loading Indicator -->
-    <div class="loading-indicator" id="loadingIndicator">
-        <div class="spinner"></div>
-        <div>Loading Document...</div>
-    </div>
-
-    <!-- Full Screen PDF Viewer -->
-    <div class="pdf-viewer" id="pdfViewer">
-        <div class="viewer-controls">
-            <div class="viewer-title" id="viewerTitle"></div>
-            <div class="viewer-buttons">
-                <button class="viewer-button" id="downloadBtn" title="Download PDF">⬇️ Download</button>
-                <button class="viewer-button" id="closeViewer" title="Close Viewer">✕ Close</button>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h3>LDCLionHunter Legal Research</h3>
+                <p>Comprehensive Uganda legal documentation and research tools</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://ldclionhunter.com">Home</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 LDCLionHunter. All rights reserved. This site is for informational purposes only and does not constitute legal advice.
             </div>
         </div>
-        <iframe class="pdf-iframe" id="pdfFrame" title="PDF Viewer"></iframe>
-    </div>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div>&copy; 2024 Legal Documents Library</div>
     </footer>
 
     <script>
-        // All your uploaded PDF files
-        const legalDocuments = [
+        const ugandaLegalDocuments = [
+            // Constitutional Documents
             {
                 id: 1,
-                title: "Police  Act Cap 324.pdf",
-                description: "Legislation governing police powers, duties, and procedures. Provides framework for law enforcement operations.",
-                filename: "Police Act Cap 324.pdf",
-                category: "statutes",
-                size: "PDF Document",
-                pages: "Full Document"
+                title: "Constitution of the Republic of Uganda",
+                description: "The supreme law of Uganda, establishing the framework for government, fundamental rights and duties of citizens.",
+                filename: "Constitution of the Republic of Uganda.pdf",
+                category: "constitutional",
+                year: "1995",
+                size: "5.2 MB",
+                pages: 287,
+                date: "2023-11-15",
+                updated: true,
+                jurisdiction: "Uganda"
             },
             {
                 id: 2,
-                title: "Poor Person Defence Act Cap 22.pdf",
-                description: "Act providing for legal defense for persons unable to afford legal representation. Ensures access to justice.",
-                filename: "Poor Person Defence Act Cap 22.pdf",
-                category: "statutes",
-                size: "PDF Document",
-                pages: "Full Document"
+                title: "The Constitution (Sentencing Guidelines for Courts of Judicature) (Practice)",
+                description: "Practice directions and sentencing guidelines for Ugandan courts as per constitutional provisions.",
+                filename: "The Constitution(Sentencing Guidelines for Courts of Judicature)(Practice) (1).pdf",
+                category: "constitutional",
+                year: "2023",
+                size: "1.8 MB",
+                pages: 45,
+                date: "2023-10-22",
+                updated: true,
+                jurisdiction: "Uganda"
             },
+
+            // Criminal Law Documents
             {
                 id: 3,
-                title: "Prisons Act Cap 325.pdf,Prisons Act Cap 325.pdf",
-                description: "Legislation governing prison administration, inmate rights, and correctional procedures. Covers prison management.",
-                filename: "Prisons Act Cap 325.pdf",
-                category: "statutes",
-                size: "PDF Document",
-                pages: "Full Document"
+                title: "Anti-Corruption Act Cap 116",
+                description: "An Act to make provisions for the prevention of corruption in the public and private sectors.",
+                filename: "Anti-Corruption Act Cap 116..pdf",
+                category: "criminal",
+                year: "2009",
+                size: "2.1 MB",
+                pages: 89,
+                date: "2023-09-30",
+                updated: false,
+                jurisdiction: "Uganda"
             },
             {
                 id: 4,
-                title: "",
-                description: "The Constitution(Sentencing Guidel.",
-                filename: "The Constitution(Sentencing Guidelines for Courts of Judicature)(Practice) (1).pdf",
-                category: "constitutional",
-                size: "PDF Document",
-                pages: "Full Document"
+                title: "Penal Code Act Cap 128",
+                description: "The principal legislation defining criminal offenses and penalties in Uganda.",
+                filename: "Penal Code Act. Cap. 128 (3).pdf",
+                category: "criminal",
+                year: "1950",
+                size: "4.7 MB",
+                pages: 312,
+                date: "2023-12-05",
+                updated: true,
+                jurisdiction: "Uganda"
             },
             {
                 id: 5,
-                title: "The Magistrates Courts (Magisterial Areas)Instrument.pdf",
-                description: "Legal instrument defining magisterial areas and jurisdiction for magistrates courts. Court administration.",
-                filename: "The Magistrates Courts (Magisterial Areas)Instrument.pdf",
-                category: "regulations",
-                size: "PDF Document",
-                pages: "Full Document"
+                title: "Narcotic Drugs & Psychotropic Substances Control Act Cap 37",
+                description: "Regulates the control of narcotic drugs and psychotropic substances in Uganda.",
+                filename: "Narcotic Drugs & Psychotropic Substances Control Act Cap 37 (1).pdf",
+                category: "criminal",
+                year: "2015",
+                size: "3.3 MB",
+                pages: 156,
+                date: "2023-08-14",
+                updated: false,
+                jurisdiction: "Uganda"
             },
             {
                 id: 6,
-                title: "Traffic and Road Safety Act Cap 347",
-                description: "Comprehensive legislation governing traffic regulations, road safety measures, vehicle standards, and enforcement.",
-                filename: "Traffic and Road Safety Cap 347 Act.pdf",
-                category: "statutes",
-                size: "PDF Document",
-                pages: "Full Document"
+                title: "Fire Arms Act Cap 320",
+                description: "Regulates the possession, use and control of firearms and ammunition in Uganda.",
+                filename: "Fire Arms Act Cap 320 (1).pdf",
+                category: "criminal",
+                year: "1970",
+                size: "1.9 MB",
+                pages: 72,
+                date: "2023-11-28",
+                updated: false,
+                jurisdiction: "Uganda"
             },
+
+            // Procedural Law Documents
             {
                 id: 7,
+                title: "Criminal Procedure Code Act Cap 122",
+                description: "Procedural rules governing criminal proceedings in Ugandan courts.",
+                filename: "Criminal Procedure Code Act Cap 122 (3).pdf",
+                category: "procedural",
+                year: "1930",
+                size: "3.5 MB",
+                pages: 245,
+                date: "2023-10-10",
+                updated: true,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 8,
                 title: "Trial on Indictment Act Cap 25",
-                description: "Act governing procedures for trials on indictment in criminal cases. Court trial procedures.",
+                description: "Governs the procedure for trials on indictment in the High Court of Uganda.",
                 filename: "Trial on Indictment Act Cap 25 (3).pdf",
-                category: "statutes",
-                size: "PDF Document",
-                pages: "Full Document"
+                category: "procedural",
+                year: "1971",
+                size: "2.5 MB",
+                pages: 120,
+                date: "2023-07-19",
+                updated: false,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 9,
+                title: "Evidence Act Cap 8",
+                description: "Law governing the admissibility and evaluation of evidence in Ugandan courts.",
+                filename: "Evidence Act Cap 8 (1).pdf",
+                category: "procedural",
+                year: "1909",
+                size: "2.8 MB",
+                pages: 134,
+                date: "2023-12-12",
+                updated: true,
+                jurisdiction: "Uganda"
+            },
+
+            // Judiciary & Courts Documents
+            {
+                id: 10,
+                title: "Judicature Act Cap 16",
+                description: "Establishes the structure, jurisdiction and powers of courts in Uganda.",
+                filename: "Judicature Act Cap 16.pdf",
+                category: "judiciary",
+                year: "1967",
+                size: "3.1 MB",
+                pages: 156,
+                date: "2023-09-05",
+                updated: false,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 11,
+                title: "Judicature (Court of Appeal) Rules",
+                description: "Rules of procedure for the Court of Appeal of Uganda.",
+                filename: "JUDICATURE(court of appeal)rules[1] (3).pdf",
+                category: "judiciary",
+                year: "2022",
+                size: "1.5 MB",
+                pages: 67,
+                date: "2023-06-20",
+                updated: true,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 12,
+                title: "Judicature (Plea Bargain) Rules",
+                description: "Rules governing plea bargain proceedings in Ugandan courts.",
+                filename: "Judicature (Plea Bargain) Rules.pdf",
+                category: "judiciary",
+                year: "2016",
+                size: "1.2 MB",
+                pages: 42,
+                date: "2023-05-15",
+                updated: false,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 13,
+                title: "Magistrates Court Act Cap 19",
+                description: "Establishes and regulates the magistrate courts in Uganda.",
+                filename: "Magistrates Court Act Cap 19 (2).pdf",
+                category: "judiciary",
+                year: "1970",
+                size: "2.9 MB",
+                pages: 134,
+                date: "2023-04-10",
+                updated: true,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 14,
+                title: "Magistrates Courts (Magisterial Areas and Magistrates Courts) Instrument, 2024",
+                description: "Instrument establishing magisterial areas and magistrates courts for 2024.",
+                filename: "Magistrates Courts (Magisterial Areas and Magistrates Courts) Instrument, 2024.pdf",
+                category: "judiciary",
+                year: "2024",
+                size: "2.1 MB",
+                pages: 89,
+                date: "2024-01-15",
+                updated: true,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 15,
+                title: "The Magistrates Courts (Magisterial Areas) Instrument",
+                description: "Instrument defining magisterial areas for magistrates courts.",
+                filename: "The Magistrates Courts (Magisterial Areas)Instrument.pdf",
+                category: "judiciary",
+                year: "2023",
+                size: "1.8 MB",
+                pages: 72,
+                date: "2023-03-22",
+                updated: false,
+                jurisdiction: "Uganda"
+            },
+
+            // Miscellaneous Documents
+            {
+                id: 16,
+                title: "Police Act Cap 324",
+                description: "Law establishing and governing the Uganda Police Force.",
+                filename: "Police Act Cap 324.pdf",
+                category: "miscellaneous",
+                year: "2006",
+                size: "3.2 MB",
+                pages: 178,
+                date: "2023-02-18",
+                updated: true,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 17,
+                title: "Prisons Act Cap 325",
+                description: "Governs the administration and management of prisons in Uganda.",
+                filename: "Prisons Act Cap 325.pdf",
+                category: "miscellaneous",
+                year: "2006",
+                size: "2.7 MB",
+                pages: 145,
+                date: "2023-01-30",
+                updated: false,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 18,
+                title: "Poor Person Defence Act Cap 22",
+                description: "Provides for legal aid and defense for indigent persons in Uganda.",
+                filename: "Poor Person Defence Act Cap 22.pdf",
+                category: "miscellaneous",
+                year: "1971",
+                size: "1.5 MB",
+                pages: 56,
+                date: "2023-08-05",
+                updated: false,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 19,
+                title: "Traffic and Road Safety Act Cap 347",
+                description: "Regulates traffic and road safety in Uganda.",
+                filename: "Traffic and Road Safety Cap 347 Act.pdf",
+                category: "miscellaneous",
+                year: "1998",
+                size: "2.4 MB",
+                pages: 112,
+                date: "2023-07-12",
+                updated: true,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 20,
+                title: "Identification of Offenders Act Cap 127",
+                description: "Provides for the identification of offenders through fingerprints and photographs.",
+                filename: "Identification of Offenders Act Cap 127.pdf",
+                category: "miscellaneous",
+                year: "1969",
+                size: "1.3 MB",
+                pages: 48,
+                date: "2023-06-08",
+                updated: false,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 21,
+                title: "Judicature (Criminal Procedure) (Application) SI 13-8",
+                description: "Statutory Instrument on application of criminal procedure rules.",
+                filename: "Judicature (Criminal Procedure)(Application) SI_13_8.pdf",
+                category: "judiciary",
+                year: "2022",
+                size: "1.1 MB",
+                pages: 38,
+                date: "2023-05-25",
+                updated: true,
+                jurisdiction: "Uganda"
+            },
+            {
+                id: 22,
+                title: "Judicature (Criminal Procedure) (Application)",
+                description: "Application of criminal procedure rules in judiciary proceedings.",
+                filename: "Judicature (Criminal Procedure)(Application).pdf",
+                category: "judiciary",
+                year: "2022",
+                size: "1.2 MB",
+                pages: 42,
+                date: "2023-04-18",
+                updated: false,
+                jurisdiction: "Uganda"
             }
         ];
 
-        // DOM Elements
         const pdfGrid = document.getElementById('pdfGrid');
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
-        const pdfViewer = document.getElementById('pdfViewer');
-        const pdfFrame = document.getElementById('pdfFrame');
-        const viewerTitle = document.getElementById('viewerTitle');
-        const closeViewer = document.getElementById('closeViewer');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        const mainContent = document.getElementById('mainContent');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const yearFilter = document.getElementById('yearFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const resetFiltersBtn = document.getElementById('resetFilters');
+        const viewAllBtn = document.getElementById('viewAll');
+        const pdfPreviewSection = document.getElementById('pdfPreviewSection');
+        const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+        const previewTitle = document.getElementById('previewTitle');
+        const closePreview = document.getElementById('closePreview');
+        const totalDocuments = document.getElementById('totalDocuments');
 
-        // Current search state
+        let currentCategory = 'all';
+        let currentYear = 'all';
         let currentSearch = '';
-        let currentDocument = null;
+        let currentSort = 'recent';
 
-        // Function to show loading indicator
-        function showLoading() {
-            loadingIndicator.style.display = 'block';
-        }
+        // Initialize total documents count
+        totalDocuments.textContent = `${ugandaLegalDocuments.length} Documents`;
 
-        // Function to hide loading indicator
-        function hideLoading() {
-            loadingIndicator.style.display = 'none';
-        }
-
-        // Function to open PDF in full screen
-        function openPDF(filename, title, doc) {
-            currentDocument = doc;
-            viewerTitle.textContent = title;
-            
-            // Show loading indicator
-            showLoading();
-            
-            // Hide main content
-            mainContent.style.opacity = '0.3';
-            mainContent.style.pointerEvents = 'none';
-            
-            // Set the PDF source
-            pdfFrame.src = filename + '#view=FitH&scrollbar=1&toolbar=1&navpanes=1';
-            
-            // Show the viewer
-            pdfViewer.style.display = 'block';
-            
-            // Enable fullscreen-like experience
-            document.body.style.overflow = 'hidden';
-            
-            // Set download button functionality
-            downloadBtn.onclick = function() {
-                const link = document.createElement('a');
-                link.href = filename;
-                link.download = filename;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            };
-            
-            // Hide loading when PDF loads
-            pdfFrame.onload = function() {
-                hideLoading();
-                
-                // Try to set PDF to full page view
-                try {
-                    // This works for browsers that support PDF.js parameters
-                    if (pdfFrame.contentWindow && pdfFrame.contentWindow.PDFViewerApplication) {
-                        pdfFrame.contentWindow.PDFViewerApplication.pdfViewer.currentScaleValue = 'page-fit';
-                    }
-                } catch (e) {
-                    // Fallback - use URL parameters for better PDF display
-                    pdfFrame.src = filename + '#zoom=page-fit&toolbar=1&navpanes=1&scrollbar=1';
-                }
-            };
-            
-            // Error handling
-            pdfFrame.onerror = function() {
-                hideLoading();
-                alert('Error loading PDF. Please ensure the file exists and try again.');
-                closePDFViewer();
-            };
-        }
-
-        // Function to close PDF viewer
-        function closePDFViewer() {
-            pdfViewer.style.display = 'none';
-            pdfFrame.src = '';
-            document.body.style.overflow = 'auto';
-            mainContent.style.opacity = '1';
-            mainContent.style.pointerEvents = 'auto';
-            currentDocument = null;
-        }
-
-        // Initialize the PDF grid
         function renderDocuments() {
             pdfGrid.innerHTML = '';
             
-            // Filter documents based on search
-            let filteredDocs = legalDocuments.filter(doc => {
-                if (!currentSearch) return true;
+            let filteredDocs = ugandaLegalDocuments.filter(doc => {
+                const matchesCategory = currentCategory === 'all' || doc.category === currentCategory;
                 
-                const searchLower = currentSearch.toLowerCase();
-                return (
-                    doc.title.toLowerCase().includes(searchLower) ||
-                    doc.description.toLowerCase().includes(searchLower) ||
-                    doc.category.toLowerCase().includes(searchLower)
-                );
+                const matchesYear = currentYear === 'all' || 
+                    (currentYear === 'older' && parseInt(doc.year) < 2020) ||
+                    doc.year === currentYear;
+                
+                const matchesSearch = !currentSearch || 
+                    doc.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    doc.description.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    doc.category.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    doc.year.includes(currentSearch);
+                
+                return matchesCategory && matchesYear && matchesSearch;
             });
             
-            // Display message if no documents found
+            filteredDocs.sort((a, b) => {
+                if (currentSort === 'recent') {
+                    return new Date(b.date) - new Date(a.date);
+                } else if (currentSort === 'title') {
+                    return a.title.localeCompare(b.title);
+                } else if (currentSort === 'category') {
+                    return a.category.localeCompare(b.category) || a.title.localeCompare(b.title);
+                } else if (currentSort === 'pages') {
+                    return b.pages - a.pages;
+                }
+                return 0;
+            });
+            
             if (filteredDocs.length === 0) {
                 pdfGrid.innerHTML = `
                     <div class="empty-state">
-                        <div style="font-size: 3rem; margin-bottom: 15px; color: #cbd5e0;">🔍</div>
-                        <h3>No documents found</h3>
-                        <p>Try different search terms</p>
+                        <i class="fas fa-file-search"></i>
+                        <h3>No Legal Documents Found</h3>
+                        <p>Try adjusting your search terms or filters to find what you're looking for.</p>
+                        <button class="pdf-button open" onclick="resetAllFilters()" style="width: auto; margin-top: 15px;">
+                            <i class="fas fa-redo"></i> Reset All Filters
+                        </button>
                     </div>
                 `;
                 return;
             }
             
-            // Create document cards
             filteredDocs.forEach(doc => {
                 const docCard = document.createElement('div');
                 docCard.className = 'pdf-card';
-                docCard.onclick = () => openPDF(doc.filename, doc.title, doc);
                 
-                // Map categories to display names
+                const formattedDate = new Date(doc.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                
                 const categoryNames = {
-                    statutes: "Statutes & Acts",
-                    regulations: "Regulations",
-                    constitutional: "Constitutional"
+                    criminal: "Criminal Law",
+                    procedural: "Procedural Law",
+                    judiciary: "Judiciary & Courts",
+                    constitutional: "Constitutional",
+                    miscellaneous: "Miscellaneous"
+                };
+                
+                const categoryColors = {
+                    criminal: "criminal-color",
+                    procedural: "procedural-color",
+                    judiciary: "judiciary-color",
+                    constitutional: "constitutional-color",
+                    miscellaneous: "miscellaneous-color"
                 };
                 
                 docCard.innerHTML = `
                     <div class="pdf-card-header">
-                        <div class="pdf-category">${categoryNames[doc.category] || doc.category}</div>
+                        ${doc.updated ? '<span class="badge">Updated</span>' : ''}
+                        ${doc.year === '2024' ? '<span class="badge new-badge">New 2024</span>' : ''}
+                        <div class="pdf-category ${categoryColors[doc.category]}">${categoryNames[doc.category] || doc.category}</div>
                         <h3 class="pdf-title">${doc.title}</h3>
+                        <div class="pdf-meta">
+                            <span><i class="fas fa-flag"></i> ${doc.jurisdiction}</span>
+                            <span><i class="fas fa-calendar"></i> ${doc.year}</span>
+                            <span><i class="far fa-calendar"></i> ${formattedDate}</span>
+                        </div>
                     </div>
                     <div class="pdf-card-body">
                         <p class="pdf-description">${doc.description}</p>
                         <div class="pdf-details">
-                            <span>📄 ${doc.size}</span>
-                            <span>📑 ${doc.pages}</span>
+                            <span><i class="far fa-file-pdf"></i> ${doc.size}</span>
+                            <span><i class="far fa-copy"></i> ${doc.pages} pages</span>
+                            <span><i class="fas fa-tag"></i> ${categoryNames[doc.category]}</span>
                         </div>
+                    </div>
+                    <div class="pdf-card-footer">
+                        <a href="/pdfs/${doc.filename}" class="pdf-button open" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Open
+                        </a>
+                        <button class="pdf-button preview" data-id="${doc.id}">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <a href="/pdfs/${doc.filename}" class="pdf-button download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
                 `;
                 
                 pdfGrid.appendChild(docCard);
             });
+            
+            // Add event listeners to preview buttons
+            document.querySelectorAll('.preview').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const docId = parseInt(this.getAttribute('data-id'));
+                    showDocumentPreview(docId);
+                });
+            });
+        }
+
+        function showDocumentPreview(docId) {
+            const doc = ugandaLegalDocuments.find(d => d.id === docId);
+            if (!doc) return;
+            
+            previewTitle.textContent = `Preview: ${doc.title}`;
+            
+            // Note: In a real implementation, you would use a PDF viewer library like PDF.js
+            // This is a placeholder that would be replaced with actual PDF viewing functionality
+            const previewHTML = `
+                <div style="display: flex; flex-direction: column; height: 100%; padding: 20px;">
+                    <div style="background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px;">${doc.title}</h4>
+                        <p>${doc.description}</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 0.9rem;">
+                            <span><i class="fas fa-file-pdf"></i> ${doc.size}</span>
+                            <span><i class="far fa-copy"></i> ${doc.pages} pages</span>
+                            <span><i class="fas fa-calendar"></i> ${doc.year}</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; border-radius: 8px; padding: 40px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <i class="fas fa-file-pdf" style="font-size: 5rem; color: #e53e3e; margin-bottom: 20px;"></i>
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px;">PDF Preview</h4>
+                        <p style="text-align: center; margin-bottom: 20px;">In a production environment, this would display the actual PDF using a viewer like PDF.js</p>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="/pdfs/${doc.filename}" class="pdf-button open" target="_blank" style="width: auto;">
+                                <i class="fas fa-external-link-alt"></i> Open Full Document
+                            </a>
+                            <a href="/pdfs/${doc.filename}" class="pdf-button download" download style="width: auto;">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            pdfPreviewContainer.innerHTML = previewHTML;
+            pdfPreviewSection.style.display = 'block';
+            pdfPreviewSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetAllFilters() {
+            categoryFilter.value = 'all';
+            yearFilter.value = 'all';
+            sortFilter.value = 'recent';
+            searchInput.value = '';
+            
+            currentCategory = 'all';
+            currentYear = 'all';
+            currentSearch = '';
+            currentSort = 'recent';
+            
+            renderDocuments();
+        }
+
+        function viewAllDocuments() {
+            currentCategory = 'all';
+            currentYear = 'all';
+            currentSearch = '';
+            currentSort = 'recent';
+            
+            categoryFilter.value = 'all';
+            yearFilter.value = 'all';
+            sortFilter.value = 'recent';
+            searchInput.value = '';
+            
+            renderDocuments();
         }
 
         // Event Listeners
-        closeViewer.onclick = closePDFViewer;
-
-        // Close with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && pdfViewer.style.display === 'block') {
-                closePDFViewer();
-            }
+        categoryFilter.addEventListener('change', function() {
+            currentCategory = this.value;
+            renderDocuments();
         });
 
-        // Close when clicking outside the iframe (on the overlay)
-        pdfViewer.onclick = (e) => {
-            if (e.target === pdfViewer) {
-                closePDFViewer();
-            }
-        };
+        yearFilter.addEventListener('change', function() {
+            currentYear = this.value;
+            renderDocuments();
+        });
 
-        // Search functionality
-        searchButton.onclick = () => {
+        sortFilter.addEventListener('change', function() {
+            currentSort = this.value;
+            renderDocuments();
+        });
+
+        searchButton.addEventListener('click', function() {
             currentSearch = searchInput.value.trim();
             renderDocuments();
-        };
+        });
 
-        searchInput.onkeyup = (e) => {
-            if (e.key === 'Enter') {
+        searchInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
                 currentSearch = searchInput.value.trim();
                 renderDocuments();
             }
-        };
+        });
 
-        // Real-time search as user types
-        searchInput.oninput = () => {
-            currentSearch = searchInput.value.trim();
-            renderDocuments();
-        };
+        resetFiltersBtn.addEventListener('click', resetAllFilters);
+        viewAllBtn.addEventListener('click', viewAllDocuments);
 
-        // Clear search when clicking on the search input
-        searchInput.onclick = function() {
-            if (this.value === 'Search documents...') {
-                this.value = '';
-            }
-        };
-
-        // Add some helpful PDF viewing tips
-        window.addEventListener('DOMContentLoaded', () => {
-            console.log('PDF Library Ready!');
-            console.log('Tips:');
-            console.log('- Click any document to view in full screen');
-            console.log('- Use browser zoom (Ctrl+Scroll) in PDF viewer');
-            console.log('- Download button available in viewer');
-            console.log('- Press ESC to close viewer');
+        closePreview.addEventListener('click', function() {
+            pdfPreviewSection.style.display = 'none';
+            pdfPreviewContainer.innerHTML = `
+                <div class="preview-placeholder">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>Select a document to preview</h4>
+                    <p>Click the "Preview" button on any document to view it here</p>
+                </div>
+            `;
         });
 
         // Initial render
