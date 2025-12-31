@@ -596,10 +596,22 @@
     </footer>
 
     <script>
-        // Legal Documents Data
+        // Legal Documents Data with your actual PDF
         const legalDocuments = [
             {
                 id: 1,
+                title: "Traffic and Road Safety Act, Cap 347",
+                description: "Comprehensive legislation governing traffic regulations, road safety measures, vehicle standards, and traffic law enforcement procedures.",
+                filename: "Traffic and Road Safety Cap 347 Act.pdf",
+                category: "statutes",
+                jurisdiction: "federal",
+                size: "1.8 MB",
+                pages: 47,
+                date: "2023-10-15",
+                updated: true
+            },
+            {
+                id: 2,
                 title: "United States Code, Title 18 - Crimes and Criminal Procedure",
                 description: "Federal statutes defining federal crimes and procedures for federal criminal prosecutions.",
                 filename: "usc-title-18.pdf",
@@ -611,7 +623,7 @@
                 updated: true
             },
             {
-                id: 2,
+                id: 3,
                 title: "Code of Federal Regulations, Title 28 - Judicial Administration",
                 description: "Regulations governing the administration of the federal court system and Department of Justice.",
                 filename: "cfr-title-28.pdf",
@@ -623,7 +635,7 @@
                 updated: false
             },
             {
-                id: 3,
+                id: 4,
                 title: "Supreme Court Decision: Brown v. Board of Education",
                 description: "Landmark 1954 Supreme Court case declaring state laws establishing separate public schools for black and white students unconstitutional.",
                 filename: "brown-v-board.pdf",
@@ -635,7 +647,7 @@
                 updated: false
             },
             {
-                id: 4,
+                id: 5,
                 title: "Model Penal Code with Commentary",
                 description: "A statutory text developed by the American Law Institute to stimulate and assist U.S. state legislatures to update and standardize their criminal laws.",
                 filename: "model-penal-code.pdf",
@@ -647,7 +659,7 @@
                 updated: true
             },
             {
-                id: 5,
+                id: 6,
                 title: "Uniform Commercial Code (UCC) - Article 2",
                 description: "Governs transactions in goods, providing a comprehensive framework for sales contracts, warranties, and remedies.",
                 filename: "ucc-article-2.pdf",
@@ -659,7 +671,7 @@
                 updated: false
             },
             {
-                id: 6,
+                id: 7,
                 title: "Vienna Convention on the Law of Treaties",
                 description: "International agreement that codifies the rules and procedures for creating, amending, interpreting, and terminating treaties.",
                 filename: "vienna-convention.pdf",
@@ -671,7 +683,7 @@
                 updated: false
             },
             {
-                id: 7,
+                id: 8,
                 title: "Administrative Procedure Act",
                 description: "Federal statute governing the way federal administrative agencies may propose and establish regulations.",
                 filename: "administrative-procedure-act.pdf",
@@ -683,7 +695,7 @@
                 updated: true
             },
             {
-                id: 8,
+                id: 9,
                 title: "Local Zoning Ordinance - Sample Municipality",
                 description: "Example of local government regulations governing land use and property development.",
                 filename: "zoning-ordinance.pdf",
@@ -695,7 +707,7 @@
                 updated: false
             },
             {
-                id: 9,
+                id: 10,
                 title: "Constitutional Law: Key Amendments Analysis",
                 description: "Comprehensive analysis of the Bill of Rights and subsequent amendments with historical context.",
                 filename: "constitutional-amendments.pdf",
@@ -707,7 +719,7 @@
                 updated: true
             },
             {
-                id: 10,
+                id: 11,
                 title: "Federal Rules of Civil Procedure",
                 description: "Rules governing civil procedure in United States district courts, prescribing the process for civil lawsuits.",
                 filename: "frcp.pdf",
@@ -833,7 +845,7 @@
                         </div>
                     </div>
                     <div class="pdf-card-footer">
-                        <a href="/pdfs/${doc.filename}" class="pdf-button open" target="_blank">
+                        <a href="${doc.filename}" class="pdf-button open" target="_blank">
                             🔗 Open Document
                         </a>
                         <button class="pdf-button preview" data-id="${doc.id}">
@@ -862,10 +874,9 @@
             // Update preview title
             previewTitle.textContent = `Preview: ${doc.title}`;
             
-            // For demo purposes, we'll use a sample PDF
-            // In production, replace this with actual PDF URL from /pdfs folder
+            // Use the actual PDF file for preview
             const previewHTML = `
-                <iframe src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
+                <iframe src="${doc.filename}" 
                         title="${doc.title}" 
                         style="width: 100%; height: 100%; border: none;">
                 </iframe>
