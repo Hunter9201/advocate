@@ -9,12 +9,10 @@
         :root {
             --primary-color: #1a365d;
             --secondary-color: #c53030;
-            --accent-color: #2a4365;
             --light-color: #f7fafc;
             --dark-color: #2d3748;
             --border-color: #e2e8f0;
             --card-bg: #ffffff;
-            --hover-bg: #f8f9fa;
         }
 
         /* Reset and Base Styles */
@@ -38,7 +36,6 @@
             color: white;
             padding: 1.5rem 0;
             border-bottom: 4px solid var(--secondary-color);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -49,7 +46,6 @@
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
         }
 
@@ -65,323 +61,215 @@
         }
 
         .logo-text h1 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
-        }
-
-        .logo-text .tagline {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            font-weight: 300;
         }
 
         /* Main Content */
         .main-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px 50px;
+            padding: 20px;
         }
 
         .page-header {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .page-header h2 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .page-header p {
-            font-size: 1.1rem;
-            color: #4a5568;
-            max-width: 800px;
+            margin-bottom: 5px;
         }
 
         /* Search */
         .search-section {
             background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
             border: 1px solid var(--border-color);
             text-align: center;
         }
 
         .search-container {
             display: flex;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .search-input {
             flex: 1;
-            padding: 16px 20px;
+            padding: 12px 15px;
             border: none;
             font-size: 1rem;
             outline: none;
-            background-color: #f8f9fa;
+            background-color: white;
         }
 
         .search-button {
             background-color: var(--secondary-color);
             color: white;
             border: none;
-            padding: 0 30px;
+            padding: 0 20px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
-            transition: background-color 0.3s;
-        }
-
-        .search-button:hover {
-            background-color: #b91c1c;
         }
 
         /* PDF Grid */
         .pdf-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .pdf-card {
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            height: 100%;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .pdf-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
 
         .pdf-card-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 20px;
+            padding: 15px;
             position: relative;
-        }
-
-        .pdf-card-header:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background-color: var(--secondary-color);
         }
 
         .pdf-category {
             display: inline-block;
             background-color: rgba(255, 255, 255, 0.15);
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-            font-weight: 500;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
         }
 
         .pdf-title {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
             font-weight: 600;
             line-height: 1.3;
         }
 
-        .pdf-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-
         .pdf-card-body {
-            padding: 20px;
+            padding: 15px;
             flex-grow: 1;
         }
 
         .pdf-description {
             color: #4a5568;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
 
         .pdf-details {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #718096;
-            margin-top: auto;
-        }
-
-        .pdf-details span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .pdf-card-footer {
-            padding: 15px 20px;
-            background-color: #f8f9fa;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .pdf-button {
-            display: block;
-            width: 100%;
-            padding: 12px 20px;
-            text-align: center;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        .pdf-button:hover {
-            background-color: var(--accent-color);
         }
 
         /* Footer */
         .site-footer {
             background-color: var(--primary-color);
             color: white;
-            padding: 30px 0;
-            margin-top: 50px;
-            border-top: 4px solid var(--secondary-color);
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-logo h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .footer-logo p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .copyright {
-            width: 100%;
+            padding: 20px 0;
+            margin-top: 30px;
             text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.8;
         }
 
         /* Empty State */
         .empty-state {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             color: #718096;
         }
 
         .empty-state h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 10px;
             color: var(--primary-color);
         }
 
-        /* Badge */
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
+        /* PDF Viewer */
+        .pdf-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            display: none;
         }
 
-        /* Icons (using Unicode) */
-        .icon {
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        /* Back to Library Button */
-        .back-to-library {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
+        .viewer-header {
             background-color: var(--primary-color);
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: background-color 0.3s;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--secondary-color);
         }
 
-        .back-to-library:hover {
-            background-color: var(--accent-color);
+        .viewer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .close-viewer {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: calc(100% - 60px);
+            border: none;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-
             .pdf-grid {
                 grid-template-columns: 1fr;
             }
-
+            
             .search-container {
                 flex-direction: column;
-                border-radius: 8px;
             }
-
+            
             .search-input, .search-button {
                 width: 100%;
-                border-radius: 0;
-            }
-
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .page-header h2 {
-                font-size: 1.8rem;
             }
         }
     </style>
@@ -394,7 +282,6 @@
                 <div class="logo-icon">⚖️</div>
                 <div class="logo-text">
                     <h1>Legal Documents Library</h1>
-                    <div class="tagline">Browse and search legal documents, statutes, and regulations</div>
                 </div>
             </div>
         </div>
@@ -404,14 +291,14 @@
     <main class="main-container">
         <div class="page-header">
             <h2>📚 Legal Documents Collection</h2>
-            <p>Search and open legal documents. All PDFs are stored in the <code>/pdfs</code> folder and can be opened directly in your browser.</p>
+            <p>Click any document to view it immediately</p>
         </div>
 
         <!-- Search -->
         <section class="search-section">
             <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search legal documents by title or description...">
-                <button class="search-button" id="searchButton">🔍 Search</button>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search documents...">
+                <button class="search-button" id="searchButton">🔍</button>
             </div>
         </section>
 
@@ -421,21 +308,22 @@
         </div>
     </main>
 
+    <!-- PDF Viewer -->
+    <div class="pdf-viewer" id="pdfViewer">
+        <div class="viewer-header">
+            <div class="viewer-title" id="viewerTitle"></div>
+            <button class="close-viewer" id="closeViewer">×</button>
+        </div>
+        <iframe class="pdf-frame" id="pdfFrame"></iframe>
+    </div>
+
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <h3>Legal Documents Library</h3>
-                <p>Comprehensive collection of legal resources</p>
-            </div>
-            <div class="copyright">
-                &copy; 2023 Legal Documents Library. All documents are for informational purposes only.
-            </div>
-        </div>
+        <div>&copy; 2023 Legal Documents Library</div>
     </footer>
 
     <script>
-        // Legal Documents Data with your actual PDF
+        // Legal Documents Data
         const legalDocuments = [
             {
                 id: 1,
@@ -444,9 +332,7 @@
                 filename: "Traffic and Road Safety Cap 347 Act.pdf",
                 category: "statutes",
                 size: "1.8 MB",
-                pages: 47,
-                date: "2023-10-15",
-                updated: true
+                pages: 47
             },
             {
                 id: 2,
@@ -455,9 +341,7 @@
                 filename: "usc-title-18.pdf",
                 category: "statutes",
                 size: "4.2 MB",
-                pages: 312,
-                date: "2023-11-15",
-                updated: true
+                pages: 312
             },
             {
                 id: 3,
@@ -466,9 +350,7 @@
                 filename: "cfr-title-28.pdf",
                 category: "regulations",
                 size: "3.8 MB",
-                pages: 245,
-                date: "2023-10-22",
-                updated: false
+                pages: 245
             },
             {
                 id: 4,
@@ -477,9 +359,7 @@
                 filename: "brown-v-board.pdf",
                 category: "case-law",
                 size: "2.1 MB",
-                pages: 58,
-                date: "2023-09-30",
-                updated: false
+                pages: 58
             },
             {
                 id: 5,
@@ -488,75 +368,7 @@
                 filename: "model-penal-code.pdf",
                 category: "statutes",
                 size: "5.7 MB",
-                pages: 420,
-                date: "2023-12-05",
-                updated: true
-            },
-            {
-                id: 6,
-                title: "Uniform Commercial Code (UCC) - Article 2",
-                description: "Governs transactions in goods, providing a comprehensive framework for sales contracts, warranties, and remedies.",
-                filename: "ucc-article-2.pdf",
-                category: "statutes",
-                size: "3.3 MB",
-                pages: 189,
-                date: "2023-08-14",
-                updated: false
-            },
-            {
-                id: 7,
-                title: "Vienna Convention on the Law of Treaties",
-                description: "International agreement that codifies the rules and procedures for creating, amending, interpreting, and terminating treaties.",
-                filename: "vienna-convention.pdf",
-                category: "international",
-                size: "2.9 MB",
-                pages: 134,
-                date: "2023-11-28",
-                updated: false
-            },
-            {
-                id: 8,
-                title: "Administrative Procedure Act",
-                description: "Federal statute governing the way federal administrative agencies may propose and establish regulations.",
-                filename: "administrative-procedure-act.pdf",
-                category: "administrative",
-                size: "2.5 MB",
-                pages: 87,
-                date: "2023-10-10",
-                updated: true
-            },
-            {
-                id: 9,
-                title: "Local Zoning Ordinance - Sample Municipality",
-                description: "Example of local government regulations governing land use and property development.",
-                filename: "zoning-ordinance.pdf",
-                category: "regulations",
-                size: "1.8 MB",
-                pages: 72,
-                date: "2023-07-19",
-                updated: false
-            },
-            {
-                id: 10,
-                title: "Constitutional Law: Key Amendments Analysis",
-                description: "Comprehensive analysis of the Bill of Rights and subsequent amendments with historical context.",
-                filename: "constitutional-amendments.pdf",
-                category: "constitutional",
-                size: "4.5 MB",
-                pages: 210,
-                date: "2023-12-12",
-                updated: true
-            },
-            {
-                id: 11,
-                title: "Federal Rules of Civil Procedure",
-                description: "Rules governing civil procedure in United States district courts, prescribing the process for civil lawsuits.",
-                filename: "frcp.pdf",
-                category: "regulations",
-                size: "3.1 MB",
-                pages: 156,
-                date: "2023-09-05",
-                updated: false
+                pages: 420
             }
         ];
 
@@ -564,91 +376,20 @@
         const pdfGrid = document.getElementById('pdfGrid');
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfFrame = document.getElementById('pdfFrame');
+        const viewerTitle = document.getElementById('viewerTitle');
+        const closeViewer = document.getElementById('closeViewer');
 
         // Current search state
         let currentSearch = '';
 
-        // Function to open PDF with auto-return capability
-        function openPDF(pdfUrl, pdfTitle) {
-            // Create a download link element
-            const downloadLink = document.createElement('a');
-            downloadLink.href = pdfUrl;
-            downloadLink.download = pdfUrl.split('/').pop();
-            downloadLink.target = '_blank';
-            downloadLink.rel = 'noopener noreferrer';
-            
-            // Add an event listener to handle the back-to-library functionality
-            downloadLink.addEventListener('click', function(e) {
-                // Store the current page URL in localStorage
-                localStorage.setItem('returnToLibrary', window.location.href);
-                
-                // Create a return button in the PDF page (this will work if the PDF opens in a new tab)
-                setTimeout(() => {
-                    // This message will be shown in the browser console for demonstration
-                    console.log(`To return to the library: ${window.location.href}`);
-                }, 1000);
-            });
-            
-            // Trigger the download/opening
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-            
-            // Show a toast message about how to return
-            showToastMessage(`Opening "${pdfTitle}". After viewing, close the PDF tab to return.`);
-        }
-
-        // Show toast message
-        function showToastMessage(message) {
-            // Remove any existing toast
-            const existingToast = document.querySelector('.toast-message');
-            if (existingToast) {
-                existingToast.remove();
-            }
-            
-            // Create toast element
-            const toast = document.createElement('div');
-            toast.className = 'toast-message';
-            toast.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background-color: var(--primary-color);
-                    color: white;
-                    padding: 15px 25px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    z-index: 1000;
-                    animation: slideIn 0.3s ease-out;
-                    max-width: 400px;
-                    border-left: 4px solid var(--secondary-color);
-                ">
-                    <strong>📄 Note:</strong> ${message}
-                </div>
-            `;
-            
-            // Add CSS for animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                @keyframes fadeOut {
-                    from { opacity: 1; }
-                    to { opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            document.body.appendChild(toast);
-            
-            // Remove toast after 5 seconds
-            setTimeout(() => {
-                toast.style.animation = 'fadeOut 0.3s ease-out';
-                setTimeout(() => toast.remove(), 300);
-            }, 5000);
+        // Function to open PDF immediately
+        function openPDF(filename, title) {
+            viewerTitle.textContent = title;
+            pdfFrame.src = filename;
+            pdfViewer.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
 
         // Initialize the PDF grid
@@ -671,12 +412,9 @@
             if (filteredDocs.length === 0) {
                 pdfGrid.innerHTML = `
                     <div class="empty-state">
-                        <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">🔍</div>
-                        <h3>No Legal Documents Found</h3>
-                        <p>Try adjusting your search terms to find what you're looking for.</p>
-                        <button class="pdf-button" onclick="resetSearch()" style="width: auto; margin: 15px auto 0; display: block;">
-                            🔄 Clear Search
-                        </button>
+                        <div style="font-size: 3rem; margin-bottom: 15px; color: #cbd5e0;">🔍</div>
+                        <h3>No documents found</h3>
+                        <p>Try different search terms</p>
                     </div>
                 `;
                 return;
@@ -686,88 +424,67 @@
             filteredDocs.forEach(doc => {
                 const docCard = document.createElement('div');
                 docCard.className = 'pdf-card';
-                
-                // Format date for display
-                const formattedDate = new Date(doc.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                });
+                docCard.onclick = () => openPDF(doc.filename, doc.title);
                 
                 // Map categories to display names
                 const categoryNames = {
                     statutes: "Statutes & Codes",
                     regulations: "Regulations",
-                    "case-law": "Case Law",
-                    constitutional: "Constitutional",
-                    international: "International Law",
-                    administrative: "Administrative Law"
+                    "case-law": "Case Law"
                 };
                 
                 docCard.innerHTML = `
                     <div class="pdf-card-header">
-                        ${doc.updated ? '<span class="badge">Updated</span>' : ''}
                         <div class="pdf-category">${categoryNames[doc.category] || doc.category}</div>
                         <h3 class="pdf-title">${doc.title}</h3>
-                        <div class="pdf-meta">
-                            <span>📅 ${formattedDate}</span>
-                            <span>📑 ${doc.pages} pages</span>
-                        </div>
                     </div>
                     <div class="pdf-card-body">
                         <p class="pdf-description">${doc.description}</p>
                         <div class="pdf-details">
                             <span>📄 ${doc.size}</span>
-                            <span>🏷️ ${doc.category.charAt(0).toUpperCase() + doc.category.slice(1)}</span>
+                            <span>📑 ${doc.pages} pages</span>
                         </div>
-                    </div>
-                    <div class="pdf-card-footer">
-                        <button class="pdf-button" data-id="${doc.id}" data-title="${doc.title}" data-filename="${doc.filename}">
-                            🔗 Open Document
-                        </button>
                     </div>
                 `;
                 
                 pdfGrid.appendChild(docCard);
             });
-            
-            // Add event listeners to Open Document buttons
-            document.querySelectorAll('.pdf-button').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const docId = parseInt(this.getAttribute('data-id'));
-                    const docTitle = this.getAttribute('data-title');
-                    const filename = this.getAttribute('data-filename');
-                    openPDF(filename, docTitle);
-                });
-            });
         }
 
-        // Reset search
-        function resetSearch() {
-            searchInput.value = '';
-            currentSearch = '';
-            renderDocuments();
-        }
+        // Close PDF viewer
+        closeViewer.onclick = () => {
+            pdfViewer.style.display = 'none';
+            pdfFrame.src = '';
+            document.body.style.overflow = 'auto';
+        };
+
+        // Also close when clicking outside the iframe
+        pdfViewer.onclick = (e) => {
+            if (e.target === pdfViewer) {
+                pdfViewer.style.display = 'none';
+                pdfFrame.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        };
 
         // Search functionality
-        searchButton.addEventListener('click', function() {
+        searchButton.onclick = () => {
             currentSearch = searchInput.value.trim();
             renderDocuments();
-        });
+        };
 
-        searchInput.addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
+        searchInput.onkeyup = (e) => {
+            if (e.key === 'Enter') {
                 currentSearch = searchInput.value.trim();
                 renderDocuments();
             }
-        });
+        };
 
-        // Clear search when clicking on the search input
-        searchInput.addEventListener('click', function() {
-            if (this.value === 'Search legal documents...') {
-                this.value = '';
-            }
-        });
+        // Real-time search as user types
+        searchInput.oninput = () => {
+            currentSearch = searchInput.value.trim();
+            renderDocuments();
+        };
 
         // Initial render
         renderDocuments();
