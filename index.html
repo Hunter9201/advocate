@@ -236,6 +236,8 @@
         .viewer-title {
             font-size: 1.2rem;
             font-weight: 600;
+            flex: 1;
+            margin-right: 15px;
         }
 
         .close-viewer {
@@ -250,6 +252,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .pdf-frame {
@@ -270,6 +273,10 @@
             
             .search-input, .search-button {
                 width: 100%;
+            }
+            
+            .viewer-title {
+                font-size: 1rem;
             }
         }
     </style>
@@ -314,7 +321,7 @@
             <div class="viewer-title" id="viewerTitle"></div>
             <button class="close-viewer" id="closeViewer">×</button>
         </div>
-        <iframe class="pdf-frame" id="pdfFrame"></iframe>
+        <iframe class="pdf-frame" id="pdfFrame" title="PDF Viewer"></iframe>
     </div>
 
     <!-- Footer -->
@@ -323,52 +330,70 @@
     </footer>
 
     <script>
-        // Legal Documents Data
+        // All your uploaded PDF files
         const legalDocuments = [
             {
                 id: 1,
-                title: "Traffic and Road Safety Act, Cap 347",
-                description: "Comprehensive legislation governing traffic regulations, road safety measures, vehicle standards, and traffic law enforcement procedures.",
-                filename: "Traffic and Road Safety Cap 347 Act.pdf",
+                title: "Police Act Cap 324",
+                description: "Legislation governing police powers, duties, and procedures.",
+                filename: "Police Act Cap 324.pdf",
                 category: "statutes",
-                size: "1.8 MB",
-                pages: 47
+                size: "PDF Document",
+                pages: "Click to view"
             },
             {
                 id: 2,
-                title: "United States Code, Title 18 - Crimes and Criminal Procedure",
-                description: "Federal statutes defining federal crimes and procedures for federal criminal prosecutions.",
-                filename: "usc-title-18.pdf",
+                title: "Poor Person Defence Act Cap 22",
+                description: "Act providing for legal defense for persons unable to afford legal representation.",
+                filename: "Poor Person Defence Act Cap 22.pdf",
                 category: "statutes",
-                size: "4.2 MB",
-                pages: 312
+                size: "PDF Document",
+                pages: "Click to view"
             },
             {
                 id: 3,
-                title: "Code of Federal Regulations, Title 28 - Judicial Administration",
-                description: "Regulations governing the administration of the federal court system and Department of Justice.",
-                filename: "cfr-title-28.pdf",
-                category: "regulations",
-                size: "3.8 MB",
-                pages: 245
+                title: "Prisons Act Cap 325",
+                description: "Legislation governing prison administration, inmate rights, and correctional procedures.",
+                filename: "Prisons Act Cap 325.pdf",
+                category: "statutes",
+                size: "PDF Document",
+                pages: "Click to view"
             },
             {
                 id: 4,
-                title: "Supreme Court Decision: Brown v. Board of Education",
-                description: "Landmark 1954 Supreme Court case declaring state laws establishing separate public schools for black and white students unconstitutional.",
-                filename: "brown-v-board.pdf",
-                category: "case-law",
-                size: "2.1 MB",
-                pages: 58
+                title: "The Constitution (Sentencing Guidelines for Courts of Judicature)",
+                description: "Practice guidelines for sentencing in courts of judicature as per constitutional provisions.",
+                filename: "The Constitution(Sentencing Guidelines for Courts of Judicature)(Practice) (1).pdf",
+                category: "constitutional",
+                size: "PDF Document",
+                pages: "Click to view"
             },
             {
                 id: 5,
-                title: "Model Penal Code with Commentary",
-                description: "A statutory text developed by the American Law Institute to stimulate and assist U.S. state legislatures to update and standardize their criminal laws.",
-                filename: "model-penal-code.pdf",
+                title: "The Magistrates Courts (Magisterial Areas) Instrument",
+                description: "Legal instrument defining magisterial areas and jurisdiction for magistrates courts.",
+                filename: "The Magistrates Courts (Magisterial Areas)Instrument.pdf",
+                category: "regulations",
+                size: "PDF Document",
+                pages: "Click to view"
+            },
+            {
+                id: 6,
+                title: "Traffic and Road Safety Act Cap 347",
+                description: "Comprehensive legislation governing traffic regulations, road safety measures, vehicle standards, and enforcement.",
+                filename: "Traffic and Road Safety Cap 347 Act.pdf",
                 category: "statutes",
-                size: "5.7 MB",
-                pages: 420
+                size: "PDF Document",
+                pages: "Click to view"
+            },
+            {
+                id: 7,
+                title: "Trial on Indictment Act Cap 25",
+                description: "Act governing procedures for trials on indictment in criminal cases.",
+                filename: "Trial on Indictment Act Cap 25 (3).pdf",
+                category: "statutes",
+                size: "PDF Document",
+                pages: "Click to view"
             }
         ];
 
@@ -387,9 +412,18 @@
         // Function to open PDF immediately
         function openPDF(filename, title) {
             viewerTitle.textContent = title;
+            
+            // Set the PDF source - ensure the filename matches exactly what you uploaded
             pdfFrame.src = filename;
+            
+            // Show the viewer
             pdfViewer.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
+            
+            // Focus on the iframe for better accessibility
+            setTimeout(() => {
+                pdfFrame.focus();
+            }, 100);
         }
 
         // Initialize the PDF grid
@@ -428,9 +462,9 @@
                 
                 // Map categories to display names
                 const categoryNames = {
-                    statutes: "Statutes & Codes",
+                    statutes: "Statutes & Acts",
                     regulations: "Regulations",
-                    "case-law": "Case Law"
+                    constitutional: "Constitutional"
                 };
                 
                 docCard.innerHTML = `
@@ -442,7 +476,7 @@
                         <p class="pdf-description">${doc.description}</p>
                         <div class="pdf-details">
                             <span>📄 ${doc.size}</span>
-                            <span>📑 ${doc.pages} pages</span>
+                            <span>📑 ${doc.pages}</span>
                         </div>
                     </div>
                 `;
@@ -458,7 +492,7 @@
             document.body.style.overflow = 'auto';
         };
 
-        // Also close when clicking outside the iframe
+        // Also close when clicking outside the iframe (on the overlay)
         pdfViewer.onclick = (e) => {
             if (e.target === pdfViewer) {
                 pdfViewer.style.display = 'none';
@@ -466,6 +500,15 @@
                 document.body.style.overflow = 'auto';
             }
         };
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfViewer.style.display === 'block') {
+                pdfViewer.style.display = 'none';
+                pdfFrame.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
 
         // Search functionality
         searchButton.onclick = () => {
@@ -485,6 +528,23 @@
             currentSearch = searchInput.value.trim();
             renderDocuments();
         };
+
+        // Clear search when clicking on the search input
+        searchInput.onclick = function() {
+            if (this.value === 'Search documents...') {
+                this.value = '';
+            }
+        };
+
+        // Auto-open first document on page load (optional)
+        // Uncomment if you want the first document to open automatically
+        // window.onload = function() {
+        //     if (legalDocuments.length > 0) {
+        //         setTimeout(() => {
+        //             openPDF(legalDocuments[0].filename, legalDocuments[0].title);
+        //         }, 500);
+        //     }
+        // };
 
         // Initial render
         renderDocuments();
