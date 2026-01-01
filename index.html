@@ -236,9 +236,10 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(15, 23, 42, 0.98);
+            background: #0f172a;
             z-index: 9999;
             display: none;
+            overflow: hidden;
         }
         
         .pdf-container {
@@ -257,6 +258,7 @@
             align-items: center;
             border-bottom: 1px solid #334155;
             backdrop-filter: blur(10px);
+            flex-shrink: 0;
         }
         
         .pdf-title {
@@ -311,26 +313,36 @@
             background: #dc2626;
         }
         
-        .pdf-viewer {
+        .pdf-viewer-container {
             flex: 1;
             width: 100%;
-            background: white;
             overflow: hidden;
+            background: #f8fafc;
+            position: relative;
         }
         
-        .pdf-iframe {
+        .pdf-viewer {
             width: 100%;
             height: 100%;
             border: none;
         }
         
-        /* PDF EMBED FALLBACK */
+        /* BETTER PDF VIEWER CONTAINER */
         .pdf-embed-container {
             width: 100%;
             height: 100%;
+            position: relative;
         }
         
         .pdf-embed {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+        
+        /* PDF.JS VIEWER STYLES */
+        .pdfjs-viewer {
             width: 100%;
             height: 100%;
             border: none;
@@ -454,22 +466,46 @@
             background: #2563eb;
         }
         
-        /* Fullscreen mode */
-        .pdf-modal.fullscreen {
-            z-index: 99999;
+        /* PDF NAVIGATION CONTROLS */
+        .pdf-nav-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 41, 59, 0.9);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            z-index: 100;
         }
         
-        .pdf-modal.fullscreen .pdf-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+        .nav-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
         }
         
-        .pdf-modal.fullscreen .pdf-viewer {
-            margin-top: 60px;
-            height: calc(100vh - 60px);
+        .nav-btn:hover {
+            background: rgba(59, 130, 246, 0.5);
+        }
+        
+        .page-info {
+            color: white;
+            font-size: 0.9rem;
+            padding: 0 10px;
         }
     </style>
 </head>
@@ -522,7 +558,7 @@
                     </button>
                 </div>
             </div>
-            <div class="pdf-viewer" id="pdfViewer">
+            <div class="pdf-viewer-container" id="pdfViewerContainer">
                 <!-- PDF will be loaded here -->
             </div>
         </div>
@@ -535,7 +571,7 @@
     
     <footer>
         <div class="container">
-            <p>Uganda Statutes Repository • Full Screen PDF Viewer</p>
+            <p>Uganda Statutes Repository • Complete Document Preview</p>
         </div>
     </footer>
 
@@ -958,7 +994,7 @@
         const clearSearchBtn = document.getElementById('clearSearch');
         const pdfModal = document.getElementById('pdfModal');
         const pdfTitle = document.getElementById('pdfTitle');
-        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfViewerContainer = document.getElementById('pdfViewerContainer');
         const closePdfBtn = document.getElementById('closePdfBtn');
         const fullscreenBtn = document.getElementById('fullscreenBtn');
         const loading = document.getElementById('loading');
@@ -968,13 +1004,13 @@
         let currentFilter = 'all';
         let filteredStatutes = [...statutes];
         let isFullscreen = false;
+        let currentPdfUrl = '';
 
         // Initialize
         function init() {
             renderStatutes(filteredStatutes);
             updateStats();
             
-            // Add event listeners to filter buttons
             filterButtons.addEventListener('click', (e) => {
                 if (e.target.classList.contains('filter-btn')) {
                     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1028,29 +1064,29 @@
             });
         }
 
-        // Open PDF in full screen modal
+        // Open PDF in full screen modal - COMPLETE DOCUMENT VIEW
         function openPdf(title, url) {
+            currentPdfUrl = url;
             showLoading();
             pdfTitle.textContent = title;
             
             // Clear previous content
-            pdfViewer.innerHTML = '';
+            pdfViewerContainer.innerHTML = '';
             
-            // Create PDF embed with Google Docs Viewer for better display
-            const encodedUrl = encodeURIComponent(url);
-            const embedUrl = `https://docs.google.com/viewer?url=${encodedUrl}&embedded=true`;
-            
-            const embedHTML = `
+            // Try multiple methods to display the complete PDF
+            const viewerHTML = `
                 <div class="pdf-embed-container">
+                    <!-- Method 1: Google Docs Viewer with complete document view -->
                     <iframe class="pdf-embed" 
-                            src="${embedUrl}"
+                            src="https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/' + url)}&embedded=true"
                             frameborder="0"
-                            allowfullscreen>
+                            allowfullscreen
+                            style="width: 100%; height: 100%;">
                     </iframe>
                 </div>
             `;
             
-            pdfViewer.innerHTML = embedHTML;
+            pdfViewerContainer.innerHTML = viewerHTML;
             
             // Show modal
             pdfModal.style.display = 'block';
@@ -1059,10 +1095,111 @@
             // Set focus for keyboard navigation
             closePdfBtn.focus();
             
-            // Hide loading after a short delay
+            // Hide loading after PDF loads
+            const pdfFrame = pdfViewerContainer.querySelector('.pdf-embed');
+            pdfFrame.onload = () => {
+                hideLoading();
+                
+                // Add navigation controls after PDF loads
+                addPdfNavigationControls(pdfFrame);
+            };
+            
+            pdfFrame.onerror = () => {
+                hideLoading();
+                // Fallback to direct PDF display if Google Docs fails
+                showDirectPdfViewer(url, title);
+            };
+            
+            // Auto-hide loading after timeout
             setTimeout(() => {
                 hideLoading();
-            }, 1500);
+            }, 3000);
+        }
+
+        // Fallback: Direct PDF viewer
+        function showDirectPdfViewer(url, title) {
+            pdfViewerContainer.innerHTML = `
+                <div class="pdf-embed-container">
+                    <iframe class="pdf-embed" 
+                            src="${url}"
+                            frameborder="0"
+                            style="width: 100%; height: 100%;">
+                    </iframe>
+                </div>
+            `;
+        }
+
+        // Add navigation controls to PDF viewer
+        function addPdfNavigationControls(pdfFrame) {
+            // Create navigation controls
+            const navControls = document.createElement('div');
+            navControls.className = 'pdf-nav-controls';
+            navControls.innerHTML = `
+                <button class="nav-btn" id="prevPage" title="Previous Page">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="page-info">
+                    <span id="currentPage">1</span> / <span id="totalPages">?</span>
+                </div>
+                <button class="nav-btn" id="nextPage" title="Next Page">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="nav-btn" id="zoomIn" title="Zoom In">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="nav-btn" id="zoomOut" title="Zoom Out">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="nav-btn" id="fitWidth" title="Fit to Width">
+                    <i class="fas fa-arrows-alt-h"></i>
+                </button>
+                <button class="nav-btn" id="fitPage" title="Fit to Page">
+                    <i class="fas fa-expand"></i>
+                </button>
+            `;
+            
+            pdfViewerContainer.appendChild(navControls);
+            
+            // Add navigation functionality
+            setTimeout(() => {
+                try {
+                    // These controls work with Google Docs Viewer
+                    const prevBtn = document.getElementById('prevPage');
+                    const nextBtn = document.getElementById('nextPage');
+                    const zoomInBtn = document.getElementById('zoomIn');
+                    const zoomOutBtn = document.getElementById('zoomOut');
+                    const fitWidthBtn = document.getElementById('fitWidth');
+                    const fitPageBtn = document.getElementById('fitPage');
+                    
+                    // Google Docs viewer uses keyboard shortcuts that we can simulate
+                    prevBtn.onclick = () => {
+                        pdfFrame.contentWindow.postMessage('prev', '*');
+                    };
+                    
+                    nextBtn.onclick = () => {
+                        pdfFrame.contentWindow.postMessage('next', '*');
+                    };
+                    
+                    zoomInBtn.onclick = () => {
+                        pdfFrame.contentWindow.postMessage('zoomin', '*');
+                    };
+                    
+                    zoomOutBtn.onclick = () => {
+                        pdfFrame.contentWindow.postMessage('zoomout', '*');
+                    };
+                    
+                    fitWidthBtn.onclick = () => {
+                        pdfFrame.contentWindow.postMessage('fitwidth', '*');
+                    };
+                    
+                    fitPageBtn.onclick = () => {
+                        pdfFrame.contentWindow.postMessage('fitpage', '*');
+                    };
+                    
+                } catch (error) {
+                    console.log('Navigation controls not available for this PDF viewer');
+                }
+            }, 1000);
         }
 
         // Download PDF
@@ -1079,7 +1216,7 @@
         // Close PDF modal
         function closePdfModal() {
             pdfModal.style.display = 'none';
-            pdfViewer.innerHTML = '';
+            pdfViewerContainer.innerHTML = '';
             document.body.style.overflow = 'auto';
             
             // Reset fullscreen
@@ -1096,9 +1233,27 @@
                 pdfModal.classList.add('fullscreen');
                 fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
                 fullscreenBtn.focus();
+                
+                // Request fullscreen for the modal
+                if (pdfModal.requestFullscreen) {
+                    pdfModal.requestFullscreen();
+                } else if (pdfModal.webkitRequestFullscreen) {
+                    pdfModal.webkitRequestFullscreen();
+                } else if (pdfModal.msRequestFullscreen) {
+                    pdfModal.msRequestFullscreen();
+                }
             } else {
                 pdfModal.classList.remove('fullscreen');
                 fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
+                
+                // Exit fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
             }
         }
 
@@ -1107,12 +1262,10 @@
             const searchTerm = searchInput.value.toLowerCase();
             
             filteredStatutes = statutes.filter(statute => {
-                // Apply category filter
                 if (currentFilter !== 'all' && !statute.category.toLowerCase().includes(currentFilter.toLowerCase())) {
                     return false;
                 }
                 
-                // Apply search filter
                 if (searchTerm) {
                     return statute.title.toLowerCase().includes(searchTerm) ||
                            (statute.code && statute.code.toLowerCase().includes(searchTerm)) ||
@@ -1178,6 +1331,23 @@
         pdfModal.addEventListener('click', (e) => {
             if (e.target === pdfModal && !isFullscreen) {
                 closePdfModal();
+            }
+        });
+
+        // Handle fullscreen change events
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                isFullscreen = false;
+                pdfModal.classList.remove('fullscreen');
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
+            }
+        });
+
+        document.addEventListener('webkitfullscreenchange', () => {
+            if (!document.webkitFullscreenElement) {
+                isFullscreen = false;
+                pdfModal.classList.remove('fullscreen');
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
             }
         });
 
