@@ -31,29 +31,35 @@
             padding: 15px;
         }
         
-        /* Header - Instant Load */
+        /* Header - Fixed for mobile */
         header {
             background: #1e293b;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 50;
+            width: 100%;
         }
         
         h1 {
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            padding: 0 15px;
+            word-break: break-word;
         }
         
-        /* Search - Optimized */
+        /* Search - Mobile optimized */
         .controls {
             background: white;
             padding: 1rem;
             border-radius: 10px;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 76px; /* Header height + padding */
+            z-index: 40;
         }
         
         .search-box {
@@ -66,26 +72,36 @@
             top: 50%;
             transform: translateY(-50%);
             color: #64748b;
+            z-index: 2;
         }
         
         .search-box input {
             width: 100%;
-            padding: 14px 15px 14px 50px;
+            padding: 16px 15px 16px 50px;
             border: 2px solid #e2e8f0;
             border-radius: 10px;
             font-size: 16px;
             background: #f8fafc;
+            -webkit-appearance: none;
+            appearance: none;
         }
         
-        /* Filter Buttons - Instant Tap */
+        /* Filter Buttons - Mobile scrollable */
         .filter-buttons {
             display: flex;
             gap: 0.5rem;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             margin-bottom: 1rem;
-            padding: 5px;
+            padding: 5px 0;
             overflow-x: auto;
+            scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
+            position: sticky;
+            top: 160px; /* Header + controls height */
+            z-index: 30;
+            background: #f8fafc;
+            padding-top: 10px;
+            margin-top: -5px;
         }
         
         .filter-buttons::-webkit-scrollbar {
@@ -117,12 +133,13 @@
             border-color: #3b82f6;
         }
         
-        /* Statutes Grid - Instant Display */
+        /* Statutes Grid - Mobile responsive */
         .statutes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
-            gap: 1.2rem;
+            gap: 1rem;
             margin-bottom: 3rem;
+            padding-top: 10px;
         }
         
         .statute-card {
@@ -145,24 +162,30 @@
         .statute-header {
             background: #334155;
             color: white;
-            padding: 1.2rem;
+            padding: 1rem;
             border-bottom: 3px solid #3b82f6;
         }
         
         .statute-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.3rem;
             line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 2.6em;
         }
         
         .statute-code {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.9;
         }
         
         .statute-body {
-            padding: 1.2rem;
+            padding: 1rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -178,16 +201,18 @@
             font-family: 'Courier New', monospace;
             border-left: 3px solid #3b82f6;
             word-break: break-word;
+            overflow-wrap: break-word;
         }
         
         .statute-actions {
             display: flex;
             gap: 0.8rem;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
         }
         
         .btn {
-            padding: 14px 16px;
+            padding: 14px 12px;
             border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
@@ -196,7 +221,8 @@
             align-items: center;
             justify-content: center;
             flex: 1;
-            font-size: 1rem;
+            min-width: 120px;
+            font-size: 0.95rem;
             transition: transform 0.1s, background-color 0.1s;
             min-height: 48px;
             will-change: transform;
@@ -220,7 +246,7 @@
             margin-right: 8px;
         }
         
-        /* INSTANT PDF VIEWER - No Loading Screens */
+        /* PDF VIEWER - Full mobile display */
         .pdf-viewer {
             position: fixed;
             top: 0;
@@ -255,37 +281,46 @@
         .pdf-header {
             background: #1e293b;
             color: white;
-            padding: 1rem 1.2rem;
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             min-height: 60px;
             flex-shrink: 0;
+            position: relative;
+            width: 100%;
         }
         
         .pdf-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             flex: 1;
-            white-space: nowrap;
+            padding-right: 10px;
+            word-break: break-word;
+            line-height: 1.3;
+            max-height: 2.6em;
             overflow: hidden;
             text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
         
         .pdf-close-btn {
             background: #ef4444;
             color: white;
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 10px;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             flex-shrink: 0;
             transition: transform 0.1s;
+            min-width: 80px;
         }
         
         .pdf-close-btn:active {
@@ -297,9 +332,10 @@
             width: 100%;
             overflow: hidden;
             position: relative;
+            background: white;
         }
         
-        /* INSTANT PDF IFRAME - Preloaded for Speed */
+        /* PDF IFRAME - Full screen */
         .pdf-iframe {
             width: 100%;
             height: 100%;
@@ -311,7 +347,7 @@
             left: 0;
         }
         
-        /* Preload Container - Hidden but ready */
+        /* Preload Container */
         .preload-container {
             position: absolute;
             width: 0;
@@ -322,52 +358,129 @@
         
         /* Mobile Optimizations */
         @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 1rem 0;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .controls {
+                padding: 0.8rem;
+                margin: 0.8rem 0;
+                top: 68px;
+            }
+            
+            .filter-buttons {
+                top: 140px;
+                padding: 8px 0;
+            }
+            
+            .statutes-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
             .statute-actions {
-                flex-direction: column;
+                flex-direction: row;
             }
             
             .btn {
-                width: 100%;
+                flex: 1;
+                min-width: calc(50% - 0.4rem);
+                font-size: 0.9rem;
+                padding: 12px 10px;
             }
             
             .pdf-header {
-                flex-direction: column;
-                gap: 10px;
+                flex-direction: row;
                 padding: 0.8rem;
-                text-align: center;
+                min-height: 56px;
             }
             
             .pdf-title {
                 font-size: 0.9rem;
-                text-align: center;
-                white-space: normal;
-                line-height: 1.3;
+                padding-right: 8px;
+            }
+            
+            .pdf-close-btn {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+                min-width: 70px;
+            }
+            
+            /* iOS specific fixes */
+            @supports (-webkit-touch-callout: none) {
+                .pdf-viewer {
+                    height: -webkit-fill-available;
+                }
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                min-width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .btn:last-child {
+                margin-bottom: 0;
+            }
+            
+            .filter-buttons {
+                top: 135px;
+            }
+        }
+        
+        /* Landscape mode */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .pdf-header {
+                min-height: 50px;
+                padding: 0.6rem;
+            }
+            
+            .pdf-title {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 1;
+                max-height: 1.3em;
             }
         }
         
         footer {
             text-align: center;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             color: #64748b;
             border-top: 1px solid #e2e8f0;
-            margin-top: 2rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
         }
         
         .clear-btn {
             background: #f1f5f9;
             color: #334155;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 10px;
             border: 2px solid #e2e8f0;
             cursor: pointer;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             min-height: 48px;
             margin-top: 1rem;
             transition: transform 0.1s;
+            width: 100%;
         }
         
         .clear-btn:active {
@@ -376,10 +489,11 @@
         
         .stats-counter {
             color: #64748b;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-align: center;
             padding: 10px 0;
+            word-break: break-word;
         }
         
         .category-tag {
@@ -388,18 +502,52 @@
             color: #0369a1;
             padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-top: 0.8rem;
-            margin-bottom: 1rem;
+            margin: 0.8rem 0;
+            align-self: flex-start;
         }
         
         /* No Results */
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 3rem 1.5rem;
+            padding: 2rem 1rem;
             color: #64748b;
+        }
+        
+        .no-results i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+        
+        .no-results h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Loading indicator */
+        .loading {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            color: #64748b;
+        }
+        
+        /* Status bar spacing for iOS */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+            }
+            
+            .pdf-viewer {
+                padding-top: env(safe-area-inset-top);
+            }
+            
+            .pdf-header {
+                padding-top: calc(1rem + env(safe-area-inset-top));
+            }
         }
     </style>
 </head>
@@ -414,7 +562,7 @@
         <div class="controls">
             <div class="search-box">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search statutes..." inputmode="search">
+                <input type="text" id="searchInput" placeholder="Search statutes..." inputmode="search" autocomplete="off">
             </div>
             <div class="stats-counter" id="statsCounter">Loading statutes...</div>
             <button class="clear-btn" id="clearSearch">
@@ -437,7 +585,7 @@
         </div>
     </div>
     
-    <!-- INSTANT PDF VIEWER - Always Ready -->
+    <!-- PDF VIEWER -->
     <div class="pdf-viewer" id="pdfViewer">
         <div class="pdf-header">
             <div class="pdf-title" id="pdfTitle"></div>
@@ -446,21 +594,21 @@
             </button>
         </div>
         <div class="pdf-content">
-            <iframe class="pdf-iframe" id="pdfFrame" allow="autoplay"></iframe>
+            <iframe class="pdf-iframe" id="pdfFrame" allow="autoplay" allowfullscreen></iframe>
         </div>
     </div>
     
-    <!-- Preload Container for Instant Opening -->
+    <!-- Preload Container -->
     <div class="preload-container" id="preloadContainer"></div>
     
     <footer>
         <div class="container">
-            <p>Instant PDF Opening • Optimized for Mobile</p>
+            <p>Fast PDF Access • Mobile Optimized</p>
         </div>
     </footer>
 
     <script>
-        // All statutes with instant-opening URLs
+        // All statutes
         const statutes = [
             {
                 id: 1,
@@ -886,23 +1034,18 @@
 
         let currentFilter = 'all';
         let filteredStatutes = [...statutes];
-        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        // PDF Cache for instant opening
         let pdfCache = new Map();
         let activePdfUrl = '';
-
-        // Initialize with instant loading
+        
+        // Detect mobile
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Initialize
         function init() {
             renderStatutes(filteredStatutes);
             updateStats();
             
-            // Preload first few PDFs for instant opening
-            setTimeout(() => {
-                preloadPopularPDFs();
-            }, 1000);
-            
-            // Filter buttons
+            // Event listeners
             filterButtons.addEventListener('click', (e) => {
                 if (e.target.classList.contains('filter-btn')) {
                     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -914,11 +1057,49 @@
                     applyFilters();
                 }
             });
+            
+            searchInput.addEventListener('input', applyFilters);
+            
+            clearSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                currentFilter = 'all';
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.filter === 'all') {
+                        btn.classList.add('active');
+                    }
+                });
+                applyFilters();
+                searchInput.focus();
+            });
+            
+            closePdfBtn.addEventListener('click', closePdfViewer);
+            
+            // Close with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && pdfViewer.classList.contains('active')) {
+                    closePdfViewer();
+                }
+            });
+            
+            // Handle mobile back button
+            if (isMobile) {
+                window.addEventListener('popstate', () => {
+                    if (pdfViewer.classList.contains('active')) {
+                        closePdfViewer();
+                    }
+                });
+            }
+            
+            // Preload PDFs after initial render
+            setTimeout(() => {
+                preloadPopularPDFs();
+            }, 500);
         }
 
-        // Preload popular PDFs in background
+        // Preload popular PDFs
         function preloadPopularPDFs() {
-            const popularPDFs = statutes.slice(0, 5); // Preload first 5
+            const popularPDFs = statutes.slice(0, 3);
             popularPDFs.forEach(statute => {
                 if (!pdfCache.has(statute.pdfUrl)) {
                     const iframe = document.createElement('iframe');
@@ -932,14 +1113,12 @@
             });
         }
 
-        // Render statutes with instant-open buttons
+        // Render statutes
         function renderStatutes(statutesArray) {
-            statutesContainer.innerHTML = '';
-            
             if (statutesArray.length === 0) {
                 statutesContainer.innerHTML = `
                     <div class="no-results">
-                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <i class="fas fa-search"></i>
                         <h3>No statutes found</h3>
                         <p>Try a different search term or filter</p>
                     </div>
@@ -947,62 +1126,56 @@
                 return;
             }
             
-            statutesArray.forEach(statute => {
-                const card = document.createElement('div');
-                card.className = 'statute-card';
-                card.innerHTML = `
+            statutesContainer.innerHTML = statutesArray.map(statute => `
+                <div class="statute-card">
                     <div class="statute-header">
-                        <div class="statute-title">${statute.title}</div>
+                        <div class="statute-title">${escapeHtml(statute.title)}</div>
                         <div class="statute-code">${statute.code || 'Act'}</div>
                     </div>
                     <div class="statute-body">
-                        <div class="category-tag">${statute.category} Law</div>
-                        <div class="statute-filename">${statute.filename}</div>
+                        <span class="category-tag">${statute.category} Law</span>
+                        <div class="statute-filename">${escapeHtml(statute.filename)}</div>
                         <div class="statute-actions">
                             <button class="btn btn-view" 
-                                    data-title="${statute.title.replace(/'/g, "\\'")} ${statute.code || ''}" 
-                                    data-pdfurl="${statute.pdfUrl}">
-                                <i class="fas fa-bolt"></i> Instant View
+                                    data-title="${escapeHtml(statute.title + (statute.code ? ' ' + statute.code : ''))}" 
+                                    data-pdfurl="${escapeHtml(statute.pdfUrl)}">
+                                <i class="fas fa-eye"></i> View
                             </button>
-                            <button class="btn btn-download" onclick="downloadPdf('${statute.filename.replace(/'/g, "\\'")}', '${statute.pdfUrl}')">
+                            <button class="btn btn-download" 
+                                    onclick="downloadPdf('${escapeHtml(statute.filename)}', '${escapeHtml(statute.pdfUrl)}')">
                                 <i class="fas fa-download"></i> Download
                             </button>
                         </div>
                     </div>
-                `;
-                statutesContainer.appendChild(card);
-            });
+                </div>
+            `).join('');
             
-            // Add instant-open event listeners
-            document.querySelectorAll('.btn-view').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const title = e.currentTarget.getAttribute('data-title');
-                    const pdfUrl = e.currentTarget.getAttribute('data-pdfurl');
-                    openPdfInstantly(title, pdfUrl);
+            // Add event listeners to view buttons
+            statutesContainer.querySelectorAll('.btn-view').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const title = this.getAttribute('data-title');
+                    const pdfUrl = this.getAttribute('data-pdfurl');
+                    openPdf(title, pdfUrl);
                 });
             });
         }
 
-        // INSTANT PDF OPENING - No delays
-        function openPdfInstantly(title, pdfUrl) {
-            // Show viewer immediately
-            pdfViewer.classList.add('active');
+        // Open PDF viewer
+        function openPdf(title, pdfUrl) {
+            // Update UI
             pdfTitle.textContent = title;
+            pdfViewer.classList.add('active');
+            document.body.style.overflow = 'hidden';
             activePdfUrl = pdfUrl;
             
-            // Lock body scroll
-            document.body.style.overflow = 'hidden';
-            
-            // Check cache first
+            // Load PDF
             if (pdfCache.has(pdfUrl)) {
-                // Use cached iframe
                 const cachedIframe = pdfCache.get(pdfUrl);
                 pdfFrame.src = cachedIframe.src;
             } else {
-                // Load new iframe
                 pdfFrame.src = pdfUrl;
                 
-                // Cache it for next time
+                // Cache for future use
                 const newIframe = document.createElement('iframe');
                 newIframe.style.display = 'none';
                 newIframe.src = pdfUrl;
@@ -1014,70 +1187,60 @@
             
             // Mobile optimizations
             if (isMobile) {
-                // Force hardware acceleration
-                pdfViewer.style.transform = 'translateZ(0)';
+                // Push state for mobile back button
+                history.pushState({ pdfViewer: true }, '');
                 
-                // Handle iOS Safari
+                // Handle iOS
                 if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                    // Prevent iOS rubber band effect
-                    document.addEventListener('touchmove', preventScroll, { passive: false });
+                    pdfViewer.style.transform = 'translateZ(0)';
                 }
             }
         }
 
-        // Close PDF viewer instantly
+        // Close PDF viewer
         function closePdfViewer() {
             pdfViewer.classList.remove('active');
             pdfFrame.src = '';
             document.body.style.overflow = '';
             activePdfUrl = '';
             
-            // Remove scroll prevention
-            if (isMobile && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                document.removeEventListener('touchmove', preventScroll);
+            if (isMobile) {
+                history.back();
             }
         }
 
-        // Prevent scroll on mobile
-        function preventScroll(e) {
-            if (pdfViewer.classList.contains('active')) {
-                e.preventDefault();
-            }
-        }
-
-        // Instant PDF download
+        // Download PDF
         function downloadPdf(filename, url) {
             const link = document.createElement('a');
             link.href = url;
             link.download = filename;
             link.target = '_blank';
             document.body.appendChild(link);
-            
-            // Instant click without delay
-            const clickEvent = new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true
-            });
-            link.dispatchEvent(clickEvent);
-            
+            link.click();
             document.body.removeChild(link);
+            
+            // Analytics or tracking could go here
         }
 
-        // Apply filters
+        // Apply filters and search
         function applyFilters() {
-            const searchTerm = searchInput.value.toLowerCase();
+            const searchTerm = searchInput.value.toLowerCase().trim();
             
             filteredStatutes = statutes.filter(statute => {
-                if (currentFilter !== 'all' && !statute.category.toLowerCase().includes(currentFilter.toLowerCase())) {
+                // Apply category filter
+                if (currentFilter !== 'all' && statute.category !== currentFilter) {
                     return false;
                 }
                 
+                // Apply search filter
                 if (searchTerm) {
-                    return statute.title.toLowerCase().includes(searchTerm) ||
-                           (statute.code && statute.code.toLowerCase().includes(searchTerm)) ||
-                           statute.filename.toLowerCase().includes(searchTerm) ||
-                           statute.category.toLowerCase().includes(searchTerm);
+                    const searchableText = `
+                        ${statute.title.toLowerCase()}
+                        ${statute.code ? statute.code.toLowerCase() : ''}
+                        ${statute.filename.toLowerCase()}
+                        ${statute.category.toLowerCase()}
+                    `;
+                    return searchableText.includes(searchTerm);
                 }
                 
                 return true;
@@ -1087,63 +1250,42 @@
             updateStats();
         }
 
-        // Update stats
+        // Update stats counter
         function updateStats() {
             statsCounter.textContent = `${filteredStatutes.length} of ${statutes.length} statutes`;
         }
 
-        // Event listeners
-        searchInput.addEventListener('input', applyFilters);
+        // Utility function to escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
-        clearSearchBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            currentFilter = 'all';
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.filter === 'all') {
-                    btn.classList.add('active');
-                }
-            });
-            applyFilters();
-            searchInput.focus();
-        });
-
-        closePdfBtn.addEventListener('click', closePdfViewer);
-
-        // Close with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && pdfViewer.classList.contains('active')) {
-                closePdfViewer();
-            }
-        });
-
-        // Handle back button on mobile
-        window.addEventListener('popstate', () => {
-            if (pdfViewer.classList.contains('active')) {
-                closePdfViewer();
-            }
-        });
-
-        // Make functions available globally
+        // Make download function globally available
         window.downloadPdf = downloadPdf;
 
-        // Initialize instantly
-        window.addEventListener('DOMContentLoaded', init);
-        
-        // Preload critical assets
-        window.addEventListener('load', () => {
-            // Preload more PDFs after initial load
-            setTimeout(() => {
-                const nextBatch = statutes.slice(5, 15);
-                nextBatch.forEach(statute => {
-                    if (!pdfCache.has(statute.pdfUrl)) {
-                        const iframe = document.createElement('iframe');
-                        iframe.style.display = 'none';
-                        iframe.src = statute.pdfUrl;
-                        preloadContainer.appendChild(iframe);
-                    }
-                });
-            }, 2000);
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Adjust PDF viewer for mobile orientation changes
+            if (pdfViewer.classList.contains('active') && isMobile) {
+                setTimeout(() => {
+                    pdfFrame.style.height = '100%';
+                }, 100);
+            }
+        });
+
+        // Handle page visibility (for mobile)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && pdfViewer.classList.contains('active')) {
+                // Pause PDF rendering when tab is hidden
+                try {
+                    pdfFrame.contentWindow.postMessage('pause', '*');
+                } catch (e) {}
+            }
         });
     </script>
 </body>
