@@ -17,6 +17,7 @@
             background-color: #f8fafc;
             color: #1e293b;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -28,11 +29,7 @@
         header {
             background: #1e293b;
             padding: 2rem 0;
-            margin-bottom: 2rem;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
@@ -51,15 +48,12 @@
             background: white;
             padding: 1.2rem;
             border-radius: 8px;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             display: flex;
             gap: 1rem;
             align-items: center;
             flex-wrap: wrap;
-            position: sticky;
-            top: 100px;
-            z-index: 99;
         }
         
         .search-box {
@@ -95,6 +89,7 @@
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
         
         .filter-btn {
@@ -234,43 +229,71 @@
             margin-right: 6px;
         }
         
+        /* FULL SCREEN PDF MODAL */
         .pdf-modal {
             position: fixed;
             top: 0;
             left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.98);
+            z-index: 9999;
+            display: none;
+        }
+        
+        .pdf-container {
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 2000;
-            display: none;
+            display: flex;
             flex-direction: column;
         }
         
         .pdf-header {
-            background: #1e293b;
+            background: rgba(30, 41, 59, 0.95);
             color: white;
             padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #334155;
+            backdrop-filter: blur(10px);
         }
         
         .pdf-title {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
             flex: 1;
             margin-right: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
-        .pdf-iframe {
-            width: 100%;
-            height: calc(100% - 60px);
+        .pdf-controls {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        
+        .pdf-fullscreen-btn {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
             border: none;
-            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
         }
         
-        .close-btn {
+        .pdf-fullscreen-btn:hover {
+            background: #2563eb;
+        }
+        
+        .pdf-close-btn {
             background: #ef4444;
             color: white;
             padding: 8px 16px;
@@ -284,8 +307,33 @@
             transition: background 0.2s;
         }
         
-        .close-btn:hover {
+        .pdf-close-btn:hover {
             background: #dc2626;
+        }
+        
+        .pdf-viewer {
+            flex: 1;
+            width: 100%;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* PDF EMBED FALLBACK */
+        .pdf-embed-container {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .pdf-embed {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         footer {
@@ -339,7 +387,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             display: none;
-            z-index: 3000;
+            z-index: 10000;
             text-align: center;
         }
         
@@ -374,12 +422,54 @@
             text-align: center;
             padding: 3rem;
             font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
         
         .pdf-error i {
             font-size: 3rem;
             margin-bottom: 1rem;
             color: #f87171;
+        }
+        
+        .pdf-error button {
+            margin-top: 1.5rem;
+            background: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        
+        .pdf-error button:hover {
+            background: #2563eb;
+        }
+        
+        /* Fullscreen mode */
+        .pdf-modal.fullscreen {
+            z-index: 99999;
+        }
+        
+        .pdf-modal.fullscreen .pdf-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .pdf-modal.fullscreen .pdf-viewer {
+            margin-top: 60px;
+            height: calc(100vh - 60px);
         }
     </style>
 </head>
@@ -418,15 +508,23 @@
         </div>
     </div>
     
+    <!-- FULL SCREEN PDF MODAL -->
     <div class="pdf-modal" id="pdfModal">
-        <div class="pdf-header">
-            <div class="pdf-title" id="pdfTitle"></div>
-            <button class="close-btn" id="closePdf">
-                <i class="fas fa-times"></i> Close
-            </button>
-        </div>
-        <div id="pdfContainer">
-            <iframe class="pdf-iframe" id="pdfFrame"></iframe>
+        <div class="pdf-container">
+            <div class="pdf-header">
+                <div class="pdf-title" id="pdfTitle">Document Viewer</div>
+                <div class="pdf-controls">
+                    <button class="pdf-fullscreen-btn" id="fullscreenBtn">
+                        <i class="fas fa-expand"></i> Fullscreen
+                    </button>
+                    <button class="pdf-close-btn" id="closePdfBtn">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+            </div>
+            <div class="pdf-viewer" id="pdfViewer">
+                <!-- PDF will be loaded here -->
+            </div>
         </div>
     </div>
     
@@ -437,12 +535,12 @@
     
     <footer>
         <div class="container">
-            <p>Uganda Statutes Repository • Direct GitHub File Access</p>
+            <p>Uganda Statutes Repository • Full Screen PDF Viewer</p>
         </div>
     </footer>
 
     <script>
-        // All statutes with DIRECT GitHub URLs (same repository as index.html)
+        // All statutes with DIRECT file links
         const statutes = [
             {
                 id: 1,
@@ -859,16 +957,17 @@
         const searchInput = document.getElementById('searchInput');
         const clearSearchBtn = document.getElementById('clearSearch');
         const pdfModal = document.getElementById('pdfModal');
-        const pdfFrame = document.getElementById('pdfFrame');
         const pdfTitle = document.getElementById('pdfTitle');
-        const closePdfBtn = document.getElementById('closePdf');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const closePdfBtn = document.getElementById('closePdfBtn');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
         const loading = document.getElementById('loading');
         const statsCounter = document.getElementById('statsCounter');
         const filterButtons = document.getElementById('filterButtons');
-        const pdfContainer = document.getElementById('pdfContainer');
 
         let currentFilter = 'all';
         let filteredStatutes = [...statutes];
+        let isFullscreen = false;
 
         // Initialize
         function init() {
@@ -878,13 +977,11 @@
             // Add event listeners to filter buttons
             filterButtons.addEventListener('click', (e) => {
                 if (e.target.classList.contains('filter-btn')) {
-                    // Update active button
                     document.querySelectorAll('.filter-btn').forEach(btn => {
                         btn.classList.remove('active');
                     });
                     e.target.classList.add('active');
                     
-                    // Apply filter
                     currentFilter = e.target.dataset.filter;
                     applyFilters();
                 }
@@ -931,48 +1028,41 @@
             });
         }
 
-        // Open PDF in modal
+        // Open PDF in full screen modal
         function openPdf(title, url) {
             showLoading();
             pdfTitle.textContent = title;
             
             // Clear previous content
-            pdfContainer.innerHTML = '';
+            pdfViewer.innerHTML = '';
             
-            // Create new iframe
-            const iframe = document.createElement('iframe');
-            iframe.className = 'pdf-iframe';
-            iframe.id = 'pdfFrame';
-            iframe.src = url;
+            // Create PDF embed with Google Docs Viewer for better display
+            const encodedUrl = encodeURIComponent(url);
+            const embedUrl = `https://docs.google.com/viewer?url=${encodedUrl}&embedded=true`;
             
-            pdfContainer.appendChild(iframe);
-            pdfModal.style.display = 'flex';
+            const embedHTML = `
+                <div class="pdf-embed-container">
+                    <iframe class="pdf-embed" 
+                            src="${embedUrl}"
+                            frameborder="0"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            `;
+            
+            pdfViewer.innerHTML = embedHTML;
+            
+            // Show modal
+            pdfModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
             
-            // Hide loading after PDF loads
+            // Set focus for keyboard navigation
+            closePdfBtn.focus();
+            
+            // Hide loading after a short delay
             setTimeout(() => {
                 hideLoading();
             }, 1500);
-            
-            // Handle iframe errors
-            iframe.onerror = function() {
-                hideLoading();
-                pdfContainer.innerHTML = `
-                    <div class="pdf-error">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h3>Unable to display PDF</h3>
-                        <p>The document may not be accessible directly in the browser.</p>
-                        <p style="margin-top: 1rem;">Please use the "Download" button instead.</p>
-                        <button class="btn-view" style="margin-top: 1.5rem; background: #3b82f6; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;" onclick="window.open('${url}', '_blank')">
-                            <i class="fas fa-external-link-alt"></i> Open in New Tab
-                        </button>
-                    </div>
-                `;
-            };
-            
-            iframe.onload = function() {
-                hideLoading();
-            };
         }
 
         // Download PDF
@@ -989,8 +1079,27 @@
         // Close PDF modal
         function closePdfModal() {
             pdfModal.style.display = 'none';
-            pdfContainer.innerHTML = '<iframe class="pdf-iframe" id="pdfFrame"></iframe>';
+            pdfViewer.innerHTML = '';
             document.body.style.overflow = 'auto';
+            
+            // Reset fullscreen
+            if (isFullscreen) {
+                toggleFullscreen();
+            }
+        }
+
+        // Toggle fullscreen mode
+        function toggleFullscreen() {
+            isFullscreen = !isFullscreen;
+            
+            if (isFullscreen) {
+                pdfModal.classList.add('fullscreen');
+                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
+                fullscreenBtn.focus();
+            } else {
+                pdfModal.classList.remove('fullscreen');
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
+            }
         }
 
         // Apply search and filter
@@ -1050,15 +1159,24 @@
         });
 
         closePdfBtn.addEventListener('click', closePdfModal);
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
 
-        pdfModal.addEventListener('click', (e) => {
-            if (e.target === pdfModal) {
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfModal.style.display === 'block') {
                 closePdfModal();
+            }
+            
+            // Toggle fullscreen with F11
+            if (e.key === 'F11' && pdfModal.style.display === 'block') {
+                e.preventDefault();
+                toggleFullscreen();
             }
         });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
+        // Close modal when clicking outside (only in non-fullscreen mode)
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target === pdfModal && !isFullscreen) {
                 closePdfModal();
             }
         });
