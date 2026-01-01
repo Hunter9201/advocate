@@ -23,6 +23,7 @@
         
         body {
             position: relative;
+            overflow-y: auto;
         }
         
         .container {
@@ -34,12 +35,13 @@
         /* Header - Fixed for mobile */
         header {
             background: #1e293b;
-            padding: 1.2rem 0;
+            padding: 1rem 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 50;
             width: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         h1 {
@@ -47,7 +49,12 @@
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
             padding: 0 15px;
-            word-break: break-word;
+        }
+        
+        .header-subtitle {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            padding: 0 15px;
         }
         
         /* Search - Mobile optimized */
@@ -57,9 +64,6 @@
             border-radius: 10px;
             margin: 1rem 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 76px; /* Header height + padding */
-            z-index: 40;
         }
         
         .search-box {
@@ -96,12 +100,6 @@
             overflow-x: auto;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
-            position: sticky;
-            top: 160px; /* Header + controls height */
-            z-index: 30;
-            background: #f8fafc;
-            padding-top: 10px;
-            margin-top: -5px;
         }
         
         .filter-buttons::-webkit-scrollbar {
@@ -119,8 +117,7 @@
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            transition: transform 0.1s;
-            will-change: transform;
+            transition: all 0.2s;
         }
         
         .filter-btn:active {
@@ -139,7 +136,6 @@
             grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
             gap: 1rem;
             margin-bottom: 3rem;
-            padding-top: 10px;
         }
         
         .statute-card {
@@ -151,8 +147,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            transition: transform 0.1s;
-            will-change: transform;
+            transition: all 0.2s;
         }
         
         .statute-card:active {
@@ -176,7 +171,6 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
-            min-height: 2.6em;
         }
         
         .statute-code {
@@ -202,6 +196,7 @@
             border-left: 3px solid #3b82f6;
             word-break: break-word;
             overflow-wrap: break-word;
+            font-size: 0.8rem;
         }
         
         .statute-actions {
@@ -223,9 +218,8 @@
             flex: 1;
             min-width: 120px;
             font-size: 0.95rem;
-            transition: transform 0.1s, background-color 0.1s;
+            transition: all 0.2s;
             min-height: 48px;
-            will-change: transform;
         }
         
         .btn:active {
@@ -242,43 +236,46 @@
             color: #334155;
         }
         
+        .btn-preview {
+            background: #10b981;
+            color: white;
+        }
+        
         .btn i {
             margin-right: 8px;
         }
         
-        /* PDF VIEWER - Full mobile display */
-        .pdf-viewer {
+        /* MOBILE PDF PREVIEW - Optimized for phones */
+        .mobile-preview-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #0f172a;
+            background: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             display: none;
             opacity: 0;
-            transition: opacity 0.2s;
+            transition: opacity 0.3s;
         }
         
-        .pdf-viewer.active {
-            display: flex;
+        .mobile-preview-overlay.active {
+            display: block;
             opacity: 1;
+        }
+        
+        .mobile-preview-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
             flex-direction: column;
-            animation: slideIn 0.2s ease-out;
+            background: #0f172a;
         }
         
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .pdf-header {
+        .mobile-preview-header {
             background: #1e293b;
             color: white;
             padding: 1rem;
@@ -288,10 +285,9 @@
             min-height: 60px;
             flex-shrink: 0;
             position: relative;
-            width: 100%;
         }
         
-        .pdf-title {
+        .mobile-preview-title {
             font-size: 0.95rem;
             font-weight: 500;
             flex: 1;
@@ -304,6 +300,114 @@
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+        }
+        
+        .mobile-preview-close {
+            background: #ef4444;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+        
+        .mobile-preview-close:active {
+            transform: scale(0.9);
+        }
+        
+        .mobile-preview-content {
+            flex: 1;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background: white;
+        }
+        
+        .mobile-preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+            display: block;
+        }
+        
+        .mobile-preview-controls {
+            background: #1e293b;
+            padding: 0.8rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .preview-control-btn {
+            padding: 10px 15px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .preview-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .preview-control-btn.secondary {
+            background: #475569;
+        }
+        
+        /* PDF VIEWER - Full screen for desktop/tablet */
+        .pdf-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0f172a;
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .pdf-viewer.active {
+            display: flex;
+            opacity: 1;
+            flex-direction: column;
+        }
+        
+        .pdf-header {
+            background: #1e293b;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 60px;
+            flex-shrink: 0;
+        }
+        
+        .pdf-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            flex: 1;
+            padding-right: 10px;
+            word-break: break-word;
         }
         
         .pdf-close-btn {
@@ -319,7 +423,7 @@
             font-weight: 600;
             font-size: 0.95rem;
             flex-shrink: 0;
-            transition: transform 0.1s;
+            transition: transform 0.2s;
             min-width: 80px;
         }
         
@@ -335,7 +439,6 @@
             background: white;
         }
         
-        /* PDF IFRAME - Full screen */
         .pdf-iframe {
             width: 100%;
             height: 100%;
@@ -347,15 +450,6 @@
             left: 0;
         }
         
-        /* Preload Container */
-        .preload-container {
-            position: absolute;
-            width: 0;
-            height: 0;
-            overflow: hidden;
-            opacity: 0;
-        }
-        
         /* Mobile Optimizations */
         @media (max-width: 768px) {
             .container {
@@ -363,7 +457,7 @@
             }
             
             header {
-                padding: 1rem 0;
+                padding: 0.8rem 0;
             }
             
             h1 {
@@ -373,12 +467,6 @@
             .controls {
                 padding: 0.8rem;
                 margin: 0.8rem 0;
-                top: 68px;
-            }
-            
-            .filter-buttons {
-                top: 140px;
-                padding: 8px 0;
             }
             
             .statutes-grid {
@@ -387,38 +475,41 @@
             }
             
             .statute-actions {
-                flex-direction: row;
+                flex-direction: column;
             }
             
             .btn {
-                flex: 1;
-                min-width: calc(50% - 0.4rem);
-                font-size: 0.9rem;
-                padding: 12px 10px;
+                width: 100%;
+                margin-bottom: 5px;
             }
             
-            .pdf-header {
-                flex-direction: row;
+            .btn:last-child {
+                margin-bottom: 0;
+            }
+            
+            .mobile-preview-header {
                 padding: 0.8rem;
-                min-height: 56px;
             }
             
-            .pdf-title {
+            .mobile-preview-title {
                 font-size: 0.9rem;
-                padding-right: 8px;
             }
             
-            .pdf-close-btn {
-                padding: 8px 12px;
-                font-size: 0.9rem;
-                min-width: 70px;
+            /* Hide regular PDF viewer on mobile */
+            .pdf-viewer {
+                display: none !important;
             }
             
-            /* iOS specific fixes */
-            @supports (-webkit-touch-callout: none) {
-                .pdf-viewer {
-                    height: -webkit-fill-available;
-                }
+            /* Always show mobile preview on phones */
+            .mobile-preview-overlay.active {
+                display: flex;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            /* Hide mobile preview on desktop */
+            .mobile-preview-overlay {
+                display: none !important;
             }
         }
         
@@ -427,31 +518,46 @@
                 font-size: 1.2rem;
             }
             
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+            
             .btn {
-                min-width: 100%;
-                margin-bottom: 5px;
+                padding: 12px 10px;
+                font-size: 0.9rem;
             }
             
-            .btn:last-child {
-                margin-bottom: 0;
+            .mobile-preview-controls {
+                flex-wrap: wrap;
             }
             
-            .filter-buttons {
-                top: 135px;
+            .preview-control-btn {
+                flex: 1;
+                min-width: calc(50% - 0.25rem);
+                justify-content: center;
             }
         }
         
-        /* Landscape mode */
+        /* Landscape mode optimization */
         @media (max-height: 600px) and (orientation: landscape) {
-            .pdf-header {
+            .mobile-preview-header {
                 min-height: 50px;
                 padding: 0.6rem;
             }
             
-            .pdf-title {
+            .mobile-preview-title {
                 font-size: 0.85rem;
                 -webkit-line-clamp: 1;
                 max-height: 1.3em;
+            }
+            
+            .mobile-preview-controls {
+                padding: 0.5rem;
+            }
+            
+            .preview-control-btn {
+                padding: 8px 10px;
+                font-size: 0.85rem;
             }
         }
         
@@ -479,7 +585,7 @@
             font-size: 0.95rem;
             min-height: 48px;
             margin-top: 1rem;
-            transition: transform 0.1s;
+            transition: transform 0.2s;
             width: 100%;
         }
         
@@ -493,7 +599,6 @@
             font-weight: 600;
             text-align: center;
             padding: 10px 0;
-            word-break: break-word;
         }
         
         .category-tag {
@@ -528,26 +633,50 @@
         }
         
         /* Loading indicator */
-        .loading {
-            display: flex;
-            justify-content: center;
-            padding: 2rem;
-            color: #64748b;
+        .loading-indicator {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 1001;
+        }
+        
+        .loading-indicator.active {
+            display: block;
         }
         
         /* Status bar spacing for iOS */
         @supports (padding-top: env(safe-area-inset-top)) {
-            body {
+            .mobile-preview-container {
                 padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
             }
             
-            .pdf-viewer {
-                padding-top: env(safe-area-inset-top);
+            .mobile-preview-header {
+                padding-top: calc(0.8rem + env(safe-area-inset-top));
             }
             
-            .pdf-header {
-                padding-top: calc(1rem + env(safe-area-inset-top));
+            .mobile-preview-controls {
+                padding-bottom: calc(0.8rem + env(safe-area-inset-bottom));
             }
+        }
+        
+        /* PDF Page Counter */
+        .page-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            z-index: 100;
         }
     </style>
 </head>
@@ -555,6 +684,7 @@
     <header>
         <div class="container">
             <h1>Uganda Statutes</h1>
+            <div class="header-subtitle">Mobile Preview Enabled • 51 Statutes Available</div>
         </div>
     </header>
     
@@ -566,7 +696,7 @@
             </div>
             <div class="stats-counter" id="statsCounter">Loading statutes...</div>
             <button class="clear-btn" id="clearSearch">
-                <i class="fas fa-times"></i> Clear
+                <i class="fas fa-times"></i> Clear Search
             </button>
         </div>
         
@@ -585,7 +715,41 @@
         </div>
     </div>
     
-    <!-- PDF VIEWER -->
+    <!-- MOBILE PDF PREVIEW (For phones) -->
+    <div class="mobile-preview-overlay" id="mobilePreviewOverlay">
+        <div class="mobile-preview-container">
+            <div class="mobile-preview-header">
+                <div class="mobile-preview-title" id="mobilePreviewTitle"></div>
+                <button class="mobile-preview-close" id="mobilePreviewClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-preview-content">
+                <iframe class="mobile-preview-iframe" id="mobilePreviewFrame" 
+                        allow="autoplay" 
+                        allowfullscreen 
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+                </iframe>
+                <div class="page-counter" id="pageCounter"></div>
+            </div>
+            <div class="mobile-preview-controls">
+                <button class="preview-control-btn" id="prevPageBtn">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <button class="preview-control-btn" id="nextPageBtn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="preview-control-btn secondary" id="openFullBtn">
+                    <i class="fas fa-expand"></i> Full View
+                </button>
+                <button class="preview-control-btn secondary" id="downloadPreviewBtn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PDF VIEWER (For desktop/tablet) -->
     <div class="pdf-viewer" id="pdfViewer">
         <div class="pdf-header">
             <div class="pdf-title" id="pdfTitle"></div>
@@ -598,17 +762,19 @@
         </div>
     </div>
     
-    <!-- Preload Container -->
-    <div class="preload-container" id="preloadContainer"></div>
+    <!-- Loading Indicator -->
+    <div class="loading-indicator" id="loadingIndicator">
+        <i class="fas fa-spinner fa-spin"></i> Loading document...
+    </div>
     
     <footer>
         <div class="container">
-            <p>Fast PDF Access • Mobile Optimized</p>
+            <p>Mobile PDF Preview • All 51 Documents Viewable</p>
         </div>
     </footer>
 
     <script>
-        // All statutes
+        // ALL 51 STATUTES
         const statutes = [
             {
                 id: 1,
@@ -1024,21 +1190,35 @@
         const statutesContainer = document.getElementById('statutesContainer');
         const searchInput = document.getElementById('searchInput');
         const clearSearchBtn = document.getElementById('clearSearch');
+        const statsCounter = document.getElementById('statsCounter');
+        const filterButtons = document.getElementById('filterButtons');
+        
+        // PDF Viewers
         const pdfViewer = document.getElementById('pdfViewer');
         const pdfFrame = document.getElementById('pdfFrame');
         const pdfTitle = document.getElementById('pdfTitle');
         const closePdfBtn = document.getElementById('closePdfBtn');
-        const statsCounter = document.getElementById('statsCounter');
-        const filterButtons = document.getElementById('filterButtons');
-        const preloadContainer = document.getElementById('preloadContainer');
+        
+        // Mobile Preview
+        const mobilePreviewOverlay = document.getElementById('mobilePreviewOverlay');
+        const mobilePreviewFrame = document.getElementById('mobilePreviewFrame');
+        const mobilePreviewTitle = document.getElementById('mobilePreviewTitle');
+        const mobilePreviewClose = document.getElementById('mobilePreviewClose');
+        const prevPageBtn = document.getElementById('prevPageBtn');
+        const nextPageBtn = document.getElementById('nextPageBtn');
+        const openFullBtn = document.getElementById('openFullBtn');
+        const downloadPreviewBtn = document.getElementById('downloadPreviewBtn');
+        const pageCounter = document.getElementById('pageCounter');
+        const loadingIndicator = document.getElementById('loadingIndicator');
 
+        // State variables
         let currentFilter = 'all';
         let filteredStatutes = [...statutes];
-        let pdfCache = new Map();
-        let activePdfUrl = '';
-        
-        // Detect mobile
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        let currentPdfUrl = '';
+        let currentPdfTitle = '';
+        let currentPage = 1;
+        let totalPages = 1;
+        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
         // Initialize
         function init() {
@@ -1073,47 +1253,38 @@
                 searchInput.focus();
             });
             
+            // Close buttons
             closePdfBtn.addEventListener('click', closePdfViewer);
+            mobilePreviewClose.addEventListener('click', closeMobilePreview);
             
-            // Close with Escape key
+            // Mobile preview controls
+            prevPageBtn.addEventListener('click', goToPrevPage);
+            nextPageBtn.addEventListener('click', goToNextPage);
+            openFullBtn.addEventListener('click', openInFullViewer);
+            downloadPreviewBtn.addEventListener('click', downloadCurrentPdf);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', handleKeyboardNavigation);
+            
+            // Handle escape key
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && pdfViewer.classList.contains('active')) {
-                    closePdfViewer();
-                }
-            });
-            
-            // Handle mobile back button
-            if (isMobile) {
-                window.addEventListener('popstate', () => {
-                    if (pdfViewer.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    if (mobilePreviewOverlay.classList.contains('active')) {
+                        closeMobilePreview();
+                    } else if (pdfViewer.classList.contains('active')) {
                         closePdfViewer();
                     }
-                });
-            }
-            
-            // Preload PDFs after initial render
-            setTimeout(() => {
-                preloadPopularPDFs();
-            }, 500);
-        }
-
-        // Preload popular PDFs
-        function preloadPopularPDFs() {
-            const popularPDFs = statutes.slice(0, 3);
-            popularPDFs.forEach(statute => {
-                if (!pdfCache.has(statute.pdfUrl)) {
-                    const iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.src = statute.pdfUrl;
-                    iframe.onload = () => {
-                        pdfCache.set(statute.pdfUrl, iframe);
-                    };
-                    preloadContainer.appendChild(iframe);
                 }
             });
+            
+            // Handle orientation changes
+            window.addEventListener('orientationchange', handleOrientationChange);
+            
+            // Preload first few PDFs
+            setTimeout(preloadPopularPDFs, 500);
         }
 
-        // Render statutes
+        // Render statutes with preview option
         function renderStatutes(statutesArray) {
             if (statutesArray.length === 0) {
                 statutesContainer.innerHTML = `
@@ -1136,10 +1307,15 @@
                         <span class="category-tag">${statute.category} Law</span>
                         <div class="statute-filename">${escapeHtml(statute.filename)}</div>
                         <div class="statute-actions">
+                            <button class="btn btn-preview" 
+                                    data-title="${escapeHtml(statute.title + (statute.code ? ' ' + statute.code : ''))}" 
+                                    data-pdfurl="${escapeHtml(statute.pdfUrl)}">
+                                <i class="fas fa-mobile-alt"></i> Mobile Preview
+                            </button>
                             <button class="btn btn-view" 
                                     data-title="${escapeHtml(statute.title + (statute.code ? ' ' + statute.code : ''))}" 
                                     data-pdfurl="${escapeHtml(statute.pdfUrl)}">
-                                <i class="fas fa-eye"></i> View
+                                <i class="fas fa-expand"></i> Full View
                             </button>
                             <button class="btn btn-download" 
                                     onclick="downloadPdf('${escapeHtml(statute.filename)}', '${escapeHtml(statute.pdfUrl)}')">
@@ -1150,50 +1326,95 @@
                 </div>
             `).join('');
             
-            // Add event listeners to view buttons
+            // Add event listeners
+            statutesContainer.querySelectorAll('.btn-preview').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const title = this.getAttribute('data-title');
+                    const pdfUrl = this.getAttribute('data-pdfurl');
+                    openMobilePreview(title, pdfUrl);
+                });
+            });
+            
             statutesContainer.querySelectorAll('.btn-view').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const title = this.getAttribute('data-title');
                     const pdfUrl = this.getAttribute('data-pdfurl');
-                    openPdf(title, pdfUrl);
+                    openFullPdfViewer(title, pdfUrl);
                 });
             });
         }
 
-        // Open PDF viewer
-        function openPdf(title, pdfUrl) {
+        // Open mobile preview (optimized for phones)
+        function openMobilePreview(title, pdfUrl) {
+            showLoading(true);
+            
+            currentPdfTitle = title;
+            currentPdfUrl = pdfUrl;
+            currentPage = 1;
+            
             // Update UI
+            mobilePreviewTitle.textContent = title;
+            mobilePreviewOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Show loading
+            loadingIndicator.classList.add('active');
+            
+            // Load PDF with mobile-optimized settings
+            const mobileUrl = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
+            mobilePreviewFrame.src = mobileUrl;
+            
+            // Update history for back button
+            if (isMobile) {
+                history.pushState({ preview: true }, '');
+            }
+            
+            // Listen for PDF load
+            mobilePreviewFrame.onload = () => {
+                showLoading(false);
+                updatePageCounter();
+                
+                // Try to get page info (may not work due to cross-origin restrictions)
+                try {
+                    // This is a fallback since we can't always access PDF properties
+                    updateNavigationButtons();
+                } catch (e) {
+                    console.log('PDF properties not accessible due to security restrictions');
+                }
+            };
+            
+            // Handle errors
+            mobilePreviewFrame.onerror = () => {
+                showLoading(false);
+                alert('Failed to load PDF. Please try downloading instead.');
+            };
+        }
+
+        // Open full PDF viewer (for desktop/tablet)
+        function openFullPdfViewer(title, pdfUrl) {
+            currentPdfTitle = title;
+            currentPdfUrl = pdfUrl;
+            
             pdfTitle.textContent = title;
             pdfViewer.classList.add('active');
             document.body.style.overflow = 'hidden';
-            activePdfUrl = pdfUrl;
             
             // Load PDF
-            if (pdfCache.has(pdfUrl)) {
-                const cachedIframe = pdfCache.get(pdfUrl);
-                pdfFrame.src = cachedIframe.src;
-            } else {
-                pdfFrame.src = pdfUrl;
-                
-                // Cache for future use
-                const newIframe = document.createElement('iframe');
-                newIframe.style.display = 'none';
-                newIframe.src = pdfUrl;
-                newIframe.onload = () => {
-                    pdfCache.set(pdfUrl, newIframe);
-                    preloadContainer.appendChild(newIframe);
-                };
-            }
+            pdfFrame.src = pdfUrl;
             
-            // Mobile optimizations
+            // Update history
+            history.pushState({ pdfViewer: true }, '');
+        }
+
+        // Close mobile preview
+        function closeMobilePreview() {
+            mobilePreviewOverlay.classList.remove('active');
+            mobilePreviewFrame.src = '';
+            document.body.style.overflow = '';
+            showLoading(false);
+            
             if (isMobile) {
-                // Push state for mobile back button
-                history.pushState({ pdfViewer: true }, '');
-                
-                // Handle iOS
-                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                    pdfViewer.style.transform = 'translateZ(0)';
-                }
+                history.back();
             }
         }
 
@@ -1202,11 +1423,104 @@
             pdfViewer.classList.remove('active');
             pdfFrame.src = '';
             document.body.style.overflow = '';
-            activePdfUrl = '';
             
-            if (isMobile) {
-                history.back();
+            history.back();
+        }
+
+        // Update page counter
+        function updatePageCounter() {
+            pageCounter.textContent = `Page ${currentPage}`;
+        }
+
+        // Navigation functions
+        function goToPrevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                mobilePreviewFrame.src = `${currentPdfUrl}#page=${currentPage}&toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
+                updatePageCounter();
             }
+        }
+
+        function goToNextPage() {
+            currentPage++;
+            mobilePreviewFrame.src = `${currentPdfUrl}#page=${currentPage}&toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
+            updatePageCounter();
+        }
+
+        function openInFullViewer() {
+            closeMobilePreview();
+            setTimeout(() => {
+                openFullPdfViewer(currentPdfTitle, currentPdfUrl);
+            }, 300);
+        }
+
+        function downloadCurrentPdf() {
+            downloadPdf(currentPdfTitle + '.pdf', currentPdfUrl);
+        }
+
+        // Update navigation button states
+        function updateNavigationButtons() {
+            prevPageBtn.disabled = currentPage <= 1;
+        }
+
+        // Keyboard navigation
+        function handleKeyboardNavigation(e) {
+            if (!mobilePreviewOverlay.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    goToPrevPage();
+                    e.preventDefault();
+                    break;
+                case 'ArrowRight':
+                    goToNextPage();
+                    e.preventDefault();
+                    break;
+                case ' ':
+                case 'Spacebar':
+                    goToNextPage();
+                    e.preventDefault();
+                    break;
+            }
+        }
+
+        // Handle orientation changes
+        function handleOrientationChange() {
+            if (mobilePreviewOverlay.classList.contains('active')) {
+                // Reset frame on orientation change for better display
+                setTimeout(() => {
+                    mobilePreviewFrame.src = mobilePreviewFrame.src;
+                }, 300);
+            }
+        }
+
+        // Show/hide loading indicator
+        function showLoading(show) {
+            if (show) {
+                loadingIndicator.classList.add('active');
+            } else {
+                loadingIndicator.classList.remove('active');
+            }
+        }
+
+        // Preload popular PDFs
+        function preloadPopularPDFs() {
+            // Preload first 3 PDFs for faster preview
+            const popularPDFs = statutes.slice(0, 3);
+            popularPDFs.forEach(statute => {
+                // Create hidden iframe for preloading
+                const preloadFrame = document.createElement('iframe');
+                preloadFrame.style.display = 'none';
+                preloadFrame.src = statute.pdfUrl;
+                document.body.appendChild(preloadFrame);
+                
+                // Remove after a while
+                setTimeout(() => {
+                    if (preloadFrame.parentNode) {
+                        preloadFrame.parentNode.removeChild(preloadFrame);
+                    }
+                }, 10000);
+            });
         }
 
         // Download PDF
@@ -1218,8 +1532,6 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            
-            // Analytics or tracking could go here
         }
 
         // Apply filters and search
@@ -1252,7 +1564,9 @@
 
         // Update stats counter
         function updateStats() {
-            statsCounter.textContent = `${filteredStatutes.length} of ${statutes.length} statutes`;
+            const count = filteredStatutes.length;
+            const total = statutes.length;
+            statsCounter.textContent = `Showing ${count} of ${total} statutes`;
         }
 
         // Utility function to escape HTML
@@ -1262,31 +1576,69 @@
             return div.innerHTML;
         }
 
-        // Make download function globally available
+        // Handle browser back button
+        window.addEventListener('popstate', (e) => {
+            if (mobilePreviewOverlay.classList.contains('active')) {
+                closeMobilePreview();
+            } else if (pdfViewer.classList.contains('active')) {
+                closePdfViewer();
+            }
+        });
+
+        // Make functions globally available
         window.downloadPdf = downloadPdf;
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', init);
-
+        
         // Handle window resize
         window.addEventListener('resize', () => {
-            // Adjust PDF viewer for mobile orientation changes
-            if (pdfViewer.classList.contains('active') && isMobile) {
+            // Adjust for orientation changes
+            if (mobilePreviewOverlay.classList.contains('active') && isMobile) {
                 setTimeout(() => {
-                    pdfFrame.style.height = '100%';
-                }, 100);
+                    // Refresh the iframe to adjust to new dimensions
+                    const currentSrc = mobilePreviewFrame.src;
+                    mobilePreviewFrame.src = '';
+                    setTimeout(() => {
+                        mobilePreviewFrame.src = currentSrc;
+                    }, 100);
+                }, 200);
             }
         });
 
         // Handle page visibility (for mobile)
         document.addEventListener('visibilitychange', () => {
-            if (document.hidden && pdfViewer.classList.contains('active')) {
-                // Pause PDF rendering when tab is hidden
-                try {
-                    pdfFrame.contentWindow.postMessage('pause', '*');
-                } catch (e) {}
+            if (document.hidden && mobilePreviewOverlay.classList.contains('active')) {
+                // Save scroll position or handle background state
+                // Could implement resume functionality here
             }
         });
+        
+        // Add swipe gesture support for mobile preview
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        mobilePreviewOverlay.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        mobilePreviewOverlay.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            const swipeThreshold = 50; // Minimum swipe distance in pixels
+            
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Swipe left - go to next page
+                goToNextPage();
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // Swipe right - go to previous page
+                goToPrevPage();
+            }
+        }
     </script>
 </body>
 </html>
