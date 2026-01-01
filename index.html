@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Uganda Statutes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -10,70 +10,107 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-text-size-adjust: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        html {
+            height: 100%;
+            overflow-x: hidden;
         }
         
         body {
             background-color: #f8fafc;
             color: #1e293b;
-            line-height: 1.6;
+            line-height: 1.5;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
+            width: 100%;
         }
         
+        /* Header - Mobile Optimized */
         header {
             background: #1e293b;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding-top: max(1.5rem, env(safe-area-inset-top));
         }
         
         h1 {
             color: white;
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            padding: 0 10px;
+            line-height: 1.2;
         }
         
         .header-subtitle {
             color: #cbd5e1;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            padding: 0 10px;
         }
         
+        /* Controls - Mobile Optimized */
         .controls {
             background: white;
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             display: flex;
+            flex-direction: column;
             gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
+            position: sticky;
+            top: calc(env(safe-area-inset-top) + 80px);
+            z-index: 90;
+        }
+        
+        @media (min-width: 768px) {
+            .controls {
+                flex-direction: row;
+                align-items: center;
+            }
         }
         
         .search-box {
             flex: 1;
-            min-width: 300px;
+            width: 100%;
             position: relative;
         }
         
         .search-icon {
             position: absolute;
-            left: 12px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
             color: #64748b;
+            font-size: 1.1rem;
         }
         
         .search-box input {
             width: 100%;
-            padding: 10px 10px 10px 40px;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            font-size: 1rem;
+            padding: 14px 15px 14px 50px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px; /* Prevents iOS zoom */
+            background: #f8fafc;
+            -webkit-appearance: none;
+            appearance: none;
         }
         
         .search-box input:focus {
@@ -82,21 +119,38 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
         
+        /* Filter Buttons - Mobile Optimized */
         .filter-buttons {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
+            padding: 5px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .filter-buttons::-webkit-scrollbar {
+            display: none;
         }
         
         .filter-btn {
-            padding: 8px 16px;
+            padding: 10px 18px;
             background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
             color: #475569;
             cursor: pointer;
             font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all 0.2s;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
         
         .filter-btn.active {
@@ -105,54 +159,42 @@
             border-color: #3b82f6;
         }
         
+        /* Statutes Grid - Mobile Optimized */
         .statutes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
+            gap: 1.2rem;
             margin-bottom: 3rem;
-        }
-        
-        @media (min-width: 1200px) {
-            .statutes-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .statutes-grid {
-                grid-template-columns: 1fr;
-            }
         }
         
         .statute-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
+            -webkit-touch-callout: none;
         }
         
-        .statute-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            border-color: #3b82f6;
+        .statute-card:active {
+            transform: scale(0.98);
         }
         
         .statute-header {
             background: #334155;
             color: white;
-            padding: 1rem;
+            padding: 1.2rem;
             border-bottom: 3px solid #3b82f6;
         }
         
         .statute-title {
             font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
             line-height: 1.3;
         }
         
@@ -173,31 +215,41 @@
             font-size: 0.85rem;
             color: #64748b;
             background: #f8fafc;
-            padding: 8px 12px;
-            border-radius: 4px;
+            padding: 10px;
+            border-radius: 6px;
             margin-top: auto;
             font-family: 'Courier New', monospace;
             border-left: 3px solid #3b82f6;
-            word-break: break-all;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
         
         .statute-actions {
             display: flex;
             gap: 0.8rem;
-            margin-top: 1rem;
+            margin-top: 1.2rem;
         }
         
         .btn {
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-weight: 500;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-weight: 600;
             cursor: pointer;
             border: none;
             display: flex;
             align-items: center;
             justify-content: center;
             flex: 1;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            transition: all 0.2s;
+            min-height: 48px; /* Minimum touch target size */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .btn:active {
+            transform: translateY(2px);
         }
         
         .btn-view {
@@ -205,7 +257,7 @@
             color: white;
         }
         
-        .btn-view:hover {
+        .btn-view:hover, .btn-view:active {
             background: #2563eb;
         }
         
@@ -214,24 +266,27 @@
             color: #334155;
         }
         
-        .btn-download:hover {
+        .btn-download:hover, .btn-download:active {
             background: #e2e8f0;
         }
         
         .btn i {
-            margin-right: 6px;
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
         
-        /* PDF MODAL - SIMPLE AND WORKING */
+        /* FULL SCREEN PDF MODAL - Mobile Optimized */
         .pdf-modal {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            width: 100vw;
+            height: 100vh;
+            background: #0f172a;
             z-index: 9999;
             display: none;
+            overscroll-behavior: contain;
+            touch-action: pan-x pan-y;
         }
         
         .pdf-container {
@@ -239,45 +294,201 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
         
         .pdf-header {
-            background: #1e293b;
+            background: rgba(30, 41, 59, 0.95);
             color: white;
-            padding: 1rem;
+            padding: 1rem 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #334155;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-height: 60px;
+            position: relative;
+            z-index: 1000;
         }
         
         .pdf-title {
             font-size: 1rem;
             font-weight: 500;
             flex: 1;
+            margin-right: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 10px;
         }
         
         .pdf-close-btn {
             background: #ef4444;
             color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 10px 18px;
+            border-radius: 10px;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+            min-height: 44px;
+            -webkit-touch-callout: none;
         }
         
-        .pdf-viewer {
+        .pdf-close-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .pdf-viewer-container {
             flex: 1;
             width: 100%;
-            background: white;
+            overflow: hidden;
+            background: #f8fafc;
+            position: relative;
+            -webkit-overflow-scrolling: touch;
         }
         
         .pdf-iframe {
             width: 100%;
             height: 100%;
             border: none;
+            background: white;
+            display: block;
+        }
+        
+        /* PDF Controls for Mobile */
+        .pdf-controls-mobile {
+            position: fixed;
+            bottom: max(20px, env(safe-area-inset-bottom));
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 41, 59, 0.9);
+            padding: 12px 20px;
+            border-radius: 30px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .mobile-control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            -webkit-touch-callout: none;
+            touch-action: manipulation;
+        }
+        
+        .mobile-control-btn:active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0.9);
+        }
+        
+        /* Mobile-Specific Adjustments */
+        @media (max-width: 768px) {
+            .statute-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .pdf-header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0.8rem;
+                text-align: center;
+            }
+            
+            .pdf-title {
+                font-size: 0.9rem;
+                text-align: center;
+                white-space: normal;
+                line-height: 1.3;
+            }
+            
+            .pdf-close-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .controls {
+                top: calc(env(safe-area-inset-top) + 70px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .statute-card {
+                border-radius: 10px;
+            }
+            
+            .statute-header, .statute-body {
+                padding: 1rem;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* iOS Safari Specific Fixes */
+        @supports (-webkit-touch-callout: none) {
+            .pdf-modal {
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .pdf-iframe {
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            body {
+                height: -webkit-fill-available;
+            }
+            
+            .pdf-container {
+                height: -webkit-fill-available;
+            }
+        }
+        
+        /* Android Chrome Specific Fixes */
+        @media screen and (max-width: 768px) and (hover: none) and (pointer: coarse) {
+            .btn {
+                padding: 16px;
+                min-height: 52px;
+            }
+            
+            .search-box input {
+                font-size: 16px; /* Prevents zoom on focus */
+                min-height: 48px;
+            }
         }
         
         footer {
@@ -292,45 +503,97 @@
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
             color: #64748b;
         }
         
         .clear-btn {
             background: #f1f5f9;
             color: #334155;
-            padding: 10px 20px;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            min-height: 48px;
+            -webkit-touch-callout: none;
+        }
+        
+        .clear-btn:active {
+            transform: scale(0.98);
         }
         
         .stats-counter {
             color: #64748b;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px 0;
         }
         
         .category-tag {
             display: inline-block;
             background: #e0f2fe;
             color: #0369a1;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Loading Indicator */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 10000;
+            text-align: center;
+            max-width: 90%;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide scrollbars but keep functionality */
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Uganda Statutes Repository</h1>
-            <p class="header-subtitle">Complete collection of Ugandan legislation</p>
+            <h1>Uganda Statutes</h1>
+            <p class="header-subtitle">Mobile-Optimized Legal Document Viewer</p>
         </div>
     </header>
     
@@ -338,7 +601,7 @@
         <div class="controls">
             <div class="search-box">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search statutes...">
+                <input type="text" id="searchInput" placeholder="Search statutes..." inputmode="search">
             </div>
             <div class="stats-counter" id="statsCounter">Loading statutes...</div>
             <button class="clear-btn" id="clearSearch">
@@ -346,7 +609,7 @@
             </button>
         </div>
         
-        <div class="filter-buttons" id="filterButtons">
+        <div class="filter-buttons hide-scrollbar" id="filterButtons">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="Criminal">Criminal</button>
             <button class="filter-btn" data-filter="Civil">Civil</button>
@@ -361,36 +624,58 @@
         </div>
     </div>
     
-    <!-- PDF MODAL -->
+    <!-- FULL SCREEN PDF MODAL - Mobile Optimized -->
     <div class="pdf-modal" id="pdfModal">
         <div class="pdf-container">
             <div class="pdf-header">
                 <div class="pdf-title" id="pdfTitle"></div>
                 <button class="pdf-close-btn" id="closePdfBtn">
-                    <i class="fas fa-times"></i> Close
+                    <i class="fas fa-times"></i> Close Viewer
                 </button>
             </div>
-            <div class="pdf-viewer">
-                <iframe class="pdf-iframe" id="pdfFrame"></iframe>
+            <div class="pdf-viewer-container">
+                <iframe class="pdf-iframe" id="pdfFrame" allow="autoplay" allowfullscreen></iframe>
+            </div>
+            <!-- Mobile PDF Controls -->
+            <div class="pdf-controls-mobile" id="mobilePdfControls" style="display: none;">
+                <button class="mobile-control-btn" id="mobilePrev" title="Previous Page">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="mobile-control-btn" id="mobileNext" title="Next Page">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="mobile-control-btn" id="mobileZoomIn" title="Zoom In">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mobile-control-btn" id="mobileZoomOut" title="Zoom Out">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mobile-control-btn" id="mobileDownload" title="Download">
+                    <i class="fas fa-download"></i>
+                </button>
             </div>
         </div>
     </div>
     
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Loading document...</p>
+    </div>
+    
     <footer>
         <div class="container">
-            <p>Uganda Statutes Repository • Working PDF Preview</p>
+            <p>Optimized for Android, iPhone & Desktop • Full Document Viewing</p>
         </div>
     </footer>
 
     <script>
-        // SIMPLE AND GUARANTEED WORKING PDF PREVIEWS
+        // All statutes with mobile-optimized viewing
         const statutes = [
             {
                 id: 1,
                 title: "Advocates (Remuneration and Taxation of Costs) (Amendment) Regulations",
                 code: "2018",
                 filename: "Advocates (Remuneration and Taxation of Costs) (Amendment) Regulations 2018.pdf",
-                // METHOD 1: Direct PDF link (will show download or browser preview)
                 pdfUrl: "Advocates (Remuneration and Taxation of Costs) (Amendment) Regulations 2018.pdf",
                 category: "Administrative"
             },
@@ -804,11 +1089,21 @@
         const pdfFrame = document.getElementById('pdfFrame');
         const pdfTitle = document.getElementById('pdfTitle');
         const closePdfBtn = document.getElementById('closePdfBtn');
+        const loading = document.getElementById('loading');
         const statsCounter = document.getElementById('statsCounter');
         const filterButtons = document.getElementById('filterButtons');
+        const mobilePdfControls = document.getElementById('mobilePdfControls');
+        const mobilePrev = document.getElementById('mobilePrev');
+        const mobileNext = document.getElementById('mobileNext');
+        const mobileZoomIn = document.getElementById('mobileZoomIn');
+        const mobileZoomOut = document.getElementById('mobileZoomOut');
+        const mobileDownload = document.getElementById('mobileDownload');
 
         let currentFilter = 'all';
         let filteredStatutes = [...statutes];
+        let currentPdfUrl = '';
+        let currentFilename = '';
+        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         // Initialize
         function init() {
@@ -818,17 +1113,39 @@
             // Add event listeners to filter buttons
             filterButtons.addEventListener('click', (e) => {
                 if (e.target.classList.contains('filter-btn')) {
-                    // Update active button
                     document.querySelectorAll('.filter-btn').forEach(btn => {
                         btn.classList.remove('active');
                     });
                     e.target.classList.add('active');
                     
-                    // Apply filter
                     currentFilter = e.target.dataset.filter;
                     applyFilters();
                 }
             });
+            
+            // Mobile-specific optimizations
+            if (isMobile) {
+                optimizeForMobile();
+            }
+        }
+
+        // Mobile optimizations
+        function optimizeForMobile() {
+            // Make touch targets larger
+            document.querySelectorAll('.btn, .filter-btn, .clear-btn').forEach(btn => {
+                btn.style.minHeight = '52px';
+                btn.style.padding = '15px 20px';
+            });
+            
+            // Prevent zoom on input focus
+            searchInput.addEventListener('focus', () => {
+                setTimeout(() => {
+                    document.body.style.zoom = "100%";
+                }, 100);
+            });
+            
+            // Show mobile controls
+            mobilePdfControls.style.display = 'flex';
         }
 
         // Render statutes
@@ -858,10 +1175,10 @@
                         <div class="category-tag">${statute.category} Law</div>
                         <div class="statute-filename">${statute.filename}</div>
                         <div class="statute-actions">
-                            <button class="btn btn-view" onclick="openPdf('${statute.title.replace(/'/g, "\\'")} ${statute.code || ''}', '${statute.pdfUrl}')">
+                            <button class="btn btn-view" onclick="openPdfMobile('${statute.title.replace(/'/g, "\\'")} ${statute.code || ''}', '${statute.pdfUrl}', '${statute.filename}')">
                                 <i class="fas fa-eye"></i> View
                             </button>
-                            <button class="btn btn-download" onclick="downloadPdf('${statute.filename.replace(/'/g, "\\'")}', '${statute.pdfUrl}')">
+                            <button class="btn btn-download" onclick="downloadPdfMobile('${statute.filename.replace(/'/g, "\\'")}', '${statute.pdfUrl}')">
                                 <i class="fas fa-download"></i> Download
                             </button>
                         </div>
@@ -871,38 +1188,143 @@
             });
         }
 
-        // Open PDF in modal - SIMPLE AND GUARANTEED TO WORK
-        function openPdf(title, pdfUrl) {
+        // Mobile-optimized PDF opening
+        function openPdfMobile(title, pdfUrl, filename) {
+            currentPdfUrl = pdfUrl;
+            currentFilename = filename;
             pdfTitle.textContent = title;
             
-            // METHOD 1: Try to open directly in iframe first
-            try {
-                pdfFrame.src = pdfUrl;
-                pdfModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                
-                // If iframe fails, try alternative method
-                pdfFrame.onerror = function() {
-                    // METHOD 2: Open in new tab
-                    window.open(pdfUrl, '_blank');
-                    closePdfModal();
-                };
-                
-            } catch (error) {
-                // METHOD 3: Direct download fallback
-                downloadPdf(title + '.pdf', pdfUrl);
+            // Show loading
+            showLoading();
+            
+            // Clear previous PDF
+            pdfFrame.src = '';
+            
+            // For mobile, use Google Drive Viewer for reliable display
+            let viewerUrl;
+            
+            if (isMobile) {
+                // METHOD 1: Google Drive Viewer (best for mobile)
+                const encodedUrl = encodeURIComponent(window.location.origin + '/' + pdfUrl);
+                viewerUrl = `https://drive.google.com/viewerng/viewer?embedded=true&url=${encodedUrl}`;
+            } else {
+                // METHOD 2: Direct PDF for desktop
+                viewerUrl = pdfUrl;
             }
+            
+            // Set iframe source
+            pdfFrame.src = viewerUrl;
+            
+            // Show modal
+            pdfModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Prevent body scroll on mobile
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            
+            // Hide loading when PDF loads
+            pdfFrame.onload = () => {
+                hideLoading();
+                
+                // Add mobile PDF controls
+                if (isMobile) {
+                    setupMobilePdfControls();
+                }
+            };
+            
+            pdfFrame.onerror = () => {
+                hideLoading();
+                // Fallback to direct PDF
+                pdfFrame.src = pdfUrl;
+            };
+            
+            // Auto-hide loading after timeout
+            setTimeout(hideLoading, 3000);
         }
 
-        // Download PDF
-        function downloadPdf(filename, url) {
+        // Setup mobile PDF controls
+        function setupMobilePdfControls() {
+            // Previous page
+            mobilePrev.onclick = () => {
+                try {
+                    pdfFrame.contentWindow.postMessage('prev', '*');
+                } catch (e) {
+                    // Fallback: try keyboard simulation
+                    simulateKeyPress('ArrowLeft');
+                }
+            };
+            
+            // Next page
+            mobileNext.onclick = () => {
+                try {
+                    pdfFrame.contentWindow.postMessage('next', '*');
+                } catch (e) {
+                    simulateKeyPress('ArrowRight');
+                }
+            };
+            
+            // Zoom in
+            mobileZoomIn.onclick = () => {
+                try {
+                    pdfFrame.contentWindow.postMessage('zoomin', '*');
+                } catch (e) {
+                    simulateKeyPress('+');
+                }
+            };
+            
+            // Zoom out
+            mobileZoomOut.onclick = () => {
+                try {
+                    pdfFrame.contentWindow.postMessage('zoomout', '*');
+                } catch (e) {
+                    simulateKeyPress('-');
+                }
+            };
+            
+            // Download
+            mobileDownload.onclick = () => {
+                downloadPdfMobile(currentFilename, currentPdfUrl);
+            };
+        }
+
+        // Simulate key press for PDF navigation
+        function simulateKeyPress(key) {
+            const event = new KeyboardEvent('keydown', {
+                key: key,
+                code: key,
+                bubbles: true
+            });
+            pdfFrame.contentWindow.document.dispatchEvent(event);
+        }
+
+        // Mobile-optimized PDF download
+        function downloadPdfMobile(filename, url) {
+            // Create temporary link
             const link = document.createElement('a');
             link.href = url;
             link.download = filename;
             link.target = '_blank';
+            link.style.display = 'none';
+            
+            // iOS Safari requires adding to document
             document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            
+            // Trigger download
+            if (isMobile) {
+                // For mobile, open in new tab first
+                window.open(url, '_blank');
+                setTimeout(() => {
+                    link.click();
+                }, 100);
+            } else {
+                link.click();
+            }
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(link);
+            }, 100);
         }
 
         // Close PDF modal
@@ -910,6 +1332,22 @@
             pdfModal.style.display = 'none';
             pdfFrame.src = '';
             document.body.style.overflow = 'auto';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            
+            // Reset mobile controls
+            if (isMobile) {
+                resetMobilePdfControls();
+            }
+        }
+
+        // Reset mobile PDF controls
+        function resetMobilePdfControls() {
+            mobilePrev.onclick = null;
+            mobileNext.onclick = null;
+            mobileZoomIn.onclick = null;
+            mobileZoomOut.onclick = null;
+            mobileDownload.onclick = null;
         }
 
         // Apply search and filter
@@ -917,12 +1355,10 @@
             const searchTerm = searchInput.value.toLowerCase();
             
             filteredStatutes = statutes.filter(statute => {
-                // Apply category filter
                 if (currentFilter !== 'all' && !statute.category.toLowerCase().includes(currentFilter.toLowerCase())) {
                     return false;
                 }
                 
-                // Apply search filter
                 if (searchTerm) {
                     return statute.title.toLowerCase().includes(searchTerm) ||
                            (statute.code && statute.code.toLowerCase().includes(searchTerm)) ||
@@ -940,6 +1376,16 @@
         // Update stats counter
         function updateStats() {
             statsCounter.textContent = `${filteredStatutes.length} of ${statutes.length} statutes`;
+        }
+
+        // Show loading indicator
+        function showLoading() {
+            loading.style.display = 'block';
+        }
+
+        // Hide loading indicator
+        function hideLoading() {
+            loading.style.display = 'none';
         }
 
         // Event listeners
@@ -960,26 +1406,63 @@
 
         closePdfBtn.addEventListener('click', closePdfModal);
 
-        // Close modal when clicking outside
-        pdfModal.addEventListener('click', (e) => {
-            if (e.target === pdfModal) {
-                closePdfModal();
-            }
-        });
-
-        // Close with Escape key
+        // Close modal with Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
                 closePdfModal();
             }
         });
 
+        // Close modal when clicking outside on mobile
+        if (isMobile) {
+            pdfModal.addEventListener('click', (e) => {
+                if (e.target === pdfModal) {
+                    closePdfModal();
+                }
+            });
+        }
+
+        // Handle back button on mobile
+        window.addEventListener('popstate', () => {
+            if (pdfModal.style.display === 'flex') {
+                closePdfModal();
+            }
+        });
+
         // Make functions available globally
-        window.openPdf = openPdf;
-        window.downloadPdf = downloadPdf;
+        window.openPdfMobile = openPdfMobile;
+        window.downloadPdfMobile = downloadPdfMobile;
 
         // Initialize the app
         init();
+        
+        // Additional mobile optimizations after load
+        if (isMobile) {
+            // Prevent pull-to-refresh in modal
+            let startY = 0;
+            pdfModal.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+            
+            pdfModal.addEventListener('touchmove', (e) => {
+                const currentY = e.touches[0].clientY;
+                if (pdfModal.scrollTop === 0 && currentY > startY) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            
+            // Add iOS specific fixes
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                // Fix for iOS Safari 100vh issue
+                const setVH = () => {
+                    const vh = window.innerHeight * 0.01;
+                    document.documentElement.style.setProperty('--vh', `${vh}px`);
+                };
+                setVH();
+                window.addEventListener('resize', setVH);
+                window.addEventListener('orientationchange', setVH);
+            }
+        }
     </script>
 </body>
 </html>
