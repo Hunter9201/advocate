@@ -29,11 +29,6 @@
             color: var(--dark-color);
             line-height: 1.6;
             min-height: 100vh;
-            transition: filter 0.3s ease;
-        }
-
-        body.pdf-viewer-open {
-            overflow: hidden;
         }
 
         /* Header */
@@ -45,7 +40,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
 
         .header-container {
@@ -84,7 +79,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px 50px;
-            transition: opacity 0.3s ease;
         }
 
         .page-header {
@@ -335,140 +329,73 @@
             background-color: #f1f5f9;
         }
 
-        /* PDF Viewer Overlay */
-        .pdf-viewer-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .pdf-viewer-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .pdf-viewer-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            height: 90%;
-            background-color: white;
+        /* PDF Preview Section */
+        .pdf-preview-section {
+            background-color: var(--card-bg);
             border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            z-index: 2001;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            padding: 25px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            display: none;
         }
 
-        .pdf-viewer-container.active {
-            opacity: 1;
-        }
-
-        .pdf-viewer-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
+        .preview-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 4px solid var(--secondary-color);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
         }
 
-        .pdf-viewer-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 0;
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        .preview-header h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
         }
 
-        .pdf-viewer-controls {
-            display: flex;
-            gap: 10px;
-        }
-
-        .pdf-viewer-control-btn {
+        .preview-close {
             background: none;
             border: none;
-            color: white;
+            font-size: 1.8rem;
             cursor: pointer;
-            font-size: 1.2rem;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            color: var(--dark-color);
+            padding: 0;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s;
         }
 
-        .pdf-viewer-control-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+        .preview-close:hover {
+            background-color: #f1f5f9;
         }
 
-        .pdf-viewer-control-btn.close-btn {
-            background-color: var(--secondary-color);
-            padding: 5px 15px;
-            font-weight: 600;
-        }
-
-        .pdf-viewer-control-btn.close-btn:hover {
-            background-color: #b91c1c;
-        }
-
-        .pdf-viewer-frame-container {
-            flex: 1;
-            position: relative;
+        .pdf-preview-container {
+            height: 600px;
+            border-radius: 8px;
             overflow: hidden;
+            border: 1px solid var(--border-color);
         }
 
-        .pdf-viewer-frame {
+        .pdf-preview-container iframe {
             width: 100%;
             height: 100%;
             border: none;
-            background-color: white;
         }
 
-        .pdf-viewer-loading {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .preview-placeholder {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: white;
-            color: #666;
-        }
-
-        .pdf-viewer-loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            height: 100%;
+            color: #718096;
+            padding: 40px;
+            text-align: center;
         }
 
         /* Footer */
@@ -478,8 +405,6 @@
             padding: 30px 0;
             margin-top: 50px;
             border-top: 4px solid var(--secondary-color);
-            z-index: 999;
-            position: relative;
         }
 
         .footer-container {
@@ -572,20 +497,8 @@
                 text-align: center;
             }
 
-            .pdf-viewer-container {
-                width: 95%;
-                height: 95%;
-            }
-
-            .pdf-viewer-header {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-
-            .pdf-viewer-title {
-                font-size: 1.2rem;
-                white-space: normal;
+            .pdf-preview-container {
+                height: 400px;
             }
 
             .stats-bar {
@@ -602,13 +515,8 @@
                 flex-direction: column;
             }
 
-            .pdf-viewer-title {
-                font-size: 1rem;
-            }
-
-            .pdf-viewer-control-btn {
-                font-size: 1rem;
-                padding: 3px 8px;
+            .pdf-preview-container {
+                height: 350px;
             }
         }
     </style>
@@ -628,10 +536,10 @@
     </header>
 
     <!-- Main Content -->
-    <main class="main-container" id="mainContent">
+    <main class="main-container">
         <div class="page-header">
             <h2>📚 Uganda Laws & Legal Documents</h2>
-            <p>Browse, search, and access complete Ugandan legal documents. All PDFs are stored in GitHub Pages and open directly in your browser.</p>
+            <p>Browse, search, and access complete Ugandan legal documents. All PDFs are stored in the <code>/pdfs</code> folder and open directly in your browser.</p>
         </div>
 
         <!-- Stats Bar -->
@@ -691,6 +599,21 @@
         <div class="pdf-grid" id="pdfGrid">
             <!-- PDF cards will be dynamically generated here -->
         </div>
+
+        <!-- PDF Preview Section -->
+        <section class="pdf-preview-section" id="pdfPreviewSection">
+            <div class="preview-header">
+                <h3 id="previewTitle">Document Preview</h3>
+                <button class="preview-close" id="closePreview">×</button>
+            </div>
+            <div class="pdf-preview-container" id="pdfPreviewContainer">
+                <div class="preview-placeholder">
+                    <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">📄</div>
+                    <h4>Select a document to preview</h4>
+                    <p>Click the "Preview" button on any document to view it here</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -706,33 +629,8 @@
         </div>
     </footer>
 
-    <!-- PDF Viewer Overlay -->
-    <div class="pdf-viewer-overlay" id="pdfViewerOverlay"></div>
-
-    <!-- PDF Viewer Container -->
-    <div class="pdf-viewer-container" id="pdfViewerContainer">
-        <div class="pdf-viewer-header">
-            <h3 class="pdf-viewer-title" id="pdfViewerTitle">Document Viewer</h3>
-            <div class="pdf-viewer-controls">
-                <button class="pdf-viewer-control-btn" id="fullscreenBtn" title="Toggle Fullscreen">
-                    ⛶
-                </button>
-                <button class="pdf-viewer-control-btn close-btn" id="closeViewerBtn">
-                    ✕ Close Viewer
-                </button>
-            </div>
-        </div>
-        <div class="pdf-viewer-frame-container">
-            <div class="pdf-viewer-loading" id="pdfLoading">
-                <div class="pdf-viewer-loading-spinner"></div>
-                <p>Loading document...</p>
-            </div>
-            <iframe class="pdf-viewer-frame" id="pdfViewerFrame"></iframe>
-        </div>
-    </div>
-
     <script>
-        // Uganda Legal Documents Data - Using the exact filenames from GitHub
+        // Uganda Legal Documents Data - Using the exact filenames you provided
         const ugandaLegalDocuments = [
             {
                 id: 1,
@@ -1030,17 +928,10 @@
         const searchButton = document.getElementById('searchButton');
         const categoryFilter = document.getElementById('categoryFilter');
         const sortFilter = document.getElementById('sortFilter');
-        
-        // PDF Viewer Elements
-        const pdfViewerOverlay = document.getElementById('pdfViewerOverlay');
-        const pdfViewerContainer = document.getElementById('pdfViewerContainer');
-        const pdfViewerTitle = document.getElementById('pdfViewerTitle');
-        const pdfViewerFrame = document.getElementById('pdfViewerFrame');
-        const pdfLoading = document.getElementById('pdfLoading');
-        const closeViewerBtn = document.getElementById('closeViewerBtn');
-        const fullscreenBtn = document.getElementById('fullscreenBtn');
-        const mainContent = document.getElementById('mainContent');
-        const body = document.body;
+        const pdfPreviewSection = document.getElementById('pdfPreviewSection');
+        const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+        const previewTitle = document.getElementById('previewTitle');
+        const closePreview = document.getElementById('closePreview');
 
         // Stats elements
         const totalDocuments = document.getElementById('totalDocuments');
@@ -1052,7 +943,6 @@
         let currentCategory = 'all';
         let currentSearch = '';
         let currentSort = 'title';
-        let isFullscreen = false;
 
         // Calculate stats
         function calculateStats() {
@@ -1075,13 +965,6 @@
             
             const updated = ugandaLegalDocuments.filter(doc => doc.updated).length;
             updatedCount.textContent = updated;
-        }
-
-        // Function to get proper GitHub Pages URL for PDFs
-        function getPDFUrl(filename) {
-            // For GitHub Pages, we need to properly encode the filename
-            const encodedFilename = encodeURIComponent(filename);
-            return `./${encodedFilename}`;
         }
 
         // Initialize the PDF grid
@@ -1153,9 +1036,6 @@
                 // Get category display name
                 const categoryDisplay = categoryNames[doc.category] || doc.category;
                 
-                // Get the actual PDF URL for GitHub Pages
-                const pdfUrl = getPDFUrl(doc.filename);
-                
                 docCard.innerHTML = `
                     <div class="pdf-card-header">
                         ${doc.updated ? '<span class="badge">Updated</span>' : ''}
@@ -1175,11 +1055,11 @@
                         </div>
                     </div>
                     <div class="pdf-card-footer">
-                        <a href="${pdfUrl}" class="pdf-button open" target="_blank">
-                            🔗 Open in New Tab
+                        <a href="pdfs/${doc.filename}" class="pdf-button open" target="_blank">
+                            🔗 Open PDF
                         </a>
                         <button class="pdf-button preview" data-id="${doc.id}">
-                            👁️ View in Browser
+                            👁️ Preview
                         </button>
                     </div>
                 `;
@@ -1191,130 +1071,49 @@
             document.querySelectorAll('.preview').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const docId = parseInt(this.getAttribute('data-id'));
-                    openPDFViewer(docId);
+                    showDocumentPreview(docId);
                 });
             });
         }
 
-        // Open PDF Viewer
-        function openPDFViewer(docId) {
+        // Show document preview
+        function showDocumentPreview(docId) {
             const doc = ugandaLegalDocuments.find(d => d.id === docId);
             if (!doc) return;
             
-            // Update viewer title
-            pdfViewerTitle.textContent = doc.title;
+            // Update preview title
+            previewTitle.textContent = `Preview: ${doc.title}`;
             
-            // Get the actual PDF URL for GitHub Pages
-            const pdfUrl = getPDFUrl(doc.filename);
+            // Use the actual PDF file from the /pdfs folder
+            // Note: For GitHub Pages, the path is relative
+            const pdfPath = `pdfs/${encodeURIComponent(doc.filename)}`;
             
-            // Show loading state
-            pdfLoading.style.display = 'flex';
-            pdfViewerFrame.style.display = 'none';
-            
-            // Set PDF source
-            pdfViewerFrame.src = pdfUrl;
-            
-            // Show viewer
-            body.classList.add('pdf-viewer-open');
-            pdfViewerOverlay.classList.add('active');
-            setTimeout(() => {
-                pdfViewerContainer.classList.add('active');
-            }, 10);
-            
-            // Disable body scroll
-            body.style.overflow = 'hidden';
-        }
-
-        // Close PDF Viewer
-        function closePDFViewer() {
-            pdfViewerContainer.classList.remove('active');
-            setTimeout(() => {
-                pdfViewerOverlay.classList.remove('active');
-                body.classList.remove('pdf-viewer-open');
-                body.style.overflow = '';
-                
-                // Reset PDF viewer
-                pdfViewerFrame.src = '';
-                pdfViewerTitle.textContent = 'Document Viewer';
-            }, 300);
-        }
-
-        // Toggle fullscreen
-        function toggleFullscreen() {
-            if (!isFullscreen) {
-                if (pdfViewerContainer.requestFullscreen) {
-                    pdfViewerContainer.requestFullscreen();
-                } else if (pdfViewerContainer.webkitRequestFullscreen) {
-                    pdfViewerContainer.webkitRequestFullscreen();
-                } else if (pdfViewerContainer.msRequestFullscreen) {
-                    pdfViewerContainer.msRequestFullscreen();
-                }
-                fullscreenBtn.innerHTML = '🗗 Exit Fullscreen';
-                isFullscreen = true;
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-                fullscreenBtn.innerHTML = '⛶ Fullscreen';
-                isFullscreen = false;
-            }
-        }
-
-        // Handle PDF frame load
-        pdfViewerFrame.addEventListener('load', function() {
-            pdfLoading.style.display = 'none';
-            pdfViewerFrame.style.display = 'block';
-        });
-
-        pdfViewerFrame.addEventListener('error', function() {
-            pdfLoading.innerHTML = `
-                <div style="font-size: 3rem; margin-bottom: 15px;">❌</div>
-                <h3>Failed to load document</h3>
-                <p>The PDF file could not be loaded. Please try opening it in a new tab instead.</p>
-                <button class="pdf-button open" onclick="closePDFViewer()" style="margin-top: 15px;">
-                    Close Viewer
-                </button>
+            const previewHTML = `
+                <iframe src="${pdfPath}" 
+                        title="${doc.title}" 
+                        style="width: 100%; height: 100%; border: none;">
+                </iframe>
             `;
-        });
+            
+            pdfPreviewContainer.innerHTML = previewHTML;
+            
+            // Show the preview section
+            pdfPreviewSection.style.display = 'block';
+            
+            // Scroll to preview
+            pdfPreviewSection.scrollIntoView({ behavior: 'smooth' });
+        }
 
-        // Close viewer when overlay is clicked
-        pdfViewerOverlay.addEventListener('click', closePDFViewer);
-
-        // Prevent closing when clicking inside the viewer container
-        pdfViewerContainer.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-
-        // Close viewer button
-        closeViewerBtn.addEventListener('click', closePDFViewer);
-
-        // Fullscreen button
-        fullscreenBtn.addEventListener('click', toggleFullscreen);
-
-        // Handle ESC key to close viewer
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && pdfViewerOverlay.classList.contains('active')) {
-                if (isFullscreen) {
-                    toggleFullscreen();
-                } else {
-                    closePDFViewer();
-                }
-            }
-        });
-
-        // Handle fullscreen change events
-        document.addEventListener('fullscreenchange', function() {
-            isFullscreen = !!document.fullscreenElement;
-            fullscreenBtn.innerHTML = isFullscreen ? '🗗 Exit Fullscreen' : '⛶ Fullscreen';
-        });
-
-        document.addEventListener('webkitfullscreenchange', function() {
-            isFullscreen = !!document.webkitFullscreenElement;
-            fullscreenBtn.innerHTML = isFullscreen ? '🗗 Exit Fullscreen' : '⛶ Fullscreen';
+        // Close document preview
+        closePreview.addEventListener('click', function() {
+            pdfPreviewSection.style.display = 'none';
+            pdfPreviewContainer.innerHTML = `
+                <div class="preview-placeholder">
+                    <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">📄</div>
+                    <h4>Select a document to preview</h4>
+                    <p>Click the "Preview" button on any document to view it here</p>
+                </div>
+            `;
         });
 
         // Reset all filters
@@ -1357,14 +1156,6 @@
         // Initial render and stats calculation
         calculateStats();
         renderDocuments();
-        
-        // Log GitHub Pages deployment instructions
-        console.log("GitHub Pages Deployment Instructions:");
-        console.log("1. Upload this HTML file as 'index.html' to your repository");
-        console.log("2. Upload all PDF files directly to the repository (same directory as index.html)");
-        console.log("3. Enable GitHub Pages in repository settings");
-        console.log("4. PDFs will be accessible at: https://[username].github.io/[repository]/filename.pdf");
-        console.log("5. IMPORTANT: Make sure PDF filenames match exactly (including spaces and special characters)");
     </script>
 </body>
 </html>
