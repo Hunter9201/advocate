@@ -20,7 +20,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -30,6 +30,10 @@
             padding: 2rem 0;
             margin-bottom: 2rem;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         h1 {
@@ -38,7 +42,12 @@
             margin-bottom: 0.5rem;
         }
         
-        .search-section {
+        .header-subtitle {
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+        
+        .controls {
             background: white;
             padding: 1.2rem;
             border-radius: 8px;
@@ -47,10 +56,15 @@
             display: flex;
             gap: 1rem;
             align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 100px;
+            z-index: 99;
         }
         
         .search-box {
             flex: 1;
+            min-width: 300px;
             position: relative;
         }
         
@@ -68,10 +82,35 @@
             border: 1px solid #e2e8f0;
             border-radius: 6px;
             font-size: 1rem;
+            transition: all 0.2s;
         }
         
         .search-box input:focus {
             outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            color: #475569;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #3b82f6;
+            color: white;
             border-color: #3b82f6;
         }
         
@@ -100,54 +139,65 @@
             overflow: hidden;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .statute-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border-color: #3b82f6;
         }
         
         .statute-header {
             background: #334155;
             color: white;
             padding: 1rem;
+            border-bottom: 3px solid #3b82f6;
         }
         
         .statute-title {
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.2rem;
+            line-height: 1.3;
         }
         
         .statute-code {
             font-size: 0.9rem;
             opacity: 0.9;
+            font-weight: 500;
         }
         
         .statute-body {
             padding: 1.2rem;
-        }
-        
-        .statute-description {
-            color: #4a5568;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            min-height: 60px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .statute-filename {
             font-size: 0.85rem;
             color: #64748b;
             background: #f8fafc;
-            padding: 6px 10px;
+            padding: 8px 12px;
             border-radius: 4px;
-            margin-bottom: 1rem;
-            font-family: monospace;
+            margin-top: auto;
+            font-family: 'Courier New', monospace;
             border-left: 3px solid #3b82f6;
+            word-break: break-all;
         }
         
         .statute-actions {
             display: flex;
             gap: 0.8rem;
+            margin-top: 1rem;
         }
         
         .btn {
-            padding: 8px 16px;
+            padding: 10px 16px;
             border-radius: 6px;
             font-weight: 500;
             cursor: pointer;
@@ -157,7 +207,7 @@
             justify-content: center;
             flex: 1;
             font-size: 0.9rem;
-            transition: background 0.2s;
+            transition: all 0.2s;
         }
         
         .btn-view {
@@ -167,6 +217,7 @@
         
         .btn-view:hover {
             background: #2563eb;
+            transform: translateY(-2px);
         }
         
         .btn-download {
@@ -176,6 +227,7 @@
         
         .btn-download:hover {
             background: #e2e8f0;
+            transform: translateY(-2px);
         }
         
         .btn i {
@@ -188,41 +240,52 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
             display: none;
+            flex-direction: column;
         }
         
         .pdf-header {
             background: #1e293b;
             color: white;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .pdf-title {
+            font-size: 1rem;
+            font-weight: 500;
+            flex: 1;
+            margin-right: 1rem;
         }
         
         .pdf-iframe {
             width: 100%;
             height: calc(100% - 60px);
             border: none;
+            background: white;
         }
         
         .close-btn {
             background: #ef4444;
             color: white;
-            padding: 6px 12px;
-            border-radius: 4px;
+            padding: 8px 16px;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
         }
         
-        .pdf-title {
-            font-size: 1rem;
-            font-weight: 500;
+        .close-btn:hover {
+            background: #dc2626;
         }
         
         footer {
@@ -231,39 +294,61 @@
             color: #64748b;
             border-top: 1px solid #e2e8f0;
             margin-top: 2rem;
+            font-size: 0.9rem;
         }
         
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 3rem;
+            padding: 4rem 2rem;
             color: #64748b;
         }
         
         .clear-btn {
             background: #f1f5f9;
             color: #334155;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 6px;
             border: 1px solid #e2e8f0;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .clear-btn:hover {
+            background: #e2e8f0;
+        }
+        
+        .stats-counter {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
         }
         
         .loading {
-            color: white;
-            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
             padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 3000;
+            text-align: center;
         }
         
         .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #3b82f6;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
             margin: 0 auto 1rem;
         }
@@ -272,28 +357,51 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        .category-tag {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Uganda Statutes</h1>
+            <h1>Uganda Statutes Repository</h1>
+            <p class="header-subtitle">Complete collection of Ugandan legislation</p>
         </div>
     </header>
     
     <div class="container">
-        <div class="search-section">
+        <div class="controls">
             <div class="search-box">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search statutes...">
+                <input type="text" id="searchInput" placeholder="Search 48 statutes by name or category...">
             </div>
+            <div class="stats-counter" id="statsCounter">48 statutes</div>
             <button class="clear-btn" id="clearSearch">
                 <i class="fas fa-times"></i> Clear
             </button>
         </div>
         
+        <div class="filter-buttons" id="filterButtons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Criminal">Criminal Law</button>
+            <button class="filter-btn" data-filter="Civil">Civil Procedure</button>
+            <button class="filter-btn" data-filter="Judicature">Judicature</button>
+            <button class="filter-btn" data-filter="Constitutional">Constitutional</button>
+            <button class="filter-btn" data-filter="Administrative">Administrative</button>
+            <button class="filter-btn" data-filter="Commercial">Commercial</button>
+        </div>
+        
         <div class="statutes-grid" id="statutesContainer">
-            <!-- Cards will be loaded here -->
+            <!-- All 48 statutes will be loaded here -->
         </div>
     </div>
     
@@ -307,65 +415,478 @@
         <iframe class="pdf-iframe" id="pdfFrame"></iframe>
     </div>
     
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Loading PDF document...</p>
+    </div>
+    
     <footer>
         <div class="container">
-            <p>Uganda Statutes Repository</p>
+            <p>Uganda Statutes Repository • 48 Legal Documents</p>
         </div>
     </footer>
 
     <script>
-        // Sample statutes - Update these with your actual GitHub URLs
+        // All 48 statutes with proper GitHub URLs
         const statutes = [
             {
                 id: 1,
-                title: "Trial on Indictment Act",
-                code: "Cap 25 (3)",
-                filename: "Trial on Indictment Act Cap 25 (3).pdf",
-                // Using Google Docs viewer as fallback since GitHub doesn't embed PDFs well
-                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Trial%20on%20Indictment%20Act%20Cap%2025%20(3).pdf&embedded=true",
-                directUrl: "https://hunter9201.github.io/Trial%20on%20Indictment%20Act%20Cap%2025%20(3).pdf",
-                description: "An Act to provide for the trial on indictment of persons charged with offences.",
-                category: "Criminal Law"
+                title: "Advocates (Remuneration and Taxation of Costs) (Amendment) Regulations",
+                code: "2018",
+                filename: "Advocates (Remuneration and Taxation of Costs) (Amendment) Regulations 2018.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Advocates%20(Remuneration%20and%20Taxation%20of%20Costs)%20(Amendment)%20Regulations%202018.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Advocates%20(Remuneration%20and%20Taxation%20of%20Costs)%20(Amendment)%20Regulations%202018.pdf",
+                category: "Administrative"
             },
             {
                 id: 2,
-                title: "Penal Code Act",
-                code: "Cap 120",
-                filename: "Penal Code Act Cap 120.pdf",
-                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Penal%20Code%20Act%20Cap%20120.pdf&embedded=true",
-                directUrl: "https://hunter9201.github.io/Penal%20Code%20Act%20Cap%20120.pdf",
-                description: "The principal legislation that defines criminal offences and prescribes penalties.",
-                category: "Criminal Law"
+                title: "Anti-Corruption Act",
+                code: "Cap 116",
+                filename: "Anti-Corruption Act Cap 116..pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Anti-Corruption%20Act%20Cap%20116..pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Anti-Corruption%20Act%20Cap%20116..pdf",
+                category: "Criminal"
             },
             {
                 id: 3,
-                title: "Magistrates Courts Act",
-                code: "Cap 16",
-                filename: "Magistrates Courts Act Cap 16.pdf",
-                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Magistrates%20Courts%20Act%20Cap%2016.pdf&embedded=true",
-                directUrl: "https://hunter9201.github.io/Magistrates%20Courts%20Act%20Cap%2016.pdf",
-                description: "An Act to consolidate and amend the law relating to magistrates courts.",
-                category: "Judiciary"
+                title: "Bill of Exchange Act",
+                code: "Cap 281",
+                filename: "Bill of Exchange Act Cap 281.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Bill%20of%20Exchange%20Act%20Cap%20281.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Bill%20of%20Exchange%20Act%20Cap%20281.pdf",
+                category: "Commercial"
             },
             {
                 id: 4,
-                title: "Evidence Act",
-                code: "Cap 6",
-                filename: "Evidence Act Cap 6.pdf",
-                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Evidence%20Act%20Cap%206.pdf&embedded=true",
-                directUrl: "https://hunter9201.github.io/Evidence%20Act%20Cap%206.pdf",
-                description: "Legislation governing the rules of evidence in Ugandan courts.",
-                category: "Legal Procedure"
+                title: "Civil Procedure Rules",
+                code: "SI.71-1",
+                filename: "Civil Procedure Rules SI.71_1.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Civil%20Procedure%20Rules%20SI.71_1.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Civil%20Procedure%20Rules%20SI.71_1.pdf",
+                category: "Civil"
             },
             {
                 id: 5,
-                title: "Interpretation Act",
-                code: "Cap 3",
-                filename: "Interpretation Act Cap 3.pdf",
-                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Interpretation%20Act%20Cap%203.pdf&embedded=true",
-                directUrl: "https://hunter9201.github.io/Interpretation%20Act%20Cap%203.pdf",
-                description: "An Act providing for the interpretation of Ugandan laws.",
-                category: "General Law"
+                title: "Civil Procedure Act",
+                code: "Cap 282",
+                filename: "Civil Procedure Act Cap 282.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Civil%20Procedure%20Act%20Cap%20282.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Civil%20Procedure%20Act%20Cap%20282.pdf",
+                category: "Civil"
+            },
+            {
+                id: 6,
+                title: "Civil Procedure Act",
+                code: "",
+                filename: "Civil Procedure Act.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Civil%20Procedure%20Act.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Civil%20Procedure%20Act.pdf",
+                category: "Civil"
+            },
+            {
+                id: 7,
+                title: "Commissioners for Oaths (Advocates) Act",
+                code: "Cap 6",
+                filename: "Commissioners for Oaths (Advocates) Act Cap 6..pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Commissioners%20for%20Oaths%20(Advocates)%20Act%20Cap%206..pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Commissioners%20for%20Oaths%20(Advocates)%20Act%20Cap%206..pdf",
+                category: "Administrative"
+            },
+            {
+                id: 8,
+                title: "Constitution of the Republic of Uganda",
+                code: "",
+                filename: "Constitution of the Republic of Uganda.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Constitution%20of%20the%20Republic%20of%20Uganda.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Constitution%20of%20the%20Republic%20of%20Uganda.pdf",
+                category: "Constitutional"
+            },
+            {
+                id: 9,
+                title: "Contracts Act",
+                code: "",
+                filename: "Contracts Act.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Contracts%20Act.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Contracts%20Act.pdf",
+                category: "Commercial"
+            },
+            {
+                id: 10,
+                title: "Criminal Procedure Code Act",
+                code: "Cap 122 (3)",
+                filename: "Criminal Procedure Code Act Cap 122 (3).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Criminal%20Procedure%20Code%20Act%20Cap%20122%20(3).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Criminal%20Procedure%20Code%20Act%20Cap%20122%20(3).pdf",
+                category: "Criminal"
+            },
+            {
+                id: 11,
+                title: "Criminal Procedure Code Act",
+                code: "Cap 122",
+                filename: "Criminal Procedure Code Act Cap 122.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Criminal%20Procedure%20Code%20Act%20Cap%20122.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Criminal%20Procedure%20Code%20Act%20Cap%20122.pdf",
+                category: "Criminal"
+            },
+            {
+                id: 12,
+                title: "Education (Pre-Primary, Primary and Post-Primary) Act",
+                code: "Cap 247",
+                filename: "Education (Pre-Primary, Primary and Post-Primary) Act Cap 247.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Education%20(Pre-Primary,%20Primary%20and%20Post-Primary)%20Act%20Cap%20247.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Education%20(Pre-Primary,%20Primary%20and%20Post-Primary)%20Act%20Cap%20247.pdf",
+                category: "Administrative"
+            },
+            {
+                id: 13,
+                title: "Electoral Commissions Act",
+                code: "Cap 176",
+                filename: "Electoral Commisions Act Cap 176.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Electoral%20Commisions%20Act%20Cap%20176.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Electoral%20Commisions%20Act%20Cap%20176.pdf",
+                category: "Constitutional"
+            },
+            {
+                id: 14,
+                title: "Electricity Act",
+                code: "Cap 157",
+                filename: "Electricity Act Cap 157.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Electricity%20Act%20Cap%20157.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Electricity%20Act%20Cap%20157.pdf",
+                category: "Commercial"
+            },
+            {
+                id: 15,
+                title: "Employment Act",
+                code: "Cap 226",
+                filename: "Employment Act Cap 226.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Employment%20Act%20Cap%20226.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Employment%20Act%20Cap%20226.pdf",
+                category: "Commercial"
+            },
+            {
+                id: 16,
+                title: "Evidence Act",
+                code: "Cap 8 (1)",
+                filename: "Evidence Act Cap 8 (1).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Evidence%20Act%20Cap%208%20(1).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Evidence%20Act%20Cap%208%20(1).pdf",
+                category: "Civil"
+            },
+            {
+                id: 17,
+                title: "Evidence Act",
+                code: "Cap 8",
+                filename: "Evidence Act Cap 8.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Evidence%20Act%20Cap%208.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Evidence%20Act%20Cap%208.pdf",
+                category: "Civil"
+            },
+            {
+                id: 18,
+                title: "Fire Arms Act",
+                code: "Cap 320 (1)",
+                filename: "Fire Arms Act Cap 320 (1).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Fire%20Arms%20Act%20Cap%20320%20(1).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Fire%20Arms%20Act%20Cap%20320%20(1).pdf",
+                category: "Criminal"
+            },
+            {
+                id: 19,
+                title: "Identification of Offenders Act",
+                code: "Cap 127",
+                filename: "Identification of Offenders Act Cap 127.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Identification%20of%20Offenders%20Act%20Cap%20127.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Identification%20of%20Offenders%20Act%20Cap%20127.pdf",
+                category: "Criminal"
+            },
+            {
+                id: 20,
+                title: "Judicature (Court of Appeal) Rules",
+                code: "",
+                filename: "JUDICATURE(court of appeal)rules[1] (3).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/JUDICATURE(court%20of%20appeal)rules[1]%20(3).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/JUDICATURE(court%20of%20appeal)rules[1]%20(3).pdf",
+                category: "Judicature"
+            },
+            {
+                id: 21,
+                title: "Judicature (Criminal Procedure) (Application)",
+                code: "SI 13-8",
+                filename: "Judicature (Criminal Procedure)(Application) SI_13_8.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Judicature%20(Criminal%20Procedure)(Application)%20SI_13_8.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Judicature%20(Criminal%20Procedure)(Application)%20SI_13_8.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 22,
+                title: "Judicature (Criminal Procedure) (Application)",
+                code: "",
+                filename: "Judicature (Criminal Procedure)(Application).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Judicature%20(Criminal%20Procedure)(Application).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Judicature%20(Criminal%20Procedure)(Application).pdf",
+                category: "Judicature"
+            },
+            {
+                id: 23,
+                title: "Judicature (Plea Bargain) Rules",
+                code: "",
+                filename: "Judicature (Plea Bargain) Rules.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Judicature%20(Plea%20Bargain)%20Rules.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Judicature%20(Plea%20Bargain)%20Rules.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 24,
+                title: "Judicature Act",
+                code: "Cap 16",
+                filename: "Judicature Act Cap 16.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Judicature%20Act%20Cap%2016.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Judicature%20Act%20Cap%2016.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 25,
+                title: "Judicature Act",
+                code: "",
+                filename: "Judicature Act.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Judicature%20Act.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Judicature%20Act.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 26,
+                title: "Judicature (Court Fees, Fines and Deposit) Rules",
+                code: "",
+                filename: "Judicature(court fees fines and deposit)rules.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Judicature(court%20fees%20fines%20and%20deposit)rules.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Judicature(court%20fees%20fines%20and%20deposit)rules.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 27,
+                title: "Judicature Act",
+                code: "Cap 16",
+                filename: "Judicture Act Cap 16.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Judicture%20Act%20Cap%2016.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Judicture%20Act%20Cap%2016.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 28,
+                title: "Kampala Capital City Authority Act",
+                code: "Cap 195",
+                filename: "Kampala Capital City Authority Act Cap 195.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Kampala%20Capital%20City%20Authority%20Act%20Cap%20195.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Kampala%20Capital%20City%20Authority%20Act%20Cap%20195.pdf",
+                category: "Administrative"
+            },
+            {
+                id: 29,
+                title: "Labour Disputes (Arbitration and Settlement) Act",
+                code: "Cap 227",
+                filename: "Labour Disputes(Arbitration and Settlement) Act Cap 227.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Labour%20Disputes(Arbitration%20and%20Settlement)%20Act%20Cap%20227.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Labour%20Disputes(Arbitration%20and%20Settlement)%20Act%20Cap%20227.pdf",
+                category: "Commercial"
+            },
+            {
+                id: 30,
+                title: "Limitation Act",
+                code: "Cap 290",
+                filename: "Limitation Act Cap 290.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Limitation%20Act%20Cap%20290.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Limitation%20Act%20Cap%20290.pdf",
+                category: "Civil"
+            },
+            {
+                id: 31,
+                title: "Local Government Act",
+                code: "Cap 138",
+                filename: "Local Government Act Cap 138.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Local%20Government%20Act%20Cap%20138.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Local%20Government%20Act%20Cap%20138.pdf",
+                category: "Administrative"
+            },
+            {
+                id: 32,
+                title: "Magistrate Court Act",
+                code: "Cap 19",
+                filename: "Magistrate Court Act Cap 19.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Magistrate%20Court%20Act%20Cap%2019.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Magistrate%20Court%20Act%20Cap%2019.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 33,
+                title: "Magistrates Court Act",
+                code: "Cap 19 (2)",
+                filename: "Magistrates Court Act Cap 19 (2).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Magistrates%20Court%20Act%20Cap%2019%20(2).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Magistrates%20Court%20Act%20Cap%2019%20(2).pdf",
+                category: "Judicature"
+            },
+            {
+                id: 34,
+                title: "Magistrates Courts (Magisterial Areas and Magistrates Courts) Instrument",
+                code: "2024",
+                filename: "Magistrates Courts (Magisterial Areas and Magistrates Courts) Instrument, 2024.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Magistrates%20Courts%20(Magisterial%20Areas%20and%20Magistrates%20Courts)%20Instrument,%202024.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Magistrates%20Courts%20(Magisterial%20Areas%20and%20Magistrates%20Courts)%20Instrument,%202024.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 35,
+                title: "Narcotic Drugs & Psychotropic Substances Control Act",
+                code: "Cap 37 (1)",
+                filename: "Narcotic Drugs & Psychotropic Substances Control Act Cap 37 (1).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Narcotic%20Drugs%20&%20Psychotropic%20Substances%20Control%20Act%20Cap%2037%20(1).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Narcotic%20Drugs%20&%20Psychotropic%20Substances%20Control%20Act%20Cap%2037%20(1).pdf",
+                category: "Criminal"
+            },
+            {
+                id: 36,
+                title: "Penal Code Act",
+                code: "Cap 128 (3)",
+                filename: "Penal Code Act. Cap. 128 (3).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Penal%20Code%20Act.%20Cap.%20128%20(3).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Penal%20Code%20Act.%20Cap.%20128%20(3).pdf",
+                category: "Criminal"
+            },
+            {
+                id: 37,
+                title: "Police Act",
+                code: "Cap 324",
+                filename: "Police Act Cap 324.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Police%20Act%20Cap%20324.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Police%20Act%20Cap%20324.pdf",
+                category: "Administrative"
+            },
+            {
+                id: 38,
+                title: "Political Parties Organizations Act",
+                code: "Cap 178",
+                filename: "Political Parties Organizations Act Cap 178.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Political%20Parties%20Organizations%20Act%20Cap%20178.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Political%20Parties%20Organizations%20Act%20Cap%20178.pdf",
+                category: "Constitutional"
+            },
+            {
+                id: 39,
+                title: "Poor Person Defence Act",
+                code: "Cap 22",
+                filename: "Poor Person Defence Act Cap 22.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Poor%20Person%20Defence%20Act%20Cap%2022.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Poor%20Person%20Defence%20Act%20Cap%2022.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 40,
+                title: "Practice Direction No.1 of 2007",
+                code: "",
+                filename: "Practice Direction No.1 of 2007.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Practice%20Direction%20No.1%20of%202007.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Practice%20Direction%20No.1%20of%202007.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 41,
+                title: "Prisons Act",
+                code: "Cap 325",
+                filename: "Prisons Act Cap 325.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Prisons%20Act%20Cap%20325.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Prisons%20Act%20Cap%20325.pdf",
+                category: "Administrative"
+            },
+            {
+                id: 42,
+                title: "Public Service Act",
+                code: "Cap 91",
+                filename: "Public Service Act Act Cap 91.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Public%20Service%20Act%20Act%20Cap%2091.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Public%20Service%20Act%20Act%20Cap%2091.pdf",
+                category: "Administrative"
+            },
+            {
+                id: 43,
+                title: "Public Service Standing Orders",
+                code: "2010",
+                filename: "Public Service Standing Orders 2010.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Public%20Service%20Standing%20Orders%202010.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Public%20Service%20Standing%20Orders%202010.pdf",
+                category: "Administrative"
+            },
+            {
+                id: 44,
+                title: "Standardized Complaints Handling Guidelines ESI",
+                code: "",
+                filename: "Standardized Complaints Handling Guidelines ESI (1).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Standardized%20Complaints%20Handling%20Guidelines%20ESI%20(1).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Standardized%20Complaints%20Handling%20Guidelines%20ESI%20(1).pdf",
+                category: "Administrative"
+            },
+            {
+                id: 45,
+                title: "Tax Appeal Tribunal Act",
+                code: "Cap 341",
+                filename: "Tax Appeal Tribunal Act Cap 341.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Tax%20Appeal%20Tribunal%20Act%20Cap%20341.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Tax%20Appeal%20Tribunal%20Act%20Cap%20341.pdf",
+                category: "Commercial"
+            },
+            {
+                id: 46,
+                title: "2016 Parliamentary Elections Digest",
+                code: "",
+                filename: "The 2016 Parliamentary Elections Digest by Prof. Justice Lilian Tibatemwa Ekirikubinza.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/The%202016%20Parliamentary%20Elections%20Digest%20by%20Prof.%20Justice%20Lilian%20Tibatemwa%20Ekirikubinza.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/The%202016%20Parliamentary%20Elections%20Digest%20by%20Prof.%20Justice%20Lilian%20Tibatemwa%20Ekirikubinza.pdf",
+                category: "Constitutional"
+            },
+            {
+                id: 47,
+                title: "The Civil Procedure (Amendment) Rules",
+                code: "",
+                filename: "The Civil Procedure (Amendment) Rules.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/The%20Civil%20Procedure%20(Amendment)%20Rules.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/The%20Civil%20Procedure%20(Amendment)%20Rules.pdf",
+                category: "Civil"
+            },
+            {
+                id: 48,
+                title: "The Constitution (Sentencing Guidelines for Courts of Judicature)",
+                code: "",
+                filename: "The Constitution(Sentencing Guidelines for Courts of Judicature)(Practice) (1).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/The%20Constitution(Sentencing%20Guidelines%20for%20Courts%20of%20Judicature)(Practice)%20(1).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/The%20Constitution(Sentencing%20Guidelines%20for%20Courts%20of%20Judicature)(Practice)%20(1).pdf",
+                category: "Judicature"
+            },
+            {
+                id: 49,
+                title: "The Magistrates Courts (Magisterial Areas) Instrument",
+                code: "",
+                filename: "The Magistrates Courts (Magisterial Areas)Instrument.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/The%20Magistrates%20Courts%20(Magisterial%20Areas)Instrument.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/The%20Magistrates%20Courts%20(Magisterial%20Areas)Instrument.pdf",
+                category: "Judicature"
+            },
+            {
+                id: 50,
+                title: "Traffic and Road Safety Act",
+                code: "Cap 347",
+                filename: "Traffic and Road Safety Cap 347 Act.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Traffic%20and%20Road%20Safety%20Cap%20347%20Act.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Traffic%20and%20Road%20Safety%20Cap%20347%20Act.pdf",
+                category: "Criminal"
+            },
+            {
+                id: 51,
+                title: "Trial on Indictment Act",
+                code: "Cap 25 (3)",
+                filename: "Trial on Indictment Act Cap 25 (3).pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Trial%20on%20Indictment%20Act%20Cap%2025%20(3).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Trial%20on%20Indictment%20Act%20Cap%2025%20(3).pdf",
+                category: "Criminal"
             }
         ];
 
@@ -377,6 +898,33 @@
         const pdfFrame = document.getElementById('pdfFrame');
         const pdfTitle = document.getElementById('pdfTitle');
         const closePdfBtn = document.getElementById('closePdf');
+        const loading = document.getElementById('loading');
+        const statsCounter = document.getElementById('statsCounter');
+        const filterButtons = document.getElementById('filterButtons');
+
+        let currentFilter = 'all';
+        let filteredStatutes = [...statutes];
+
+        // Initialize
+        function init() {
+            renderStatutes(filteredStatutes);
+            updateStats();
+            
+            // Add event listeners to filter buttons
+            filterButtons.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    // Update active button
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    
+                    // Apply filter
+                    currentFilter = e.target.dataset.filter;
+                    applyFilters();
+                }
+            });
+        }
 
         // Render statutes
         function renderStatutes(statutesArray) {
@@ -387,7 +935,7 @@
                     <div class="no-results">
                         <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem;"></i>
                         <h3>No statutes found</h3>
-                        <p>Try a different search term</p>
+                        <p>Try a different search term or filter</p>
                     </div>
                 `;
                 return;
@@ -399,16 +947,16 @@
                 card.innerHTML = `
                     <div class="statute-header">
                         <div class="statute-title">${statute.title}</div>
-                        <div class="statute-code">${statute.code}</div>
+                        <div class="statute-code">${statute.code || 'Act'}</div>
                     </div>
                     <div class="statute-body">
-                        <p class="statute-description">${statute.description}</p>
+                        <div class="category-tag">${statute.category} Law</div>
                         <div class="statute-filename">${statute.filename}</div>
                         <div class="statute-actions">
-                            <button class="btn btn-view" onclick="openPdf('${statute.title} ${statute.code}', '${statute.pdfUrl}')">
+                            <button class="btn btn-view" onclick="openPdf('${statute.title.replace(/'/g, "\\'")} ${statute.code || ''}', '${statute.pdfUrl}')">
                                 <i class="fas fa-eye"></i> View
                             </button>
-                            <button class="btn btn-download" onclick="downloadPdf('${statute.filename}', '${statute.directUrl}')">
+                            <button class="btn btn-download" onclick="downloadPdf('${statute.filename.replace(/'/g, "\\'")}', '${statute.directUrl}')">
                                 <i class="fas fa-download"></i> Download
                             </button>
                         </div>
@@ -420,21 +968,24 @@
 
         // Open PDF in modal
         function openPdf(title, url) {
+            showLoading();
             pdfTitle.textContent = title;
             pdfFrame.src = url;
-            pdfModal.style.display = 'block';
+            pdfModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            
+            // Hide loading after PDF loads
+            setTimeout(() => {
+                hideLoading();
+            }, 1000);
         }
 
         // Download PDF
         function downloadPdf(filename, url) {
-            // Create a link element
             const link = document.createElement('a');
             link.href = url;
             link.download = filename;
             link.target = '_blank';
-            
-            // Append to body, click, and remove
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -447,56 +998,82 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Filter statutes
-        function filterStatutes(searchTerm) {
-            if (!searchTerm.trim()) {
-                renderStatutes(statutes);
-                return;
-            }
+        // Apply search and filter
+        function applyFilters() {
+            const searchTerm = searchInput.value.toLowerCase();
             
-            const filtered = statutes.filter(statute => {
-                const term = searchTerm.toLowerCase();
-                return statute.title.toLowerCase().includes(term) ||
-                       statute.code.toLowerCase().includes(term) ||
-                       statute.description.toLowerCase().includes(term) ||
-                       statute.category.toLowerCase().includes(term);
+            filteredStatutes = statutes.filter(statute => {
+                // Apply category filter
+                if (currentFilter !== 'all' && !statute.category.toLowerCase().includes(currentFilter.toLowerCase())) {
+                    return false;
+                }
+                
+                // Apply search filter
+                if (searchTerm) {
+                    return statute.title.toLowerCase().includes(searchTerm) ||
+                           statute.code.toLowerCase().includes(searchTerm) ||
+                           statute.filename.toLowerCase().includes(searchTerm) ||
+                           statute.category.toLowerCase().includes(searchTerm);
+                }
+                
+                return true;
             });
             
-            renderStatutes(filtered);
+            renderStatutes(filteredStatutes);
+            updateStats();
+        }
+
+        // Update stats counter
+        function updateStats() {
+            statsCounter.textContent = `${filteredStatutes.length} of ${statutes.length} statutes`;
+        }
+
+        // Show loading indicator
+        function showLoading() {
+            loading.style.display = 'block';
+        }
+
+        // Hide loading indicator
+        function hideLoading() {
+            loading.style.display = 'none';
         }
 
         // Event listeners
-        searchInput.addEventListener('input', (e) => {
-            filterStatutes(e.target.value);
-        });
+        searchInput.addEventListener('input', applyFilters);
 
         clearSearchBtn.addEventListener('click', () => {
             searchInput.value = '';
-            renderStatutes(statutes);
+            currentFilter = 'all';
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+            applyFilters();
+            searchInput.focus();
         });
 
         closePdfBtn.addEventListener('click', closePdfModal);
 
-        // Close modal when clicking outside
         pdfModal.addEventListener('click', (e) => {
             if (e.target === pdfModal) {
                 closePdfModal();
             }
         });
 
-        // Close with Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && pdfModal.style.display === 'block') {
+            if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
                 closePdfModal();
             }
         });
 
-        // Initialize
-        renderStatutes(statutes);
-
         // Make functions available globally
         window.openPdf = openPdf;
         window.downloadPdf = downloadPdf;
+
+        // Initialize the app
+        init();
     </script>
 </body>
 </html>
