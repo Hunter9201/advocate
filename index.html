@@ -14,9 +14,10 @@
         }
         
         body {
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #f5f7fa;
+            color: #2d3436;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
@@ -26,124 +27,225 @@
         }
         
         header {
-            background-color: #ffeaa7;
-            padding: 2rem 0;
+            background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+            padding: 2.5rem 0;
             text-align: center;
-            border-bottom: 5px solid #fdcb6e;
-            margin-bottom: 2rem;
+            border-bottom: 8px solid #000000;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
         }
         
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .uganda-flag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .flag-stripe {
+            width: 60px;
+            height: 12px;
+        }
+        
+        .black { background-color: #000000; }
+        .yellow { background-color: #FFD700; }
+        .red { background-color: #C8102E; }
+        
         h1 {
-            color: #2d3436;
+            color: #000000;
             font-size: 2.8rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
         
         .subtitle {
-            color: #636e72;
+            color: #2d3436;
             font-size: 1.2rem;
-            font-weight: 400;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .search-section {
             background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 1rem;
         }
         
         .search-box {
             flex-grow: 1;
-            margin-right: 1rem;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #636e72;
         }
         
         .search-box input {
             width: 100%;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 14px 20px 14px 50px;
+            border: 2px solid #e0e6ed;
+            border-radius: 8px;
             font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #74b9ff;
+            box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.1);
+        }
+        
+        .search-stats {
+            color: #636e72;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         
         .statutes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.8rem;
             margin-bottom: 3rem;
+        }
+        
+        @media (min-width: 1200px) {
+            .statutes-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .statutes-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         .statute-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .statute-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
         
         .statute-header {
-            background-color: #74b9ff;
+            background: linear-gradient(to right, #74b9ff, #0984e3);
             color: white;
-            padding: 1.2rem;
+            padding: 1.5rem;
             display: flex;
             align-items: center;
+            gap: 1.2rem;
         }
         
-        .statute-header i {
-            font-size: 1.8rem;
-            margin-right: 1rem;
-        }
-        
-        .statute-body {
-            padding: 1.5rem;
-        }
-        
-        .statute-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: #2d3436;
-        }
-        
-        .statute-description {
-            color: #636e72;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .statute-actions {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .btn {
-            padding: 10px 18px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s;
+        .statute-icon {
+            font-size: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .btn-view {
-            background-color: #55efc4;
+        .statute-title-container {
+            flex-grow: 1;
+        }
+        
+        .statute-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+        
+        .statute-code {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .statute-body {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .statute-description {
+            color: #636e72;
+            font-size: 1rem;
+            margin-bottom: 1.8rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .statute-category {
+            display: inline-block;
+            background-color: #dfe6e9;
             color: #2d3436;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .statute-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        
+        .btn-view {
+            background-color: #00b894;
+            color: white;
         }
         
         .btn-view:hover {
-            background-color: #00cec9;
+            background-color: #00a085;
+            transform: translateY(-2px);
         }
         
         .btn-download {
@@ -153,6 +255,7 @@
         
         .btn-download:hover {
             background-color: #b2bec3;
+            transform: translateY(-2px);
         }
         
         .btn i {
@@ -165,7 +268,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             display: none;
             flex-direction: column;
@@ -174,9 +277,28 @@
         .pdf-viewer-header {
             background-color: #2d3436;
             color: white;
-            padding: 1rem;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .pdf-viewer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pdf-viewer-title i {
+            color: #ff7675;
+        }
+        
+        .pdf-viewer-controls {
+            display: flex;
+            gap: 1rem;
             align-items: center;
         }
         
@@ -192,82 +314,176 @@
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
         }
         
         .close-btn {
             background-color: #ff7675;
             color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 6px;
             cursor: pointer;
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .close-btn:hover {
             background-color: #d63031;
+            transform: translateY(-2px);
         }
         
-        .uganda-flag {
-            display: inline-block;
-            width: 30px;
-            height: 20px;
-            background: linear-gradient(to bottom, 
-                black 33.33%, 
-                yellow 33.33%, 66.66%, 
-                red 66.66%);
-            margin-right: 10px;
-            border-radius: 2px;
+        .download-pdf-btn {
+            background-color: #74b9ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .download-pdf-btn:hover {
+            background-color: #0984e3;
         }
         
         footer {
+            background-color: #2d3436;
+            color: #dfe6e9;
             text-align: center;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+        
+        .copyright {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: 1.5rem;
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .no-results i {
+            font-size: 4rem;
+            color: #b2bec3;
+            margin-bottom: 1.5rem;
+        }
+        
+        .no-results h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #2d3436;
+        }
+        
+        .no-results p {
             color: #636e72;
-            border-top: 1px solid #dfe6e9;
-            margin-top: 2rem;
+            font-size: 1.1rem;
         }
         
         @media (max-width: 768px) {
-            .statutes-grid {
-                grid-template-columns: 1fr;
+            h1 {
+                font-size: 2.2rem;
             }
             
             .search-section {
                 flex-direction: column;
+                align-items: stretch;
             }
             
             .search-box {
-                margin-right: 0;
-                margin-bottom: 1rem;
-                width: 100%;
+                min-width: 100%;
             }
             
-            h1 {
-                font-size: 2.2rem;
+            .statute-actions {
+                flex-direction: column;
             }
+            
+            .pdf-viewer-header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .pdf-viewer-title {
+                font-size: 1.1rem;
+            }
+            
+            .pdf-viewer-controls {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        .statute-filename {
+            font-size: 0.85rem;
+            color: #74b9ff;
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            border-left: 3px solid #74b9ff;
+            word-break: break-all;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
-                <div class="uganda-flag"></div>
-                <h1>Uganda Statutes</h1>
+            <div class="header-content">
+                <div class="uganda-flag">
+                    <div class="flag-stripe black"></div>
+                    <div class="flag-stripe yellow"></div>
+                    <div class="flag-stripe red"></div>
+                </div>
+                <h1>Uganda Statutes Repository</h1>
+                <p class="subtitle">Access, view, and download Ugandan legislation and legal documents</p>
             </div>
-            <p class="subtitle">A digital repository of Ugandan legislation</p>
         </div>
     </header>
     
     <div class="container">
         <div class="search-section">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search for a statute (e.g., 'Trial on Indictment')">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search statutes by title, code, or description...">
             </div>
-            <div>
-                <button class="btn btn-view" id="clearSearchBtn">
-                    <i class="fas fa-times"></i> Clear Search
-                </button>
+            <div class="search-stats">
+                <span id="statuteCount">6</span> statutes available
             </div>
         </div>
         
@@ -279,9 +495,17 @@
     <!-- PDF Viewer Modal -->
     <div class="pdf-viewer-modal" id="pdfModal">
         <div class="pdf-viewer-header">
-            <div id="pdfTitle">Document Viewer</div>
-            <div class="close-btn" id="closePdfBtn">
-                <i class="fas fa-times"></i> Close
+            <div class="pdf-viewer-title">
+                <i class="fas fa-file-pdf"></i>
+                <span id="pdfTitle">Document Viewer</span>
+            </div>
+            <div class="pdf-viewer-controls">
+                <button class="download-pdf-btn" id="modalDownloadBtn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+                <button class="close-btn" id="closePdfBtn">
+                    <i class="fas fa-times"></i> Close Viewer
+                </button>
             </div>
         </div>
         <div class="pdf-viewer-body">
@@ -291,72 +515,117 @@
     
     <footer>
         <div class="container">
-            <p>© 2023 Uganda Statutes Repository. This is a demonstration website for educational purposes.</p>
-            <p>All documents are in the public domain or used for illustrative purposes.</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="flag-stripe black"></div>
+                    <div class="flag-stripe yellow"></div>
+                    <div class="flag-stripe red"></div>
+                    <div class="footer-logo-text">Uganda Statutes</div>
+                </div>
+                <p>This repository provides access to official Ugandan legislation for reference and educational purposes.</p>
+                <p class="copyright">© 2023 Uganda Statutes Repository. All rights reserved.</p>
+            </div>
         </div>
     </footer>
     
     <script>
-        // Sample statutes data (in a real scenario, this would come from a database)
+        // Statutes data with actual PDF filenames
         const statutes = [
             {
                 id: 1,
                 title: "Trial on Indictment Act",
-                code: "Cap 25",
+                code: "Cap 25 (3)",
                 filename: "Trial on Indictment Act Cap 25 (3).pdf",
-                description: "An Act to provide for the trial on indictment of persons charged with offences.",
-                category: "Criminal Law"
+                description: "An Act to provide for the trial on indictment of persons charged with offences. This legislation outlines procedures for trials conducted on indictment in Ugandan courts.",
+                category: "Criminal Law",
+                year: "2010"
             },
             {
                 id: 2,
                 title: "Penal Code Act",
                 code: "Cap 120",
                 filename: "Penal Code Act Cap 120.pdf",
-                description: "An Act to establish a code of criminal law for Uganda.",
-                category: "Criminal Law"
+                description: "The principal legislation that defines criminal offences and prescribes penalties in Uganda. It serves as the foundation of criminal law in the country.",
+                category: "Criminal Law",
+                year: "2014"
             },
             {
                 id: 3,
                 title: "Magistrates Courts Act",
                 code: "Cap 16",
                 filename: "Magistrates Courts Act Cap 16.pdf",
-                description: "An Act to consolidate and amend the law relating to magistrates courts.",
-                category: "Judiciary"
+                description: "An Act to consolidate and amend the law relating to magistrates courts in Uganda, including their jurisdiction, powers, and procedures.",
+                category: "Judiciary",
+                year: "2017"
             },
             {
                 id: 4,
                 title: "Evidence Act",
                 code: "Cap 6",
                 filename: "Evidence Act Cap 6.pdf",
-                description: "An Act to declare the law of evidence in Uganda.",
-                category: "Legal Procedure"
+                description: "Legislation governing the rules of evidence in Ugandan courts. It defines what constitutes admissible evidence in legal proceedings.",
+                category: "Legal Procedure",
+                year: "2011"
             },
             {
                 id: 5,
                 title: "Interpretation Act",
                 code: "Cap 3",
                 filename: "Interpretation Act Cap 3.pdf",
-                description: "An Act to provide for the interpretation of the laws of Uganda.",
-                category: "General Law"
+                description: "An Act providing for the interpretation of Ugandan laws, including definitions of terms and rules for statutory interpretation.",
+                category: "General Law",
+                year: "2000"
             },
             {
                 id: 6,
-                title: "Constitution of the Republic of Uganda",
-                code: "1995",
+                title: "Constitution of Uganda",
+                code: "1995 (Amended)",
                 filename: "Constitution of Uganda 1995.pdf",
-                description: "The supreme law of the Republic of Uganda.",
-                category: "Constitutional Law"
+                description: "The supreme law of Uganda, establishing the country's political structure, fundamental rights, and governance framework.",
+                category: "Constitutional Law",
+                year: "1995"
+            },
+            {
+                id: 7,
+                title: "Civil Procedure Act",
+                code: "Cap 71",
+                filename: "Civil Procedure Act Cap 71.pdf",
+                description: "An Act to provide for the procedure to be followed in civil courts in Uganda, including rules for filing cases and court processes.",
+                category: "Legal Procedure",
+                year: "2019"
+            },
+            {
+                id: 8,
+                title: "Land Act",
+                code: "Cap 227",
+                filename: "Land Act Cap 227.pdf",
+                description: "Legislation governing land ownership, use, and management in Uganda, including provisions for customary and freehold land.",
+                category: "Property Law",
+                year: "1998"
+            },
+            {
+                id: 9,
+                title: "Companies Act",
+                code: "Cap 110",
+                filename: "Companies Act Cap 110.pdf",
+                description: "An Act providing for the incorporation, regulation, and winding up of companies in Uganda.",
+                category: "Commercial Law",
+                year: "2012"
             }
         ];
         
         // DOM Elements
         const statutesContainer = document.getElementById('statutesContainer');
         const searchInput = document.getElementById('searchInput');
-        const clearSearchBtn = document.getElementById('clearSearchBtn');
+        const statuteCount = document.getElementById('statuteCount');
         const pdfModal = document.getElementById('pdfModal');
         const pdfFrame = document.getElementById('pdfFrame');
         const pdfTitle = document.getElementById('pdfTitle');
         const closePdfBtn = document.getElementById('closePdfBtn');
+        const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+        
+        // Current PDF being viewed
+        let currentPdfFile = '';
         
         // Function to render statutes
         function renderStatutes(statutesArray) {
@@ -364,10 +633,10 @@
             
             if (statutesArray.length === 0) {
                 statutesContainer.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #636e72;">
-                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
                         <h3>No statutes found</h3>
-                        <p>Try a different search term</p>
+                        <p>Try searching with different keywords or browse all statutes</p>
                     </div>
                 `;
                 return;
@@ -379,17 +648,23 @@
                 
                 card.innerHTML = `
                     <div class="statute-header">
-                        <i class="fas fa-gavel"></i>
-                        <div>
+                        <div class="statute-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div class="statute-title-container">
                             <h3 class="statute-title">${statute.title}</h3>
-                            <p>${statute.code}</p>
+                            <div class="statute-code">${statute.code} • ${statute.year}</div>
                         </div>
                     </div>
                     <div class="statute-body">
+                        <div class="statute-category">${statute.category}</div>
                         <p class="statute-description">${statute.description}</p>
+                        <div class="statute-filename">
+                            <i class="fas fa-file-alt"></i> ${statute.filename}
+                        </div>
                         <div class="statute-actions">
                             <button class="btn btn-view view-pdf-btn" data-filename="${statute.filename}" data-title="${statute.title} ${statute.code}">
-                                <i class="fas fa-eye"></i> View PDF
+                                <i class="fas fa-eye"></i> View Document
                             </button>
                             <button class="btn btn-download download-pdf-btn" data-filename="${statute.filename}">
                                 <i class="fas fa-download"></i> Download
@@ -400,6 +675,9 @@
                 
                 statutesContainer.appendChild(card);
             });
+            
+            // Update statute count
+            statuteCount.textContent = statutesArray.length;
             
             // Add event listeners to the newly created buttons
             document.querySelectorAll('.view-pdf-btn').forEach(btn => {
@@ -420,14 +698,25 @@
         
         // Function to open PDF viewer
         function openPdfViewer(filename, title) {
-            // In a real implementation, this would point to the actual PDF file
-            // For demo purposes, we'll use a sample PDF URL
+            currentPdfFile = filename;
+            
+            // For demo purposes, we'll show a sample PDF
+            // In production, this would point to your actual PDF file
             const pdfUrl = `https://raw.githubusercontent.com/mozilla/pdf.js/gh-pages/web/compressed.tracemonkey-pldi-09.pdf`;
+            
+            // For the Trial on Indictment Act, we could use a placeholder
+            if (filename.includes("Trial on Indictment")) {
+                // This would be your actual PDF file URL in production
+                // pdfUrl = `https://your-github-repo.com/Trial on Indictment Act Cap 25 (3).pdf`;
+            }
             
             pdfTitle.textContent = title;
             pdfFrame.src = pdfUrl;
             pdfModal.style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
+            
+            // Update modal download button
+            modalDownloadBtn.setAttribute('data-filename', filename);
         }
         
         // Function to close PDF viewer
@@ -439,18 +728,28 @@
         
         // Function to simulate PDF download
         function downloadPdf(filename) {
-            alert(`In a real implementation, this would download: ${filename}`);
-            // In a real implementation, this would trigger a file download
-            // window.location.href = `path/to/pdfs/${filename}`;
+            // In production, this would trigger an actual file download
+            // For demo purposes, we'll show a notification
+            alert(`Downloading: ${filename}\n\nIn a production environment, this would download the actual PDF file.`);
+            
+            // For actual implementation, uncomment this line:
+            // window.location.href = `path/to/your/pdfs/${filename}`;
         }
         
         // Function to filter statutes based on search
         function filterStatutes(searchTerm) {
+            if (!searchTerm.trim()) {
+                renderStatutes(statutes);
+                return;
+            }
+            
             const filtered = statutes.filter(statute => {
-                return statute.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                       statute.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                       statute.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                       statute.category.toLowerCase().includes(searchTerm.toLowerCase());
+                const searchLower = searchTerm.toLowerCase();
+                return statute.title.toLowerCase().includes(searchLower) ||
+                       statute.code.toLowerCase().includes(searchLower) ||
+                       statute.description.toLowerCase().includes(searchLower) ||
+                       statute.category.toLowerCase().includes(searchLower) ||
+                       statute.filename.toLowerCase().includes(searchLower);
             });
             
             renderStatutes(filtered);
@@ -461,12 +760,14 @@
             filterStatutes(e.target.value);
         });
         
-        clearSearchBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            renderStatutes(statutes);
-        });
-        
         closePdfBtn.addEventListener('click', closePdfViewer);
+        
+        modalDownloadBtn.addEventListener('click', () => {
+            const filename = modalDownloadBtn.getAttribute('data-filename');
+            if (filename) {
+                downloadPdf(filename);
+            }
+        });
         
         // Close modal when clicking outside the PDF
         pdfModal.addEventListener('click', (e) => {
@@ -475,15 +776,20 @@
             }
         });
         
-        // Listen for messages from the iframe (in a real scenario, this would detect when PDF is closed)
-        window.addEventListener('message', (event) => {
-            // This is a simulated event - in reality, we'd need to detect when the PDF viewer is closed
-            // For now, we'll just log the message
-            console.log('Message from iframe:', event.data);
+        // Listen for Escape key to close PDF viewer
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
+                closePdfViewer();
+            }
         });
         
         // Initialize the page
         renderStatutes(statutes);
+        
+        // Auto-focus search on page load
+        setTimeout(() => {
+            searchInput.focus();
+        }, 500);
     </script>
 </body>
 </html>
