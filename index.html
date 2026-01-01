@@ -539,7 +539,7 @@
     <main class="main-container">
         <div class="page-header">
             <h2>📚 Uganda Laws & Legal Documents</h2>
-            <p>Browse, search, and access complete Ugandan legal documents. All PDFs are stored in the <code>/pdfs</code> folder and open directly in your browser.</p>
+            <p>Browse, search, and access complete Ugandan legal documents. All PDFs are stored in GitHub Pages and open directly in your browser.</p>
         </div>
 
         <!-- Stats Bar -->
@@ -630,7 +630,7 @@
     </footer>
 
     <script>
-        // Uganda Legal Documents Data - Using the exact filenames you provided
+        // Uganda Legal Documents Data - Using the exact filenames from GitHub
         const ugandaLegalDocuments = [
             {
                 id: 1,
@@ -646,12 +646,13 @@
             },
             {
                 id: 2,
-                title: "The 1995 Constitution of the Republic of Uganda",
+                title: "Constitution of the Republic of Uganda",
                 description: "The supreme law of Uganda establishing the framework for government, fundamental rights, and duties of citizens.",
                 filename: "Constitution of the Republic of Uganda.pdf",
-                category: "constitution",
+                category: "constitutional",
                 size: "5.2 MB",
                 pages: 212,
+                date: "2024-01-10",
                 updated: true,
                 year: "1995"
             },
@@ -966,6 +967,14 @@
             updatedCount.textContent = updated;
         }
 
+        // Function to get proper GitHub Pages URL for PDFs
+        function getPDFUrl(filename) {
+            // For GitHub Pages, we need to properly encode the filename
+            // and handle the relative path structure
+            const encodedFilename = encodeURIComponent(filename);
+            return `./${encodedFilename}`;
+        }
+
         // Initialize the PDF grid
         function renderDocuments() {
             pdfGrid.innerHTML = '';
@@ -1035,6 +1044,9 @@
                 // Get category display name
                 const categoryDisplay = categoryNames[doc.category] || doc.category;
                 
+                // Get the actual PDF URL for GitHub Pages
+                const pdfUrl = getPDFUrl(doc.filename);
+                
                 docCard.innerHTML = `
                     <div class="pdf-card-header">
                         ${doc.updated ? '<span class="badge">Updated</span>' : ''}
@@ -1054,7 +1066,7 @@
                         </div>
                     </div>
                     <div class="pdf-card-footer">
-                        <a href="pdfs/${doc.filename}" class="pdf-button open" target="_blank">
+                        <a href="${pdfUrl}" class="pdf-button open" target="_blank">
                             🔗 Open PDF
                         </a>
                         <button class="pdf-button preview" data-id="${doc.id}">
@@ -1083,12 +1095,14 @@
             // Update preview title
             previewTitle.textContent = `Preview: ${doc.title}`;
             
-            // Use the actual PDF file from the /pdfs folder
-            // Note: For GitHub Pages, the path is relative
-            const pdfPath = `pdfs/${encodeURIComponent(doc.filename)}`;
+            // Get the actual PDF URL for GitHub Pages
+            const pdfUrl = getPDFUrl(doc.filename);
             
+            // For preview, we'll use Google Docs viewer as a fallback
+            // Note: This may not work for all PDFs due to CORS restrictions
+            // For GitHub Pages, direct PDF embedding often works better
             const previewHTML = `
-                <iframe src="${pdfPath}" 
+                <iframe src="${pdfUrl}" 
                         title="${doc.title}" 
                         style="width: 100%; height: 100%; border: none;">
                 </iframe>
@@ -1155,6 +1169,14 @@
         // Initial render and stats calculation
         calculateStats();
         renderDocuments();
+        
+        // Log GitHub Pages deployment instructions
+        console.log("GitHub Pages Deployment Instructions:");
+        console.log("1. Upload this HTML file as 'index.html' to your repository");
+        console.log("2. Upload all PDF files directly to the repository (same directory as index.html)");
+        console.log("3. Enable GitHub Pages in repository settings");
+        console.log("4. PDFs will be accessible at: https://[username].github.io/[repository]/filename.pdf");
+        console.log("5. IMPORTANT: Make sure PDF filenames match exactly (including spaces and special characters)");
     </script>
 </body>
 </html>
