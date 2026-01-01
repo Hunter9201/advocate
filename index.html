@@ -10,14 +10,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         body {
             background-color: #f8fafc;
             color: #1e293b;
             line-height: 1.6;
-            min-height: 100vh;
         }
         
         .container {
@@ -27,47 +26,37 @@
         }
         
         header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 2.5rem 0;
+            background: #1e293b;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
             text-align: center;
-            margin-bottom: 2.5rem;
         }
         
         h1 {
-            color: #ffffff;
-            font-size: 2.5rem;
+            color: white;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .subtitle {
-            color: #cbd5e9;
-            font-size: 1.1rem;
-            font-weight: 400;
         }
         
         .search-section {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
             margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
             gap: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            align-items: center;
         }
         
         .search-box {
-            flex-grow: 1;
-            min-width: 300px;
+            flex: 1;
             position: relative;
         }
         
         .search-icon {
             position: absolute;
-            left: 15px;
+            left: 12px;
             top: 50%;
             transform: translateY(-50%);
             color: #64748b;
@@ -75,19 +64,15 @@
         
         .search-box input {
             width: 100%;
-            padding: 12px 15px 12px 45px;
+            padding: 10px 10px 10px 40px;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 1rem;
-            transition: all 0.2s;
-            background-color: #f8fafc;
         }
         
         .search-box input:focus {
             outline: none;
             border-color: #3b82f6;
-            background-color: white;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
         
         .statutes-grid {
@@ -110,184 +95,140 @@
         }
         
         .statute-card {
-            background-color: white;
-            border-radius: 10px;
+            background: white;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             border: 1px solid #e2e8f0;
         }
         
-        .statute-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-        
         .statute-header {
-            background: linear-gradient(to right, #1e293b, #2d3748);
+            background: #334155;
             color: white;
-            padding: 1.2rem;
+            padding: 1rem;
         }
         
         .statute-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
         
         .statute-code {
             font-size: 0.9rem;
-            opacity: 0.8;
-            font-weight: 500;
+            opacity: 0.9;
         }
         
         .statute-body {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            padding: 1.2rem;
         }
         
         .statute-description {
             color: #4a5568;
             font-size: 0.95rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
-            flex-grow: 1;
+            margin-bottom: 1rem;
+            min-height: 60px;
+        }
+        
+        .statute-filename {
+            font-size: 0.85rem;
+            color: #64748b;
+            background: #f8fafc;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-family: monospace;
+            border-left: 3px solid #3b82f6;
         }
         
         .statute-actions {
             display: flex;
             gap: 0.8rem;
-            margin-top: auto;
         }
         
         .btn {
-            padding: 10px 16px;
+            padding: 8px 16px;
             border-radius: 6px;
             font-weight: 500;
             cursor: pointer;
             border: none;
-            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
             flex: 1;
             font-size: 0.9rem;
+            transition: background 0.2s;
         }
         
         .btn-view {
-            background-color: #3b82f6;
+            background: #3b82f6;
             color: white;
         }
         
         .btn-view:hover {
-            background-color: #2563eb;
+            background: #2563eb;
         }
         
         .btn-download {
-            background-color: #f1f5f9;
+            background: #f1f5f9;
             color: #334155;
         }
         
         .btn-download:hover {
-            background-color: #e2e8f0;
+            background: #e2e8f0;
         }
         
         .btn i {
             margin-right: 6px;
         }
         
-        .pdf-viewer-modal {
+        .pdf-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
+            background: rgba(0,0,0,0.9);
             z-index: 1000;
             display: none;
-            flex-direction: column;
         }
         
-        .pdf-viewer-header {
-            background-color: #1e293b;
+        .pdf-header {
+            background: #1e293b;
             color: white;
-            padding: 1rem 1.5rem;
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .pdf-viewer-title {
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        
-        .pdf-viewer-controls {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-        }
-        
-        .pdf-viewer-body {
-            flex-grow: 1;
-            padding: 15px;
-        }
-        
         .pdf-iframe {
             width: 100%;
-            height: 100%;
+            height: calc(100% - 60px);
             border: none;
-            border-radius: 6px;
         }
         
         .close-btn {
-            background-color: #4a5568;
+            background: #ef4444;
             color: white;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 4px;
             border: none;
-            font-weight: 500;
-            transition: all 0.2s;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.9rem;
+            gap: 5px;
         }
         
-        .close-btn:hover {
-            background-color: #2d3748;
-        }
-        
-        .download-pdf-btn {
-            background-color: #3b82f6;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            border: none;
+        .pdf-title {
+            font-size: 1rem;
             font-weight: 500;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.9rem;
-        }
-        
-        .download-pdf-btn:hover {
-            background-color: #2563eb;
         }
         
         footer {
             text-align: center;
             padding: 2rem 0;
             color: #64748b;
-            font-size: 0.9rem;
             border-top: 1px solid #e2e8f0;
             margin-top: 2rem;
         }
@@ -295,107 +236,36 @@
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 3rem 2rem;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-        
-        .no-results i {
-            font-size: 3rem;
-            color: #cbd5e1;
-            margin-bottom: 1rem;
-        }
-        
-        .no-results h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #1e293b;
-        }
-        
-        .no-results p {
+            padding: 3rem;
             color: #64748b;
         }
         
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .search-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .search-box {
-                min-width: 100%;
-            }
-            
-            .statute-actions {
-                flex-direction: column;
-            }
-            
-            .pdf-viewer-header {
-                flex-direction: column;
-                gap: 0.8rem;
-                padding: 0.8rem;
-            }
-            
-            .pdf-viewer-title {
-                font-size: 0.9rem;
-                text-align: center;
-            }
-        }
-        
-        .statute-filename {
-            font-size: 0.8rem;
-            color: #4a5568;
-            background-color: #f8fafc;
-            padding: 6px 10px;
-            border-radius: 5px;
-            margin-top: 0.8rem;
-            border-left: 3px solid #3b82f6;
-            font-family: 'Courier New', monospace;
-            word-break: break-all;
-        }
-        
-        .clear-search-btn {
-            background-color: #f1f5f9;
-            color: #4a5568;
-            padding: 8px 14px;
+        .clear-btn {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 8px 16px;
             border-radius: 6px;
-            cursor: pointer;
             border: 1px solid #e2e8f0;
-            font-weight: 500;
-            transition: all 0.2s;
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 5px;
-            font-size: 0.9rem;
         }
         
-        .clear-search-btn:hover {
-            background-color: #e2e8f0;
-        }
-        
-        .loading-pdf {
+        .loading {
             color: white;
-            font-size: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            gap: 12px;
+            text-align: center;
+            padding: 2rem;
         }
         
-        .loading-spinner {
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
             width: 40px;
             height: 40px;
-            border: 3px solid #3b82f6;
-            border-top: 3px solid transparent;
-            border-radius: 50%;
             animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
         }
         
         @keyframes spin {
@@ -408,7 +278,6 @@
     <header>
         <div class="container">
             <h1>Uganda Statutes</h1>
-            <p class="subtitle">Legal documents and legislation</p>
         </div>
     </header>
     
@@ -418,36 +287,24 @@
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" id="searchInput" placeholder="Search statutes...">
             </div>
-            <button class="clear-search-btn" id="clearSearchBtn">
+            <button class="clear-btn" id="clearSearch">
                 <i class="fas fa-times"></i> Clear
             </button>
         </div>
         
         <div class="statutes-grid" id="statutesContainer">
-            <!-- Statute cards will be dynamically generated here -->
+            <!-- Cards will be loaded here -->
         </div>
     </div>
     
-    <!-- PDF Viewer Modal -->
-    <div class="pdf-viewer-modal" id="pdfModal">
-        <div class="pdf-viewer-header">
-            <div class="pdf-viewer-title" id="pdfTitle">Document Viewer</div>
-            <div class="pdf-viewer-controls">
-                <button class="download-pdf-btn" id="modalDownloadBtn">
-                    <i class="fas fa-download"></i> Download
-                </button>
-                <button class="close-btn" id="closePdfBtn">
-                    <i class="fas fa-times"></i> Close
-                </button>
-            </div>
+    <div class="pdf-modal" id="pdfModal">
+        <div class="pdf-header">
+            <div class="pdf-title" id="pdfTitle"></div>
+            <button class="close-btn" id="closePdf">
+                <i class="fas fa-times"></i> Close
+            </button>
         </div>
-        <div class="pdf-viewer-body" id="pdfViewerBody">
-            <div class="loading-pdf" id="pdfLoading">
-                <div class="loading-spinner"></div>
-                <div>Loading document...</div>
-            </div>
-            <iframe class="pdf-iframe" id="pdfFrame" title="PDF Viewer" style="display: none;"></iframe>
-        </div>
+        <iframe class="pdf-iframe" id="pdfFrame"></iframe>
     </div>
     
     <footer>
@@ -455,16 +312,18 @@
             <p>Uganda Statutes Repository</p>
         </div>
     </footer>
-    
+
     <script>
-        // Statutes data - Connected to hunter9201.github.io
+        // Sample statutes - Update these with your actual GitHub URLs
         const statutes = [
             {
                 id: 1,
                 title: "Trial on Indictment Act",
                 code: "Cap 25 (3)",
                 filename: "Trial on Indictment Act Cap 25 (3).pdf",
-                githubUrl: "https://hunter9201.github.io/Trial on Indictment Act Cap 25 (3).pd",
+                // Using Google Docs viewer as fallback since GitHub doesn't embed PDFs well
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Trial%20on%20Indictment%20Act%20Cap%2025%20(3).pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Trial%20on%20Indictment%20Act%20Cap%2025%20(3).pdf",
                 description: "An Act to provide for the trial on indictment of persons charged with offences.",
                 category: "Criminal Law"
             },
@@ -473,8 +332,9 @@
                 title: "Penal Code Act",
                 code: "Cap 120",
                 filename: "Penal Code Act Cap 120.pdf",
-                githubUrl: "https://hunter9201.github.io/Penal%20Code%20Act%20Cap%20120.pdf",
-                description: "The principal legislation that defines criminal offences and prescribes penalties in Uganda.",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Penal%20Code%20Act%20Cap%20120.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Penal%20Code%20Act%20Cap%20120.pdf",
+                description: "The principal legislation that defines criminal offences and prescribes penalties.",
                 category: "Criminal Law"
             },
             {
@@ -482,8 +342,9 @@
                 title: "Magistrates Courts Act",
                 code: "Cap 16",
                 filename: "Magistrates Courts Act Cap 16.pdf",
-                githubUrl: "https://hunter9201.github.io/Magistrates%20Courts%20Act%20Cap%2016.pdf",
-                description: "An Act to consolidate and amend the law relating to magistrates courts in Uganda.",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Magistrates%20Courts%20Act%20Cap%2016.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Magistrates%20Courts%20Act%20Cap%2016.pdf",
+                description: "An Act to consolidate and amend the law relating to magistrates courts.",
                 category: "Judiciary"
             },
             {
@@ -491,7 +352,8 @@
                 title: "Evidence Act",
                 code: "Cap 6",
                 filename: "Evidence Act Cap 6.pdf",
-                githubUrl: "https://hunter9201.github.io/Evidence%20Act%20Cap%206.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Evidence%20Act%20Cap%206.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Evidence%20Act%20Cap%206.pdf",
                 description: "Legislation governing the rules of evidence in Ugandan courts.",
                 category: "Legal Procedure"
             },
@@ -500,36 +362,30 @@
                 title: "Interpretation Act",
                 code: "Cap 3",
                 filename: "Interpretation Act Cap 3.pdf",
-                githubUrl: "https://hunter9201.github.io/Interpretation%20Act%20Cap%203.pdf",
+                pdfUrl: "https://docs.google.com/viewer?url=https://hunter9201.github.io/Interpretation%20Act%20Cap%203.pdf&embedded=true",
+                directUrl: "https://hunter9201.github.io/Interpretation%20Act%20Cap%203.pdf",
                 description: "An Act providing for the interpretation of Ugandan laws.",
                 category: "General Law"
             }
         ];
-        
+
         // DOM Elements
         const statutesContainer = document.getElementById('statutesContainer');
         const searchInput = document.getElementById('searchInput');
-        const clearSearchBtn = document.getElementById('clearSearchBtn');
+        const clearSearchBtn = document.getElementById('clearSearch');
         const pdfModal = document.getElementById('pdfModal');
         const pdfFrame = document.getElementById('pdfFrame');
         const pdfTitle = document.getElementById('pdfTitle');
-        const closePdfBtn = document.getElementById('closePdfBtn');
-        const modalDownloadBtn = document.getElementById('modalDownloadBtn');
-        const pdfViewerBody = document.getElementById('pdfViewerBody');
-        const pdfLoading = document.getElementById('pdfLoading');
-        
-        // Current PDF being viewed
-        let currentPdfFile = '';
-        let currentPdfUrl = '';
-        
-        // Function to render statutes
+        const closePdfBtn = document.getElementById('closePdf');
+
+        // Render statutes
         function renderStatutes(statutesArray) {
             statutesContainer.innerHTML = '';
             
             if (statutesArray.length === 0) {
                 statutesContainer.innerHTML = `
                     <div class="no-results">
-                        <i class="fas fa-search"></i>
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem;"></i>
                         <h3>No statutes found</h3>
                         <p>Try a different search term</p>
                     </div>
@@ -540,7 +396,6 @@
             statutesArray.forEach(statute => {
                 const card = document.createElement('div');
                 card.className = 'statute-card';
-                
                 card.innerHTML = `
                     <div class="statute-header">
                         <div class="statute-title">${statute.title}</div>
@@ -548,114 +403,51 @@
                     </div>
                     <div class="statute-body">
                         <p class="statute-description">${statute.description}</p>
-                        <div class="statute-filename">
-                            ${statute.filename}
-                        </div>
+                        <div class="statute-filename">${statute.filename}</div>
                         <div class="statute-actions">
-                            <button class="btn btn-view view-pdf-btn" 
-                                    data-filename="${statute.filename}" 
-                                    data-title="${statute.title} ${statute.code}"
-                                    data-githuburl="${statute.githubUrl}">
+                            <button class="btn btn-view" onclick="openPdf('${statute.title} ${statute.code}', '${statute.pdfUrl}')">
                                 <i class="fas fa-eye"></i> View
                             </button>
-                            <button class="btn btn-download download-pdf-btn" 
-                                    data-filename="${statute.filename}"
-                                    data-githuburl="${statute.githubUrl}">
+                            <button class="btn btn-download" onclick="downloadPdf('${statute.filename}', '${statute.directUrl}')">
                                 <i class="fas fa-download"></i> Download
                             </button>
                         </div>
                     </div>
                 `;
-                
                 statutesContainer.appendChild(card);
             });
-            
-            // Add event listeners to buttons
-            document.querySelectorAll('.view-pdf-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const filename = btn.getAttribute('data-filename');
-                    const title = btn.getAttribute('data-title');
-                    const githubUrl = btn.getAttribute('data-githuburl');
-                    openPdfViewer(filename, title, githubUrl);
-                });
-            });
-            
-            document.querySelectorAll('.download-pdf-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const filename = btn.getAttribute('data-filename');
-                    const githubUrl = btn.getAttribute('data-githuburl');
-                    downloadPdf(filename, githubUrl);
-                });
-            });
         }
-        
-        // Function to open PDF viewer
-        function openPdfViewer(filename, title, githubUrl) {
-            currentPdfFile = filename;
-            currentPdfUrl = githubUrl;
-            
-            // Show loading
-            pdfLoading.style.display = 'flex';
-            pdfFrame.style.display = 'none';
-            
+
+        // Open PDF in modal
+        function openPdf(title, url) {
             pdfTitle.textContent = title;
-            pdfModal.style.display = 'flex';
+            pdfFrame.src = url;
+            pdfModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
-            
-            // Update modal download button
-            modalDownloadBtn.setAttribute('data-filename', filename);
-            modalDownloadBtn.setAttribute('data-githuburl', githubUrl);
-            
-            // Load PDF
-            setTimeout(() => {
-                pdfFrame.src = githubUrl;
-                
-                pdfFrame.onload = () => {
-                    pdfLoading.style.display = 'none';
-                    pdfFrame.style.display = 'block';
-                };
-                
-                pdfFrame.onerror = () => {
-                    pdfLoading.innerHTML = `
-                        <div style="text-align: center;">
-                            <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; color: #f87171; margin-bottom: 1rem;"></i>
-                            <h3>Document Not Available</h3>
-                            <button class="download-pdf-btn" style="margin-top: 1rem;" onclick="downloadPdf('${filename}', '${githubUrl}')">
-                                <i class="fas fa-download"></i> Download Instead
-                            </button>
-                        </div>
-                    `;
-                };
-            }, 300);
         }
-        
-        // Function to close PDF viewer
-        function closePdfViewer() {
-            pdfModal.style.display = 'none';
-            pdfFrame.src = '';
-            document.body.style.overflow = 'auto';
-            
-            // Reset loading
-            pdfLoading.style.display = 'flex';
-            pdfFrame.style.display = 'none';
-            pdfLoading.innerHTML = `
-                <div class="loading-spinner"></div>
-                <div>Loading document...</div>
-            `;
-        }
-        
-        // Function to download PDF
-        function downloadPdf(filename, githubUrl) {
+
+        // Download PDF
+        function downloadPdf(filename, url) {
+            // Create a link element
             const link = document.createElement('a');
-            link.href = githubUrl;
+            link.href = url;
             link.download = filename;
             link.target = '_blank';
+            
+            // Append to body, click, and remove
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
-        
-        // Function to filter statutes
+
+        // Close PDF modal
+        function closePdfModal() {
+            pdfModal.style.display = 'none';
+            pdfFrame.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Filter statutes
         function filterStatutes(searchTerm) {
             if (!searchTerm.trim()) {
                 renderStatutes(statutes);
@@ -663,54 +455,48 @@
             }
             
             const filtered = statutes.filter(statute => {
-                const searchLower = searchTerm.toLowerCase();
-                return statute.title.toLowerCase().includes(searchLower) ||
-                       statute.code.toLowerCase().includes(searchLower) ||
-                       statute.description.toLowerCase().includes(searchLower) ||
-                       statute.category.toLowerCase().includes(searchLower) ||
-                       statute.filename.toLowerCase().includes(searchLower);
+                const term = searchTerm.toLowerCase();
+                return statute.title.toLowerCase().includes(term) ||
+                       statute.code.toLowerCase().includes(term) ||
+                       statute.description.toLowerCase().includes(term) ||
+                       statute.category.toLowerCase().includes(term);
             });
             
             renderStatutes(filtered);
         }
-        
-        // Event Listeners
+
+        // Event listeners
         searchInput.addEventListener('input', (e) => {
             filterStatutes(e.target.value);
         });
-        
+
         clearSearchBtn.addEventListener('click', () => {
             searchInput.value = '';
             renderStatutes(statutes);
-            searchInput.focus();
         });
-        
-        closePdfBtn.addEventListener('click', closePdfViewer);
-        
-        modalDownloadBtn.addEventListener('click', () => {
-            const filename = modalDownloadBtn.getAttribute('data-filename');
-            const githubUrl = modalDownloadBtn.getAttribute('data-githuburl');
-            if (filename && githubUrl) {
-                downloadPdf(filename, githubUrl);
-            }
-        });
-        
+
+        closePdfBtn.addEventListener('click', closePdfModal);
+
         // Close modal when clicking outside
         pdfModal.addEventListener('click', (e) => {
             if (e.target === pdfModal) {
-                closePdfViewer();
+                closePdfModal();
             }
         });
-        
-        // Escape key to close
+
+        // Close with Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
-                closePdfViewer();
+            if (e.key === 'Escape' && pdfModal.style.display === 'block') {
+                closePdfModal();
             }
         });
-        
+
         // Initialize
         renderStatutes(statutes);
+
+        // Make functions available globally
+        window.openPdf = openPdf;
+        window.downloadPdf = downloadPdf;
     </script>
 </body>
 </html>
