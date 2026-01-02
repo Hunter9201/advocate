@@ -2,1427 +2,492 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Uganda Statutes</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Documents Library</title>
     <style>
+        /* CSS Variables for Colors */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #c53030;
+            --light-color: #f7fafc;
+            --dark-color: #2d3748;
+            --border-color: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
-        
-        html, body {
-            height: 100%;
-            overflow-x: hidden;
-            background: #f8fafc;
-        }
-        
+
         body {
-            position: relative;
-            overflow-y: auto;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 15px;
-        }
-        
+
         /* Header */
-        header {
-            background: #1e293b;
-            padding: 1rem 0;
-            text-align: center;
+        .site-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            border-bottom: 4px solid var(--secondary-color);
             position: sticky;
             top: 0;
-            z-index: 50;
-            width: 100%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
         }
-        
-        h1 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            padding: 0 15px;
-        }
-        
-        .header-subtitle {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            padding: 0 15px;
-        }
-        
-        /* Search */
-        .controls {
-            background: white;
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        
-        .search-box {
-            position: relative;
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #64748b;
-            z-index: 2;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 16px 15px 16px 50px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 16px;
-            background: #f8fafc;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-        
-        /* Filter Buttons */
-        .filter-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: nowrap;
-            margin-bottom: 1rem;
-            padding: 5px 0;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .filter-buttons::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .filter-btn {
-            padding: 10px 18px;
-            background: #f1f5f9;
-            border: 2px solid #e2e8f0;
-            border-radius: 25px;
-            color: #475569;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
-            flex-shrink: 0;
-            transition: all 0.2s;
-        }
-        
-        .filter-btn:active {
-            transform: scale(0.95);
-        }
-        
-        .filter-btn.active {
-            background: #3b82f6;
-            color: white;
-            border-color: #3b82f6;
-        }
-        
-        /* Statutes Grid */
-        .statutes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        
-        .statute-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            transition: all 0.2s;
-        }
-        
-        .statute-card:active {
-            transform: scale(0.98);
-        }
-        
-        .statute-header {
-            background: #334155;
-            color: white;
-            padding: 1rem;
-            border-bottom: 3px solid #3b82f6;
-        }
-        
-        .statute-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .statute-code {
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-        
-        .statute-body {
-            padding: 1rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .statute-filename {
-            font-size: 0.85rem;
-            color: #64748b;
-            background: #f8fafc;
-            padding: 10px;
-            border-radius: 6px;
-            margin-top: auto;
-            font-family: 'Courier New', monospace;
-            border-left: 3px solid #3b82f6;
-            word-break: break-word;
-            overflow-wrap: break-word;
-            font-size: 0.8rem;
-        }
-        
-        .statute-actions {
-            display: flex;
-            gap: 0.8rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 14px 12px;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Search */
+        .search-section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .search-container {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input {
             flex: 1;
-            min-width: 120px;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-            min-height: 48px;
+            padding: 12px 15px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+            background-color: white;
         }
-        
-        .btn:active {
-            transform: scale(0.95);
-        }
-        
-        .btn-preview {
-            background: #3b82f6;
+
+        .search-button {
+            background-color: var(--secondary-color);
             color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
         }
-        
-        .btn-download {
-            background: #f1f5f9;
-            color: #334155;
+
+        /* PDF Grid */
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
-        
-        .btn i {
-            margin-right: 8px;
+
+        .pdf-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        
-        /* PDF VIEWER - Fixed for mobile ALL pages display */
-        .pdf-viewer-overlay {
+
+        .pdf-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .pdf-card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            position: relative;
+        }
+
+        .pdf-category {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+
+        .pdf-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .pdf-card-body {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        .pdf-description {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .pdf-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Empty State */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px 20px;
+            color: #718096;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* PDF Viewer */
+        .pdf-viewer {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #0f172a;
+            width: 100%;
+            height: 100%;
+            background: white;
             z-index: 1000;
             display: none;
         }
-        
-        .pdf-viewer-overlay.active {
-            display: block;
-        }
-        
-        .pdf-viewer-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            background: #0f172a;
-        }
-        
-        .pdf-viewer-header {
-            background: #1e293b;
+
+        .viewer-header {
+            background-color: var(--primary-color);
             color: white;
-            padding: 1rem;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            min-height: 60px;
-            flex-shrink: 0;
-            position: relative;
+            border-bottom: 3px solid var(--secondary-color);
         }
-        
-        .pdf-viewer-title {
-            font-size: 0.95rem;
-            font-weight: 500;
-            flex: 1;
-            padding-right: 10px;
-            word-break: break-word;
-            line-height: 1.3;
-            max-height: 2.6em;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+
+        .viewer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
         }
-        
-        .pdf-viewer-close {
-            background: #ef4444;
+
+        .close-viewer {
+            background: none;
+            border: none;
             color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0;
             width: 40px;
             height: 40px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-            transition: transform 0.2s;
         }
-        
-        .pdf-viewer-close:active {
-            transform: scale(0.9);
-        }
-        
-        .pdf-viewer-content {
-            flex: 1;
+
+        .pdf-frame {
             width: 100%;
-            overflow: hidden;
-            position: relative;
-            background: white;
-        }
-        
-        /* PDF IFRAME - Critical CSS for mobile ALL pages display */
-        .pdf-iframe {
-            width: 100%;
-            height: 100%;
+            height: calc(100% - 60px);
             border: none;
-            display: block;
         }
-        
-        /* Download button */
-        .pdf-download-btn {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(59, 130, 246, 0.95);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        
-        .pdf-download-btn:active {
-            transform: scale(0.95);
-        }
-        
-        /* ========== CRITICAL MOBILE CSS FIXES ========== */
-        /* These are essential for showing ALL pages on mobile */
-        
-        /* iOS specific fixes for PDF display */
-        @supports (-webkit-touch-callout: none) {
-            .pdf-viewer-overlay {
-                height: -webkit-fill-available;
-            }
-            
-            .pdf-viewer-container {
-                height: -webkit-fill-available;
-            }
-            
-            /* CRITICAL: Force PDF to show all pages on iOS */
-            .pdf-viewer-content {
-                -webkit-overflow-scrolling: touch !important;
-                overflow-y: scroll !important;
-                overflow-x: hidden !important;
-            }
-            
-            .pdf-iframe {
-                -webkit-overflow-scrolling: touch !important;
-                overflow: scroll !important;
-                min-height: 100% !important;
-                height: auto !important;
-            }
-        }
-        
-        /* Android and general mobile fixes */
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            header {
-                padding: 0.8rem 0;
-            }
-            
-            h1 {
-                font-size: 1.3rem;
-            }
-            
-            .controls {
-                padding: 0.8rem;
-                margin: 0.8rem 0;
-            }
-            
-            .statutes-grid {
+            .pdf-grid {
                 grid-template-columns: 1fr;
-                gap: 0.8rem;
             }
             
-            .statute-actions {
+            .search-container {
                 flex-direction: column;
             }
             
-            .btn {
+            .search-input, .search-button {
                 width: 100%;
-                margin-bottom: 5px;
             }
-            
-            .btn:last-child {
-                margin-bottom: 0;
-            }
-            
-            .pdf-viewer-header {
-                padding: 0.8rem;
-            }
-            
-            .pdf-viewer-title {
-                font-size: 0.9rem;
-            }
-            
-            .pdf-download-btn {
-                bottom: 15px;
-                right: 15px;
-                padding: 10px 16px;
-                font-size: 0.85rem;
-            }
-            
-            /* CRITICAL: Force ALL pages display on ALL mobile devices */
-            .pdf-viewer-content {
-                overflow-y: auto !important;
-                -webkit-overflow-scrolling: touch;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .pdf-iframe {
-                flex: 1;
-                min-height: 100% !important;
-                height: auto !important;
-                overflow: auto !important;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            /* Ensure PDF container allows scrolling */
-            body.pdf-viewer-active {
-                overflow: hidden;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.2rem;
-            }
-            
-            .header-subtitle {
-                font-size: 0.8rem;
-            }
-            
-            .btn {
-                padding: 12px 10px;
-                font-size: 0.9rem;
-            }
-            
-            .pdf-download-btn {
-                bottom: 10px;
-                right: 10px;
-                padding: 8px 14px;
-                font-size: 0.8rem;
-            }
-        }
-        
-        /* Landscape mode optimization */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .pdf-viewer-header {
-                min-height: 50px;
-                padding: 0.6rem;
-            }
-            
-            .pdf-viewer-title {
-                font-size: 0.85rem;
-                -webkit-line-clamp: 1;
-                max-height: 1.3em;
-            }
-            
-            .pdf-download-btn {
-                bottom: 10px;
-                right: 10px;
-                padding: 6px 12px;
-                font-size: 0.75rem;
-            }
-            
-            /* Landscape specific fixes */
-            .pdf-viewer-content {
-                overflow-y: auto !important;
-            }
-            
-            .pdf-iframe {
-                min-height: auto !important;
-                height: 100% !important;
-            }
-        }
-        
-        /* Additional mobile-only fixes */
-        @media (hover: none) and (pointer: coarse) {
-            /* Touch device specific fixes */
-            .pdf-iframe {
-                touch-action: pan-y pinch-zoom;
-            }
-            
-            .pdf-viewer-content {
-                touch-action: pan-y;
-            }
-        }
-        
-        footer {
-            text-align: center;
-            padding: 1.5rem 0;
-            color: #64748b;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .clear-btn {
-            background: #f1f5f9;
-            color: #334155;
-            padding: 12px 20px;
-            border-radius: 10px;
-            border: 2px solid #e2e8f0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            min-height: 48px;
-            margin-top: 1rem;
-            transition: transform 0.2s;
-            width: 100%;
-        }
-        
-        .clear-btn:active {
-            transform: scale(0.95);
-        }
-        
-        .stats-counter {
-            color: #64748b;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-align: center;
-            padding: 10px 0;
-        }
-        
-        .category-tag {
-            display: inline-block;
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin: 0.8rem 0;
-            align-self: flex-start;
-        }
-        
-        /* No Results */
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 2rem 1rem;
-            color: #64748b;
-        }
-        
-        .no-results i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #cbd5e1;
-        }
-        
-        .no-results h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* iOS safe area support */
-        @supports (padding-top: env(safe-area-inset-top)) {
-            .pdf-viewer-container {
-                padding-top: env(safe-area-inset-top);
-                padding-bottom: env(safe-area-inset-bottom);
-            }
-            
-            .pdf-viewer-header {
-                padding-top: calc(0.8rem + env(safe-area-inset-top));
-            }
-            
-            .pdf-viewer-content {
-                padding-bottom: env(safe-area-inset-bottom);
-            }
-        }
-        
-        /* Ensure PDF iframe takes full space */
-        .pdf-viewer-content {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .pdf-iframe {
-            flex: 1;
-            width: 100%;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Uganda Statutes</h1>
-            <div class="header-subtitle">Complete PDF Preview • All Pages • Mobile Optimized</div>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-icon">⚖️</div>
+                <div class="logo-text">
+                    <h1>Legal Documents Library</h1>
+                </div>
+            </div>
         </div>
     </header>
-    
-    <div class="container">
-        <div class="controls">
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search statutes..." inputmode="search" autocomplete="off">
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="page-header">
+            <h2>📚 Legal Documents Collection</h2>
+            <p>Click any document to view it immediately</p>
+        </div>
+
+        <!-- Search -->
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search documents...">
+                <button class="search-button" id="searchButton">🔍</button>
             </div>
-            <div class="stats-counter" id="statsCounter">Loading statutes...</div>
-            <button class="clear-btn" id="clearSearch">
-                <i class="fas fa-times"></i> Clear Search
-            </button>
+        </section>
+
+        <!-- PDF Grid -->
+        <div class="pdf-grid" id="pdfGrid">
+            <!-- PDF cards will be dynamically generated here -->
         </div>
-        
-        <div class="filter-buttons" id="filterButtons">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="Criminal">Criminal</button>
-            <button class="filter-btn" data-filter="Civil">Civil</button>
-            <button class="filter-btn" data-filter="Judicature">Judicature</button>
-            <button class="filter-btn" data-filter="Constitutional">Constitutional</button>
-            <button class="filter-btn" data-filter="Administrative">Administrative</button>
-            <button class="filter-btn" data-filter="Commercial">Commercial</button>
+    </main>
+
+    <!-- PDF Viewer -->
+    <div class="pdf-viewer" id="pdfViewer">
+        <div class="viewer-header">
+            <div class="viewer-title" id="viewerTitle"></div>
+            <button class="close-viewer" id="closeViewer">×</button>
         </div>
-        
-        <div class="statutes-grid" id="statutesContainer">
-            <!-- Statutes will be loaded here -->
-        </div>
+        <iframe class="pdf-frame" id="pdfFrame"></iframe>
     </div>
-    
-    <!-- PDF VIEWER - Shows ALL pages on mobile -->
-    <div class="pdf-viewer-overlay" id="pdfViewerOverlay">
-        <div class="pdf-viewer-container">
-            <div class="pdf-viewer-header">
-                <div class="pdf-viewer-title" id="pdfViewerTitle"></div>
-                <button class="pdf-viewer-close" id="pdfViewerClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="pdf-viewer-content">
-                <iframe class="pdf-iframe" id="pdfFrame" 
-                        allow="autoplay" 
-                        allowfullscreen>
-                </iframe>
-                <button class="pdf-download-btn" id="pdfDownloadBtn">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <footer>
-        <div class="container">
-            <p>Complete PDF Display • All Pages • Mobile First</p>
-        </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div>&copy; 2023 Legal Documents Library</div>
     </footer>
 
     <script>
-        // ALL 51 STATUTES
-        const statutes = [
+        // Legal Documents Data
+        const legalDocuments = [
             {
                 id: 1,
-                title: "Advocates (Remuneration and Taxation of Costs) (Amendment) Regulations",
-                code: "2018",
-                filename: "Advocates (Remuneration and Taxation of Costs) (Amendment) Regulations 2018.pdf",
-                pdfUrl: "Advocates (Remuneration and Taxation of Costs) (Amendment) Regulations 2018.pdf",
-                category: "Administrative"
+                title: "Traffic and Road Safety Act, Cap 347",
+                description: "Comprehensive legislation governing traffic regulations, road safety measures, vehicle standards, and traffic law enforcement procedures.",
+                filename: "Traffic and Road Safety Cap 347 Act.pdf",
+                category: "statutes",
+                size: "1.8 MB",
+                pages: 47
             },
             {
                 id: 2,
-                title: "Anti-Corruption Act",
-                code: "Cap 116",
-                filename: "Anti-Corruption Act Cap 116..pdf",
-                pdfUrl: "Anti-Corruption Act Cap 116..pdf",
-                category: "Criminal"
+                title: "United States Code, Title 18 - Crimes and Criminal Procedure",
+                description: "Federal statutes defining federal crimes and procedures for federal criminal prosecutions.",
+                filename: "usc-title-18.pdf",
+                category: "statutes",
+                size: "4.2 MB",
+                pages: 312
             },
             {
                 id: 3,
-                title: "Bill of Exchange Act",
-                code: "Cap 281",
-                filename: "Bill of Exchange Act Cap 281.pdf",
-                pdfUrl: "Bill of Exchange Act Cap 281.pdf",
-                category: "Commercial"
+                title: "Code of Federal Regulations, Title 28 - Judicial Administration",
+                description: "Regulations governing the administration of the federal court system and Department of Justice.",
+                filename: "cfr-title-28.pdf",
+                category: "regulations",
+                size: "3.8 MB",
+                pages: 245
             },
             {
                 id: 4,
-                title: "Civil Procedure Rules",
-                code: "SI.71-1",
-                filename: "Civil Procedure Rules SI.71_1.pdf",
-                pdfUrl: "Civil Procedure Rules SI.71_1.pdf",
-                category: "Civil"
+                title: "Supreme Court Decision: Brown v. Board of Education",
+                description: "Landmark 1954 Supreme Court case declaring state laws establishing separate public schools for black and white students unconstitutional.",
+                filename: "brown-v-board.pdf",
+                category: "case-law",
+                size: "2.1 MB",
+                pages: 58
             },
             {
                 id: 5,
-                title: "Civil Procedure Act",
-                code: "Cap 282",
-                filename: "Civil Procedure Act Cap 282.pdf",
-                pdfUrl: "Civil Procedure Act Cap 282.pdf",
-                category: "Civil"
-            },
-            {
-                id: 6,
-                title: "Civil Procedure Act",
-                code: "",
-                filename: "Civil Procedure Act.pdf",
-                pdfUrl: "Civil Procedure Act.pdf",
-                category: "Civil"
-            },
-            {
-                id: 7,
-                title: "Commissioners for Oaths (Advocates) Act",
-                code: "Cap 6",
-                filename: "Commissioners for Oaths (Advocates) Act Cap 6..pdf",
-                pdfUrl: "Commissioners for Oaths (Advocates) Act Cap 6..pdf",
-                category: "Administrative"
-            },
-            {
-                id: 8,
-                title: "Constitution of the Republic of Uganda",
-                code: "",
-                filename: "Constitution of the Republic of Uganda.pdf",
-                pdfUrl: "Constitution of the Republic of Uganda.pdf",
-                category: "Constitutional"
-            },
-            {
-                id: 9,
-                title: "Contracts Act",
-                code: "",
-                filename: "Contracts Act.pdf",
-                pdfUrl: "Contracts Act.pdf",
-                category: "Commercial"
-            },
-            {
-                id: 10,
-                title: "Criminal Procedure Code Act",
-                code: "Cap 122 (3)",
-                filename: "Criminal Procedure Code Act Cap 122 (3).pdf",
-                pdfUrl: "Criminal Procedure Code Act Cap 122 (3).pdf",
-                category: "Criminal"
-            },
-            {
-                id: 11,
-                title: "Criminal Procedure Code Act",
-                code: "Cap 122",
-                filename: "Criminal Procedure Code Act Cap 122.pdf",
-                pdfUrl: "Criminal Procedure Code Act Cap 122.pdf",
-                category: "Criminal"
-            },
-            {
-                id: 12,
-                title: "Education (Pre-Primary, Primary and Post-Primary) Act",
-                code: "Cap 247",
-                filename: "Education (Pre-Primary, Primary and Post-Primary) Act Cap 247.pdf",
-                pdfUrl: "Education (Pre-Primary, Primary and Post-Primary) Act Cap 247.pdf",
-                category: "Administrative"
-            },
-            {
-                id: 13,
-                title: "Electoral Commissions Act",
-                code: "Cap 176",
-                filename: "Electoral Commisions Act Cap 176.pdf",
-                pdfUrl: "Electoral Commisions Act Cap 176.pdf",
-                category: "Constitutional"
-            },
-            {
-                id: 14,
-                title: "Electricity Act",
-                code: "Cap 157",
-                filename: "Electricity Act Cap 157.pdf",
-                pdfUrl: "Electricity Act Cap 157.pdf",
-                category: "Commercial"
-            },
-            {
-                id: 15,
-                title: "Employment Act",
-                code: "Cap 226",
-                filename: "Employment Act Cap 226.pdf",
-                pdfUrl: "Employment Act Cap 226.pdf",
-                category: "Commercial"
-            },
-            {
-                id: 16,
-                title: "Evidence Act",
-                code: "Cap 8 (1)",
-                filename: "Evidence Act Cap 8 (1).pdf",
-                pdfUrl: "Evidence Act Cap 8 (1).pdf",
-                category: "Civil"
-            },
-            {
-                id: 17,
-                title: "Evidence Act",
-                code: "Cap 8",
-                filename: "Evidence Act Cap 8.pdf",
-                pdfUrl: "Evidence Act Cap 8.pdf",
-                category: "Civil"
-            },
-            {
-                id: 18,
-                title: "Fire Arms Act",
-                code: "Cap 320 (1)",
-                filename: "Fire Arms Act Cap 320 (1).pdf",
-                pdfUrl: "Fire Arms Act Cap 320 (1).pdf",
-                category: "Criminal"
-            },
-            {
-                id: 19,
-                title: "Identification of Offenders Act",
-                code: "Cap 127",
-                filename: "Identification of Offenders Act Cap 127.pdf",
-                pdfUrl: "Identification of Offenders Act Cap 127.pdf",
-                category: "Criminal"
-            },
-            {
-                id: 20,
-                title: "Judicature (Court of Appeal) Rules",
-                code: "",
-                filename: "JUDICATURE(court of appeal)rules[1] (3).pdf",
-                pdfUrl: "JUDICATURE(court of appeal)rules[1] (3).pdf",
-                category: "Judicature"
-            },
-            {
-                id: 21,
-                title: "Judicature (Criminal Procedure) (Application)",
-                code: "SI 13-8",
-                filename: "Judicature (Criminal Procedure)(Application) SI_13_8.pdf",
-                pdfUrl: "Judicature (Criminal Procedure)(Application) SI_13_8.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 22,
-                title: "Judicature (Criminal Procedure) (Application)",
-                code: "",
-                filename: "Judicature (Criminal Procedure)(Application).pdf",
-                pdfUrl: "Judicature (Criminal Procedure)(Application).pdf",
-                category: "Judicature"
-            },
-            {
-                id: 23,
-                title: "Judicature (Plea Bargain) Rules",
-                code: "",
-                filename: "Judicature (Plea Bargain) Rules.pdf",
-                pdfUrl: "Judicature (Plea Bargain) Rules.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 24,
-                title: "Judicature Act",
-                code: "Cap 16",
-                filename: "Judicature Act Cap 16.pdf",
-                pdfUrl: "Judicature Act Cap 16.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 25,
-                title: "Judicature Act",
-                code: "",
-                filename: "Judicature Act.pdf",
-                pdfUrl: "Judicature Act.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 26,
-                title: "Judicature (Court Fees, Fines and Deposit) Rules",
-                code: "",
-                filename: "Judicature(court fees fines and deposit)rules.pdf",
-                pdfUrl: "Judicature(court fees fines and deposit)rules.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 27,
-                title: "Judicature Act",
-                code: "Cap 16",
-                filename: "Judicture Act Cap 16.pdf",
-                pdfUrl: "Judicture Act Cap 16.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 28,
-                title: "Kampala Capital City Authority Act",
-                code: "Cap 195",
-                filename: "Kampala Capital City Authority Act Cap 195.pdf",
-                pdfUrl: "Kampala Capital City Authority Act Cap 195.pdf",
-                category: "Administrative"
-            },
-            {
-                id: 29,
-                title: "Labour Disputes (Arbitration and Settlement) Act",
-                code: "Cap 227",
-                filename: "Labour Disputes(Arbitration and Settlement) Act Cap 227.pdf",
-                pdfUrl: "Labour Disputes(Arbitration and Settlement) Act Cap 227.pdf",
-                category: "Commercial"
-            },
-            {
-                id: 30,
-                title: "Limitation Act",
-                code: "Cap 290",
-                filename: "Limitation Act Cap 290.pdf",
-                pdfUrl: "Limitation Act Cap 290.pdf",
-                category: "Civil"
-            },
-            {
-                id: 31,
-                title: "Local Government Act",
-                code: "Cap 138",
-                filename: "Local Government Act Cap 138.pdf",
-                pdfUrl: "Local Government Act Cap 138.pdf",
-                category: "Administrative"
-            },
-            {
-                id: 32,
-                title: "Magistrate Court Act",
-                code: "Cap 19",
-                filename: "Magistrate Court Act Cap 19.pdf",
-                pdfUrl: "Magistrate Court Act Cap 19.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 33,
-                title: "Magistrates Court Act",
-                code: "Cap 19 (2)",
-                filename: "Magistrates Court Act Cap 19 (2).pdf",
-                pdfUrl: "Magistrates Court Act Cap 19 (2).pdf",
-                category: "Judicature"
-            },
-            {
-                id: 34,
-                title: "Magistrates Courts (Magisterial Areas and Magistrates Courts) Instrument",
-                code: "2024",
-                filename: "Magistrates Courts (Magisterial Areas and Magistrates Courts) Instrument, 2024.pdf",
-                pdfUrl: "Magistrates Courts (Magisterial Areas and Magistrates Courts) Instrument, 2024.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 35,
-                title: "Narcotic Drugs & Psychotropic Substances Control Act",
-                code: "Cap 37 (1)",
-                filename: "Narcotic Drugs & Psychotropic Substances Control Act Cap 37 (1).pdf",
-                pdfUrl: "Narcotic Drugs & Psychotropic Substances Control Act Cap 37 (1).pdf",
-                category: "Criminal"
-            },
-            {
-                id: 36,
-                title: "Penal Code Act",
-                code: "Cap 128 (3)",
-                filename: "Penal Code Act. Cap. 128 (3).pdf",
-                pdfUrl: "Penal Code Act. Cap. 128 (3).pdf",
-                category: "Criminal"
-            },
-            {
-                id: 37,
-                title: "Police Act",
-                code: "Cap 324",
-                filename: "Police Act Cap 324.pdf",
-                pdfUrl: "Police Act Cap 324.pdf",
-                category: "Administrative"
-            },
-            {
-                id: 38,
-                title: "Political Parties Organizations Act",
-                code: "Cap 178",
-                filename: "Political Parties Organizations Act Cap 178.pdf",
-                pdfUrl: "Political Parties Organizations Act Cap 178.pdf",
-                category: "Constitutional"
-            },
-            {
-                id: 39,
-                title: "Poor Person Defence Act",
-                code: "Cap 22",
-                filename: "Poor Person Defence Act Cap 22.pdf",
-                pdfUrl: "Poor Person Defence Act Cap 22.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 40,
-                title: "Practice Direction No.1 of 2007",
-                code: "",
-                filename: "Practice Direction No.1 of 2007.pdf",
-                pdfUrl: "Practice Direction No.1 of 2007.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 41,
-                title: "Prisons Act",
-                code: "Cap 325",
-                filename: "Prisons Act Cap 325.pdf",
-                pdfUrl: "Prisons Act Cap 325.pdf",
-                category: "Administrative"
-            },
-            {
-                id: 42,
-                title: "Public Service Act",
-                code: "Cap 91",
-                filename: "Public Service Act Act Cap 91.pdf",
-                pdfUrl: "Public Service Act Act Cap 91.pdf",
-                category: "Administrative"
-            },
-            {
-                id: 43,
-                title: "Public Service Standing Orders",
-                code: "2010",
-                filename: "Public Service Standing Orders 2010.pdf",
-                pdfUrl: "Public Service Standing Orders 2010.pdf",
-                category: "Administrative"
-            },
-            {
-                id: 44,
-                title: "Standardized Complaints Handling Guidelines ESI",
-                code: "",
-                filename: "Standardized Complaints Handling Guidelines ESI (1).pdf",
-                pdfUrl: "Standardized Complaints Handling Guidelines ESI (1).pdf",
-                category: "Administrative"
-            },
-            {
-                id: 45,
-                title: "Tax Appeal Tribunal Act",
-                code: "Cap 341",
-                filename: "Tax Appeal Tribunal Act Cap 341.pdf",
-                pdfUrl: "Tax Appeal Tribunal Act Cap 341.pdf",
-                category: "Commercial"
-            },
-            {
-                id: 46,
-                title: "2016 Parliamentary Elections Digest",
-                code: "",
-                filename: "The 2016 Parliamentary Elections Digest by Prof. Justice Lilian Tibatemwa Ekirikubinza.pdf",
-                pdfUrl: "The 2016 Parliamentary Elections Digest by Prof. Justice Lilian Tibatemwa Ekirikubinza.pdf",
-                category: "Constitutional"
-            },
-            {
-                id: 47,
-                title: "The Civil Procedure (Amendment) Rules",
-                code: "",
-                filename: "The Civil Procedure (Amendment) Rules.pdf",
-                pdfUrl: "The Civil Procedure (Amendment) Rules.pdf",
-                category: "Civil"
-            },
-            {
-                id: 48,
-                title: "The Constitution (Sentencing Guidelines for Courts of Judicature)",
-                code: "",
-                filename: "The Constitution(Sentencing Guidelines for Courts of Judicature)(Practice) (1).pdf",
-                pdfUrl: "The Constitution(Sentencing Guidelines for Courts of Judicature)(Practice) (1).pdf",
-                category: "Judicature"
-            },
-            {
-                id: 49,
-                title: "The Magistrates Courts (Magisterial Areas) Instrument",
-                code: "",
-                filename: "The Magistrates Courts (Magisterial Areas)Instrument.pdf",
-                pdfUrl: "The Magistrates Courts (Magisterial Areas)Instrument.pdf",
-                category: "Judicature"
-            },
-            {
-                id: 50,
-                title: "Traffic and Road Safety Act",
-                code: "Cap 347",
-                filename: "Traffic and Road Safety Cap 347 Act.pdf",
-                pdfUrl: "Traffic and Road Safety Cap 347 Act.pdf",
-                category: "Criminal"
-            },
-            {
-                id: 51,
-                title: "Trial on Indictment Act",
-                code: "Cap 25 (3)",
-                filename: "Trial on Indictment Act Cap 25 (3).pdf",
-                pdfUrl: "Trial on Indictment Act Cap 25 (3).pdf",
-                category: "Criminal"
+                title: "Model Penal Code with Commentary",
+                description: "A statutory text developed by the American Law Institute to stimulate and assist U.S. state legislatures to update and standardize their criminal laws.",
+                filename: "model-penal-code.pdf",
+                category: "statutes",
+                size: "5.7 MB",
+                pages: 420
             }
         ];
 
         // DOM Elements
-        const statutesContainer = document.getElementById('statutesContainer');
+        const pdfGrid = document.getElementById('pdfGrid');
         const searchInput = document.getElementById('searchInput');
-        const clearSearchBtn = document.getElementById('clearSearch');
-        const statsCounter = document.getElementById('statsCounter');
-        const filterButtons = document.getElementById('filterButtons');
-        
-        // PDF Viewer Elements
-        const pdfViewerOverlay = document.getElementById('pdfViewerOverlay');
+        const searchButton = document.getElementById('searchButton');
+        const pdfViewer = document.getElementById('pdfViewer');
         const pdfFrame = document.getElementById('pdfFrame');
-        const pdfViewerTitle = document.getElementById('pdfViewerTitle');
-        const pdfViewerClose = document.getElementById('pdfViewerClose');
-        const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
-        
-        // State variables
-        let currentFilter = 'all';
-        let filteredStatutes = [...statutes];
-        let currentPdfUrl = '';
-        let currentPdfTitle = '';
-        let currentFilename = '';
-        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        let isAndroid = /Android/.test(navigator.userAgent);
-        
-        // Initialize
-        function init() {
-            renderStatutes(filteredStatutes);
-            updateStats();
-            
-            // Event listeners
-            filterButtons.addEventListener('click', (e) => {
-                if (e.target.classList.contains('filter-btn')) {
-                    document.querySelectorAll('.filter-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    e.target.classList.add('active');
-                    
-                    currentFilter = e.target.dataset.filter;
-                    applyFilters();
-                }
-            });
-            
-            searchInput.addEventListener('input', applyFilters);
-            
-            clearSearchBtn.addEventListener('click', () => {
-                searchInput.value = '';
-                currentFilter = 'all';
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.dataset.filter === 'all') {
-                        btn.classList.add('active');
-                    }
-                });
-                applyFilters();
-                searchInput.focus();
-            });
-            
-            // PDF Viewer controls
-            pdfViewerClose.addEventListener('click', closePdfViewer);
-            pdfDownloadBtn.addEventListener('click', downloadCurrentPdf);
-            
-            // Handle escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && pdfViewerOverlay.classList.contains('active')) {
-                    closePdfViewer();
-                }
-            });
-            
-            // Handle browser back button
-            window.addEventListener('popstate', (e) => {
-                if (pdfViewerOverlay.classList.contains('active')) {
-                    closePdfViewer();
-                }
-            });
-            
-            // Handle orientation changes
-            window.addEventListener('orientationchange', handleOrientationChange);
+        const viewerTitle = document.getElementById('viewerTitle');
+        const closeViewer = document.getElementById('closeViewer');
+
+        // Current search state
+        let currentSearch = '';
+
+        // Function to open PDF immediately
+        function openPDF(filename, title) {
+            viewerTitle.textContent = title;
+            pdfFrame.src = filename;
+            pdfViewer.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
 
-        // Render statutes with single Preview button
-        function renderStatutes(statutesArray) {
-            if (statutesArray.length === 0) {
-                statutesContainer.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-search"></i>
-                        <h3>No statutes found</h3>
-                        <p>Try a different search term or filter</p>
+        // Initialize the PDF grid
+        function renderDocuments() {
+            pdfGrid.innerHTML = '';
+            
+            // Filter documents based on search
+            let filteredDocs = legalDocuments.filter(doc => {
+                if (!currentSearch) return true;
+                
+                const searchLower = currentSearch.toLowerCase();
+                return (
+                    doc.title.toLowerCase().includes(searchLower) ||
+                    doc.description.toLowerCase().includes(searchLower) ||
+                    doc.category.toLowerCase().includes(searchLower)
+                );
+            });
+            
+            // Display message if no documents found
+            if (filteredDocs.length === 0) {
+                pdfGrid.innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 3rem; margin-bottom: 15px; color: #cbd5e0;">🔍</div>
+                        <h3>No documents found</h3>
+                        <p>Try different search terms</p>
                     </div>
                 `;
                 return;
             }
             
-            statutesContainer.innerHTML = statutesArray.map(statute => `
-                <div class="statute-card">
-                    <div class="statute-header">
-                        <div class="statute-title">${escapeHtml(statute.title)}</div>
-                        <div class="statute-code">${statute.code || 'Act'}</div>
+            // Create document cards
+            filteredDocs.forEach(doc => {
+                const docCard = document.createElement('div');
+                docCard.className = 'pdf-card';
+                docCard.onclick = () => openPDF(doc.filename, doc.title);
+                
+                // Map categories to display names
+                const categoryNames = {
+                    statutes: "Statutes & Codes",
+                    regulations: "Regulations",
+                    "case-law": "Case Law"
+                };
+                
+                docCard.innerHTML = `
+                    <div class="pdf-card-header">
+                        <div class="pdf-category">${categoryNames[doc.category] || doc.category}</div>
+                        <h3 class="pdf-title">${doc.title}</h3>
                     </div>
-                    <div class="statute-body">
-                        <span class="category-tag">${statute.category} Law</span>
-                        <div class="statute-filename">${escapeHtml(statute.filename)}</div>
-                        <div class="statute-actions">
-                            <button class="btn btn-preview" 
-                                    data-title="${escapeHtml(statute.title + (statute.code ? ' ' + statute.code : ''))}" 
-                                    data-pdfurl="${escapeHtml(statute.pdfUrl)}"
-                                    data-filename="${escapeHtml(statute.filename)}">
-                                <i class="fas fa-eye"></i> Preview PDF
-                            </button>
-                            <button class="btn btn-download" 
-                                    onclick="downloadPdf('${escapeHtml(statute.filename)}', '${escapeHtml(statute.pdfUrl)}')">
-                                <i class="fas fa-download"></i> Download
-                            </button>
+                    <div class="pdf-card-body">
+                        <p class="pdf-description">${doc.description}</p>
+                        <div class="pdf-details">
+                            <span>📄 ${doc.size}</span>
+                            <span>📑 ${doc.pages} pages</span>
                         </div>
                     </div>
-                </div>
-            `).join('');
-            
-            // Add event listeners to preview buttons
-            statutesContainer.querySelectorAll('.btn-preview').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const title = this.getAttribute('data-title');
-                    const pdfUrl = this.getAttribute('data-pdfurl');
-                    const filename = this.getAttribute('data-filename');
-                    openPdfViewer(title, pdfUrl, filename);
-                });
+                `;
+                
+                pdfGrid.appendChild(docCard);
             });
         }
 
-        // Open PDF Viewer - Shows ALL pages on mobile
-        function openPdfViewer(title, pdfUrl, filename) {
-            currentPdfTitle = title;
-            currentPdfUrl = pdfUrl;
-            currentFilename = filename;
-            
-            // Update UI immediately
-            pdfViewerTitle.textContent = title;
-            pdfViewerOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            // Add class to body for mobile styling
-            document.body.classList.add('pdf-viewer-active');
-            
-            // Create PDF URL with parameters that force ALL pages display
-            let pdfUrlWithParams = pdfUrl;
-            
-            if (isMobile) {
-                if (isIOS) {
-                    // iOS - Best parameters for showing all pages
-                    pdfUrlWithParams = `${pdfUrl}#scrollbar=1&toolbar=0&navpanes=0&view=Fit`;
-                } else if (isAndroid) {
-                    // Android - Best parameters for showing all pages
-                    pdfUrlWithParams = `${pdfUrl}#scrollbar=1&toolbar=0&navpanes=0&view=FitH`;
-                } else {
-                    // Other mobile devices
-                    pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=1`;
-                }
-            } else {
-                // Desktop - Show all pages
-                pdfUrlWithParams = `${pdfUrl}#view=FitH`;
-            }
-            
-            // Load PDF directly
-            pdfFrame.src = pdfUrlWithParams;
-            
-            // Update history for back button
-            history.pushState({ pdfViewer: true }, '');
-            
-            // CRITICAL: Force mobile browsers to show all content
-            if (isMobile) {
-                // Apply critical mobile CSS fixes
-                setTimeout(() => {
-                    try {
-                        // Force iframe to expand to show all content
-                        pdfFrame.style.height = 'auto';
-                        pdfFrame.style.minHeight = '100%';
-                        pdfFrame.style.overflow = 'auto';
-                        
-                        // Force parent container to allow scrolling
-                        const content = pdfFrame.parentElement;
-                        if (content) {
-                            content.style.overflowY = 'auto';
-                            content.style.webkitOverflowScrolling = 'touch';
-                        }
-                    } catch (e) {
-                        // Ignore errors
-                    }
-                }, 100);
-            }
-        }
-
-        // Close PDF Viewer
-        function closePdfViewer() {
-            pdfViewerOverlay.classList.remove('active');
+        // Close PDF viewer
+        closeViewer.onclick = () => {
+            pdfViewer.style.display = 'none';
             pdfFrame.src = '';
-            document.body.style.overflow = '';
-            document.body.classList.remove('pdf-viewer-active');
-            history.back();
-        }
+            document.body.style.overflow = 'auto';
+        };
 
-        // Download current PDF
-        function downloadCurrentPdf() {
-            downloadPdf(currentFilename, currentPdfUrl);
-        }
-
-        // Handle orientation changes
-        function handleOrientationChange() {
-            if (pdfViewerOverlay.classList.contains('active')) {
-                // Refresh PDF on orientation change
-                setTimeout(() => {
-                    const currentSrc = pdfFrame.src;
-                    if (currentSrc) {
-                        pdfFrame.src = '';
-                        setTimeout(() => {
-                            pdfFrame.src = currentSrc;
-                            
-                            // Re-apply mobile fixes after orientation change
-                            if (isMobile) {
-                                setTimeout(() => {
-                                    pdfFrame.style.height = 'auto';
-                                    pdfFrame.style.minHeight = '100%';
-                                }, 200);
-                            }
-                        }, 50);
-                    }
-                }, 300);
+        // Also close when clicking outside the iframe
+        pdfViewer.onclick = (e) => {
+            if (e.target === pdfViewer) {
+                pdfViewer.style.display = 'none';
+                pdfFrame.src = '';
+                document.body.style.overflow = 'auto';
             }
-        }
+        };
 
-        // Download PDF function
-        function downloadPdf(filename, url) {
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            link.target = '_blank';
-            document.body.appendChild(link);
-            link.click();
-            setTimeout(() => {
-                if (link.parentNode) {
-                    link.parentNode.removeChild(link);
-                }
-            }, 100);
-        }
+        // Search functionality
+        searchButton.onclick = () => {
+            currentSearch = searchInput.value.trim();
+            renderDocuments();
+        };
 
-        // Apply filters and search
-        function applyFilters() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            
-            filteredStatutes = statutes.filter(statute => {
-                if (currentFilter !== 'all' && statute.category !== currentFilter) {
-                    return false;
-                }
-                
-                if (searchTerm) {
-                    const searchableText = `
-                        ${statute.title.toLowerCase()}
-                        ${statute.code ? statute.code.toLowerCase() : ''}
-                        ${statute.filename.toLowerCase()}
-                        ${statute.category.toLowerCase()}
-                    `;
-                    return searchableText.includes(searchTerm);
-                }
-                
-                return true;
-            });
-            
-            renderStatutes(filteredStatutes);
-            updateStats();
-        }
-
-        // Update stats counter
-        function updateStats() {
-            const count = filteredStatutes.length;
-            const total = statutes.length;
-            statsCounter.textContent = `Showing ${count} of ${total} statutes`;
-        }
-
-        // Utility function to escape HTML
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // Make functions globally available
-        window.downloadPdf = downloadPdf;
-
-        // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', init);
-        
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (pdfViewerOverlay.classList.contains('active') && isMobile) {
-                // Refresh PDF on resize for mobile
-                setTimeout(() => {
-                    const currentSrc = pdfFrame.src;
-                    if (currentSrc) {
-                        pdfFrame.src = currentSrc;
-                    }
-                }, 200);
+        searchInput.onkeyup = (e) => {
+            if (e.key === 'Enter') {
+                currentSearch = searchInput.value.trim();
+                renderDocuments();
             }
-        });
-        
-        // Additional JavaScript fixes for mobile
-        if (isMobile) {
-            // Prevent default touch actions that might interfere
-            document.addEventListener('touchmove', (e) => {
-                if (pdfViewerOverlay.classList.contains('active')) {
-                    // Allow touch scrolling in PDF viewer
-                    e.stopPropagation();
-                }
-            }, { passive: true });
-            
-            // Fix for iOS rubber band effect
-            if (isIOS) {
-                document.addEventListener('touchstart', (e) => {
-                    if (pdfViewerOverlay.classList.contains('active')) {
-                        // Prevent default on touch start
-                        if (e.touches.length > 1) {
-                            e.preventDefault();
-                        }
-                    }
-                }, { passive: false });
-            }
-        }
+        };
+
+        // Real-time search as user types
+        searchInput.oninput = () => {
+            currentSearch = searchInput.value.trim();
+            renderDocuments();
+        };
+
+        // Initial render
+        renderDocuments();
     </script>
 </body>
 </html>
