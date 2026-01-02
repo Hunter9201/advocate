@@ -240,7 +240,7 @@
             margin-right: 8px;
         }
         
-        /* CLEAN PDF VIEWER - Shows all pages */
+        /* PDF VIEWER - Fixed for all devices */
         .pdf-viewer-overlay {
             position: fixed;
             top: 0;
@@ -326,16 +326,15 @@
             background: white;
         }
         
-        /* PDF IFRAME - Clean and shows all pages */
-        .pdf-iframe {
+        /* PDF OBJECT - Use object tag instead of iframe for better PDF display */
+        .pdf-object {
             width: 100%;
             height: 100%;
             border: none;
-            background: white;
             display: block;
         }
         
-        /* Simple download button */
+        /* Download button */
         .pdf-download-btn {
             position: absolute;
             bottom: 20px;
@@ -424,14 +423,6 @@
                 
                 .pdf-viewer-container {
                     height: -webkit-fill-available;
-                }
-                
-                .pdf-iframe {
-                    -webkit-overflow-scrolling: touch;
-                }
-                
-                .pdf-viewer-content {
-                    -webkit-overflow-scrolling: touch;
                 }
             }
         }
@@ -596,15 +587,16 @@
             color: #3b82f6;
         }
         
-        /* Fullscreen PDF Styles */
-        .pdf-viewer-content {
-            display: flex;
-            flex-direction: column;
+        /* Alternative View Option */
+        .pdf-alternative-view {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
         }
         
-        .pdf-iframe {
-            flex: 1;
-            width: 100%;
+        .pdf-alternative-view.active {
+            display: block;
         }
     </style>
 </head>
@@ -612,7 +604,7 @@
     <header>
         <div class="container">
             <h1>Uganda Statutes</h1>
-            <div class="header-subtitle">Complete PDF Preview • All Pages • Clean Interface</div>
+            <div class="header-subtitle">Complete PDF Preview • All Pages • Fixed for All Devices</div>
         </div>
     </header>
     
@@ -643,7 +635,7 @@
         </div>
     </div>
     
-    <!-- CLEAN PDF VIEWER (Shows all pages, no ugly buttons) -->
+    <!-- PDF VIEWER - Fixed for all devices -->
     <div class="pdf-viewer-overlay" id="pdfViewerOverlay">
         <div class="pdf-viewer-container">
             <div class="pdf-viewer-header">
@@ -657,11 +649,18 @@
                     <i class="fas fa-spinner fa-spin"></i>
                     <p>Loading PDF Document...</p>
                 </div>
-                <iframe class="pdf-iframe" id="pdfFrame" 
-                        allow="autoplay" 
-                        allowfullscreen 
-                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
-                </iframe>
+                <object class="pdf-object" id="pdfObject" 
+                        type="application/pdf"
+                        data="">
+                </object>
+                <div class="pdf-alternative-view" id="pdfAlternativeView">
+                    <i class="fas fa-file-pdf" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>PDF Preview Not Available</h3>
+                    <p>Please download the document to view it.</p>
+                    <button class="btn btn-preview" id="alternativeDownloadBtn" style="margin-top: 1rem;">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
                 <button class="pdf-download-btn" id="pdfDownloadBtn">
                     <i class="fas fa-download"></i> Download
                 </button>
@@ -676,7 +675,7 @@
     
     <footer>
         <div class="container">
-            <p>Clean PDF Preview • All Pages Visible • Works Everywhere</p>
+            <p>Complete PDF Preview • All Pages Visible • Fixed for Chrome & Mobile</p>
         </div>
     </footer>
 
@@ -1102,11 +1101,13 @@
         
         // PDF Viewer Elements
         const pdfViewerOverlay = document.getElementById('pdfViewerOverlay');
-        const pdfFrame = document.getElementById('pdfFrame');
+        const pdfObject = document.getElementById('pdfObject');
         const pdfViewerTitle = document.getElementById('pdfViewerTitle');
         const pdfViewerClose = document.getElementById('pdfViewerClose');
         const pdfLoader = document.getElementById('pdfLoader');
         const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
+        const pdfAlternativeView = document.getElementById('pdfAlternativeView');
+        const alternativeDownloadBtn = document.getElementById('alternativeDownloadBtn');
         
         // Loading Indicator
         const loadingIndicator = document.getElementById('loadingIndicator');
@@ -1117,10 +1118,6 @@
         let currentPdfUrl = '';
         let currentPdfTitle = '';
         let currentFilename = '';
-        
-        // Device detection
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        const isIPhone = /iPhone|iPod/.test(navigator.userAgent);
         
         // Initialize
         function init() {
@@ -1158,6 +1155,7 @@
             // PDF Viewer controls
             pdfViewerClose.addEventListener('click', closePdfViewer);
             pdfDownloadBtn.addEventListener('click', downloadCurrentPdf);
+            alternativeDownloadBtn.addEventListener('click', downloadCurrentPdf);
             
             // Handle escape key
             document.addEventListener('keydown', (e) => {
@@ -1176,8 +1174,20 @@
             // Handle orientation changes
             window.addEventListener('orientationchange', handleOrientationChange);
             
-            // Preload first few PDFs
-            setTimeout(preloadPopularPDFs, 500);
+            // Check PDF support
+            checkPdfSupport();
+        }
+
+        // Check if browser supports PDF display
+        function checkPdfSupport() {
+            const isChrome = /Chrome/.test(navigator.userAgent);
+            const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
+            const isFirefox = /Firefox/.test(navigator.userAgent);
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            console.log('Browser detection:', {
+                isChrome, isSafari, isFirefox, isMobile, userAgent: navigator.userAgent
+            });
         }
 
         // Render statutes with single Preview button
@@ -1229,7 +1239,7 @@
             });
         }
 
-        // Open PDF Viewer - Shows ALL pages
+        // Open PDF Viewer - FIXED for all devices
         function openPdfViewer(title, pdfUrl, filename) {
             showLoading(true);
             
@@ -1244,63 +1254,120 @@
             
             // Show loader
             pdfLoader.style.display = 'block';
-            
-            // Generate optimized PDF URL based on device
-            let pdfUrlWithParams = pdfUrl;
-            
-            if (isMobile) {
-                // Mobile devices - show all pages with minimal controls
-                if (isIPhone) {
-                    // iPhone optimization
-                    pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0`;
-                } else {
-                    // Android and other mobile
-                    pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0`;
-                }
-            } else {
-                // Desktop - show all pages with standard controls
-                pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=1&navpanes=1`;
-            }
-            
-            // Load PDF
-            pdfFrame.src = pdfUrlWithParams;
+            pdfAlternativeView.classList.remove('active');
+            pdfObject.style.display = 'none';
             
             // Update history for back button
             history.pushState({ pdfViewer: true }, '');
             
-            // Listen for PDF load
-            pdfFrame.onload = () => {
-                showLoading(false);
-                pdfLoader.style.display = 'none';
-                
-                // Make PDF scrollable
-                setTimeout(() => {
-                    try {
-                        // Try to make PDF content scrollable
-                        if (pdfFrame.contentDocument) {
-                            pdfFrame.contentDocument.body.style.overflow = 'auto';
-                        }
-                    } catch (e) {
-                        // Cross-origin restrictions may prevent this
-                    }
-                }, 500);
-            };
+            // Try to load PDF using object tag first (best compatibility)
+            const isChrome = /Chrome/.test(navigator.userAgent);
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
-            // Handle errors
-            pdfFrame.onerror = () => {
-                showLoading(false);
-                pdfLoader.style.display = 'none';
-                alert('Failed to load PDF. Please try downloading instead.');
-            };
+            // For Chrome and desktop browsers, use object tag with proper params
+            if (!isMobile && isChrome) {
+                // Chrome on desktop - use object with specific params
+                const objectUrl = `${pdfUrl}#view=FitH&toolbar=1&navpanes=1`;
+                pdfObject.data = objectUrl;
+                pdfObject.style.display = 'block';
+                
+                // Handle object load
+                pdfObject.onload = () => {
+                    showLoading(false);
+                    pdfLoader.style.display = 'none';
+                };
+                
+                pdfObject.onerror = () => {
+                    // Fallback: try opening in new tab
+                    showLoading(false);
+                    pdfLoader.style.display = 'none';
+                    pdfObject.style.display = 'none';
+                    pdfAlternativeView.classList.add('active');
+                };
+            } 
+            // For mobile devices, use different approach
+            else if (isMobile) {
+                // Mobile devices - use object with simplified view
+                const mobileUrl = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0`;
+                pdfObject.data = mobileUrl;
+                pdfObject.style.display = 'block';
+                
+                pdfObject.onload = () => {
+                    showLoading(false);
+                    pdfLoader.style.display = 'none';
+                    
+                    // Force mobile browsers to show all pages
+                    setTimeout(() => {
+                        try {
+                            // Some mobile browsers need this
+                            if (pdfObject.contentDocument) {
+                                pdfObject.contentDocument.body.style.overflow = 'auto';
+                            }
+                        } catch (e) {
+                            // Cross-origin restrictions
+                        }
+                    }, 1000);
+                };
+                
+                pdfObject.onerror = () => {
+                    // Fallback for mobile
+                    showLoading(false);
+                    pdfLoader.style.display = 'none';
+                    openPdfInNewTab(pdfUrl);
+                };
+            }
+            // For other browsers
+            else {
+                // Safari, Firefox, etc.
+                const browserUrl = `${pdfUrl}#view=FitH&toolbar=1`;
+                pdfObject.data = browserUrl;
+                pdfObject.style.display = 'block';
+                
+                pdfObject.onload = () => {
+                    showLoading(false);
+                    pdfLoader.style.display = 'none';
+                };
+                
+                pdfObject.onerror = () => {
+                    showLoading(false);
+                    pdfLoader.style.display = 'none';
+                    pdfAlternativeView.classList.add('active');
+                };
+            }
+        }
+
+        // Alternative: Open PDF in new tab (fallback)
+        function openPdfInNewTab(pdfUrl) {
+            // Show alternative view
+            pdfAlternativeView.classList.add('active');
+            pdfLoader.style.display = 'none';
+            
+            // Create and open link in new tab
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.target = '_blank';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            
+            // Store the link for the download button
+            window.fallbackPdfLink = link;
         }
 
         // Close PDF Viewer
         function closePdfViewer() {
             pdfViewerOverlay.classList.remove('active');
-            pdfFrame.src = '';
+            pdfObject.data = '';
             document.body.style.overflow = '';
             showLoading(false);
             pdfLoader.style.display = 'none';
+            pdfAlternativeView.classList.remove('active');
+            pdfObject.style.display = 'none';
+            
+            // Clean up fallback link if exists
+            if (window.fallbackPdfLink && window.fallbackPdfLink.parentNode) {
+                window.fallbackPdfLink.parentNode.removeChild(window.fallbackPdfLink);
+                delete window.fallbackPdfLink;
+            }
             
             history.back();
         }
@@ -1313,13 +1380,15 @@
         // Handle orientation changes
         function handleOrientationChange() {
             if (pdfViewerOverlay.classList.contains('active')) {
-                // Small delay to let orientation settle, then refresh
+                // Refresh the PDF viewer on orientation change
                 setTimeout(() => {
-                    const currentSrc = pdfFrame.src;
-                    pdfFrame.src = '';
-                    setTimeout(() => {
-                        pdfFrame.src = currentSrc;
-                    }, 100);
+                    const currentData = pdfObject.data;
+                    if (currentData) {
+                        pdfObject.data = '';
+                        setTimeout(() => {
+                            pdfObject.data = currentData;
+                        }, 100);
+                    }
                 }, 300);
             }
         }
@@ -1331,24 +1400,6 @@
             } else {
                 loadingIndicator.classList.remove('active');
             }
-        }
-
-        // Preload popular PDFs
-        function preloadPopularPDFs() {
-            // Preload first 3 PDFs for faster loading
-            const popularPDFs = statutes.slice(0, 3);
-            popularPDFs.forEach(statute => {
-                const preloadFrame = document.createElement('iframe');
-                preloadFrame.style.display = 'none';
-                preloadFrame.src = statute.pdfUrl;
-                document.body.appendChild(preloadFrame);
-                
-                setTimeout(() => {
-                    if (preloadFrame.parentNode) {
-                        preloadFrame.parentNode.removeChild(preloadFrame);
-                    }
-                }, 20000);
-            });
         }
 
         // Download PDF function
@@ -1417,25 +1468,6 @@
             return div.innerHTML;
         }
 
-        // Add swipe to close on mobile
-        if (isMobile) {
-            let touchStartX = 0;
-            
-            pdfViewerOverlay.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, false);
-            
-            pdfViewerOverlay.addEventListener('touchend', e => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const swipeThreshold = 100;
-                
-                // Swipe right from left edge to close
-                if (touchStartX < 50 && touchEndX > touchStartX + swipeThreshold) {
-                    closePdfViewer();
-                }
-            }, false);
-        }
-
         // Make functions globally available
         window.downloadPdf = downloadPdf;
 
@@ -1445,28 +1477,34 @@
         // Handle window resize
         window.addEventListener('resize', () => {
             if (pdfViewerOverlay.classList.contains('active')) {
+                // Refresh PDF on resize for better display
                 setTimeout(() => {
-                    const currentSrc = pdfFrame.src;
-                    pdfFrame.src = currentSrc;
+                    if (pdfObject.data) {
+                        const currentData = pdfObject.data;
+                        pdfObject.data = currentData;
+                    }
                 }, 200);
             }
         });
 
-        // iPhone-specific scroll optimizations
-        if (isIPhone) {
-            document.addEventListener('touchmove', (e) => {
-                // Allow natural scrolling in PDF viewer
-            }, { passive: true });
+        // iOS specific fixes
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if (isIOS) {
+            // Fix for iOS PDF viewing
+            document.addEventListener('DOMContentLoaded', () => {
+                // Ensure PDF object has proper attributes for iOS
+                pdfObject.setAttribute('data', '');
+                pdfObject.setAttribute('type', 'application/pdf');
+            });
             
-            // Fix for iOS viewport
-            const setViewportHeight = () => {
-                let vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
-            };
-            
-            setViewportHeight();
-            window.addEventListener('resize', setViewportHeight);
-            window.addEventListener('orientationchange', setViewportHeight);
+            // Handle iOS orientation changes better
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => {
+                    if (pdfViewerOverlay.classList.contains('active') && pdfObject.data) {
+                        window.scrollTo(0, 0);
+                    }
+                }, 500);
+            });
         }
     </script>
 </body>
