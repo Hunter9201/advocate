@@ -240,7 +240,7 @@
             margin-right: 8px;
         }
         
-        /* PDF VIEWER - Clean and Simple */
+        /* PDF VIEWER - Fixed for mobile ALL pages display */
         .pdf-viewer-overlay {
             position: fixed;
             top: 0;
@@ -250,13 +250,10 @@
             background: #0f172a;
             z-index: 1000;
             display: none;
-            opacity: 0;
-            transition: opacity 0.2s;
         }
         
         .pdf-viewer-overlay.active {
             display: block;
-            opacity: 1;
         }
         
         .pdf-viewer-container {
@@ -326,8 +323,8 @@
             background: white;
         }
         
-        /* PDF OBJECT - Shows ALL pages */
-        .pdf-object {
+        /* PDF IFRAME - Critical CSS for mobile ALL pages display */
+        .pdf-iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -357,13 +354,39 @@
             -webkit-backdrop-filter: blur(10px);
         }
         
-        .pdf-download-btn:hover {
-            background: rgba(59, 130, 246, 1);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        .pdf-download-btn:active {
+            transform: scale(0.95);
         }
         
-        /* Mobile Optimizations */
+        /* ========== CRITICAL MOBILE CSS FIXES ========== */
+        /* These are essential for showing ALL pages on mobile */
+        
+        /* iOS specific fixes for PDF display */
+        @supports (-webkit-touch-callout: none) {
+            .pdf-viewer-overlay {
+                height: -webkit-fill-available;
+            }
+            
+            .pdf-viewer-container {
+                height: -webkit-fill-available;
+            }
+            
+            /* CRITICAL: Force PDF to show all pages on iOS */
+            .pdf-viewer-content {
+                -webkit-overflow-scrolling: touch !important;
+                overflow-y: scroll !important;
+                overflow-x: hidden !important;
+            }
+            
+            .pdf-iframe {
+                -webkit-overflow-scrolling: touch !important;
+                overflow: scroll !important;
+                min-height: 100% !important;
+                height: auto !important;
+            }
+        }
+        
+        /* Android and general mobile fixes */
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -415,20 +438,25 @@
                 font-size: 0.85rem;
             }
             
-            /* iPhone-specific optimizations */
-            @supports (-webkit-touch-callout: none) {
-                .pdf-viewer-overlay {
-                    height: -webkit-fill-available;
-                }
-                
-                .pdf-viewer-container {
-                    height: -webkit-fill-available;
-                }
-                
-                /* Force PDF to show all pages on iOS */
-                .pdf-object {
-                    -webkit-overflow-scrolling: touch;
-                }
+            /* CRITICAL: Force ALL pages display on ALL mobile devices */
+            .pdf-viewer-content {
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .pdf-iframe {
+                flex: 1;
+                min-height: 100% !important;
+                height: auto !important;
+                overflow: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Ensure PDF container allows scrolling */
+            body.pdf-viewer-active {
+                overflow: hidden;
             }
         }
         
@@ -472,6 +500,28 @@
                 right: 10px;
                 padding: 6px 12px;
                 font-size: 0.75rem;
+            }
+            
+            /* Landscape specific fixes */
+            .pdf-viewer-content {
+                overflow-y: auto !important;
+            }
+            
+            .pdf-iframe {
+                min-height: auto !important;
+                height: 100% !important;
+            }
+        }
+        
+        /* Additional mobile-only fixes */
+        @media (hover: none) and (pointer: coarse) {
+            /* Touch device specific fixes */
+            .pdf-iframe {
+                touch-action: pan-y pinch-zoom;
+            }
+            
+            .pdf-viewer-content {
+                touch-action: pan-y;
             }
         }
         
@@ -546,7 +596,7 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Status bar spacing for iOS */
+        /* iOS safe area support */
         @supports (padding-top: env(safe-area-inset-top)) {
             .pdf-viewer-container {
                 padding-top: env(safe-area-inset-top);
@@ -556,6 +606,21 @@
             .pdf-viewer-header {
                 padding-top: calc(0.8rem + env(safe-area-inset-top));
             }
+            
+            .pdf-viewer-content {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+        
+        /* Ensure PDF iframe takes full space */
+        .pdf-viewer-content {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pdf-iframe {
+            flex: 1;
+            width: 100%;
         }
     </style>
 </head>
@@ -563,7 +628,7 @@
     <header>
         <div class="container">
             <h1>Uganda Statutes</h1>
-            <div class="header-subtitle">Complete PDF Preview • All Pages Visible</div>
+            <div class="header-subtitle">Complete PDF Preview • All Pages • Mobile Optimized</div>
         </div>
     </header>
     
@@ -594,7 +659,7 @@
         </div>
     </div>
     
-    <!-- PDF VIEWER - Clean and Simple -->
+    <!-- PDF VIEWER - Shows ALL pages on mobile -->
     <div class="pdf-viewer-overlay" id="pdfViewerOverlay">
         <div class="pdf-viewer-container">
             <div class="pdf-viewer-header">
@@ -604,10 +669,10 @@
                 </button>
             </div>
             <div class="pdf-viewer-content">
-                <object class="pdf-object" id="pdfObject" 
-                        type="application/pdf"
-                        data="">
-                </object>
+                <iframe class="pdf-iframe" id="pdfFrame" 
+                        allow="autoplay" 
+                        allowfullscreen>
+                </iframe>
                 <button class="pdf-download-btn" id="pdfDownloadBtn">
                     <i class="fas fa-download"></i> Download
                 </button>
@@ -617,7 +682,7 @@
     
     <footer>
         <div class="container">
-            <p>Instant PDF Preview • All Pages • No Loading Indicators</p>
+            <p>Complete PDF Display • All Pages • Mobile First</p>
         </div>
     </footer>
 
@@ -1043,7 +1108,7 @@
         
         // PDF Viewer Elements
         const pdfViewerOverlay = document.getElementById('pdfViewerOverlay');
-        const pdfObject = document.getElementById('pdfObject');
+        const pdfFrame = document.getElementById('pdfFrame');
         const pdfViewerTitle = document.getElementById('pdfViewerTitle');
         const pdfViewerClose = document.getElementById('pdfViewerClose');
         const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
@@ -1056,6 +1121,7 @@
         let currentFilename = '';
         let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        let isAndroid = /Android/.test(navigator.userAgent);
         
         // Initialize
         function init() {
@@ -1161,7 +1227,7 @@
             });
         }
 
-        // Open PDF Viewer - Shows ALL pages, no loading indicators
+        // Open PDF Viewer - Shows ALL pages on mobile
         function openPdfViewer(title, pdfUrl, filename) {
             currentPdfTitle = title;
             currentPdfUrl = pdfUrl;
@@ -1172,46 +1238,63 @@
             pdfViewerOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Create PDF URL that shows ALL pages
+            // Add class to body for mobile styling
+            document.body.classList.add('pdf-viewer-active');
+            
+            // Create PDF URL with parameters that force ALL pages display
             let pdfUrlWithParams = pdfUrl;
             
             if (isMobile) {
-                // For mobile: show all pages, no toolbar, fit to height
                 if (isIOS) {
-                    // iOS specific: clean view showing all pages
-                    pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0`;
+                    // iOS - Best parameters for showing all pages
+                    pdfUrlWithParams = `${pdfUrl}#scrollbar=1&toolbar=0&navpanes=0&view=Fit`;
+                } else if (isAndroid) {
+                    // Android - Best parameters for showing all pages
+                    pdfUrlWithParams = `${pdfUrl}#scrollbar=1&toolbar=0&navpanes=0&view=FitH`;
                 } else {
-                    // Android and other mobile
+                    // Other mobile devices
                     pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=1`;
                 }
             } else {
-                // For desktop: show all pages with basic controls
+                // Desktop - Show all pages
                 pdfUrlWithParams = `${pdfUrl}#view=FitH`;
             }
             
-            // Load PDF directly - no loading indicator
-            pdfObject.data = pdfUrlWithParams;
+            // Load PDF directly
+            pdfFrame.src = pdfUrlWithParams;
             
             // Update history for back button
             history.pushState({ pdfViewer: true }, '');
             
-            // Auto-hide download button after 5 seconds on mobile for cleaner view
+            // CRITICAL: Force mobile browsers to show all content
             if (isMobile) {
+                // Apply critical mobile CSS fixes
                 setTimeout(() => {
-                    pdfDownloadBtn.style.opacity = '0.7';
-                }, 5000);
+                    try {
+                        // Force iframe to expand to show all content
+                        pdfFrame.style.height = 'auto';
+                        pdfFrame.style.minHeight = '100%';
+                        pdfFrame.style.overflow = 'auto';
+                        
+                        // Force parent container to allow scrolling
+                        const content = pdfFrame.parentElement;
+                        if (content) {
+                            content.style.overflowY = 'auto';
+                            content.style.webkitOverflowScrolling = 'touch';
+                        }
+                    } catch (e) {
+                        // Ignore errors
+                    }
+                }, 100);
             }
         }
 
         // Close PDF Viewer
         function closePdfViewer() {
             pdfViewerOverlay.classList.remove('active');
-            pdfObject.data = '';
+            pdfFrame.src = '';
             document.body.style.overflow = '';
-            
-            // Reset download button opacity
-            pdfDownloadBtn.style.opacity = '1';
-            
+            document.body.classList.remove('pdf-viewer-active');
             history.back();
         }
 
@@ -1223,11 +1306,22 @@
         // Handle orientation changes
         function handleOrientationChange() {
             if (pdfViewerOverlay.classList.contains('active')) {
-                // Small delay then refresh PDF for better display
+                // Refresh PDF on orientation change
                 setTimeout(() => {
-                    const currentData = pdfObject.data;
-                    if (currentData) {
-                        pdfObject.data = currentData;
+                    const currentSrc = pdfFrame.src;
+                    if (currentSrc) {
+                        pdfFrame.src = '';
+                        setTimeout(() => {
+                            pdfFrame.src = currentSrc;
+                            
+                            // Re-apply mobile fixes after orientation change
+                            if (isMobile) {
+                                setTimeout(() => {
+                                    pdfFrame.style.height = 'auto';
+                                    pdfFrame.style.minHeight = '100%';
+                                }, 200);
+                            }
+                        }, 50);
                     }
                 }, 300);
             }
@@ -1240,19 +1334,7 @@
             link.download = filename;
             link.target = '_blank';
             document.body.appendChild(link);
-            
-            try {
-                link.click();
-            } catch (e) {
-                // Fallback for older browsers
-                const clickEvent = new MouseEvent('click', {
-                    view: window,
-                    bubbles: true,
-                    cancelable: true
-                });
-                link.dispatchEvent(clickEvent);
-            }
-            
+            link.click();
             setTimeout(() => {
                 if (link.parentNode) {
                     link.parentNode.removeChild(link);
@@ -1300,44 +1382,46 @@
             return div.innerHTML;
         }
 
-        // Add swipe to close on mobile
-        if (isMobile) {
-            let touchStartX = 0;
-            
-            pdfViewerOverlay.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, false);
-            
-            pdfViewerOverlay.addEventListener('touchend', e => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const swipeThreshold = 100;
-                
-                // Swipe right from left edge to close
-                if (touchStartX < 50 && touchEndX > touchStartX + swipeThreshold) {
-                    closePdfViewer();
-                }
-            }, false);
-        }
-
         // Make functions globally available
         window.downloadPdf = downloadPdf;
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', init);
         
-        // iOS specific fixes for PDF display
-        if (isIOS) {
-            // Fix for iOS PDF viewing - ensure proper height
-            const setIOSHeight = () => {
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (pdfViewerOverlay.classList.contains('active') && isMobile) {
+                // Refresh PDF on resize for mobile
+                setTimeout(() => {
+                    const currentSrc = pdfFrame.src;
+                    if (currentSrc) {
+                        pdfFrame.src = currentSrc;
+                    }
+                }, 200);
+            }
+        });
+        
+        // Additional JavaScript fixes for mobile
+        if (isMobile) {
+            // Prevent default touch actions that might interfere
+            document.addEventListener('touchmove', (e) => {
                 if (pdfViewerOverlay.classList.contains('active')) {
-                    const vh = window.innerHeight * 0.01;
-                    document.documentElement.style.setProperty('--vh', `${vh}px`);
-                    pdfObject.style.height = 'calc(var(--vh, 1vh) * 100)';
+                    // Allow touch scrolling in PDF viewer
+                    e.stopPropagation();
                 }
-            };
+            }, { passive: true });
             
-            window.addEventListener('resize', setIOSHeight);
-            window.addEventListener('orientationchange', setIOSHeight);
+            // Fix for iOS rubber band effect
+            if (isIOS) {
+                document.addEventListener('touchstart', (e) => {
+                    if (pdfViewerOverlay.classList.contains('active')) {
+                        // Prevent default on touch start
+                        if (e.touches.length > 1) {
+                            e.preventDefault();
+                        }
+                    }
+                }, { passive: false });
+            }
         }
     </script>
 </body>
