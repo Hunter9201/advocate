@@ -240,7 +240,7 @@
             margin-right: 8px;
         }
         
-        /* PDF VIEWER - Fixed for all devices */
+        /* PDF VIEWER - Clean and Simple */
         .pdf-viewer-overlay {
             position: fixed;
             top: 0;
@@ -251,7 +251,7 @@
             z-index: 1000;
             display: none;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.2s;
         }
         
         .pdf-viewer-overlay.active {
@@ -326,7 +326,7 @@
             background: white;
         }
         
-        /* PDF OBJECT - Use object tag instead of iframe for better PDF display */
+        /* PDF OBJECT - Shows ALL pages */
         .pdf-object {
             width: 100%;
             height: 100%;
@@ -423,6 +423,11 @@
                 
                 .pdf-viewer-container {
                     height: -webkit-fill-available;
+                }
+                
+                /* Force PDF to show all pages on iOS */
+                .pdf-object {
+                    -webkit-overflow-scrolling: touch;
                 }
             }
         }
@@ -541,24 +546,6 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Loading indicator */
-        .loading-indicator {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            z-index: 1001;
-        }
-        
-        .loading-indicator.active {
-            display: block;
-        }
-        
         /* Status bar spacing for iOS */
         @supports (padding-top: env(safe-area-inset-top)) {
             .pdf-viewer-container {
@@ -570,41 +557,13 @@
                 padding-top: calc(0.8rem + env(safe-area-inset-top));
             }
         }
-        
-        /* PDF Loading Animation */
-        .pdf-loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #64748b;
-        }
-        
-        .pdf-loader i {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #3b82f6;
-        }
-        
-        /* Alternative View Option */
-        .pdf-alternative-view {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-            color: #64748b;
-        }
-        
-        .pdf-alternative-view.active {
-            display: block;
-        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Uganda Statutes</h1>
-            <div class="header-subtitle">Complete PDF Preview • All Pages • Fixed for All Devices</div>
+            <div class="header-subtitle">Complete PDF Preview • All Pages Visible</div>
         </div>
     </header>
     
@@ -635,7 +594,7 @@
         </div>
     </div>
     
-    <!-- PDF VIEWER - Fixed for all devices -->
+    <!-- PDF VIEWER - Clean and Simple -->
     <div class="pdf-viewer-overlay" id="pdfViewerOverlay">
         <div class="pdf-viewer-container">
             <div class="pdf-viewer-header">
@@ -645,22 +604,10 @@
                 </button>
             </div>
             <div class="pdf-viewer-content">
-                <div class="pdf-loader" id="pdfLoader">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <p>Loading PDF Document...</p>
-                </div>
                 <object class="pdf-object" id="pdfObject" 
                         type="application/pdf"
                         data="">
                 </object>
-                <div class="pdf-alternative-view" id="pdfAlternativeView">
-                    <i class="fas fa-file-pdf" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                    <h3>PDF Preview Not Available</h3>
-                    <p>Please download the document to view it.</p>
-                    <button class="btn btn-preview" id="alternativeDownloadBtn" style="margin-top: 1rem;">
-                        <i class="fas fa-download"></i> Download PDF
-                    </button>
-                </div>
                 <button class="pdf-download-btn" id="pdfDownloadBtn">
                     <i class="fas fa-download"></i> Download
                 </button>
@@ -668,14 +615,9 @@
         </div>
     </div>
     
-    <!-- Loading Indicator -->
-    <div class="loading-indicator" id="loadingIndicator">
-        <i class="fas fa-spinner fa-spin"></i> Opening document...
-    </div>
-    
     <footer>
         <div class="container">
-            <p>Complete PDF Preview • All Pages Visible • Fixed for Chrome & Mobile</p>
+            <p>Instant PDF Preview • All Pages • No Loading Indicators</p>
         </div>
     </footer>
 
@@ -1104,20 +1046,16 @@
         const pdfObject = document.getElementById('pdfObject');
         const pdfViewerTitle = document.getElementById('pdfViewerTitle');
         const pdfViewerClose = document.getElementById('pdfViewerClose');
-        const pdfLoader = document.getElementById('pdfLoader');
         const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
-        const pdfAlternativeView = document.getElementById('pdfAlternativeView');
-        const alternativeDownloadBtn = document.getElementById('alternativeDownloadBtn');
         
-        // Loading Indicator
-        const loadingIndicator = document.getElementById('loadingIndicator');
-
         // State variables
         let currentFilter = 'all';
         let filteredStatutes = [...statutes];
         let currentPdfUrl = '';
         let currentPdfTitle = '';
         let currentFilename = '';
+        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         
         // Initialize
         function init() {
@@ -1155,7 +1093,6 @@
             // PDF Viewer controls
             pdfViewerClose.addEventListener('click', closePdfViewer);
             pdfDownloadBtn.addEventListener('click', downloadCurrentPdf);
-            alternativeDownloadBtn.addEventListener('click', downloadCurrentPdf);
             
             // Handle escape key
             document.addEventListener('keydown', (e) => {
@@ -1173,21 +1110,6 @@
             
             // Handle orientation changes
             window.addEventListener('orientationchange', handleOrientationChange);
-            
-            // Check PDF support
-            checkPdfSupport();
-        }
-
-        // Check if browser supports PDF display
-        function checkPdfSupport() {
-            const isChrome = /Chrome/.test(navigator.userAgent);
-            const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
-            const isFirefox = /Firefox/.test(navigator.userAgent);
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            console.log('Browser detection:', {
-                isChrome, isSafari, isFirefox, isMobile, userAgent: navigator.userAgent
-            });
         }
 
         // Render statutes with single Preview button
@@ -1239,118 +1161,46 @@
             });
         }
 
-        // Open PDF Viewer - FIXED for all devices
+        // Open PDF Viewer - Shows ALL pages, no loading indicators
         function openPdfViewer(title, pdfUrl, filename) {
-            showLoading(true);
-            
             currentPdfTitle = title;
             currentPdfUrl = pdfUrl;
             currentFilename = filename;
             
-            // Update UI
+            // Update UI immediately
             pdfViewerTitle.textContent = title;
             pdfViewerOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Show loader
-            pdfLoader.style.display = 'block';
-            pdfAlternativeView.classList.remove('active');
-            pdfObject.style.display = 'none';
+            // Create PDF URL that shows ALL pages
+            let pdfUrlWithParams = pdfUrl;
+            
+            if (isMobile) {
+                // For mobile: show all pages, no toolbar, fit to height
+                if (isIOS) {
+                    // iOS specific: clean view showing all pages
+                    pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0`;
+                } else {
+                    // Android and other mobile
+                    pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=1`;
+                }
+            } else {
+                // For desktop: show all pages with basic controls
+                pdfUrlWithParams = `${pdfUrl}#view=FitH`;
+            }
+            
+            // Load PDF directly - no loading indicator
+            pdfObject.data = pdfUrlWithParams;
             
             // Update history for back button
             history.pushState({ pdfViewer: true }, '');
             
-            // Try to load PDF using object tag first (best compatibility)
-            const isChrome = /Chrome/.test(navigator.userAgent);
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            // For Chrome and desktop browsers, use object tag with proper params
-            if (!isMobile && isChrome) {
-                // Chrome on desktop - use object with specific params
-                const objectUrl = `${pdfUrl}#view=FitH&toolbar=1&navpanes=1`;
-                pdfObject.data = objectUrl;
-                pdfObject.style.display = 'block';
-                
-                // Handle object load
-                pdfObject.onload = () => {
-                    showLoading(false);
-                    pdfLoader.style.display = 'none';
-                };
-                
-                pdfObject.onerror = () => {
-                    // Fallback: try opening in new tab
-                    showLoading(false);
-                    pdfLoader.style.display = 'none';
-                    pdfObject.style.display = 'none';
-                    pdfAlternativeView.classList.add('active');
-                };
-            } 
-            // For mobile devices, use different approach
-            else if (isMobile) {
-                // Mobile devices - use object with simplified view
-                const mobileUrl = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0`;
-                pdfObject.data = mobileUrl;
-                pdfObject.style.display = 'block';
-                
-                pdfObject.onload = () => {
-                    showLoading(false);
-                    pdfLoader.style.display = 'none';
-                    
-                    // Force mobile browsers to show all pages
-                    setTimeout(() => {
-                        try {
-                            // Some mobile browsers need this
-                            if (pdfObject.contentDocument) {
-                                pdfObject.contentDocument.body.style.overflow = 'auto';
-                            }
-                        } catch (e) {
-                            // Cross-origin restrictions
-                        }
-                    }, 1000);
-                };
-                
-                pdfObject.onerror = () => {
-                    // Fallback for mobile
-                    showLoading(false);
-                    pdfLoader.style.display = 'none';
-                    openPdfInNewTab(pdfUrl);
-                };
+            // Auto-hide download button after 5 seconds on mobile for cleaner view
+            if (isMobile) {
+                setTimeout(() => {
+                    pdfDownloadBtn.style.opacity = '0.7';
+                }, 5000);
             }
-            // For other browsers
-            else {
-                // Safari, Firefox, etc.
-                const browserUrl = `${pdfUrl}#view=FitH&toolbar=1`;
-                pdfObject.data = browserUrl;
-                pdfObject.style.display = 'block';
-                
-                pdfObject.onload = () => {
-                    showLoading(false);
-                    pdfLoader.style.display = 'none';
-                };
-                
-                pdfObject.onerror = () => {
-                    showLoading(false);
-                    pdfLoader.style.display = 'none';
-                    pdfAlternativeView.classList.add('active');
-                };
-            }
-        }
-
-        // Alternative: Open PDF in new tab (fallback)
-        function openPdfInNewTab(pdfUrl) {
-            // Show alternative view
-            pdfAlternativeView.classList.add('active');
-            pdfLoader.style.display = 'none';
-            
-            // Create and open link in new tab
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.target = '_blank';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            
-            // Store the link for the download button
-            window.fallbackPdfLink = link;
         }
 
         // Close PDF Viewer
@@ -1358,16 +1208,9 @@
             pdfViewerOverlay.classList.remove('active');
             pdfObject.data = '';
             document.body.style.overflow = '';
-            showLoading(false);
-            pdfLoader.style.display = 'none';
-            pdfAlternativeView.classList.remove('active');
-            pdfObject.style.display = 'none';
             
-            // Clean up fallback link if exists
-            if (window.fallbackPdfLink && window.fallbackPdfLink.parentNode) {
-                window.fallbackPdfLink.parentNode.removeChild(window.fallbackPdfLink);
-                delete window.fallbackPdfLink;
-            }
+            // Reset download button opacity
+            pdfDownloadBtn.style.opacity = '1';
             
             history.back();
         }
@@ -1380,25 +1223,13 @@
         // Handle orientation changes
         function handleOrientationChange() {
             if (pdfViewerOverlay.classList.contains('active')) {
-                // Refresh the PDF viewer on orientation change
+                // Small delay then refresh PDF for better display
                 setTimeout(() => {
                     const currentData = pdfObject.data;
                     if (currentData) {
-                        pdfObject.data = '';
-                        setTimeout(() => {
-                            pdfObject.data = currentData;
-                        }, 100);
+                        pdfObject.data = currentData;
                     }
                 }, 300);
-            }
-        }
-
-        // Show/hide loading indicator
-        function showLoading(show) {
-            if (show) {
-                loadingIndicator.classList.add('active');
-            } else {
-                loadingIndicator.classList.remove('active');
             }
         }
 
@@ -1411,14 +1242,15 @@
             document.body.appendChild(link);
             
             try {
+                link.click();
+            } catch (e) {
+                // Fallback for older browsers
                 const clickEvent = new MouseEvent('click', {
                     view: window,
                     bubbles: true,
                     cancelable: true
                 });
                 link.dispatchEvent(clickEvent);
-            } catch (e) {
-                link.click();
             }
             
             setTimeout(() => {
@@ -1468,43 +1300,44 @@
             return div.innerHTML;
         }
 
+        // Add swipe to close on mobile
+        if (isMobile) {
+            let touchStartX = 0;
+            
+            pdfViewerOverlay.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            pdfViewerOverlay.addEventListener('touchend', e => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const swipeThreshold = 100;
+                
+                // Swipe right from left edge to close
+                if (touchStartX < 50 && touchEndX > touchStartX + swipeThreshold) {
+                    closePdfViewer();
+                }
+            }, false);
+        }
+
         // Make functions globally available
         window.downloadPdf = downloadPdf;
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', init);
         
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (pdfViewerOverlay.classList.contains('active')) {
-                // Refresh PDF on resize for better display
-                setTimeout(() => {
-                    if (pdfObject.data) {
-                        const currentData = pdfObject.data;
-                        pdfObject.data = currentData;
-                    }
-                }, 200);
-            }
-        });
-
-        // iOS specific fixes
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        // iOS specific fixes for PDF display
         if (isIOS) {
-            // Fix for iOS PDF viewing
-            document.addEventListener('DOMContentLoaded', () => {
-                // Ensure PDF object has proper attributes for iOS
-                pdfObject.setAttribute('data', '');
-                pdfObject.setAttribute('type', 'application/pdf');
-            });
+            // Fix for iOS PDF viewing - ensure proper height
+            const setIOSHeight = () => {
+                if (pdfViewerOverlay.classList.contains('active')) {
+                    const vh = window.innerHeight * 0.01;
+                    document.documentElement.style.setProperty('--vh', `${vh}px`);
+                    pdfObject.style.height = 'calc(var(--vh, 1vh) * 100)';
+                }
+            };
             
-            // Handle iOS orientation changes better
-            window.addEventListener('orientationchange', () => {
-                setTimeout(() => {
-                    if (pdfViewerOverlay.classList.contains('active') && pdfObject.data) {
-                        window.scrollTo(0, 0);
-                    }
-                }, 500);
-            });
+            window.addEventListener('resize', setIOSHeight);
+            window.addEventListener('orientationchange', setIOSHeight);
         }
     </script>
 </body>
