@@ -16,6 +16,7 @@
             --card-bg: #ffffff;
             --success-color: #38a169;
             --warning-color: #d69e2e;
+            --modal-bg: rgba(0, 0, 0, 0.7);
         }
 
         /* Reset and Base Styles */
@@ -317,16 +318,14 @@
         }
 
         .pdf-card-footer {
-            padding: 15px 20px;
+            padding: 20px;
             background-color: #f8f9fa;
             border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 10px;
         }
 
         .pdf-button {
-            flex: 1;
-            padding: 12px 20px;
+            width: 100%;
+            padding: 14px 20px;
             text-align: center;
             border-radius: 6px;
             text-decoration: none;
@@ -334,66 +333,83 @@
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-        }
-
-        .pdf-button.open {
+            gap: 10px;
             background-color: var(--primary-color);
             color: white;
         }
 
-        .pdf-button.open:hover {
+        .pdf-button:hover {
             background-color: var(--accent-color);
         }
 
-        .pdf-button.preview {
-            background-color: white;
-            color: var(--primary-color);
-            border: 1px solid var(--border-color);
-        }
-
-        .pdf-button.preview:hover {
-            background-color: #f1f5f9;
-        }
-
-        /* PDF Preview Section */
-        .pdf-preview-section {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            margin-top: 40px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border-color);
+        /* PDF Modal */
+        .pdf-modal {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--modal-bg);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
         }
 
-        .preview-header {
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 2% auto;
+            width: 90%;
+            height: 90%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--secondary-color);
         }
 
-        .preview-header h3 {
-            font-size: 1.6rem;
-            color: var(--primary-color);
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 600;
             flex: 1;
             margin-right: 20px;
         }
 
-        .preview-close {
+        .modal-close {
             background: none;
             border: none;
+            color: white;
             font-size: 1.8rem;
             cursor: pointer;
-            color: var(--dark-color);
-            padding: 0;
             width: 40px;
             height: 40px;
             display: flex;
@@ -403,33 +419,44 @@
             transition: background-color 0.3s;
         }
 
-        .preview-close:hover {
-            background-color: #f1f5f9;
+        .modal-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .pdf-preview-container {
-            height: 600px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            background-color: #f8f9fa;
+        .modal-body {
+            height: calc(100% - 70px);
+            padding: 0;
+            position: relative;
         }
 
-        .pdf-preview-container iframe {
+        .pdf-iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
 
-        .preview-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #718096;
-            padding: 40px;
+        .pdf-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
+            color: var(--primary-color);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Footer */
@@ -516,7 +543,7 @@
             color: var(--primary-color);
         }
 
-        .loading-spinner {
+        .grid-loading-spinner {
             display: inline-block;
             width: 50px;
             height: 50px;
@@ -525,10 +552,6 @@
             border-top-color: var(--primary-color);
             animation: spin 1s ease-in-out infinite;
             margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
 
         /* Responsive Design */
@@ -568,16 +591,18 @@
                 text-align: center;
             }
 
-            .pdf-preview-container {
-                height: 400px;
+            .modal-content {
+                width: 95%;
+                height: 95%;
+                margin: 2.5% auto;
+            }
+
+            .modal-title {
+                font-size: 1.2rem;
             }
 
             .stats-bar {
                 justify-content: center;
-            }
-
-            .pdf-card-footer {
-                flex-direction: column;
             }
         }
 
@@ -586,12 +611,18 @@
                 font-size: 1.8rem;
             }
 
-            .pdf-preview-container {
-                height: 350px;
-            }
-
             .pdf-title {
                 font-size: 1.2rem;
+            }
+
+            .modal-content {
+                width: 98%;
+                height: 98%;
+                margin: 1% auto;
+            }
+
+            .modal-title {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -692,21 +723,6 @@
         <div class="pdf-grid" id="pdfGrid">
             <!-- PDF cards will be dynamically generated here -->
         </div>
-
-        <!-- PDF Preview Section -->
-        <section class="pdf-preview-section" id="pdfPreviewSection">
-            <div class="preview-header">
-                <h3 id="previewTitle">Document Preview</h3>
-                <button class="preview-close" id="closePreview">×</button>
-            </div>
-            <div class="pdf-preview-container" id="pdfPreviewContainer">
-                <div class="preview-placeholder">
-                    <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">📄</div>
-                    <h4>Select a document to preview</h4>
-                    <p>Click the "Preview" button on any document to view it here</p>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
@@ -722,8 +738,24 @@
         </div>
     </footer>
 
+    <!-- PDF Modal -->
+    <div class="pdf-modal" id="pdfModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">Loading Document...</div>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="pdf-loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading PDF document...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Uganda Legal Documents Data - Updated with provided filenames
+        // Uganda Legal Documents Data
         const ugandaLegalDocuments = [
             {
                 id: 1,
@@ -1493,8 +1525,6 @@
                 updated: false,
                 year: "1989"
             }
-            // Note: Additional documents would continue here up to the full list
-            // For brevity, I've included 64 documents. The remaining would follow the same pattern.
         ];
 
         // DOM Elements
@@ -1504,10 +1534,10 @@
         const categoryFilter = document.getElementById('categoryFilter');
         const sortFilter = document.getElementById('sortFilter');
         const clearFilters = document.getElementById('clearFilters');
-        const pdfPreviewSection = document.getElementById('pdfPreviewSection');
-        const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
-        const previewTitle = document.getElementById('previewTitle');
-        const closePreview = document.getElementById('closePreview');
+        const pdfModal = document.getElementById('pdfModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalClose = document.getElementById('modalClose');
 
         // Stats elements
         const totalDocuments = document.getElementById('totalDocuments');
@@ -1520,6 +1550,7 @@
         let currentCategory = 'all';
         let currentSearch = '';
         let currentSort = 'title';
+        let currentPDF = null;
 
         // Function to get proper GitHub Pages URL for PDFs
         function getPDFUrl(filename) {
@@ -1559,11 +1590,56 @@
             proceduralCount.textContent = procedural;
         }
 
+        // Show PDF in modal
+        function showPDFModal(doc) {
+            currentPDF = doc;
+            modalTitle.textContent = doc.title;
+            
+            // Show loading state
+            modalBody.innerHTML = `
+                <div class="pdf-loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading PDF document...</p>
+                </div>
+            `;
+            
+            // Show modal
+            pdfModal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            
+            // Load PDF after a short delay for better UX
+            setTimeout(() => {
+                const pdfUrl = getPDFUrl(doc.filename);
+                modalBody.innerHTML = `
+                    <iframe class="pdf-iframe" 
+                            src="${pdfUrl}#toolbar=1&navpanes=1&scrollbar=1" 
+                            title="${doc.title}"
+                            onload="this.style.opacity='1'">
+                        <p>Your browser does not support PDFs. 
+                        <a href="${pdfUrl}" target="_blank">Download the PDF</a> instead.</p>
+                    </iframe>
+                `;
+            }, 500);
+        }
+
+        // Close PDF modal
+        function closePDFModal() {
+            pdfModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            modalBody.innerHTML = `
+                <div class="pdf-loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading PDF document...</p>
+                </div>
+            `;
+            currentPDF = null;
+        }
+
         // Render loading state
         function showLoading() {
             pdfGrid.innerHTML = `
                 <div class="loading">
-                    <div class="loading-spinner"></div>
+                    <div class="grid-loading-spinner"></div>
                     <p>Loading legal documents...</p>
                 </div>
             `;
@@ -1611,7 +1687,7 @@
                             <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">🔍</div>
                             <h3>No Legal Documents Found</h3>
                             <p>Try adjusting your search terms or filters to find what you're looking for.</p>
-                            <button class="pdf-button open" onclick="resetFilters()" style="width: auto; margin-top: 15px; padding: 10px 20px;">
+                            <button class="pdf-button" onclick="resetFilters()" style="width: auto; margin-top: 15px; padding: 10px 20px;">
                                 🔄 Reset All Filters
                             </button>
                         </div>
@@ -1652,9 +1728,6 @@
                     // Get category display name
                     const categoryDisplay = categoryNames[doc.category] || doc.category;
                     
-                    // Get the actual PDF URL
-                    const pdfUrl = getPDFUrl(doc.filename);
-                    
                     docCard.innerHTML = `
                         <div class="pdf-card-header">
                             ${doc.updated ? '<span class="badge">Updated</span>' : ''}
@@ -1674,11 +1747,8 @@
                             </div>
                         </div>
                         <div class="pdf-card-footer">
-                            <a href="${pdfUrl}" class="pdf-button open" target="_blank">
-                                <span>🔗</span> Open PDF
-                            </a>
-                            <button class="pdf-button preview" data-id="${doc.id}">
-                                <span>👁️</span> Preview
+                            <button class="pdf-button" data-id="${doc.id}">
+                                <span>📖</span> Open Document
                             </button>
                         </div>
                     `;
@@ -1686,57 +1756,18 @@
                     pdfGrid.appendChild(docCard);
                 });
                 
-                // Add event listeners to preview buttons
-                document.querySelectorAll('.preview').forEach(btn => {
+                // Add event listeners to open buttons
+                document.querySelectorAll('.pdf-button[data-id]').forEach(btn => {
                     btn.addEventListener('click', function() {
                         const docId = parseInt(this.getAttribute('data-id'));
-                        showDocumentPreview(docId);
+                        const doc = ugandaLegalDocuments.find(d => d.id === docId);
+                        if (doc) {
+                            showPDFModal(doc);
+                        }
                     });
                 });
             }, 300);
         }
-
-        // Show document preview
-        function showDocumentPreview(docId) {
-            const doc = ugandaLegalDocuments.find(d => d.id === docId);
-            if (!doc) return;
-            
-            // Update preview title
-            previewTitle.textContent = `Preview: ${doc.title}`;
-            
-            // Get the actual PDF URL
-            const pdfUrl = getPDFUrl(doc.filename);
-            
-            // Create iframe for PDF preview
-            const previewHTML = `
-                <iframe src="${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0" 
-                        title="${doc.title}" 
-                        style="width: 100%; height: 100%; border: none;">
-                    <p>Your browser does not support PDFs. 
-                    <a href="${pdfUrl}" target="_blank">Download the PDF</a> instead.</p>
-                </iframe>
-            `;
-            
-            pdfPreviewContainer.innerHTML = previewHTML;
-            
-            // Show the preview section
-            pdfPreviewSection.style.display = 'block';
-            
-            // Scroll to preview
-            pdfPreviewSection.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Close document preview
-        closePreview.addEventListener('click', function() {
-            pdfPreviewSection.style.display = 'none';
-            pdfPreviewContainer.innerHTML = `
-                <div class="preview-placeholder">
-                    <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">📄</div>
-                    <h4>Select a document to preview</h4>
-                    <p>Click the "Preview" button on any document to view it here</p>
-                </div>
-            `;
-        });
 
         // Reset all filters
         function resetFilters() {
@@ -1778,11 +1809,22 @@
             }
         });
 
-        // Real-time search (optional, uncomment if desired)
-        // searchInput.addEventListener('input', function() {
-        //     currentSearch = this.value.trim();
-        //     renderDocuments();
-        // });
+        // Close modal when close button is clicked
+        modalClose.addEventListener('click', closePDFModal);
+
+        // Close modal when clicking outside the modal content
+        pdfModal.addEventListener('click', function(event) {
+            if (event.target === pdfModal) {
+                closePDFModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && pdfModal.style.display === 'block') {
+                closePDFModal();
+            }
+        });
 
         // Initial render and stats calculation
         calculateStats();
