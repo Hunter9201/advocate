@@ -346,7 +346,7 @@
             background-color: var(--accent-color);
         }
 
-        /* PDF Modal */
+        /* PDF Modal - REMOVED CLOSE BUTTON */
         .pdf-modal {
             display: none;
             position: fixed;
@@ -404,24 +404,7 @@
             margin-right: 20px;
         }
 
-        .modal-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .modal-close:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+        /* REMOVED CLOSE BUTTON STYLES */
 
         .modal-body {
             height: calc(100% - 70px);
@@ -738,12 +721,12 @@
         </div>
     </footer>
 
-    <!-- PDF Modal -->
+    <!-- PDF Modal - WITHOUT CLOSE BUTTON -->
     <div class="pdf-modal" id="pdfModal">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="modalTitle">Loading Document...</div>
-                <button class="modal-close" id="modalClose">×</button>
+                <!-- CLOSE BUTTON REMOVED -->
             </div>
             <div class="modal-body" id="modalBody">
                 <div class="pdf-loading">
@@ -1537,7 +1520,7 @@
         const pdfModal = document.getElementById('pdfModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalBody = document.getElementById('modalBody');
-        const modalClose = document.getElementById('modalClose');
+        // NO MODAL CLOSE BUTTON
 
         // Stats elements
         const totalDocuments = document.getElementById('totalDocuments');
@@ -1622,7 +1605,7 @@
             }, 500);
         }
 
-        // Close PDF modal
+        // Close PDF modal (click outside or ESC key)
         function closePDFModal() {
             pdfModal.style.display = 'none';
             document.body.style.overflow = 'auto'; // Re-enable scrolling
@@ -1808,9 +1791,6 @@
                 renderDocuments();
             }
         });
-
-        // Close modal when close button is clicked
-        modalClose.addEventListener('click', closePDFModal);
 
         // Close modal when clicking outside the modal content
         pdfModal.addEventListener('click', function(event) {
