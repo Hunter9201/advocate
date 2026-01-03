@@ -2253,6 +2253,488 @@
         // Initial render
         renderDocuments(true);
         setupEventListeners();
-    </script>
+    </script> <!-- Legal Documents Data Integration -->
+<script>
+  // Configuration for legal documents
+  const DOCUMENTS_CONFIG = {
+    dataUrl: 'docs/data/documents.js',
+    containerId: 'documentsContainer',
+    searchId: 'documentsSearch',
+    filterId: 'documentsFilter',
+    itemsPerPage: 10
+  };
+
+  // Load documents when page is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    loadLegalDocuments();
+    
+    // Add search functionality if search input exists
+    const searchInput = document.getElementById(DOCUMENTS_CONFIG.searchId);
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        filterDocuments(e.target.value);
+      });
+    }
+    
+    // Add filter functionality if filter select exists
+    const filterSelect = document.getElementById(DOCUMENTS_CONFIG.filterId);
+    if (filterSelect) {
+      filterSelect.addEventListener('change', function(e) {
+        filterByCategory(e.target.value);
+      });
+    }
+  });
+
+  // Load documents from data file
+  function loadLegalDocuments() {
+    // Check if the documents array is already loaded
+    if (typeof ugandaLegalDocuments !== 'undefined') {
+      renderDocuments(ugandaLegalDocuments);
+      return;
+    }
+    
+    // Load the data file
+    const script = document.createElement('script');
+    script.src = DOCUMENTS_CONFIG.dataUrl;
+    script.onload = function() {
+      if (typeof ugandaLegalDocuments !== 'undefined') {
+        renderDocuments(ugandaLegalDocuments);
+        updateDocumentCount(ugandaLegalDocuments.length);
+      } else {
+        console.error('Document data not found');
+        showErrorMessage();
+      }
+    };
+    script.onerror = function() {
+      console.error('Failed to load document data');
+      showErrorMessage();
+    };
+    document.head.appendChild(script);
+  }
+
+  // Render documents to the page
+  function renderDocuments(documents) {
+    const container = document.getElementById(DOCUMENTS_CONFIG.containerId);
+    if (!container) return;
+    
+    if (!documents || documents.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div style="font-size: 48px; margin-bottom: 20px;">📂</div>
+          <h3 style="color: #1a365d; margin-bottom: 10px;">No Documents Available</h3>
+          <p>Check back later for legal documents and resources.</p>
+        </div>
+      `;
+      return;
+    }
+    
+    // Create HTML for each document
+    const html = documents.map(doc => `
+      <div class="document-card" data-category="${doc.category}" data-year="${doc.year}">
+        <div class="document-header">
+          <span class="document-category">${getCategoryName(doc.category)}</span>
+          <span class="document-year">${doc.year}</span>
+        </div>
+        <h3 class="document-title">${doc.title}</h3>
+        <p class="document-description">${doc.description}</p>
+        <div class="document-meta">
+          <span class="meta-item">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+            </svg>
+            ${doc.filename}
+          </span>
+          <span class="meta-item">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+              <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+            </svg>
+            ${doc.pages} pages
+          </span>
+          <span class="meta-item">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+              <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.1 2.5.92 2.5 2.08v5.256a2.5 2.5 0 0 1-2.5 2.5H5a2.5 2.5 0 0 1-2.5-2.5V4.15C2.5 2.99 3.64 2.1 5 2.01V1.5a.5.5 0 0 1 0-1h1.5zm3 1v.5h-3V2a1.5 1.5 0 0 0-1.5 1.5v5.256A1.5 1.5 0 0 0 5 10.5h5a1.5 1.5 0 0 0 1.5-1.5V3.5A1.5 1.5 0 0 0 9.5 2z"/>
+            </svg>
+            ${doc.size}
+          </span>
+        </div>
+        <div class="document-actions">
+          <button onclick="viewDocument(${doc.id})" class="btn-view">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+            </svg>
+            View Details
+          </button>
+          <button onclick="downloadDocument('${doc.filename}')" class="btn-download">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>
+            Download
+          </button>
+        </div>
+      </div>
+    `).join('');
+    
+    container.innerHTML = html;
+    updateDocumentCount(documents.length);
+  }
+
+  // Filter documents by search term
+  function filterDocuments(searchTerm) {
+    if (!searchTerm || searchTerm.length < 2) {
+      renderDocuments(ugandaLegalDocuments);
+      return;
+    }
+    
+    const filtered = ugandaLegalDocuments.filter(doc => 
+      doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      doc.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      doc.filename.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      doc.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    renderDocuments(filtered);
+  }
+
+  // Filter documents by category
+  function filterByCategory(category) {
+    if (!category || category === 'all') {
+      renderDocuments(ugandaLegalDocuments);
+      return;
+    }
+    
+    const filtered = ugandaLegalDocuments.filter(doc => 
+      doc.category === category
+    );
+    
+    renderDocuments(filtered);
+  }
+
+  // Get category display name
+  function getCategoryName(category) {
+    const categories = {
+      constitutional: "Constitutional Law",
+      criminal: "Criminal Law",
+      civil: "Civil Law",
+      commercial: "Commercial Law",
+      family: "Family Law",
+      property: "Property Law",
+      procedure: "Procedure",
+      administrative: "Administrative",
+      employment: "Employment Law",
+      international: "International Law"
+    };
+    return categories[category] || category;
+  }
+
+  // Update document count display
+  function updateDocumentCount(count) {
+    const countElement = document.getElementById('documentCount');
+    if (countElement) {
+      countElement.textContent = count;
+    }
+  }
+
+  // View document details
+  function viewDocument(id) {
+    const doc = ugandaLegalDocuments.find(d => d.id === id);
+    if (doc) {
+      // Show modal with document details
+      const modalHtml = `
+        <div class="document-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>${doc.title}</h3>
+              <button onclick="closeModal()" class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="document-info">
+                <p><strong>Description:</strong> ${doc.description}</p>
+                <p><strong>Category:</strong> ${getCategoryName(doc.category)}</p>
+                <p><strong>Year:</strong> ${doc.year}</p>
+                <p><strong>File:</strong> ${doc.filename}</p>
+                <p><strong>Size:</strong> ${doc.size}</p>
+                <p><strong>Pages:</strong> ${doc.pages}</p>
+                <p><strong>Added:</strong> ${doc.date}</p>
+              </div>
+              <div class="modal-actions">
+                <button onclick="downloadDocument('${doc.filename}')" class="btn-download">
+                  Download PDF
+                </button>
+                <button onclick="closeModal()" class="btn-close">
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Create and show modal
+      const modalContainer = document.createElement('div');
+      modalContainer.innerHTML = modalHtml;
+      modalContainer.id = 'documentModal';
+      document.body.appendChild(modalContainer);
+    }
+  }
+
+  // Close modal
+  function closeModal() {
+    const modal = document.getElementById('documentModal');
+    if (modal) {
+      modal.remove();
+    }
+  }
+
+  // Download document (placeholder - update with actual PDF URLs)
+  function downloadDocument(filename) {
+    // In your actual implementation, this should point to your PDF files
+    // For example: /docs/pdfs/${filename}
+    const pdfUrl = `docs/pdfs/${filename}`;
+    
+    // Check if file exists
+    fetch(pdfUrl, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          // Create download link
+          const link = document.createElement('a');
+          link.href = pdfUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          alert('PDF file not available for download yet.');
+        }
+      })
+      .catch(() => {
+        alert('PDF file not available for download yet.');
+      });
+  }
+
+  // Show error message
+  function showErrorMessage() {
+    const container = document.getElementById(DOCUMENTS_CONFIG.containerId);
+    if (container) {
+      container.innerHTML = `
+        <div class="error-state">
+          <div style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
+          <h3 style="color: #c53030; margin-bottom: 10px;">Unable to Load Documents</h3>
+          <p>Please try again later or contact the administrator.</p>
+        </div>
+      `;
+    }
+  }
+</script>
+
+<style>
+  /* Document Cards Styling */
+  .document-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .document-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-color: #1a365d;
+  }
+  
+  .document-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .document-category {
+    background: #e6f7ff;
+    color: #1a365d;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .document-year {
+    color: #718096;
+    font-size: 14px;
+  }
+  
+  .document-title {
+    color: #1a365d;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  
+  .document-description {
+    color: #4a5568;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .document-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #718096;
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .meta-item svg {
+    opacity: 0.7;
+  }
+  
+  .document-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn-view, .btn-download {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+  }
+  
+  .btn-view {
+    background: #1a365d;
+    color: white;
+  }
+  
+  .btn-view:hover {
+    background: #2c5282;
+  }
+  
+  .btn-download {
+    background: #f7fafc;
+    color: #1a365d;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .btn-download:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+  }
+  
+  /* Modal Styling */
+  .document-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  
+  .modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h3 {
+    color: #1a365d;
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #718096;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .document-info p {
+    margin-bottom: 10px;
+    color: #4a5568;
+  }
+  
+  .document-info strong {
+    color: #1a365d;
+    min-width: 100px;
+    display: inline-block;
+  }
+  
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .btn-close {
+    background: #f7fafc;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .btn-close:hover {
+    background: #edf2f7;
+  }
+  
+  /* Empty and Error States */
+  .empty-state, .error-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+  }
+</style>
 </body>
 </html>
