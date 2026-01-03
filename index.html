@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,17 +27,16 @@
         body {
             background-color: var(--light-color);
             color: var(--dark-color);
-            line-height: 1.6;
+            line-height: 1.5;
             min-height: 100vh;
         }
 
-        /* Header */
+        /* Header - Simplified */
         .site-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 1.5rem 0;
-            border-bottom: 4px solid var(--secondary-color);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--secondary-color);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -49,28 +47,28 @@
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-icon {
             color: var(--secondary-color);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
 
         .logo-text h1 {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 700;
         }
 
         .logo-text .tagline {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.9;
             font-weight: 300;
         }
@@ -79,34 +77,60 @@
         .main-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px 50px;
+            padding: 20px 20px 30px;
         }
 
         .page-header {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 1px solid var(--border-color);
+            text-align: center;
         }
 
         .page-header h2 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .page-header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #4a5568;
             max-width: 800px;
+            margin: 0 auto;
         }
 
-        /* SIMPLIFIED Search Section */
+        /* Quick Stats Summary */
+        .stats-summary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            color: #ffd700;
+            margin-right: 5px;
+        }
+
+        /* Search Section */
         .search-section {
             background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
         }
 
@@ -123,10 +147,10 @@
 
         .search-input {
             width: 100%;
-            padding: 16px 20px 16px 50px;
+            padding: 14px 20px 14px 45px;
             border: 2px solid var(--border-color);
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
             background-color: white;
             color: var(--dark-color);
@@ -140,11 +164,11 @@
 
         .search-icon {
             position: absolute;
-            left: 20px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--primary-color);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             pointer-events: none;
         }
 
@@ -156,11 +180,11 @@
             background: none;
             border: none;
             color: #a0aec0;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
             padding: 0;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -171,64 +195,43 @@
             color: var(--secondary-color);
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 15px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #718096;
-        }
-
-        /* PDF Grid - SMALLER CARDS */
+        /* PDF Grid - Compact Cards */
         .pdf-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 18px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
+        /* Clickable Card */
         .pdf-card {
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
             border: 1px solid var(--border-color);
+            cursor: pointer;
+            height: 100%;
+            min-height: 220px;
             display: flex;
             flex-direction: column;
-            height: 100%;
-            min-height: 280px;
         }
 
         .pdf-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .pdf-card:active {
+            transform: translateY(0);
         }
 
         .pdf-card-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 15px;
+            padding: 12px;
             position: relative;
         }
 
@@ -238,26 +241,26 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 2px;
             background-color: var(--secondary-color);
         }
 
         .pdf-category {
             display: inline-block;
             background-color: rgba(255, 255, 255, 0.15);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 8px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-bottom: 6px;
             font-weight: 500;
         }
 
         .pdf-title {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
+            font-size: 1rem;
+            margin-bottom: 4px;
             font-weight: 600;
             line-height: 1.3;
-            min-height: 50px;
+            min-height: 40px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -267,15 +270,15 @@
         .pdf-meta {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             opacity: 0.9;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 5px;
+            gap: 6px;
+            margin-top: 4px;
         }
 
         .pdf-card-body {
-            padding: 15px;
+            padding: 12px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -283,11 +286,11 @@
 
         .pdf-description {
             color: #4a5568;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            font-size: 0.9rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            font-size: 0.85rem;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             flex-grow: 1;
@@ -296,57 +299,62 @@
         .pdf-details {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #718096;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 8px;
         }
 
         .pdf-details span {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
-        .pdf-card-footer {
-            padding: 0;
-            background-color: var(--primary-color);
-            border-top: none;
-            margin-top: auto;
+        /* Open indicator */
+        .open-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: white;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
         }
 
-        .pdf-button {
-            width: 100%;
-            padding: 14px 20px;
-            text-align: center;
-            border-radius: 0;
-            text-decoration: none;
+        .pdf-card:hover .open-indicator {
+            opacity: 1;
+        }
+
+        /* Badge */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 35px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.65rem;
             font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        }
+
+        .category-badge {
             background-color: var(--primary-color);
             color: white;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .pdf-button:hover {
-            background-color: var(--accent-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
         }
 
         /* Footer */
         .site-footer {
             background-color: var(--primary-color);
             color: white;
-            padding: 30px 0;
-            margin-top: 50px;
-            border-top: 4px solid var(--secondary-color);
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 3px solid var(--secondary-color);
         }
 
         .footer-container {
@@ -355,26 +363,26 @@
             padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .footer-logo h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 5px;
         }
 
         .footer-logo p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.8;
         }
 
         .copyright {
             width: 100%;
             text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
+            margin-top: 15px;
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.8;
         }
 
@@ -382,55 +390,33 @@
         .empty-state {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             color: #718096;
         }
 
         .empty-state h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 10px;
             color: var(--primary-color);
-        }
-
-        /* Badge */
-        .badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
-        .category-badge {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 500;
         }
 
         /* Loading State */
         .loading {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: var(--primary-color);
         }
 
         .grid-loading-spinner {
             display: inline-block;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border: 3px solid var(--border-color);
             border-radius: 50%;
             border-top-color: var(--primary-color);
             animation: spin 1s ease-in-out infinite;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         @keyframes spin {
@@ -440,154 +426,133 @@
         /* HIGHLIGHT SEARCH TERMS */
         .highlight {
             background-color: #fff3cd;
-            padding: 2px 4px;
-            border-radius: 4px;
+            padding: 1px 3px;
+            border-radius: 3px;
             color: var(--primary-color);
             font-weight: 600;
         }
 
-        /* RESPONSIVE DESIGN FOR SMALLER CARDS */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
                 text-align: center;
             }
 
             .pdf-grid {
-                /* Show 3 cards in a row on iPhone */
                 grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
+                gap: 12px;
             }
 
-            /* Adjust card sizes for 3 columns */
             .pdf-card {
-                min-height: 260px;
+                min-height: 200px;
             }
 
             .pdf-title {
-                font-size: 1rem;
-                min-height: 45px;
+                font-size: 0.95rem;
+                min-height: 38px;
                 -webkit-line-clamp: 2;
             }
 
             .pdf-description {
-                font-size: 0.85rem;
-                margin-bottom: 12px;
+                font-size: 0.8rem;
+                margin-bottom: 10px;
                 -webkit-line-clamp: 2;
             }
 
             .pdf-details {
-                font-size: 0.75rem;
-            }
-
-            .pdf-button {
-                padding: 12px 15px;
-                font-size: 0.9rem;
+                font-size: 0.7rem;
             }
 
             .search-section {
-                padding: 20px;
+                padding: 15px;
             }
 
             .search-input {
-                padding: 14px 20px 14px 45px;
-                font-size: 1rem;
+                padding: 12px 20px 12px 40px;
+                font-size: 0.95rem;
             }
 
             .search-icon {
-                left: 15px;
+                left: 12px;
             }
 
             .clear-search {
-                right: 12px;
+                right: 10px;
             }
 
             .page-header h2 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
 
             .page-header p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
+            .stats-summary {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                gap: 20px;
             }
         }
 
         @media (max-width: 480px) {
             .pdf-grid {
-                /* On very small screens, show 2 cards */
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 10px;
             }
 
             .pdf-card {
-                min-height: 240px;
+                min-height: 180px;
             }
 
             .pdf-title {
-                font-size: 0.95rem;
-                min-height: 40px;
+                font-size: 0.9rem;
+                min-height: 35px;
                 -webkit-line-clamp: 2;
             }
 
             .pdf-card-header {
-                padding: 12px;
+                padding: 10px;
             }
 
             .pdf-card-body {
-                padding: 12px;
+                padding: 10px;
             }
 
             .pdf-description {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 -webkit-line-clamp: 2;
             }
 
-            .pdf-button {
-                padding: 10px 12px;
-                font-size: 0.85rem;
-            }
-
             .search-input {
-                font-size: 0.95rem;
-                padding: 12px 20px 12px 40px;
+                font-size: 0.9rem;
+                padding: 10px 20px 10px 35px;
             }
 
             .search-icon {
-                font-size: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .stats-summary {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
             }
         }
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .pdf-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
+                gap: 18px;
             }
         }
 
         @media (min-width: 1025px) {
             .pdf-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 22px;
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            .site-header,
-            .search-section,
-            .site-footer,
-            .pdf-button {
-                display: none !important;
-            }
-            
-            .pdf-card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
+                gap: 20px;
             }
         }
     </style>
@@ -599,8 +564,8 @@
             <div class="logo-container">
                 <div class="logo-icon">⚖️</div>
                 <div class="logo-text">
-                    <h1>LAW STATUTES ,ACTS $ REGULATIONS LIBRARY</h1>
-                    <div class="tagline">Complete collection of Ugandan laws, acts, and legal procedures</div>
+                    <h1 LION HUNT LAW STATUTES, ACTS & REGULATIONS LIBRARY</h1>
+                    <div class="tagline"></div>
                 </div>
             </div>
         </div>
@@ -609,41 +574,20 @@
     <!-- Main Content -->
     <main class="main-container">
         <div class="page-header">
-            <h2>📚 Uganda Laws </h2>
-            <p>Browse, search, and access complete Ugandan legal Laws. All PDFs are stored in GitHub Pages and open directly in your browser.</p>
+            <h2>📚 Uganda Laws</h2>
+            <p>.</p>
         </div>
 
-        <!-- Stats Bar -->
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-number" id="totalDocuments">0</div>
-                <div class="stat-label">Total Documents</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="civilCount">0</div>
-                <div class="stat-label">Civil Laws</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="criminalCount">0</div>
-                <div class="stat-label">Criminal Laws</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="commercialCount">0</div>
-                <div class="stat-label">Commercial Laws</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="proceduralCount">0</div>
-                <div class="stat-label">Procedural Laws</div>
-            </div>
-        </div>
+        <!-- Quick Stats Summary -->
+        
 
-        <!-- SIMPLIFIED Search Section -->
+        <!-- Search Section -->
         <section class="search-section">
             <div class="search-container">
                 <div class="search-input-wrapper">
                     <div class="search-icon">🔍</div>
                     <input type="text" class="search-input" id="searchInput" 
-                           placeholder="Search laws by title, category, or year...">
+                           placeholder="Search by title, category, or year...">
                     <button class="clear-search" id="clearSearch" style="display: none;" title="Clear search">×</button>
                 </div>
             </div>
@@ -663,13 +607,13 @@
                 <p>Complete collection of Ugandan laws and legal procedures for reference and educational purposes.</p>
             </div>
             <div class="copyright">
-                &copy; 2024 Uganda Legal Documents Library. This collection is for informational and educational purposes.
+                &copy; 2024 Uganda Legal Documents Library. For informational and educational purposes.
             </div>
         </div>
     </footer>
 
     <script>
-        // Uganda Legal Documents Data - COMBINED ARRAY
+        // Uganda Legal Documents Data - COMPLETE ARRAY WITH ALL 119 ACTS
         const ugandaLegalDocuments = [
             {
                 id: 1,
@@ -1035,7 +979,7 @@
                 id: 31,
                 title: "Electoral Commissions Act Cap 176",
                 description: "An Act to provide for the Electoral Commission and its functions.",
-                filename: "Electoral Commissions Act Cap 176.pdf",
+                filename: "Electoral Commisions Act Cap 176.pdf",
                 category: "constitutional",
                 size: "2.5 MB",
                 pages: 52,
@@ -1323,7 +1267,7 @@
                 id: 55,
                 title: "Prisons Act Cap 325",
                 description: "An Act to provide for the establishment and management of prisons.",
-                filename: "Prisons Act Cap 325.pdf,Prisons Act Cap 325.pdf",
+                filename: "Prisons Act Cap 325.pdf",
                 category: "administrative",
                 size: "2.3 MB",
                 pages: 64,
@@ -2062,6 +2006,43 @@
                 date: "2024-04-28",
                 updated: false,
                 year: "1997"
+            },
+            // NEW ADDITIONS
+            {
+                id: 117,
+                title: "USE Fees Charges Penalties Rules 2021",
+                description: "Rules governing fees, charges and penalties at the Uganda Securities Exchange.",
+                filename: "USE Fees Charges Penalties Rules 2021.pdf",
+                category: "commercial",
+                size: "1.5 MB",
+                pages: 30,
+                date: "2024-04-29",
+                updated: true,
+                year: "2021"
+            },
+            {
+                id: 118,
+                title: "USE Listing Rules 2021",
+                description: "Rules and regulations for listing securities on the Uganda Securities Exchange.",
+                filename: "USE Listing Rules 2021.pdf",
+                category: "commercial",
+                size: "2.1 MB",
+                pages: 48,
+                date: "2024-04-29",
+                updated: true,
+                year: "2021"
+            },
+            {
+                id: 119,
+                title: "Workers Compensation Act Cap 233",
+                description: "An Act relating to compensation for workers injured in the course of their employment.",
+                filename: "Workers Compensation Act Cap 233.pdf",
+                category: "employment",
+                size: "1.8 MB",
+                pages: 36,
+                date: "2024-04-29",
+                updated: false,
+                year: "2000"
             }
         ];
 
@@ -2070,33 +2051,26 @@
         const searchInput = document.getElementById('searchInput');
         const clearSearch = document.getElementById('clearSearch');
         
-        // Stats elements
-        const totalDocuments = document.getElementById('totalDocuments');
-        const civilCount = document.getElementById('civilCount');
-        const criminalCount = document.getElementById('criminalCount');
-        const commercialCount = document.getElementById('commercialCount');
-        const proceduralCount = document.getElementById('proceduralCount');
-
         // Current search state
         let currentSearch = '';
         let searchDebounceTimer;
 
         // Category display names mapping
         const categoryNames = {
-            constitutional: "Constitutional Law",
-            criminal: "Criminal Law",
-            civil: "Civil Law",
-            commercial: "Commercial Law",
-            family: "Family Law",
-            property: "Property Law",
-            evidence: "Evidence Law",
+            constitutional: "Constitutional",
+            criminal: "Criminal",
+            civil: "Civil",
+            commercial: "Commercial",
+            family: "Family",
+            property: "Property",
+            evidence: "Evidence",
             procedure: "Procedure",
             judicature: "Judicature",
-            magistrate: "Magistrate Courts",
-            administrative: "Administrative Law",
-            employment: "Employment Law",
-            international: "International Law",
-            other: "Other Acts"
+            magistrate: "Magistrate",
+            administrative: "Administrative",
+            employment: "Employment",
+            international: "International",
+            other: "Other"
         };
 
         // Function to get proper GitHub Pages URL for PDFs
@@ -2107,34 +2081,10 @@
             return encodeURI(cleanFilename);
         }
 
-        // Calculate stats
-        function calculateStats() {
-            totalDocuments.textContent = ugandaLegalDocuments.length;
-            
-            const civil = ugandaLegalDocuments.filter(doc => 
-                doc.category === 'civil' || 
-                doc.category === 'family' ||
-                doc.category === 'property'
-            ).length;
-            civilCount.textContent = civil;
-            
-            const criminal = ugandaLegalDocuments.filter(doc => 
-                doc.category === 'criminal'
-            ).length;
-            criminalCount.textContent = criminal;
-            
-            const commercial = ugandaLegalDocuments.filter(doc => 
-                doc.category === 'commercial'
-            ).length;
-            commercialCount.textContent = commercial;
-            
-            const procedural = ugandaLegalDocuments.filter(doc => 
-                doc.category === 'procedure' || 
-                doc.category === 'evidence' || 
-                doc.category === 'judicature' || 
-                doc.category === 'magistrate'
-            ).length;
-            proceduralCount.textContent = procedural;
+        // Open PDF in new tab
+        function openPDF(doc) {
+            const pdfUrl = getPDFUrl(doc.filename);
+            window.open(pdfUrl, '_blank');
         }
 
         // Highlight search terms in text
@@ -2143,12 +2093,6 @@
             
             const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
             return text.replace(regex, '<span class="highlight">$1</span>');
-        }
-
-        // Open PDF in new tab
-        function openPDF(doc) {
-            const pdfUrl = getPDFUrl(doc.filename);
-            window.open(pdfUrl, '_blank');
         }
 
         // Update search UI state
@@ -2170,16 +2114,14 @@
             `;
         }
 
-        // Initialize the PDF grid with real-time search
+        // Render documents
         function renderDocuments(immediate = false) {
             if (!immediate) {
                 showLoading();
             }
             
-            // Clear previous timer
             clearTimeout(searchDebounceTimer);
             
-            // Debounce the search for better performance
             searchDebounceTimer = setTimeout(() => {
                 pdfGrid.innerHTML = '';
                 
@@ -2197,14 +2139,14 @@
                     );
                 }
                 
-                // Sort documents (always by title for simplicity)
+                // Sort documents by title
                 filteredDocs.sort((a, b) => a.title.localeCompare(b.title));
                 
                 // Display message if no documents found
                 if (filteredDocs.length === 0) {
                     pdfGrid.innerHTML = `
                         <div class="empty-state">
-                            <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">🔍</div>
+                            <div style="font-size: 3rem; margin-bottom: 15px; color: #cbd5e0;">🔍</div>
                             <h3>No documents found</h3>
                             <p>Try a different search term</p>
                         </div>
@@ -2216,6 +2158,7 @@
                 filteredDocs.forEach(doc => {
                     const docCard = document.createElement('div');
                     docCard.className = 'pdf-card';
+                    docCard.title = `Click to open ${doc.title}`;
                     
                     // Format date for display
                     const formattedDate = new Date(doc.date).toLocaleDateString('en-US', {
@@ -2227,7 +2170,7 @@
                     // Get category display name
                     const categoryDisplay = categoryNames[doc.category] || doc.category;
                     
-                    // Highlight search terms in title and description
+                    // Highlight search terms
                     const highlightedTitle = currentSearch ? 
                         highlightText(doc.title, currentSearch) : doc.title;
                     const highlightedDescription = currentSearch ? 
@@ -2236,11 +2179,12 @@
                     docCard.innerHTML = `
                         <div class="pdf-card-header">
                             ${doc.updated ? '<span class="badge">Updated</span>' : ''}
+                            <div class="open-indicator">🔗</div>
                             <div class="pdf-category">${categoryDisplay}</div>
                             <h3 class="pdf-title">${highlightedTitle}</h3>
                             <div class="pdf-meta">
-                                <span>📅 Year: ${doc.year}</span>
-                                <span>📅 Added: ${formattedDate}</span>
+                                <span>📅 ${doc.year}</span>
+                                <span>📅 ${formattedDate}</span>
                             </div>
                         </div>
                         <div class="pdf-card-body">
@@ -2251,25 +2195,23 @@
                                 <span class="category-badge">${categoryDisplay}</span>
                             </div>
                         </div>
-                        <div class="pdf-card-footer">
-                            <button class="pdf-button" data-id="${doc.id}">
-                                <span>📖</span> Open Document
-                            </button>
-                        </div>
                     `;
                     
-                    pdfGrid.appendChild(docCard);
-                });
-                
-                // Add event listeners to open buttons
-                document.querySelectorAll('.pdf-button[data-id]').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const docId = parseInt(this.getAttribute('data-id'));
-                        const doc = ugandaLegalDocuments.find(d => d.id === docId);
-                        if (doc) {
+                    // Add click event to entire card
+                    docCard.addEventListener('click', function() {
+                        openPDF(doc);
+                    });
+                    
+                    // Add keyboard accessibility
+                    docCard.setAttribute('tabindex', '0');
+                    docCard.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
                             openPDF(doc);
                         }
                     });
+                    
+                    pdfGrid.appendChild(docCard);
                 });
             }, immediate ? 0 : 300);
         }
@@ -2308,21 +2250,9 @@
             });
         }
 
-        // Initial render and stats calculation
-        calculateStats();
+        // Initial render
         renderDocuments(true);
         setupEventListeners();
-        
-        // Log deployment instructions
-        console.log("📚 Uganda Legal Documents Library");
-        console.log("================================");
-        console.log("GitHub Pages Deployment Instructions:");
-        console.log("1. Upload this HTML file as 'index.html' to your repository");
-        console.log("2. Upload all PDF files to the same directory as index.html");
-        console.log("3. Enable GitHub Pages in repository settings");
-        console.log("4. Site will be available at: https://[username].github.io/[repository]/");
-        console.log("5. PDF files should match exactly: " + ugandaLegalDocuments.length + " documents loaded");
-        console.log("================================");
     </script>
 </body>
 </html>
