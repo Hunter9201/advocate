@@ -565,7 +565,7 @@
                 <div class="logo-icon">⚖️</div>
                 <div class="logo-text">
                     <h1>LAW STATUTES, ACTS & REGULATIONS LIBRARY</h1>
-                    <div class="tagline"></div>
+                    <div class="tagline">Complete collection of Ugandan laws, acts, and legal procedures</div>
                 </div>
             </div>
         </div>
@@ -574,9 +574,32 @@
     <!-- Main Content -->
     <main class="main-container">
         <div class="page-header">
-           
+            <h2>📚 Uganda Laws</h2>
+            <p>Browse, search, and access complete Ugandan legal laws. Click any card to open the document.</p>
+        </div>
 
-       
+        <!-- Quick Stats Summary -->
+        <div class="stats-summary">
+            <div class="stat-item">
+                <span class="stat-number">119</span>Total Documents
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">18</span>Civil Laws
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">8</span>Criminal Laws
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">31</span>Commercial Laws
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">32</span>Procedural Laws
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">4</span>Employment Laws
+            </div>
+        </div>
+
         <!-- Search Section -->
         <section class="search-section">
             <div class="search-container">
@@ -609,7 +632,7 @@
     </footer>
 
     <script>
-        // Uganda Legal Documents Data - COMPLETE ARRAY WITH ALL 116 ACTS
+        // Uganda Legal Documents Data - COMPLETE ARRAY WITH ALL 119 ACTS
         const ugandaLegalDocuments = [
             {
                 id: 1,
@@ -2002,92 +2025,44 @@
                 date: "2024-04-28",
                 updated: false,
                 year: "1997"
-            }// Add these 3 new documents to your existing ugandaLegalDocuments array
-const newDocuments = [
-    {
-        id: 117,
-        title: "USE Fees Charges Penalties Rules 2021",
-        description: "Rules governing fees, charges and penalties at the Uganda Securities Exchange.",
-        filename: "USE Fees Charges Penalties Rules 2021.pdf",
-        category: "commercial",
-        size: "1.5 MB",
-        pages: 30,
-        date: "2024-04-29",
-        updated: true,
-        year: "2021"
-    },
-    {
-        id: 118,
-        title: "USE Listing Rules 2021",
-        description: "Rules and regulations for listing securities on the Uganda Securities Exchange.",
-        filename: "USE Listing Rules 2021.pdf",
-        category: "commercial",
-        size: "2.1 MB",
-        pages: 48,
-        date: "2024-04-29",
-        updated: true,
-        year: "2021"
-    },
-    {
-        id: 119,
-        title: "Workers Compensation Act Cap 233",
-        description: "An Act relating to compensation for workers injured in the course of their employment.",
-        filename: "Workers Compensation Act Cap 233.pdf",
-        category: "employment",
-        size: "1.8 MB",
-        pages: 36,
-        date: "2024-04-29",
-        updated: false,
-        year: "2000"
-    }
-];
-
-// Add the new documents to the main array
-ugandaLegalDocuments.push(...newDocuments);
-
-// Update the stats summary to reflect 119 total documents
-// Find and update the stats summary element
-const statsSummary = document.querySelector('.stats-summary');
-if (statsSummary) {
-    const statItems = statsSummary.querySelectorAll('.stat-item');
-    if (statItems.length > 0) {
-        // Update the first stat item (Total Documents)
-        const totalDocsSpan = statItems[0].querySelector('.stat-number');
-        if (totalDocsSpan) {
-            totalDocsSpan.textContent = "119"; // Update from 116 to 119
-        }
-    }
-}
-
-// Also update the commercial laws count
-// Find the commercial laws stat item (it's the 4th one)
-const commercialStatItem = document.querySelector('.stats-summary .stat-item:nth-child(4)');
-if (commercialStatItem) {
-    const commercialSpan = commercialStatItem.querySelector('.stat-number');
-    if (commercialSpan) {
-        // Current is 29, add 2 more for the new USE documents = 31
-        commercialSpan.textContent = "31";
-    }
-}
-
-// Update the employment laws count
-// Count how many employment documents we have
-const employmentCount = ugandaLegalDocuments.filter(doc => doc.category === "employment").length;
-
-// Find where to add employment stats (or update if exists)
-// Check if employment stat already exists
-let employmentStatItem = document.querySelector('.stats-summary .stat-item:nth-child(6)');
-if (!employmentStatItem) {
-    // Add new employment stat item
-    const statsSummary = document.querySelector('.stats-summary');
-    if (statsSummary) {
-        // Create new stat item for employment laws
-        const newStatItem = document.createElement('div');
-        newStatItem.className = 'stat-item';
-        newStatItem.innerHTML = `<span class="stat-number">${employmentCount}</span>Employment Laws`;
-        statsSummary.appendChild(newStatItem);
-    }
-}
+            },
+            // NEW ADDITIONS
+            {
+                id: 117,
+                title: "USE Fees Charges Penalties Rules 2021",
+                description: "Rules governing fees, charges and penalties at the Uganda Securities Exchange.",
+                filename: "USE Fees Charges Penalties Rules 2021.pdf",
+                category: "commercial",
+                size: "1.5 MB",
+                pages: 30,
+                date: "2024-04-29",
+                updated: true,
+                year: "2021"
+            },
+            {
+                id: 118,
+                title: "USE Listing Rules 2021",
+                description: "Rules and regulations for listing securities on the Uganda Securities Exchange.",
+                filename: "USE Listing Rules 2021.pdf",
+                category: "commercial",
+                size: "2.1 MB",
+                pages: 48,
+                date: "2024-04-29",
+                updated: true,
+                year: "2021"
+            },
+            {
+                id: 119,
+                title: "Workers Compensation Act Cap 233",
+                description: "An Act relating to compensation for workers injured in the course of their employment.",
+                filename: "Workers Compensation Act Cap 233.pdf",
+                category: "employment",
+                size: "1.8 MB",
+                pages: 36,
+                date: "2024-04-29",
+                updated: false,
+                year: "2000"
+            }
         ];
 
         // DOM Elements
