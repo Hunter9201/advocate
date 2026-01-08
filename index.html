@@ -14,8 +14,6 @@
             --dark-color: #2d3748;
             --border-color: #e2e8f0;
             --card-bg: #ffffff;
-            --success-color: #38a169;
-            --warning-color: #dd6b20;
         }
 
         /* Reset and Base Styles */
@@ -33,16 +31,15 @@
             min-height: 100vh;
         }
 
-        /* Header */
+        /* Header - Simplified */
         .site-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            background-color: var(--primary-color);
             color: white;
             padding: 1rem 0;
             border-bottom: 3px solid var(--secondary-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-container {
@@ -50,7 +47,7 @@
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
@@ -61,7 +58,8 @@
         }
 
         .logo-icon {
-            font-size: 2rem;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
         }
 
         .logo-text h1 {
@@ -73,23 +71,6 @@
             font-size: 0.8rem;
             opacity: 0.9;
             font-weight: 300;
-        }
-
-        .update-badge {
-            background: var(--secondary-color);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-left: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
         }
 
         /* Main Content */
@@ -119,42 +100,32 @@
             margin: 0 auto;
         }
 
-        /* Stats */
-        .stats-container {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+        /* Quick Stats Summary */
+        .stats-summary {
+            background-color: var(--primary-color);
             color: white;
-            padding: 15px 20px;
+            padding: 12px 20px;
             border-radius: 8px;
             margin-bottom: 25px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 6px;
+        .stat-item {
             text-align: center;
-            backdrop-filter: blur(10px);
         }
 
         .stat-number {
-            font-size: 1.8rem;
             font-weight: 700;
             color: #ffd700;
-            display: block;
-            margin-bottom: 5px;
+            margin-right: 5px;
         }
 
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Search and Filters */
-        .search-filters-container {
+        /* Search Section */
+        .search-section {
             background-color: var(--card-bg);
             border-radius: 8px;
             padding: 20px;
@@ -166,7 +137,7 @@
         .search-container {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            align-items: center;
         }
 
         .search-input-wrapper {
@@ -224,90 +195,43 @@
             color: var(--secondary-color);
         }
 
-        /* Filters */
-        .filters-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .filter-label {
-            font-size: 0.9rem;
-            color: var(--dark-color);
-            font-weight: 500;
-        }
-
-        .filter-select {
-            padding: 8px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background-color: white;
-            color: var(--dark-color);
-            font-size: 0.9rem;
-            cursor: pointer;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .filter-select:focus {
-            border-color: var(--primary-color);
-        }
-
-        .reset-filters {
-            padding: 8px 16px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-left: auto;
-        }
-
-        .reset-filters:hover {
-            background-color: var(--accent-color);
-        }
-
-        /* PDF Grid */
+        /* PDF Grid - Compact Cards */
         .pdf-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
             margin-bottom: 30px;
         }
 
+        /* Clickable Card */
         .pdf-card {
             background-color: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: 1px solid var(--border-color);
             cursor: pointer;
             height: 100%;
+            min-height: 220px;
             display: flex;
             flex-direction: column;
-            position: relative;
         }
 
         .pdf-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             border-color: var(--primary-color);
         }
 
+        .pdf-card:active {
+            transform: translateY(0);
+        }
+
         .pdf-card-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            background-color: var(--primary-color);
             color: white;
-            padding: 15px;
+            padding: 12px;
             position: relative;
         }
 
@@ -317,24 +241,23 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 2px;
             background-color: var(--secondary-color);
         }
 
         .pdf-category {
             display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 3px 10px;
-            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 2px 8px;
+            border-radius: 12px;
             font-size: 0.75rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
+            margin-bottom: 6px;
+            font-weight: 500;
         }
 
         .pdf-title {
             font-size: 1rem;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             font-weight: 600;
             line-height: 1.3;
             min-height: 40px;
@@ -350,12 +273,12 @@
             font-size: 0.75rem;
             opacity: 0.9;
             flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 5px;
+            gap: 6px;
+            margin-top: 4px;
         }
 
         .pdf-card-body {
-            padding: 15px;
+            padding: 12px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -367,7 +290,7 @@
             line-height: 1.4;
             font-size: 0.85rem;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             flex-grow: 1;
@@ -380,48 +303,56 @@
             color: #718096;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid var(--border-color);
+            margin-top: 8px;
         }
 
         .pdf-details span {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
-        .doc-icon {
-            font-size: 0.9rem;
+        /* Open indicator */
+        .open-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: white;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
         }
 
-        /* Badges */
+        .pdf-card:hover .open-indicator {
+            opacity: 1;
+        }
+
+        /* Badge */
         .badge {
             position: absolute;
             top: 10px;
-            right: 10px;
-            padding: 3px 8px;
-            border-radius: 12px;
+            right: 35px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
             font-size: 0.65rem;
             font-weight: 600;
-            z-index: 2;
         }
 
-        .badge-new {
-            background-color: var(--success-color);
+        .category-badge {
+            background-color: var(--primary-color);
             color: white;
-        }
-
-        .badge-updated {
-            background-color: var(--warning-color);
-            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
         }
 
         /* Footer */
         .site-footer {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            background-color: var(--primary-color);
             color: white;
-            padding: 30px 0;
+            padding: 20px 0;
             margin-top: 40px;
             border-top: 3px solid var(--secondary-color);
         }
@@ -432,58 +363,67 @@
             padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 15px;
         }
 
         .footer-logo h3 {
             font-size: 1.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .footer-logo p {
             font-size: 0.85rem;
             opacity: 0.8;
-            line-height: 1.5;
-        }
-
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            margin-top: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .github-link:hover {
-            background: rgba(255, 255, 255, 0.2);
         }
 
         .copyright {
             width: 100%;
             text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
+            margin-top: 15px;
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             opacity: 0.8;
         }
 
-        /* Utility Classes */
-        .hidden {
-            display: none !important;
+        /* Empty State */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px 20px;
+            color: #718096;
         }
 
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Loading State */
+        .loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 30px;
+            color: var(--primary-color);
+        }
+
+        .grid-loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* HIGHLIGHT SEARCH TERMS */
         .highlight {
             background-color: #fff3cd;
             padding: 1px 3px;
@@ -492,82 +432,7 @@
             font-weight: 600;
         }
 
-        /* Loading and Empty States */
-        .loading {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--primary-color);
-        }
-
-        .grid-loading-spinner {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border-color);
-            border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #718096;
-        }
-
-        .empty-state-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .page-btn {
-            padding: 8px 16px;
-            border: 1px solid var(--border-color);
-            background: white;
-            color: var(--dark-color);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 40px;
-            text-align: center;
-        }
-
-        .page-btn:hover:not(:disabled) {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .page-btn.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .page-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Responsive Design */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -576,46 +441,118 @@
             }
 
             .pdf-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
             }
 
-            .search-filters-container {
+            .pdf-card {
+                min-height: 200px;
+            }
+
+            .pdf-title {
+                font-size: 0.95rem;
+                min-height: 38px;
+                -webkit-line-clamp: 2;
+            }
+
+            .pdf-description {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+                -webkit-line-clamp: 2;
+            }
+
+            .pdf-details {
+                font-size: 0.7rem;
+            }
+
+            .search-section {
                 padding: 15px;
             }
 
-            .filters-container {
-                flex-direction: column;
-                align-items: stretch;
+            .search-input {
+                padding: 12px 20px 12px 40px;
+                font-size: 0.95rem;
             }
 
-            .reset-filters {
-                margin-left: 0;
-                margin-top: 10px;
+            .search-icon {
+                left: 12px;
             }
 
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
+            .clear-search {
+                right: 10px;
+            }
+
+            .page-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .page-header p {
+                font-size: 0.95rem;
+            }
+
+            .stats-summary {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                gap: 20px;
             }
         }
 
         @media (max-width: 480px) {
             .pdf-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
 
-            .stats-container {
-                grid-template-columns: 1fr;
+            .pdf-card {
+                min-height: 180px;
             }
 
-            .page-header h2 {
-                font-size: 1.5rem;
+            .pdf-title {
+                font-size: 0.9rem;
+                min-height: 35px;
+                -webkit-line-clamp: 2;
+            }
+
+            .pdf-card-header {
+                padding: 10px;
+            }
+
+            .pdf-card-body {
+                padding: 10px;
+            }
+
+            .pdf-description {
+                font-size: 0.75rem;
+                -webkit-line-clamp: 2;
+            }
+
+            .search-input {
+                font-size: 0.9rem;
+                padding: 10px 20px 10px 35px;
+            }
+
+            .search-icon {
+                font-size: 0.95rem;
+            }
+
+            .stats-summary {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
             }
         }
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .pdf-grid {
                 grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .pdf-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
             }
         }
     </style>
@@ -628,63 +565,33 @@
                 <div class="logo-icon">⚖️</div>
                 <div class="logo-text">
                     <h1>UGANDA LEGAL DOCUMENTS LIBRARY</h1>
-                    <div class="tagline">Comprehensive collection of Ugandan laws and legal procedures</div>
+                    <div class="tagline">Complete collection of Ugandan laws and legal procedures</div>
                 </div>
             </div>
-            <div class="update-badge" id="updateBadge">Live Updates</div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-container">
         <div class="page-header">
-            <h2>📚 Uganda Legal Documents</h2>
-            <p>Access complete collection of Ugandan laws, acts, regulations, and legal procedures. All documents are sourced from official repositories.</p>
+            <h2>📚 Uganda Laws</h2>
+            <p>Complete collection of Ugandan laws, acts, regulations, and legal procedures. Documents are loaded from GitHub repository.</p>
         </div>
 
-        <!-- Stats Container -->
-        <div class="stats-container" id="statsContainer">
-            <!-- Stats will be populated by JavaScript -->
+        <!-- Quick Stats Summary -->
+        <div class="stats-summary" id="statsSummary">
+            <!-- Stats will be populated dynamically -->
         </div>
 
-        <!-- Search and Filters -->
-        <section class="search-filters-container">
+        <!-- Search Section -->
+        <section class="search-section">
             <div class="search-container">
                 <div class="search-input-wrapper">
                     <div class="search-icon">🔍</div>
                     <input type="text" class="search-input" id="searchInput" 
-                           placeholder="Search by title, category, year, or keyword...">
+                           placeholder="Search by title, category, or year...">
                     <button class="clear-search" id="clearSearch" style="display: none;" title="Clear search">×</button>
                 </div>
-            </div>
-            
-            <div class="filters-container">
-                <div class="filter-group">
-                    <label class="filter-label">Category:</label>
-                    <select class="filter-select" id="categoryFilter">
-                        <option value="">All Categories</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label class="filter-label">Year:</label>
-                    <select class="filter-select" id="yearFilter">
-                        <option value="">All Years</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label class="filter-label">Sort by:</label>
-                    <select class="filter-select" id="sortFilter">
-                        <option value="title">Title A-Z</option>
-                        <option value="title-desc">Title Z-A</option>
-                        <option value="year">Year (Oldest)</option>
-                        <option value="year-desc">Year (Newest)</option>
-                        <option value="date">Recently Added</option>
-                    </select>
-                </div>
-                
-                <button class="reset-filters" id="resetFilters">Reset Filters</button>
             </div>
         </section>
 
@@ -692,172 +599,193 @@
         <div class="pdf-grid" id="pdfGrid">
             <!-- PDF cards will be dynamically generated here -->
         </div>
-
-        <!-- Pagination -->
-        <div class="pagination" id="pagination" style="display: none;">
-            <!-- Pagination buttons will be generated here -->
-        </div>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Uganda Legal Documents Library</h3>
-                    <p>A comprehensive, up-to-date collection of Ugandan legal documents for legal professionals, students, and researchers.</p>
-                    <a href="https://github.com/hunter9201/documents" target="_blank" class="github-link">
-                        <span>📁</span> View Documents Repository
-                    </a>
-                </div>
-                <div>
-                    <h4>Features</h4>
-                    <p>• Auto-sync with GitHub repository<br>
-                       • Live document updates<br>
-                       • Advanced search and filters<br>
-                       • Responsive design<br>
-                       • Offline-ready</p>
-                </div>
-                <div>
-                    <h4>Document Sources</h4>
-                    <p>All documents are sourced from official Ugandan government publications and maintained in a public GitHub repository for transparency and accessibility.</p>
-                </div>
+            <div class="footer-logo">
+                <h3>Uganda Legal Documents Library</h3>
+                <p>Complete collection of Ugandan laws and legal procedures for reference and educational purposes.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">
+                    Documents sourced from: <a href="https://github.com/hunter9201/documents" 
+                    style="color: #90cdf4; text-decoration: none;" target="_blank">GitHub Repository</a>
+                </p>
             </div>
             <div class="copyright">
-                &copy; 2024 Uganda Legal Documents Library. This is an educational resource. Always verify with official sources.
+                &copy; 2024 Uganda Legal Documents Library. For informational and educational purposes.
             </div>
         </div>
     </footer>
 
     <script>
         // Configuration
-        const CONFIG = {
-            GITHUB_REPO: 'https://github.com/hunter9201/documents',
-            GITHUB_RAW_URL: 'https://raw.githubusercontent.com/hunter9201/documents/main/',
-            GITHUB_API_BASE: 'https://api.github.com/repos/hunter9201/documents/contents/',
-            DOCUMENTS_PER_PAGE: 20,
-            CACHE_DURATION: 5 * 60 * 1000, // 5 minutes
-            ENABLE_AUTO_SYNC: true,
-            SYNC_INTERVAL: 10 * 60 * 1000 // 10 minutes
-        };
+        const GITHUB_USER = 'hunter9201';
+        const GITHUB_REPO = 'documents';
+        const GITHUB_BRANCH = 'main';
+        const GITHUB_API_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`;
+        const GITHUB_RAW_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/`;
+        const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
-        // State management
-        const state = {
-            documents: [],
-            filteredDocuments: [],
-            categories: new Set(),
-            years: new Set(),
-            currentPage: 1,
-            currentSearch: '',
-            currentCategory: '',
-            currentYear: '',
-            currentSort: 'title',
-            lastSync: null,
-            isLoading: false
+        // Category display names mapping
+        const categoryNames = {
+            constitutional: "Constitutional",
+            criminal: "Criminal",
+            civil: "Civil",
+            commercial: "Commercial",
+            family: "Family",
+            property: "Property",
+            evidence: "Evidence",
+            procedure: "Procedure",
+            judicature: "Judicature",
+            magistrate: "Magistrate",
+            administrative: "Administrative",
+            employment: "Employment",
+            international: "International",
+            other: "Other"
         };
 
         // DOM Elements
-        const elements = {
-            pdfGrid: document.getElementById('pdfGrid'),
-            searchInput: document.getElementById('searchInput'),
-            clearSearch: document.getElementById('clearSearch'),
-            categoryFilter: document.getElementById('categoryFilter'),
-            yearFilter: document.getElementById('yearFilter'),
-            sortFilter: document.getElementById('sortFilter'),
-            resetFilters: document.getElementById('resetFilters'),
-            pagination: document.getElementById('pagination'),
-            statsContainer: document.getElementById('statsContainer'),
-            updateBadge: document.getElementById('updateBadge')
-        };
+        const pdfGrid = document.getElementById('pdfGrid');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearch = document.getElementById('clearSearch');
+        const statsSummary = document.getElementById('statsSummary');
+        
+        // Current state
+        let currentSearch = '';
+        let searchDebounceTimer;
+        let allDocuments = [];
+        let filteredDocuments = [];
 
-        // Category mapping
-        const CATEGORY_MAP = {
-            'administrative': 'Administrative',
-            'procedure': 'Legal Procedure',
-            'property': 'Property Law',
-            'criminal': 'Criminal Law',
-            'international': 'International Law',
-            'commercial': 'Commercial Law',
-            'family': 'Family Law',
-            'constitutional': 'Constitutional Law',
-            'civil': 'Civil Law',
-            'evidence': 'Evidence',
-            'judicature': 'Judicature',
-            'magistrate': 'Magistrate Courts',
-            'employment': 'Employment Law',
-            'other': 'Other'
-        };
-
-        // Initialize application
-        async function init() {
-            showLoading();
-            await loadDocuments();
-            setupEventListeners();
-            renderUI();
-            if (CONFIG.ENABLE_AUTO_SYNC) {
-                startAutoSync();
+        // Function to determine category from filename
+        function determineCategory(filename, title = '') {
+            const text = (title + ' ' + filename).toLowerCase();
+            
+            if (text.includes('constitution') || text.includes('electoral') || text.includes('political')) {
+                return 'constitutional';
+            } else if (text.includes('criminal') || text.includes('penal') || text.includes('offence') || 
+                       text.includes('police') || text.includes('narcotic') || text.includes('firearm') ||
+                       text.includes('traffic') || text.includes('domestic violence') || text.includes('anti-corruption')) {
+                return 'criminal';
+            } else if (text.includes('company') || text.includes('business') || text.includes('capital') || 
+                       text.includes('bank') || text.includes('financial') || text.includes('insurance') ||
+                       text.includes('copyright') || text.includes('trademark') || text.includes('electronic') ||
+                       text.includes('contract')) {
+                return 'commercial';
+            } else if (text.includes('civil procedure') || text.includes('evidence') || text.includes('limitation') || 
+                       text.includes('trial') || text.includes('plea')) {
+                return 'procedure';
+            } else if (text.includes('family') || text.includes('marriage') || text.includes('divorce') || 
+                       text.includes('children') || text.includes('adoption')) {
+                return 'family';
+            } else if (text.includes('property') || text.includes('land') || text.includes('estate') || 
+                       text.includes('succession') || text.includes('trust') || text.includes('registration')) {
+                return 'property';
+            } else if (text.includes('employment') || text.includes('labour') || text.includes('worker')) {
+                return 'employment';
+            } else if (text.includes('judicature') || text.includes('court') || text.includes('magistrate') || 
+                       text.includes('advocate') || text.includes('legal')) {
+                return 'judicature';
+            } else if (text.includes('administration') || text.includes('public service') || text.includes('local government') || 
+                       text.includes('education') || text.includes('electricity') || text.includes('mental health') ||
+                       text.includes('tax') || text.includes('prison')) {
+                return 'administrative';
+            } else if (text.includes('international') || text.includes('convention') || text.includes('charter') || 
+                       text.includes('united nations')) {
+                return 'international';
+            } else if (text.includes('evidence')) {
+                return 'evidence';
             }
+            
+            return 'other';
+        }
+
+        // Function to extract year from filename
+        function extractYear(filename) {
+            const yearMatch = filename.match(/(?:19|20)\d{2}/);
+            return yearMatch ? yearMatch[0] : 'N/A';
+        }
+
+        // Function to extract title from filename
+        function extractTitle(filename) {
+            // Remove .pdf extension
+            let title = filename.replace(/\.pdf$/i, '');
+            
+            // Replace underscores and hyphens with spaces
+            title = title.replace(/[_-]/g, ' ');
+            
+            // Capitalize first letter of each word
+            title = title.split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ');
+            
+            return title;
+        }
+
+        // Function to format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
 
         // Load documents from GitHub
-        async function loadDocuments() {
+        async function loadDocumentsFromGitHub() {
             try {
-                state.isLoading = true;
+                showLoading();
                 
-                // Try to get from cache first
+                // Check cache first
                 const cached = getCachedDocuments();
                 if (cached) {
-                    state.documents = cached;
+                    allDocuments = cached;
                     updateStats();
+                    renderDocuments();
                     return;
                 }
                 
-                // Fetch from GitHub
-                const response = await fetch(CONFIG.GITHUB_API_BASE);
-                if (!response.ok) throw new Error('Failed to fetch documents');
+                // Fetch from GitHub API
+                const response = await fetch(GITHUB_API_URL);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch: ${response.status}`);
+                }
                 
                 const files = await response.json();
                 
-                // Process PDF files
-                const pdfFiles = files.filter(file => 
-                    file.name.toLowerCase().endsWith('.pdf') && 
-                    file.type === 'file'
-                );
-                
-                // Parse document info from filenames
-                state.documents = pdfFiles.map(file => {
-                    const filename = file.name;
-                    const title = parseTitleFromFilename(filename);
-                    const category = determineCategory(title, filename);
-                    const year = extractYearFromFilename(filename);
-                    
-                    return {
-                        id: file.sha,
-                        title,
-                        filename,
-                        category,
-                        size: formatFileSize(file.size),
-                        date: new Date().toISOString().split('T')[0],
-                        year: year || 'N/A',
-                        downloadUrl: file.download_url,
-                        path: file.path,
-                        updated: true
-                    };
-                });
+                // Filter PDF files and create document objects
+                allDocuments = files
+                    .filter(file => file.name.toLowerCase().endsWith('.pdf'))
+                    .map(file => {
+                        const title = extractTitle(file.name);
+                        const category = determineCategory(file.name, title);
+                        const year = extractYear(file.name);
+                        
+                        return {
+                            id: file.sha,
+                            title: title,
+                            description: `Legal document: ${title}. Published in ${year}.`,
+                            filename: file.name,
+                            category: category,
+                            size: formatFileSize(file.size),
+                            pages: Math.ceil(file.size / 5000), // Estimate pages
+                            date: new Date().toISOString().split('T')[0],
+                            updated: true,
+                            year: year,
+                            downloadUrl: file.download_url,
+                            path: file.path
+                        };
+                    })
+                    .sort((a, b) => a.title.localeCompare(b.title));
                 
                 // Cache the documents
-                cacheDocuments(state.documents);
-                state.lastSync = new Date();
-                updateLastSyncBadge();
+                cacheDocuments(allDocuments);
+                updateStats();
+                renderDocuments();
                 
             } catch (error) {
                 console.error('Error loading documents:', error);
-                // Fallback to local data if available
-                if (window.fallbackDocuments) {
-                    state.documents = window.fallbackDocuments;
-                }
-            } finally {
-                state.isLoading = false;
+                showError('Failed to load documents. Please try again later.');
             }
         }
 
@@ -874,493 +802,242 @@
             const cached = localStorage.getItem('uganda_docs_cache');
             if (!cached) return null;
             
-            const cacheData = JSON.parse(cached);
-            const age = Date.now() - cacheData.timestamp;
-            
-            if (age > CONFIG.CACHE_DURATION) {
-                localStorage.removeItem('uganda_docs_cache');
+            try {
+                const cacheData = JSON.parse(cached);
+                const age = Date.now() - cacheData.timestamp;
+                
+                if (age > CACHE_DURATION) {
+                    localStorage.removeItem('uganda_docs_cache');
+                    return null;
+                }
+                
+                return cacheData.documents;
+            } catch (e) {
                 return null;
             }
-            
-            return cacheData.documents;
         }
 
-        // Parse utilities
-        function parseTitleFromFilename(filename) {
-            // Remove .pdf extension
-            let title = filename.replace(/\.pdf$/i, '');
-            
-            // Clean up underscores and hyphens
-            title = title.replace(/[_\-]/g, ' ');
-            
-            // Capitalize first letter of each word
-            title = title.split(' ')
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                .join(' ');
-            
-            return title;
-        }
-
-        function determineCategory(title, filename) {
-            const titleLower = title.toLowerCase();
-            const filenameLower = filename.toLowerCase();
-            
-            // Check for category keywords
-            const categoryKeywords = {
-                'constitution': 'constitutional',
-                'criminal': 'criminal',
-                'civil': 'civil',
-                'company': 'commercial',
-                'business': 'commercial',
-                'capital': 'commercial',
-                'marriage': 'family',
-                'divorce': 'family',
-                'children': 'family',
-                'property': 'property',
-                'evidence': 'evidence',
-                'procedure': 'procedure',
-                'judicature': 'judicature',
-                'magistrate': 'magistrate',
-                'employment': 'employment',
-                'labor': 'employment',
-                'admin': 'administrative',
-                'international': 'international',
-                'united nations': 'international',
-                'convention': 'international'
-            };
-            
-            for (const [keyword, category] of Object.entries(categoryKeywords)) {
-                if (titleLower.includes(keyword) || filenameLower.includes(keyword)) {
-                    return category;
-                }
-            }
-            
-            return 'other';
-        }
-
-        function extractYearFromFilename(filename) {
-            const yearMatch = filename.match(/(?:19|20)\d{2}/);
-            return yearMatch ? yearMatch[0] : null;
-        }
-
-        // UI Updates
+        // Update stats
         function updateStats() {
-            const stats = calculateStats();
+            const totalDocs = allDocuments.length;
+            const categories = new Set(allDocuments.map(doc => doc.category)).size;
+            const years = new Set(allDocuments.map(doc => doc.year)).size;
             
-            elements.statsContainer.innerHTML = `
-                <div class="stat-card">
-                    <span class="stat-number">${stats.total}</span>
-                    <span class="stat-label">Total Documents</span>
+            statsSummary.innerHTML = `
+                <div class="stat-item">
+                    <span class="stat-number">${totalDocs}</span> Documents
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number">${stats.categories}</span>
-                    <span class="stat-label">Categories</span>
+                <div class="stat-item">
+                    <span class="stat-number">${categories}</span> Categories
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number">${stats.years}</span>
-                    <span class="stat-label">Years Covered</span>
+                <div class="stat-item">
+                    <span class="stat-number">${years}</span> Years
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number">${stats.latestYear}</span>
-                    <span class="stat-label">Latest Year</span>
+                <div class="stat-item">
+                    <span class="stat-number">${allDocuments.filter(d => d.updated).length}</span> Updated
                 </div>
             `;
         }
 
-        function calculateStats() {
-            const categories = new Set(state.documents.map(doc => doc.category));
-            const years = new Set(state.documents.map(doc => doc.year).filter(y => y !== 'N/A'));
-            const latestYear = Math.max(...Array.from(years).map(y => parseInt(y)).filter(y => !isNaN(y)));
-            
-            return {
-                total: state.documents.length,
-                categories: categories.size,
-                years: years.size,
-                latestYear: latestYear || 'N/A'
-            };
+        // Get PDF URL
+        function getPDFUrl(filename) {
+            // URL encode the filename
+            const encodedFilename = encodeURIComponent(filename);
+            return `${GITHUB_RAW_URL}${encodedFilename}`;
         }
 
-        function updateLastSyncBadge() {
-            if (state.lastSync) {
-                const timeDiff = Date.now() - state.lastSync.getTime();
-                const minutes = Math.floor(timeDiff / (1000 * 60));
-                
-                if (minutes < 1) {
-                    elements.updateBadge.textContent = 'Just Updated';
-                } else if (minutes < 60) {
-                    elements.updateBadge.textContent = `Updated ${minutes}m ago`;
-                } else {
-                    const hours = Math.floor(minutes / 60);
-                    elements.updateBadge.textContent = `Updated ${hours}h ago`;
-                }
-            }
+        // Open PDF
+        function openPDF(doc) {
+            const pdfUrl = getPDFUrl(doc.filename);
+            window.open(pdfUrl, '_blank');
         }
 
-        // Filter and sort documents
-        function filterAndSortDocuments() {
-            let filtered = [...state.documents];
+        // Highlight search terms
+        function highlightText(text, searchTerm) {
+            if (!searchTerm) return text;
             
-            // Apply search filter
-            if (state.currentSearch) {
-                const searchLower = state.currentSearch.toLowerCase();
-                filtered = filtered.filter(doc =>
-                    doc.title.toLowerCase().includes(searchLower) ||
-                    doc.category.toLowerCase().includes(searchLower) ||
-                    doc.year.toString().includes(searchLower) ||
-                    doc.filename.toLowerCase().includes(searchLower)
-                );
-            }
-            
-            // Apply category filter
-            if (state.currentCategory) {
-                filtered = filtered.filter(doc => 
-                    doc.category === state.currentCategory
-                );
-            }
-            
-            // Apply year filter
-            if (state.currentYear) {
-                filtered = filtered.filter(doc => 
-                    doc.year === state.currentYear
-                );
-            }
-            
-            // Apply sorting
-            filtered.sort((a, b) => {
-                switch (state.currentSort) {
-                    case 'title':
-                        return a.title.localeCompare(b.title);
-                    case 'title-desc':
-                        return b.title.localeCompare(a.title);
-                    case 'year':
-                        return (parseInt(a.year) || 0) - (parseInt(b.year) || 0);
-                    case 'year-desc':
-                        return (parseInt(b.year) || 0) - (parseInt(a.year) || 0);
-                    case 'date':
-                        return new Date(b.date) - new Date(a.date);
-                    default:
-                        return a.title.localeCompare(b.title);
-                }
-            });
-            
-            state.filteredDocuments = filtered;
-        }
-
-        // Render documents grid
-        function renderDocuments() {
-            filterAndSortDocuments();
-            
-            if (state.filteredDocuments.length === 0) {
-                elements.pdfGrid.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📄</div>
-                        <h3>No documents found</h3>
-                        <p>Try adjusting your search or filters</p>
-                        <button class="reset-filters" onclick="resetAllFilters()" style="margin-top: 20px;">
-                            Reset All Filters
-                        </button>
-                    </div>
-                `;
-                elements.pagination.style.display = 'none';
-                return;
-            }
-            
-            // Calculate pagination
-            const totalPages = Math.ceil(state.filteredDocuments.length / CONFIG.DOCUMENTS_PER_PAGE);
-            const startIndex = (state.currentPage - 1) * CONFIG.DOCUMENTS_PER_PAGE;
-            const endIndex = startIndex + CONFIG.DOCUMENTS_PER_PAGE;
-            const pageDocuments = state.filteredDocuments.slice(startIndex, endIndex);
-            
-            // Render documents
-            elements.pdfGrid.innerHTML = pageDocuments.map(doc => createDocumentCard(doc)).join('');
-            
-            // Render pagination if needed
-            if (totalPages > 1) {
-                renderPagination(totalPages);
-                elements.pagination.style.display = 'flex';
-            } else {
-                elements.pagination.style.display = 'none';
-            }
-        }
-
-        function createDocumentCard(doc) {
-            const categoryName = CATEGORY_MAP[doc.category] || doc.category;
-            const fileIcon = doc.updated ? '📄' : '📑';
-            
-            return `
-                <div class="pdf-card" onclick="openDocument('${doc.filename}')" 
-                     tabindex="0" role="button" aria-label="Open ${doc.title}">
-                    ${doc.updated ? '<span class="badge badge-updated">Updated</span>' : ''}
-                    <div class="pdf-card-header">
-                        <div class="pdf-category">${categoryName}</div>
-                        <h3 class="pdf-title">${highlightSearchTerms(doc.title)}</h3>
-                        <div class="pdf-meta">
-                            <span>📅 ${doc.year || 'N/A'}</span>
-                            <span>${fileIcon} ${doc.size}</span>
-                        </div>
-                    </div>
-                    <div class="pdf-card-body">
-                        <p class="pdf-description">
-                            ${highlightSearchTerms(`Legal document: ${doc.title}. Click to view or download.`)}
-                        </p>
-                        <div class="pdf-details">
-                            <span title="File size">💾 ${doc.size}</span>
-                            <span title="Category">🏷️ ${categoryName}</span>
-                            <span title="Click to open">🔗 Open Document</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderPagination(totalPages) {
-            let paginationHTML = '';
-            
-            // Previous button
-            paginationHTML += `
-                <button class="page-btn" ${state.currentPage === 1 ? 'disabled' : ''} 
-                        onclick="goToPage(${state.currentPage - 1})">
-                    ← Previous
-                </button>
-            `;
-            
-            // Page numbers
-            const maxVisiblePages = 5;
-            let startPage = Math.max(1, state.currentPage - Math.floor(maxVisiblePages / 2));
-            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-            
-            if (endPage - startPage + 1 < maxVisiblePages) {
-                startPage = Math.max(1, endPage - maxVisiblePages + 1);
-            }
-            
-            for (let i = startPage; i <= endPage; i++) {
-                paginationHTML += `
-                    <button class="page-btn ${i === state.currentPage ? 'active' : ''}" 
-                            onclick="goToPage(${i})">
-                        ${i}
-                    </button>
-                `;
-            }
-            
-            // Next button
-            paginationHTML += `
-                <button class="page-btn" ${state.currentPage === totalPages ? 'disabled' : ''} 
-                        onclick="goToPage(${state.currentPage + 1})">
-                    Next →
-                </button>
-            `;
-            
-            elements.pagination.innerHTML = paginationHTML;
-        }
-
-        // Utility functions
-        function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-        }
-
-        function highlightSearchTerms(text) {
-            if (!state.currentSearch) return text;
-            const searchLower = state.currentSearch.toLowerCase();
-            const regex = new RegExp(`(${searchLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
             return text.replace(regex, '<span class="highlight">$1</span>');
         }
 
-        // Event handlers
-        function openDocument(filename) {
-            const encodedFilename = encodeURIComponent(filename);
-            window.open(`${CONFIG.GITHUB_RAW_URL}${encodedFilename}`, '_blank');
-        }
-
-        function goToPage(page) {
-            state.currentPage = page;
-            renderDocuments();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function resetAllFilters() {
-            state.currentSearch = '';
-            state.currentCategory = '';
-            state.currentYear = '';
-            state.currentSort = 'title';
-            state.currentPage = 1;
-            
-            elements.searchInput.value = '';
-            elements.categoryFilter.value = '';
-            elements.yearFilter.value = '';
-            elements.sortFilter.value = 'title';
-            elements.clearSearch.style.display = 'none';
-            
-            renderUI();
-        }
-
-        // Populate filter options
-        function populateFilters() {
-            // Get unique categories and years
-            const categories = new Set(state.documents.map(doc => doc.category));
-            const years = new Set(state.documents.map(doc => doc.year).filter(y => y !== 'N/A'));
-            
-            // Populate category filter
-            elements.categoryFilter.innerHTML = '<option value="">All Categories</option>';
-            Array.from(categories).sort().forEach(category => {
-                const categoryName = CATEGORY_MAP[category] || category;
-                elements.categoryFilter.innerHTML += `
-                    <option value="${category}">${categoryName}</option>
-                `;
-            });
-            
-            // Populate year filter
-            elements.yearFilter.innerHTML = '<option value="">All Years</option>';
-            Array.from(years)
-                .sort((a, b) => b - a)
-                .forEach(year => {
-                    elements.yearFilter.innerHTML += `
-                        <option value="${year}">${year}</option>
-                    `;
-                });
-        }
-
-        // Main render function
-        function renderUI() {
-            updateStats();
-            populateFilters();
-            renderDocuments();
+        // Update search UI
+        function updateSearchUI() {
+            if (searchInput.value.trim()) {
+                clearSearch.style.display = 'flex';
+            } else {
+                clearSearch.style.display = 'none';
+            }
         }
 
         // Show loading state
         function showLoading() {
-            elements.pdfGrid.innerHTML = `
+            pdfGrid.innerHTML = `
                 <div class="loading">
                     <div class="grid-loading-spinner"></div>
                     <p>Loading documents from GitHub...</p>
-                    <p style="font-size: 0.9rem; margin-top: 10px; color: #718096;">
-                        Syncing with: ${CONFIG.GITHUB_REPO}
-                    </p>
                 </div>
             `;
         }
 
-        // Setup event listeners
-        function setupEventListeners() {
-            // Search input
-            let searchTimeout;
-            elements.searchInput.addEventListener('input', (e) => {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    state.currentSearch = e.target.value.trim();
-                    state.currentPage = 1;
-                    elements.clearSearch.style.display = state.currentSearch ? 'flex' : 'none';
-                    renderUI();
-                }, 300);
-            });
-            
-            // Clear search
-            elements.clearSearch.addEventListener('click', () => {
-                elements.searchInput.value = '';
-                state.currentSearch = '';
-                state.currentPage = 1;
-                elements.clearSearch.style.display = 'none';
-                renderUI();
-                elements.searchInput.focus();
-            });
-            
-            // Filters
-            elements.categoryFilter.addEventListener('change', (e) => {
-                state.currentCategory = e.target.value;
-                state.currentPage = 1;
-                renderUI();
-            });
-            
-            elements.yearFilter.addEventListener('change', (e) => {
-                state.currentYear = e.target.value;
-                state.currentPage = 1;
-                renderUI();
-            });
-            
-            elements.sortFilter.addEventListener('change', (e) => {
-                state.currentSort = e.target.value;
-                state.currentPage = 1;
-                renderUI();
-            });
-            
-            // Reset filters
-            elements.resetFilters.addEventListener('click', resetAllFilters);
-            
-            // Keyboard shortcuts
-            document.addEventListener('keydown', (e) => {
-                if (e.key === '/' && document.activeElement !== elements.searchInput) {
-                    e.preventDefault();
-                    elements.searchInput.focus();
-                }
-                if (e.key === 'Escape' && document.activeElement === elements.searchInput) {
-                    elements.searchInput.value = '';
-                    state.currentSearch = '';
-                    renderUI();
-                }
-            });
-        }
-
-        // Auto-sync functionality
-        function startAutoSync() {
-            setInterval(async () => {
-                try {
-                    await loadDocuments();
-                    renderUI();
-                    showSyncNotification();
-                } catch (error) {
-                    console.log('Auto-sync failed:', error);
-                }
-            }, CONFIG.SYNC_INTERVAL);
-        }
-
-        function showSyncNotification() {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background: var(--success-color);
-                color: white;
-                padding: 12px 20px;
-                border-radius: 6px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                z-index: 1000;
-                animation: slideIn 0.3s ease;
-                font-size: 0.9rem;
+        // Show error state
+        function showError(message) {
+            pdfGrid.innerHTML = `
+                <div class="empty-state">
+                    <h3>⚠️ Error Loading Documents</h3>
+                    <p>${message}</p>
+                    <button onclick="loadDocumentsFromGitHub()" 
+                            style="margin-top: 15px; padding: 8px 16px; background: var(--primary-color); 
+                                   color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        Try Again
+                    </button>
+                </div>
             `;
-            notification.textContent = '✓ Documents synced with GitHub';
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
         }
 
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', init);
-
-        // Make functions available globally
-        window.openDocument = openDocument;
-        window.goToPage = goToPage;
-        window.resetAllFilters = resetAllFilters;
-
-        // Add CSS for notifications
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
+        // Render documents
+        function renderDocuments(immediate = false) {
+            if (!immediate) {
+                showLoading();
             }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
+            
+            clearTimeout(searchDebounceTimer);
+            
+            searchDebounceTimer = setTimeout(() => {
+                pdfGrid.innerHTML = '';
+                
+                // Filter documents
+                if (currentSearch.trim()) {
+                    const searchLower = currentSearch.toLowerCase();
+                    filteredDocuments = allDocuments.filter(doc => 
+                        doc.title.toLowerCase().includes(searchLower) ||
+                        doc.description.toLowerCase().includes(searchLower) ||
+                        doc.category.toLowerCase().includes(searchLower) ||
+                        doc.year.toString().includes(currentSearch) ||
+                        doc.filename.toLowerCase().includes(searchLower)
+                    );
+                } else {
+                    filteredDocuments = [...allDocuments];
+                }
+                
+                // Show empty state if no documents
+                if (filteredDocuments.length === 0) {
+                    pdfGrid.innerHTML = `
+                        <div class="empty-state">
+                            <div style="font-size: 3rem; margin-bottom: 15px; color: #cbd5e0;">🔍</div>
+                            <h3>No documents found</h3>
+                            <p>Try a different search term</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Create document cards
+                filteredDocuments.forEach(doc => {
+                    const docCard = document.createElement('div');
+                    docCard.className = 'pdf-card';
+                    docCard.title = `Click to open ${doc.title}`;
+                    
+                    // Format date
+                    const formattedDate = new Date(doc.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                    });
+                    
+                    // Get category display name
+                    const categoryDisplay = categoryNames[doc.category] || doc.category;
+                    
+                    // Highlight search terms
+                    const highlightedTitle = currentSearch ? 
+                        highlightText(doc.title, currentSearch) : doc.title;
+                    const highlightedDescription = currentSearch ? 
+                        highlightText(doc.description, currentSearch) : doc.description;
+                    
+                    docCard.innerHTML = `
+                        <div class="pdf-card-header">
+                            ${doc.updated ? '<span class="badge">Updated</span>' : ''}
+                            <div class="open-indicator">🔗</div>
+                            <div class="pdf-category">${categoryDisplay}</div>
+                            <h3 class="pdf-title">${highlightedTitle}</h3>
+                            <div class="pdf-meta">
+                                <span>📅 ${doc.year}</span>
+                                <span>📅 ${formattedDate}</span>
+                            </div>
+                        </div>
+                        <div class="pdf-card-body">
+                            <p class="pdf-description">${highlightedDescription}</p>
+                            <div class="pdf-details">
+                                <span>📄 ${doc.size}</span>
+                                <span>📑 ${doc.pages} pages</span>
+                                <span class="category-badge">${categoryDisplay}</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Add click event
+                    docCard.addEventListener('click', () => openPDF(doc));
+                    
+                    // Keyboard accessibility
+                    docCard.setAttribute('tabindex', '0');
+                    docCard.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openPDF(doc);
+                        }
+                    });
+                    
+                    pdfGrid.appendChild(docCard);
+                });
+            }, immediate ? 0 : 300);
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            // Real-time search
+            searchInput.addEventListener('input', function() {
+                currentSearch = this.value.trim();
+                updateSearchUI();
+                renderDocuments();
+            });
+
+            // Clear search
+            clearSearch.addEventListener('click', function() {
+                searchInput.value = '';
+                currentSearch = '';
+                updateSearchUI();
+                renderDocuments();
+                searchInput.focus();
+            });
+
+            // Keyboard shortcuts
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Escape') {
+                    this.value = '';
+                    currentSearch = '';
+                    updateSearchUI();
+                    renderDocuments();
+                }
+            });
+
+            // Auto-refresh every 10 minutes
+            setInterval(() => {
+                loadDocumentsFromGitHub();
+            }, 10 * 60 * 1000);
+
+            // Auto-focus search on page load
+            window.addEventListener('load', () => {
+                searchInput.focus();
+            });
+        }
+
+        // Initialize
+        function init() {
+            setupEventListeners();
+            loadDocumentsFromGitHub();
+        }
+
+        // Start the application
+        init();
     </script>
 </body>
 </html>
