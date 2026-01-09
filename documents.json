@@ -1130,5 +1130,124 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 41,
+    "title": "LAND ACT CAP 236",
+    "description": "the 236 Act (Chapter Land) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Land Act Cap 236.pdf",
+    "category": "constitutional",
+    "size": "0.60",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Land",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Land%20Act%20Cap%20236.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T10:38:01.794Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 42,
+    "title": "NATIONAL PLANNING AUTHORITY ACT CAP 202.",
+    "description": "the 202 Act (Chapter National Planning Authority) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "National Planning Authority Act Cap 202..pdf",
+    "category": "constitutional",
+    "size": "0.45",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "National Planning Authority",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/National%20Planning%20Authority%20Act%20Cap%20202..pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T10:38:04.058Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 43,
+    "title": "NATIONAL-PHYSICAL-PLANNING-STANDARDS ANDGUIDELINES 2011",
+    "description": "National-physical-planning-standards Andguidelines 2011 Act of 2011. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "National-Physical-Planning-Standards andGuidelines 2011.pdf",
+    "category": "constitutional",
+    "size": "1.58",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2011,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "national-physical-planning-standards",
+      "andguidelines"
+    ],
+    "url": "https://hunter9201.github.io/advocate/National-Physical-Planning-Standards%20andGuidelines%202011.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T10:38:07.177Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2011-01-01"
+    }
+  },
+  {
+    "id": 44,
+    "title": "Physical Planning Act Cap 142",
+    "description": "the 142 Act (Chapter Physical Planning) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Physical Planning Act Cap 142.pdf",
+    "category": "constitutional",
+    "size": "1.39",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Physical Planning",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Physical%20Planning%20Act%20Cap%20142.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T10:38:10.129Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
