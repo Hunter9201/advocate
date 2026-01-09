@@ -35,7 +35,7 @@
         .site-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             border-bottom: 4px solid var(--secondary-color);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
@@ -50,6 +50,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo-container {
@@ -64,90 +66,55 @@
         }
 
         .logo-text h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
         }
 
         .logo-text .tagline {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.9;
             font-weight: 300;
         }
 
-        /* Main Content */
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px 50px;
-        }
-
-        .page-header {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .page-header h2 {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .page-header p {
-            font-size: 1.1rem;
-            color: #4a5568;
-            max-width: 800px;
-        }
-
-        /* SIMPLIFIED Search Section */
-        .search-section {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-        }
-
-        .search-container {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .search-input-wrapper {
+        /* Header Search */
+        .header-search {
             flex: 1;
+            max-width: 500px;
+            min-width: 250px;
+        }
+
+        .header-search-wrapper {
             position: relative;
         }
 
-        .search-input {
+        .header-search-input {
             width: 100%;
-            padding: 16px 20px 16px 50px;
+            padding: 12px 20px 12px 45px;
             border: 2px solid var(--border-color);
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
             background-color: white;
             color: var(--dark-color);
             transition: all 0.3s ease;
         }
 
-        .search-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+        .header-search-input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(197, 48, 48, 0.1);
         }
 
-        .search-icon {
+        .header-search-icon {
             position: absolute;
-            left: 20px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--primary-color);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             pointer-events: none;
         }
 
-        .clear-search {
+        .header-clear-search {
             position: absolute;
             right: 15px;
             top: 50%;
@@ -166,44 +133,33 @@
             transition: color 0.3s ease;
         }
 
-        .clear-search:hover {
+        .header-clear-search:hover {
             color: var(--secondary-color);
         }
 
-        /* Stats Bar */
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 20px 50px;
+        }
+
+        /* HIDDEN: Removed page-header section */
+        .page-header {
+            display: none;
+        }
+
+        /* HIDDEN: Removed stats bar */
         .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
+            display: none;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 15px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #718096;
-        }
-
-        /* PDF Grid - SMALLER CARDS */
+        /* PDF Grid */
         .pdf-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 18px;
-            margin-bottom: 40px;
+            margin-top: 20px;
         }
 
         .pdf-card {
@@ -416,7 +372,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin: 0 auto;
             transition: background-color 0.3s;
         }
 
@@ -478,21 +433,29 @@
             font-weight: 600;
         }
 
-        /* RESPONSIVE DESIGN FOR SMALLER CARDS */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
-                gap: 15px;
                 text-align: center;
+                gap: 15px;
+            }
+
+            .header-search {
+                max-width: 100%;
+                order: 3;
+                width: 100%;
+            }
+
+            .logo-container {
+                justify-content: center;
             }
 
             .pdf-grid {
-                /* Show 3 cards in a row on iPhone */
                 grid-template-columns: repeat(3, 1fr);
                 gap: 15px;
             }
 
-            /* Adjust card sizes for 3 columns */
             .pdf-card {
                 min-height: 260px;
             }
@@ -518,39 +481,13 @@
                 font-size: 0.9rem;
             }
 
-            .search-section {
-                padding: 20px;
-            }
-
-            .search-input {
-                padding: 14px 20px 14px 45px;
-                font-size: 1rem;
-            }
-
-            .search-icon {
-                left: 15px;
-            }
-
-            .clear-search {
-                right: 12px;
-            }
-
-            .page-header h2 {
-                font-size: 1.8rem;
-            }
-
-            .page-header p {
-                font-size: 1rem;
-            }
-
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
+            .logo-text h1 {
+                font-size: 1.4rem;
             }
         }
 
         @media (max-width: 480px) {
             .pdf-grid {
-                /* On very small screens, show 2 cards */
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
@@ -583,13 +520,17 @@
                 font-size: 0.85rem;
             }
 
-            .search-input {
+            .header-search-input {
                 font-size: 0.95rem;
                 padding: 12px 20px 12px 40px;
             }
 
-            .search-icon {
+            .header-search-icon {
                 font-size: 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.4rem;
             }
         }
 
@@ -610,7 +551,6 @@
         /* Print Styles */
         @media print {
             .site-header,
-            .search-section,
             .site-footer,
             .pdf-button {
                 display: none !important;
@@ -625,69 +565,45 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header with integrated search -->
     <header class="site-header">
         <div class="header-container">
             <div class="logo-container">
                 <div class="logo-icon">⚖️</div>
                 <div class="logo-text">
-                    <h1>STATUTES, ACTS, REGULATIONS & GUIDELINES</h1>
-                    <div class="tagline"></div>
+                    <h1>UGANDA LEGAL DOCUMENTS LIBRARY</h1>
+                    <div class="tagline">Search Statutes, Acts, Regulations & Guidelines</div>
                 </div>
             </div>
+            
+            <!-- Search in header -->
+            <div class="header-search">
+                <div class="header-search-wrapper">
+                    <div class="header-search-icon">🔍</div>
+                    <input type="text" class="header-search-input" id="searchInput" 
+                           placeholder="Search documents by title, category, or description..." 
+                           autocomplete="off">
+                    <button class="header-clear-search" id="clearSearch" style="display: none;" title="Clear search">×</button>
+                </div>
+            </div>
+            
+            <button id="refreshDataBtn" class="refresh-button" title="Refresh from documents.json">
+                🔄 Refresh
+            </button>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-container">
-        <div class="page-header">
-            <h2></h2>
-            <p>.</p>
-            <div class="muted" style="margin-top: 8px; font-size: 0.9rem; color: #718096;">
-                <span>🔄 Documents load automatically from documents.json</span>
-                <span> • </span>
-                <span>📁 Total documents: <span id="liveDocCount">Loading...</span></span>
-            </div>
+        <!-- HIDDEN: Removed page-header section -->
+        <div class="page-header" style="display: none;">
+            <!-- Content removed -->
         </div>
 
-        <!-- Stats Bar -->
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-number" id="totalDocuments">0</div>
-                <div class="stat-label">Total Documents</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="civilCount">0</div>
-                <div class="stat-label">Civil Laws</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="criminalCount">0</div>
-                <div class="stat-label">Criminal Laws</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="commercialCount">0</div>
-                <div class="stat-label">Commercial Laws</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="proceduralCount">0</div>
-                <div class="stat-label">Procedural Laws</div>
-            </div>
+        <!-- HIDDEN: Removed stats bar -->
+        <div class="stats-bar" style="display: none;">
+            <!-- Stats removed -->
         </div>
-
-        <!-- SIMPLIFIED Search Section -->
-        <section class="search-section">
-            <div class="search-container">
-                <div class="search-input-wrapper">
-                    <div class="search-icon">🔍</div>
-                    <input type="text" class="search-input" id="searchInput" 
-                           placeholder="Search documents by title, category, or description...">
-                    <button class="clear-search" id="clearSearch" style="display: none;" title="Clear search">×</button>
-                </div>
-                <button id="refreshDataBtn" class="refresh-button" title="Refresh from documents.json">
-                    🔄 Refresh
-                </button>
-            </div>
-        </section>
 
         <!-- PDF Grid -->
         <div class="pdf-grid" id="pdfGrid">
@@ -703,11 +619,11 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-logo">
-                <h3></h3>
-                <p>.</p>
+                <h3>Uganda Legal Documents Library</h3>
+                <p>Comprehensive collection of Ugandan legal statutes and regulations</p>
             </div>
             <div class="copyright">
-                &copy;.Documents auto-update from <a href="documents.json" style="color: #90cdf4;">documents.json</a>
+                &copy; 2024 Uganda Legal Documents Library. Documents auto-update from <a href="documents.json" style="color: #90cdf4;">documents.json</a>
             </div>
         </div>
     </footer>
@@ -718,15 +634,7 @@
         const searchInput = document.getElementById('searchInput');
         const clearSearch = document.getElementById('clearSearch');
         const refreshDataBtn = document.getElementById('refreshDataBtn');
-        const liveDocCount = document.getElementById('liveDocCount');
         
-        // Stats elements
-        const totalDocuments = document.getElementById('totalDocuments');
-        const civilCount = document.getElementById('civilCount');
-        const criminalCount = document.getElementById('criminalCount');
-        const commercialCount = document.getElementById('commercialCount');
-        const proceduralCount = document.getElementById('proceduralCount');
-
         // State
         let allDocuments = [];
         let currentSearch = '';
@@ -789,8 +697,6 @@
                 }
                 
                 allDocuments = validDocuments;
-                liveDocCount.textContent = allDocuments.length;
-                calculateStats();
                 renderDocuments(true);
                 return true;
                 
@@ -827,14 +733,6 @@
                     </button>
                 </div>
             `;
-            
-            // Reset stats
-            totalDocuments.textContent = '0';
-            civilCount.textContent = '0';
-            criminalCount.textContent = '0';
-            commercialCount.textContent = '0';
-            proceduralCount.textContent = '0';
-            liveDocCount.textContent = 'Error';
         }
 
         // Show empty state (no search results)
@@ -851,52 +749,11 @@
             `;
         }
 
-        // Calculate stats from current documents
-        function calculateStats() {
-            totalDocuments.textContent = allDocuments.length;
-            
-            const civil = allDocuments.filter(doc => 
-                doc.category === 'civil' || 
-                doc.category === 'family' ||
-                doc.category === 'property'
-            ).length;
-            civilCount.textContent = civil;
-            
-            const criminal = allDocuments.filter(doc => 
-                doc.category === 'criminal'
-            ).length;
-            criminalCount.textContent = criminal;
-            
-            const commercial = allDocuments.filter(doc => 
-                doc.category === 'commercial'
-            ).length;
-            commercialCount.textContent = commercial;
-            
-            const procedural = allDocuments.filter(doc => 
-                doc.category === 'procedure' || 
-                doc.category === 'evidence' || 
-                doc.category === 'judicature' || 
-                doc.category === 'magistrate'
-            ).length;
-            proceduralCount.textContent = procedural;
-        }
-
         // Get PDF URL
         function getPDFUrl(filename) {
             // Clean filename and URL encode
             const cleanFilename = filename.trim().replace(/\s+/g, ' ');
             return encodeURIComponent(cleanFilename);
-        }
-
-        // Check if PDF file exists
-        async function checkPDFExists(filename) {
-            try {
-                const url = getPDFUrl(filename);
-                const response = await fetch(url, { method: 'HEAD' });
-                return response.ok;
-            } catch {
-                return false;
-            }
         }
 
         // Open PDF with error handling
