@@ -2782,5 +2782,63 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 94,
+    "title": "ELECTRONIC SIGNATURES ACT CAP 98",
+    "description": "the 98 Act (Chapter Electronic Signatures) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Electronic Signatures Act Cap 98.pdf",
+    "category": "constitutional",
+    "size": "1.30",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Electronic Signatures",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Electronic%20Signatures%20Act%20Cap%2098.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T16:57:14.928Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 95,
+    "title": "ELECTRONICTRANSACTIONS ACT CAP 99",
+    "description": "the 99 Act (Chapter ElectronicTransactions) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "ElectronicTransactions Act Cap 99.pdf",
+    "category": "constitutional",
+    "size": "0.67",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "ElectronicTransactions",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/ElectronicTransactions%20Act%20Cap%2099.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T16:57:18.307Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
