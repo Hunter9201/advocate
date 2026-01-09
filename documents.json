@@ -325,5 +325,92 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 15,
+    "title": "ADVOCATES ACT CAP 295",
+    "description": "the 295 Act (Chapter Advocates) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Advocates Act Cap 295.pdf",
+    "category": "constitutional",
+    "size": "0.47",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Advocates",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Advocates%20Act%20Cap%20295.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T07:05:03.364Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 16,
+    "title": "the 118 Act",
+    "description": "the 118 Act (Chapter Anti-Money Laundering) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Anti-Money Laundering  Act Cap 118.pdf",
+    "category": "constitutional",
+    "size": "2.35",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Anti-Money Laundering",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Anti-Money%20Laundering%20%20Act%20Cap%20118.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T07:05:14.687Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 17,
+    "title": "the 54 Act",
+    "description": "the 54 Act (Chapter Bank Of Uganda) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Bank Of Uganda Act Cap 54.pdf",
+    "category": "constitutional",
+    "size": "0.82",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Bank Of Uganda",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Bank%20Of%20Uganda%20Act%20Cap%2054.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T07:05:36.799Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
