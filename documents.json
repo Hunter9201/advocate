@@ -76,5 +76,35 @@
     "updated": false,
     "year": 2026,
     "url": "https://hunter9201.github.io/advocate/Companies%20Act%20Cap106%20(1).pdf"
+  },
+  {
+    "id": 7,
+    "title": "the 295 Act",
+    "description": "the 295 Act (Chapter Advocates) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Advocates Act Cap 295.pdf",
+    "category": "other",
+    "size": "0.47",
+    "pages": 10,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Advocates",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Advocates%20Act%20Cap%20295.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T01:02:16.521Z",
+      "fileType": "pdf",
+      "verified": false,
+      "hasMetadata": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
