@@ -631,8 +631,8 @@
             <div class="logo-container">
                 <div class="logo-icon">⚖️</div>
                 <div class="logo-text">
-                    <h1>Acts, Satutes , guildlines & Rules</h1>
-                    <div class="tagline"></div>
+                    <h1>UGANDA LEGAL DOCUMENTS LIBRARY</h1>
+                    <div class="tagline">Live collection from admin panel – Auto-updates with new uploads</div>
                 </div>
             </div>
         </div>
@@ -641,17 +641,38 @@
     <!-- Main Content -->
     <main class="main-container">
         <div class="page-header">
-            <h2>📚 Acts, Satutes , guildlines & Rules</h2>
-            <p></p>
+            <h2>📚 Uganda Legal Documents</h2>
+            <p>Browse, search, and access complete Ugandan legal documents. All documents are auto-updated from the admin panel.</p>
             <div class="muted" style="margin-top: 8px; font-size: 0.9rem; color: #718096;">
-                <span>🔄 </span>
+                <span>🔄 Documents load automatically from documents.json</span>
                 <span> • </span>
                 <span>📁 Total documents: <span id="liveDocCount">Loading...</span></span>
             </div>
         </div>
 
         <!-- Stats Bar -->
-       
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number" id="totalDocuments">0</div>
+                <div class="stat-label">Total Documents</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="civilCount">0</div>
+                <div class="stat-label">Civil Laws</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="criminalCount">0</div>
+                <div class="stat-label">Criminal Laws</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="commercialCount">0</div>
+                <div class="stat-label">Commercial Laws</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="proceduralCount">0</div>
+                <div class="stat-label">Procedural Laws</div>
+            </div>
+        </div>
 
         <!-- SIMPLIFIED Search Section -->
         <section class="search-section">
@@ -682,11 +703,11 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-logo">
-                <h3></h3>
-                <p></p>
+                <h3>Uganda Legal Documents Library</h3>
+                <p>Live collection automatically updated from the admin panel. Documents are stored on GitHub Pages.</p>
             </div>
             <div class="copyright">
-                </a>
+                &copy; 2024 Uganda Legal Documents Library. Documents auto-update from <a href="documents.json" style="color: #90cdf4;">documents.json</a>
             </div>
         </div>
     </footer>
