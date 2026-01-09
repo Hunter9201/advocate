@@ -2144,5 +2144,65 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 74,
+    "title": "PUBLIC HEALTH ACT CAP 310",
+    "description": "the 310 Act (Chapter Public Health) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Public Health Act Cap 310.pdf",
+    "category": "constitutional",
+    "size": "1.56",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Public Health",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Public%20Health%20Act%20Cap%20310.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:04:21.628Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 75,
+    "title": "ROADS CAP 346  ACT",
+    "description": "Roads Act (Chapter 346) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Roads Cap 346  Act.pdf",
+    "category": "constitutional",
+    "size": "1.68",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "346",
+    "actNumber": null,
+    "keywords": [
+      "roads"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Roads%20Cap%20346%20%20Act.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:04:25.345Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
