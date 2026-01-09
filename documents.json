@@ -2024,5 +2024,125 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 70,
+    "title": "DISTRESS FOR RENT(BAILIFFS) ACT CAP 286",
+    "description": "the 286 Act (Chapter Distress for Rent(Bailiffs)) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Distress for Rent(Bailiffs) Act Cap 286.pdf",
+    "category": "constitutional",
+    "size": "0.08",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Distress for Rent(Bailiffs)",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Distress%20for%20Rent(Bailiffs)%20Act%20Cap%20286.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:02:44.315Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 71,
+    "title": "DISTRESS FOR RENT(BAILIFFS) RULES SI 76-1",
+    "description": "Distress For Rent(bailiffs) Rules Si 76-1 Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Distress for Rent(Bailiffs) Rules SI 76-1.pdf",
+    "category": "constitutional",
+    "size": "4.69",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "distress",
+      "rent(bailiffs)",
+      "rules"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Distress%20for%20Rent(Bailiffs)%20Rules%20SI%2076-1.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:02:51.323Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 72,
+    "title": "LAND ACQUISITION ACT CAP 235",
+    "description": "the 235 Act (Chapter Land Acquisition) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Land Acquisition Act Cap 235.pdf",
+    "category": "constitutional",
+    "size": "0.48",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Land Acquisition",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Land%20Acquisition%20Act%20Cap%20235.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:02:54.165Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 73,
+    "title": "NATIONAL ENVIRONMENT ACT  CAP 181",
+    "description": "the 181 Act (Chapter National Environment) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "National Environment Act  Cap 181.pdf",
+    "category": "constitutional",
+    "size": "3.88",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "National Environment",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/National%20Environment%20Act%20%20Cap%20181.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:03:00.335Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
