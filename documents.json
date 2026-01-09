@@ -663,5 +663,100 @@
       "amendments": [],
       "commencement": "2024-01-01"
     }
+  },
+  {
+    "id": 26,
+    "title": "PENAL CODE ACT. CAP. 128",
+    "description": "Penal Code Act (Chapter 128) of 2026. This criminal law legislation defines offences and penalties under Ugandan law.",
+    "filename": "Penal Code Act. Cap. 128.pdf",
+    "category": "constitutional",
+    "size": "4.72",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "128",
+    "actNumber": null,
+    "keywords": [
+      "penal",
+      "code"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Penal%20Code%20Act.%20Cap.%20128.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T09:13:31.097Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 27,
+    "title": "THE CONSTITUTION(SENTENCING GUIDELINES FOR COURTS OF JUDICATURE)(PRACTICE)",
+    "description": "the Constitution(sentencing Guidelines For Courts of Judicature)(practice) Act of 2026. This constitutional law document outlines fundamental principles and rights.",
+    "filename": "The Constitution(Sentencing Guidelines for Courts of Judicature)(Practice).pdf",
+    "category": "constitutional",
+    "size": "0.37",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "constitution(sentencing",
+      "guidelines",
+      "courts",
+      "judicature)(practice)"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Constitution(Sentencing%20Guidelines%20for%20Courts%20of%20Judicature)(Practice).pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T09:13:33.327Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 28,
+    "title": "TRIAL ON INDICTMENT ACT CAP 25",
+    "description": "the 25 Act (Chapter Trial on Indictment) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Trial on Indictment Act Cap 25.pdf",
+    "category": "constitutional",
+    "size": "2.54",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Trial on Indictment",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Trial%20on%20Indictment%20Act%20Cap%2025.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T09:13:37.597Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
