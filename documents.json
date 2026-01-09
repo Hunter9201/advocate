@@ -1755,5 +1755,129 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 61,
+    "title": "TRADITIONAL RULERS(RESTITUTION OF ASSETS AND PROPERTIES) ACT",
+    "description": "Traditional Rulers(restitution of Assets and Properties) Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Traditional Rulers(Restitution of Assets and Properties) Act.pdf",
+    "category": "constitutional",
+    "size": "0.11",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "traditional",
+      "rulers(restitution",
+      "assets",
+      "properties)"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Traditional%20Rulers(Restitution%20of%20Assets%20and%20Properties)%20Act.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:40:35.222Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 62,
+    "title": "PHYSICAL PLANNING ACT CAP 142",
+    "description": "the 142 Act (Chapter Physical Planning) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Physical Planning Act Cap 142.pdf",
+    "category": "constitutional",
+    "size": "1.39",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Physical Planning",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Physical%20Planning%20Act%20Cap%20142.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:40:39.324Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 63,
+    "title": "SUCCESSION ACT CAP 268",
+    "description": "the 268 Act (Chapter Succession) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Succession Act Cap 268.pdf",
+    "category": "constitutional",
+    "size": "1.00",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Succession",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Succession%20Act%20Cap%20268.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:40:43.547Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 64,
+    "title": "THE LAND REGULATIONS 2004",
+    "description": "the Land Regulations 2004 Act of 2004. This property law statute regulates land ownership and transactions.",
+    "filename": "The Land Regulations 2004.pdf",
+    "category": "constitutional",
+    "size": "0.73",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2004,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "land",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Land%20Regulations%202004.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:40:51.310Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2004-01-01"
+    }
   }
 ]
