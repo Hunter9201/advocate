@@ -1010,5 +1010,125 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 37,
+    "title": "ANTI-CORRUPTION ACT CAP 116.",
+    "description": "the 116 Act (Chapter Anti-Corruption) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Anti-Corruption Act Cap 116..pdf",
+    "category": "constitutional",
+    "size": "3.59",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Anti-Corruption",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Anti-Corruption%20Act%20Cap%20116..pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T09:48:54.667Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 38,
+    "title": "FIRE ARMS ACT CAP 320",
+    "description": "the 320 Act (Chapter Fire Arms) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Fire Arms Act Cap 320.pdf",
+    "category": "constitutional",
+    "size": "0.88",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Fire Arms",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Fire%20Arms%20Act%20Cap%20320.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T09:48:57.955Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 39,
+    "title": "NARCOTIC DRUGS & PSYCHOTROPIC SUBSTANCES CONTROL ACT CAP 37",
+    "description": "the 37 Act (Chapter Narcotic Drugs & Psychotropic Substances Control) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Narcotic Drugs & Psychotropic Substances Control Act Cap 37.pdf",
+    "category": "constitutional",
+    "size": "1.93",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Narcotic Drugs & Psychotropic Substances Control",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Narcotic%20Drugs%20%26%20Psychotropic%20Substances%20Control%20Act%20Cap%2037.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T09:49:01.461Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 40,
+    "title": "TRAFFIC AND ROAD SAFETY CAP 347 ACT",
+    "description": "Traffic and Road Safety Act (Chapter 347) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Traffic and Road Safety Cap 347 Act.pdf",
+    "category": "constitutional",
+    "size": "3.47",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "347",
+    "actNumber": null,
+    "keywords": [
+      "traffic",
+      "road",
+      "safety"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Traffic%20and%20Road%20Safety%20Cap%20347%20Act.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T09:49:06.503Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
