@@ -2204,5 +2204,129 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 76,
+    "title": "DISTRESS FOR RENT(BAILIFFS) ACT CAP 286",
+    "description": "the 286 Act (Chapter Distress for Rent(Bailiffs)) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Distress for Rent(Bailiffs) Act Cap 286.pdf",
+    "category": "constitutional",
+    "size": "0.08",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Distress for Rent(Bailiffs)",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Distress%20for%20Rent(Bailiffs)%20Act%20Cap%20286.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:18:50.731Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 77,
+    "title": "DISTRESS FOR RENT(BAILIFFS) RULES SI 76-1",
+    "description": "Distress For Rent(bailiffs) Rules Si 76-1 Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Distress for Rent(Bailiffs) Rules SI 76-1.pdf",
+    "category": "constitutional",
+    "size": "4.69",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "distress",
+      "rent(bailiffs)",
+      "rules"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Distress%20for%20Rent(Bailiffs)%20Rules%20SI%2076-1.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:18:56.672Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 78,
+    "title": "INSOLVENCY  ACT CAP 108",
+    "description": "the 108 Act (Chapter Insolvency) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Insolvency  Act Cap 108.pdf",
+    "category": "constitutional",
+    "size": "4.48",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Insolvency",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Insolvency%20%20Act%20Cap%20108.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:19:03.018Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 79,
+    "title": "INSOLVENCY FESS REGULATIONS 26 OF 2013",
+    "description": "Insolvency Fess Regulations 26 of 2013 Act of 2013. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Insolvency fess Regulations 26 of 2013.pdf",
+    "category": "constitutional",
+    "size": "0.01",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2013,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "insolvency",
+      "fess",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Insolvency%20fess%20Regulations%2026%20of%202013.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:19:04.749Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2013-01-01"
+    }
   }
 ]
