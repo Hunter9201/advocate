@@ -1572,5 +1572,69 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 55,
+    "title": "THE LAND REGULATIONS 2004",
+    "description": "the Land Regulations 2004 Act of 2004. This property law statute regulates land ownership and transactions.",
+    "filename": "The Land Regulations 2004.pdf",
+    "category": "constitutional",
+    "size": "0.73",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2004,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "land",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Land%20Regulations%202004.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:21:10.784Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2004-01-01"
+    }
+  },
+  {
+    "id": 56,
+    "title": "THE MORTGAGE REGULATIONS",
+    "description": "the Mortgage Regulations Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "The Mortgage Regulations.pdf",
+    "category": "constitutional",
+    "size": "0.65",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "mortgage",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Mortgage%20Regulations.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:21:13.151Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
