@@ -1879,5 +1879,121 @@
       "amendments": [],
       "commencement": "2004-01-01"
     }
+  },
+  {
+    "id": 65,
+    "title": "PHYSICAL PLANNING ACT CAP 142",
+    "description": "the 142 Act (Chapter Physical Planning) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Physical Planning Act Cap 142.pdf",
+    "category": "property",
+    "size": "1.39",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Physical Planning",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Physical%20Planning%20Act%20Cap%20142.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:48:16.109Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 66,
+    "title": "REGISTRATION OF DOCUMENTS ACT  CAP 291",
+    "description": "the 291 Act (Chapter Registration of Documents) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Registration of Documents Act  Cap 291.pdf",
+    "category": "property",
+    "size": "0.22",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Registration of Documents",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Registration%20of%20Documents%20Act%20%20Cap%20291.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:48:18.317Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 67,
+    "title": "STAMP DUTY ACT CAP 339",
+    "description": "the 339 Act (Chapter Stamp Duty) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Stamp Duty Act Cap 339 .pdf",
+    "category": "property",
+    "size": "1.55",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Stamp Duty",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Stamp%20Duty%20Act%20Cap%20339%20.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:48:20.857Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 68,
+    "title": "SURVEY ACT CAP 241",
+    "description": "the 241 Act (Chapter Survey) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Survey Act Cap 241.pdf",
+    "category": "property",
+    "size": "0.47",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Survey",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Survey%20Act%20Cap%20241.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:48:23.174Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
