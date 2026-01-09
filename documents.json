@@ -2840,5 +2840,37 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 96,
+    "title": "FINANCIAL INSTITUTION CAP 57",
+    "description": "Financial Institution Act (Chapter 57) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Financial Institution Cap 57.pdf",
+    "category": "constitutional",
+    "size": "3.97",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "57",
+    "actNumber": null,
+    "keywords": [
+      "financial",
+      "institution"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Financial%20Institution%20Cap%2057.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T17:02:12.013Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
