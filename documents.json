@@ -106,5 +106,134 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 8,
+    "title": "Uganda Citizenship and Immigration Control Regulations 2004 Act",
+    "description": "Uganda Citizenship and Immigration Control Regulations 2004 Act of 2004. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Uganda Citizenship and Immigration Control Regulations 2004.pdf",
+    "category": "other",
+    "size": "0.47",
+    "pages": 10,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2004,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "uganda",
+      "citizenship",
+      "immigration",
+      "control",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Uganda%20Citizenship%20and%20Immigration%20Control%20Regulations%202004.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T06:16:26.989Z",
+      "fileType": "pdf",
+      "verified": false,
+      "hasMetadata": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2004-01-01"
+    }
+  },
+  {
+    "id": 9,
+    "title": "the 103 Act",
+    "description": "the 103 Act (Chapter Uganda Communications) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Uganda Communications Act Cap 103..pdf",
+    "category": "other",
+    "size": "1.54",
+    "pages": 31,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Uganda Communications",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Uganda%20Communications%20Act%20Cap%20103..pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T06:16:33.228Z",
+      "fileType": "pdf",
+      "verified": false,
+      "hasMetadata": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 10,
+    "title": "Use Listing Rules 2021 Act",
+    "description": "Use Listing Rules 2021 Act of 2021. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "USE Listing Rules 2021.pdf",
+    "category": "other",
+    "size": "0.68",
+    "pages": 14,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2021,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "listing",
+      "rules"
+    ],
+    "url": "https://hunter9201.github.io/advocate/USE%20Listing%20Rules%202021.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T06:16:37.833Z",
+      "fileType": "pdf",
+      "verified": false,
+      "hasMetadata": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2021-01-01"
+    }
+  },
+  {
+    "id": 11,
+    "title": "the 233 Act",
+    "description": "the 233 Act (Chapter Workers Compensation) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Workers Compensation Act Cap 233.pdf",
+    "category": "other",
+    "size": "0.88",
+    "pages": 18,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Workers Compensation",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Workers%20Compensation%20Act%20Cap%20233.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T06:16:42.564Z",
+      "fileType": "pdf",
+      "verified": false,
+      "hasMetadata": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
