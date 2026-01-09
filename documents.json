@@ -1249,5 +1249,63 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 45,
+    "title": "PUBLIC HEALTH ACT CAP 310",
+    "description": "the 310 Act (Chapter Public Health) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Public Health Act Cap 310.pdf",
+    "category": "constitutional",
+    "size": "1.56",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Public Health",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Public%20Health%20Act%20Cap%20310.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T10:40:37.454Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 46,
+    "title": "REGISTRATION OF TITLES  ACT CAP 240",
+    "description": "the 240 Act (Chapter Registration of Titles) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Registration of Titles  Act Cap 240.pdf",
+    "category": "constitutional",
+    "size": "0.67",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Registration of Titles",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Registration%20of%20Titles%20%20Act%20Cap%20240.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T10:40:41.735Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
