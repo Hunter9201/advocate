@@ -3197,5 +3197,107 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 107,
+    "title": "THE BANK OF UGANDA CONSUMER PROTECTION GUIDELINES,2011",
+    "description": "the Bank of Uganda Consumer Protection Guidelines,2011 Act of 2011. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "The Bank of Uganda Consumer Protection Guidelines,2011.pdf",
+    "category": "constitutional",
+    "size": "0.08",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2011,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "bank",
+      "uganda",
+      "consumer",
+      "protection"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Bank%20of%20Uganda%20Consumer%20Protection%20Guidelines%2C2011.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T17:26:14.948Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2011-01-01"
+    }
+  },
+  {
+    "id": 108,
+    "title": "THE BANK OF UGANDA MOBILE MONEY GUIDELINES 2013",
+    "description": "the Bank of Uganda Mobile Money Guidelines 2013 Act of 2013. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "The Bank of Uganda Mobile Money Guidelines 2013.pdf",
+    "category": "constitutional",
+    "size": "0.14",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2013,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "bank",
+      "uganda",
+      "mobile",
+      "money",
+      "guidelines"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Bank%20of%20Uganda%20Mobile%20Money%20Guidelines%202013.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T17:26:17.170Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2013-01-01"
+    }
+  },
+  {
+    "id": 109,
+    "title": "THE BUILDING SOCIETIES REGULATIONS, SI 108-1",
+    "description": "the Building Societies Regulations, Si 108-1 Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "The Building Societies Regulations, SI 108-1.pdf",
+    "category": "constitutional",
+    "size": "0.27",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "building",
+      "societies",
+      "regulations,"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Building%20Societies%20Regulations%2C%20SI%20108-1.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T17:26:19.633Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
