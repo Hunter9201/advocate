@@ -2451,5 +2451,128 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 84,
+    "title": "NATIONAL ENVIRONMENT ACT  CAP 181",
+    "description": "the 181 Act (Chapter National Environment) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "National Environment Act  Cap 181.pdf",
+    "category": "constitutional",
+    "size": "3.88",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "National Environment",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/National%20Environment%20Act%20%20Cap%20181.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:28:19.086Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 85,
+    "title": "PUBLIC HEALTH ACT CAP 310",
+    "description": "the 310 Act (Chapter Public Health) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Public Health Act Cap 310.pdf",
+    "category": "constitutional",
+    "size": "1.56",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Public Health",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Public%20Health%20Act%20Cap%20310.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:28:22.848Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 86,
+    "title": "ROADS CAP 346  ACT",
+    "description": "Roads Act (Chapter 346) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Roads Cap 346  Act.pdf",
+    "category": "constitutional",
+    "size": "1.68",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "346",
+    "actNumber": null,
+    "keywords": [
+      "roads"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Roads%20Cap%20346%20%20Act.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:28:25.634Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 87,
+    "title": "THE INSOLVENCY (INVESTIGATION AND PROSECUTION) REGULATIONS",
+    "description": "the Insolvency (investigation and Prosecution) Regulations Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "The Insolvency (Investigation and Prosecution) Regulations.pdf",
+    "category": "constitutional",
+    "size": "0.03",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "insolvency",
+      "(investigation",
+      "prosecution)",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Insolvency%20(Investigation%20and%20Prosecution)%20Regulations.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T12:28:27.433Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
