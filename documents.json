@@ -412,5 +412,129 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 18,
+    "title": "Constitution of the Republic of Uganda Act",
+    "description": "Constitution of the Republic of Uganda Act of 2026. This constitutional law document outlines fundamental principles and rights.",
+    "filename": "Constitution of the Republic of Uganda.pdf",
+    "category": "constitutional",
+    "size": "5.82",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "constitution",
+      "republic",
+      "uganda"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Constitution%20of%20the%20Republic%20of%20Uganda.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T08:50:22.154Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 19,
+    "title": "the 122 Act",
+    "description": "the 122 Act (Chapter Criminal Procedure Code) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Criminal Procedure Code  Act Cap 122.pdf",
+    "category": "constitutional",
+    "size": "0.78",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Criminal Procedure Code",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Criminal%20Procedure%20Code%20%20Act%20Cap%20122.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T08:50:27.139Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 20,
+    "title": "the 8 Act",
+    "description": "the 8 Act (Chapter Evidence) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Evidence Act Cap 8.pdf",
+    "category": "constitutional",
+    "size": "1.52",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Evidence",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Evidence%20Act%20Cap%208.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T08:50:30.299Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 21,
+    "title": "Judicature (criminal Procedure)(application) Si 13 8 Act",
+    "description": "Judicature (criminal Procedure)(application) Si 13 8 Act of 2026. This criminal law legislation defines offences and penalties under Ugandan law.",
+    "filename": "Judicature (Criminal Procedure)(Application) SI_13_8.pdf",
+    "category": "constitutional",
+    "size": "0.11",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "judicature",
+      "(criminal",
+      "procedure)(application)"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Judicature%20(Criminal%20Procedure)(Application)%20SI_13_8.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T08:50:32.668Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
