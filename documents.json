@@ -1665,5 +1665,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 58,
+    "title": "CONTRACTS ACT CAP 284",
+    "description": "the 284 Act (Chapter Contracts) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Contracts Act Cap 284.pdf",
+    "category": "constitutional",
+    "size": "0.41",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Contracts",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Contracts%20Act%20Cap%20284.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:25:22.479Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
