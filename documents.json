@@ -1445,5 +1445,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 51,
+    "title": "SECURITY INTEREST IN MOVABLE PROPERTY ACT CAP 293",
+    "description": "the 293 Act (Chapter Security Interest in Movable Property) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Security Interest in Movable Property Act Cap 293.pdf",
+    "category": "constitutional",
+    "size": "1.00",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Security Interest in Movable Property",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Security%20Interest%20in%20Movable%20Property%20Act%20Cap%20293.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:14:33.192Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
