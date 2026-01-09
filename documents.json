@@ -1474,5 +1474,103 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 52,
+    "title": "STAMP DUTY ACT CAP 339",
+    "description": "the 339 Act (Chapter Stamp Duty) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Stamp Duty Act Cap 339 .pdf",
+    "category": "constitutional",
+    "size": "1.55",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Stamp Duty",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Stamp%20Duty%20Act%20Cap%20339%20.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:19:11.512Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 53,
+    "title": "THE ADVOCATES (PROFESSIONAL CONDUCT) REGULATIONS.",
+    "description": "the Advocates (professional Conduct) Regulations. Act of 2026. This judicature legislation regulates courts and legal practitioners.",
+    "filename": "The Advocates (Professional Conduct) Regulations..pdf",
+    "category": "constitutional",
+    "size": "0.10",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "advocates",
+      "(professional",
+      "conduct)",
+      "regulations."
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Advocates%20(Professional%20Conduct)%20Regulations..pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:19:13.694Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 54,
+    "title": "THE ADVOCATES REMUNERATION AND TAXATION OF COSTS RULES SI 267-4",
+    "description": "the Advocates Remuneration and Taxation of Costs Rules Si 267-4 Act of 2026. This judicature legislation regulates courts and legal practitioners.",
+    "filename": "The Advocates Remuneration and Taxation of Costs Rules SI 267-4.pdf",
+    "category": "constitutional",
+    "size": "0.34",
+    "pages": 0,
+    "date": "2026-01-09",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "advocates",
+      "remuneration",
+      "taxation",
+      "costs",
+      "rules"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Advocates%20Remuneration%20and%20Taxation%20of%20Costs%20Rules%20SI%20267-4.pdf",
+    "metadata": {
+      "uploaded": "2026-01-09T11:19:15.793Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
