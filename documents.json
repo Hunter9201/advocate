@@ -4001,5 +4001,124 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 131,
+    "title": "the 146 Act",
+    "description": "the 146 Act (Chapter Marriage) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Marriage Act Cap 146.pdf",
+    "category": "constitutional",
+    "size": "0.68",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Marriage",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Marriage%20Act%20Cap%20146.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T10:20:52.784Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 132,
+    "title": "the 147 Act",
+    "description": "the 147 Act (Chapter Marriage and Divorce of Mohammedans) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Marriage and Divorce of Mohammedans Act Cap 147.pdf",
+    "category": "constitutional",
+    "size": "0.32",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Marriage and Divorce of Mohammedans",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Marriage%20and%20Divorce%20of%20Mohammedans%20Act%20Cap%20147.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T10:20:54.852Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 133,
+    "title": "the Divorce Rules Si 249 1 Act",
+    "description": "the Divorce Rules Si 249 1 Act of 2026. This family law legislation governs marriage, divorce, and family matters.",
+    "filename": "The Divorce Rules SI 249_1.pdf",
+    "category": "constitutional",
+    "size": "0.19",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "divorce",
+      "rules"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Divorce%20Rules%20SI%20249_1.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T10:20:56.987Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 134,
+    "title": "the 217 Act",
+    "description": "the 217 Act (Chapter URSB) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "URSB Act Cap 217.pdf",
+    "category": "constitutional",
+    "size": "0.54",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "URSB",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/URSB%20Act%20Cap%20217.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T10:20:59.381Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
