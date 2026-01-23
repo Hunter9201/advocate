@@ -5701,5 +5701,72 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 188,
+    "title": "PRACTICE DIRECTION 2 OF 2005",
+    "description": "Practice Direction 2 of 2005 Act of 2005. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Practice Direction 2 of 2005.pdf",
+    "category": "constitutional",
+    "size": "1.09",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2005,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "practice",
+      "direction"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Practice%20Direction%202%20of%202005.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T21:51:47.596Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2005-01-01"
+    }
+  },
+  {
+    "id": 189,
+    "title": "THE JUDICATURE (COURT OF APPEAL RULES) DIRECTIONS SI-13-10",
+    "description": "the Judicature (court of Appeal Rules) Directions Si-13-10 Act of 2026. This statute governs magistrate courts and their jurisdiction.",
+    "filename": "The Judicature (Court of Appeal Rules) Directions SI-13-10.pdf",
+    "category": "constitutional",
+    "size": "0.38",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "judicature",
+      "(court",
+      "appeal",
+      "rules)",
+      "directions"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Judicature%20(Court%20of%20Appeal%20Rules)%20Directions%20SI-13-10.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T21:51:49.749Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
