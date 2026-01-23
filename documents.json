@@ -4348,5 +4348,134 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 142,
+    "title": "High Court Administrative Circular 2of 2020 Circular Act",
+    "description": "High Court Administrative Circular 2of 2020 Circular Act of 2020. This statute governs magistrate courts and their jurisdiction.",
+    "filename": "High Court Administrative Circular 2of 2020 Circular.pdf",
+    "category": "family",
+    "size": "1.44",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2020,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "high",
+      "court",
+      "administrative",
+      "circular",
+      "circular"
+    ],
+    "url": "https://hunter9201.github.io/advocate/High%20Court%20Administrative%20Circular%202of%202020%20Circular.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T11:41:24.103Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2020-01-01"
+    }
+  },
+  {
+    "id": 143,
+    "title": "Practice Direction No.1, 2011 Act",
+    "description": "Practice Direction No.1, 2011 Act of 2011. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Practice Direction No.1, 2011.pdf",
+    "category": "family",
+    "size": "0.27",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2011,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "practice",
+      "direction"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Practice%20Direction%20No.1%2C%202011.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T11:41:25.578Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2011-01-01"
+    }
+  },
+  {
+    "id": 144,
+    "title": "the 332 Act",
+    "description": "the 332 Act (Chapter Registration Of Persons) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Registration Of Persons Act Cap332.pdf",
+    "category": "family",
+    "size": "2.44",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Registration Of Persons",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Registration%20Of%20Persons%20Act%20Cap332.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T11:41:29.019Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 145,
+    "title": "the Children(adoption of Children) Rules, S.i 59-1 Act",
+    "description": "the Children(adoption of Children) Rules, S.i 59-1 Act of 2026. This family law legislation governs marriage, divorce, and family matters.",
+    "filename": "The Children(Adoption of Children) Rules, S.I 59-1.pdf",
+    "category": "family",
+    "size": "0.12",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "children(adoption",
+      "children)",
+      "rules,"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Children(Adoption%20of%20Children)%20Rules%2C%20S.I%2059-1.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T11:41:31.328Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
