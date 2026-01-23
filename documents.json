@@ -5141,5 +5141,124 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 168,
+    "title": "the 63 Act",
+    "description": "the 63 Act (Chapter Assets of Departed Asians) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Assets of Departed Asians Act Cap 63..pdf",
+    "category": "commercial",
+    "size": "0.27",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Assets of Departed Asians",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Assets%20of%20Departed%20Asians%20Act%20Cap%2063..pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T18:08:04.750Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 169,
+    "title": "the 314 Act",
+    "description": "the 314 Act (Chapter Fisheries and Aquaculture) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Fisheries and Aquaculture Act Cap 314.pdf",
+    "category": "commercial",
+    "size": "17.12",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Fisheries and Aquaculture",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Fisheries%20and%20Aquaculture%20Act%20Cap%20314.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T18:08:26.619Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 170,
+    "title": "General Notice 89 of 1993 Act",
+    "description": "General Notice 89 of 1993 Act of 1993. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "General Notice 89 of 1993.pdf",
+    "category": "commercial",
+    "size": "0.23",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 1993,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "general",
+      "notice"
+    ],
+    "url": "https://hunter9201.github.io/advocate/General%20Notice%2089%20of%201993.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T18:08:29.131Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "1993-01-01"
+    }
+  },
+  {
+    "id": 171,
+    "title": "the 159 Act",
+    "description": "the 159 Act (Chapter Mining and Minerals) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Mining and Minerals Act Cap 159.pdf",
+    "category": "commercial",
+    "size": "5.66",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Mining and Minerals",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Mining%20and%20Minerals%20Act%20Cap%20159.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T18:08:37.487Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
