@@ -4887,5 +4887,129 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 160,
+    "title": "the 265 Act",
+    "description": "the 265 Act (Chapter Estates of Missing Persons(Management)) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Estates of Missing Persons(Management) Act Cap 265.pdf",
+    "category": "constitutional",
+    "size": "0.40",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Estates of Missing Persons(Management)",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Estates%20of%20Missing%20Persons(Management)%20Act%20Cap%20265.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T17:10:16.031Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 161,
+    "title": "the 308 Act",
+    "description": "the 308 Act (Chapter Mental Health) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Mental Health Act Cap 308.pdf",
+    "category": "constitutional",
+    "size": "1.30",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Mental Health",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Mental%20Health%20Act%20Cap%20308.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T17:10:19.572Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 162,
+    "title": "Mental Health Act",
+    "description": "Mental Health Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Mental Health Act(Commencement) Instrument.pdf",
+    "category": "constitutional",
+    "size": "0.28",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "mental",
+      "health"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Mental%20Health%20Act(Commencement)%20Instrument.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T17:10:22.990Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 163,
+    "title": "the Judicature (courts Fees) Rules,. S.i.13-1. Act",
+    "description": "the Judicature (courts Fees) Rules,. S.i.13-1. Act of 2026. This statute governs magistrate courts and their jurisdiction.",
+    "filename": "The Judicature (Courts Fees) Rules,. S.I.13-1..pdf",
+    "category": "constitutional",
+    "size": "0.23",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "judicature",
+      "(courts",
+      "fees)",
+      "rules,."
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Judicature%20(Courts%20Fees)%20Rules%2C.%20S.I.13-1..pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T17:10:25.573Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
