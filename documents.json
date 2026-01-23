@@ -4120,5 +4120,103 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 135,
+    "title": "Advocates (students Practice Regulations) Act",
+    "description": "Advocates (students Practice Regulations) Act of 2026. This judicature legislation regulates courts and legal practitioners.",
+    "filename": "Advocates (Students Practice Regulations).pdf",
+    "category": "family",
+    "size": "0.03",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "advocates",
+      "(students",
+      "practice",
+      "regulations)"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Advocates%20(Students%20Practice%20Regulations).pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T11:26:08.675Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 136,
+    "title": "African Charter on the Rights and Welfare of the Child (un 1989) Act",
+    "description": "African Charter on the Rights and Welfare of the Child (un 1989) Act of 1989. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "African Charter on the Rights and Welfare of the Child (UN 1989).pdf",
+    "category": "family",
+    "size": "0.07",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 1989,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "african",
+      "charter",
+      "rights",
+      "welfare",
+      "child"
+    ],
+    "url": "https://hunter9201.github.io/advocate/African%20Charter%20on%20the%20Rights%20and%20Welfare%20of%20the%20Child%20(UN%201989).pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T11:26:10.439Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "1989-01-01"
+    }
+  },
+  {
+    "id": 137,
+    "title": "the 62 Act",
+    "description": "the 62 Act (Chapter Children) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Children Act Cap 62.pdf",
+    "category": "family",
+    "size": "3.02",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Children",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Children%20Act%20Cap%2062.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T11:26:14.865Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
