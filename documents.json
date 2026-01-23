@@ -3885,5 +3885,121 @@
       "amendments": [],
       "commencement": "2025-01-01"
     }
+  },
+  {
+    "id": 127,
+    "title": "the 143 Act",
+    "description": "the 143 Act (Chapter Customary Marriage(Registration)) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Customary Marriage(Registration) Act Cap 143.pdf",
+    "category": "family",
+    "size": "0.29",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Customary Marriage(Registration)",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Customary%20Marriage(Registration)%20Act%20Cap%20143.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T09:06:17.476Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 128,
+    "title": "the 144 Act",
+    "description": "the 144 Act (Chapter Divorce) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Divorce Act Cap 144.pdf",
+    "category": "family",
+    "size": "0.26",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Divorce",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Divorce%20Act%20Cap%20144.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T09:06:20.069Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 129,
+    "title": "the 123 Act",
+    "description": "the 123 Act (Chapter Domestic Violence) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Domestic Violence Act Cap 123.pdf",
+    "category": "family",
+    "size": "0.62",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Domestic Violence",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Domestic%20Violence%20Act%20Cap%20123.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T09:06:22.659Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 130,
+    "title": "the 145 Act",
+    "description": "the 145 Act (Chapter Hindu Marriage and Divorce) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Hindu Marriage and Divorce Act Cap 145.pdf",
+    "category": "family",
+    "size": "0.17",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Hindu Marriage and Divorce",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Hindu%20Marriage%20and%20Divorce%20Act%20Cap%20145.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T09:06:24.641Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
