@@ -4580,5 +4580,132 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 149,
+    "title": "the 264 Act",
+    "description": "the 264 Act (Chapter Administration General's) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Administration General's Act Cap 264.pdf",
+    "category": "constitutional",
+    "size": "0.67",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Administration General's",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Administration%20General's%20Act%20Cap%20264.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T12:33:13.480Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 150,
+    "title": "Administration of Estates (small Estates) (special Provisions) (probate and Administration) Rules (s.i. 156—1). Act",
+    "description": "Administration of Estates (small Estates) (special Provisions) (probate and Administration) Rules (s.i. 156—1). Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Administration of Estates (Small Estates) (Special Provisions) (Probate and Administration) Rules (S.I. 156—1)..pdf",
+    "category": "constitutional",
+    "size": "0.15",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "administration",
+      "estates",
+      "(small",
+      "estates)",
+      "(special"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Administration%20of%20Estates%20(Small%20Estates)%20(Special%20Provisions)%20(Probate%20and%20Administration)%20Rules%20(S.I.%20156%E2%80%941)..pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T12:33:15.858Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 151,
+    "title": "the 263 Act",
+    "description": "the 263 Act (Chapter Administration of Estates(Small Estates)(Special Provision)) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Administration of Estates(Small Estates)(Special Provision) Act Cap 263.pdf",
+    "category": "constitutional",
+    "size": "0.16",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Administration of Estates(Small Estates)(Special Provision)",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Administration%20of%20Estates(Small%20Estates)(Special%20Provision)%20Act%20Cap%20263.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T12:33:18.388Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 152,
+    "title": "Judicature (designation of Circuits) Instrument, 2023 Act",
+    "description": "Judicature (designation of Circuits) Instrument, 2023 Act of 2023. This statute governs magistrate courts and their jurisdiction.",
+    "filename": "Judicature (Designation of Circuits) Instrument, 2023.pdf",
+    "category": "constitutional",
+    "size": "0.18",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2023,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "judicature",
+      "(designation",
+      "circuits)",
+      "instrument,"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Judicature%20(Designation%20of%20Circuits)%20Instrument%2C%202023.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T12:33:20.751Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2023-01-01"
+    }
   }
 ]
