@@ -4800,5 +4800,63 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 157,
+    "title": "the 266 Act",
+    "description": "the 266 Act (Chapter Probates(Resealing)) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Probates(Resealing) Act Cap 266.pdf",
+    "category": "constitutional",
+    "size": "0.10",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Probates(Resealing)",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Probates(Resealing)%20Act%20Cap%20266.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T16:34:05.548Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 158,
+    "title": "the 267 Act",
+    "description": "the 267 Act (Chapter Public Trustee) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Public Trustee Act Cap 267.pdf",
+    "category": "constitutional",
+    "size": "0.18",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Public Trustee",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Public%20Trustee%20Act%20Cap%20267.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T16:34:08.210Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
