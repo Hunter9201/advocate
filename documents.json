@@ -5011,5 +5011,135 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 164,
+    "title": "the 308 Act",
+    "description": "the 308 Act (Chapter Mental Health) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Mental Health Act Cap 308.pdf",
+    "category": "constitutional",
+    "size": "1.30",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Mental Health",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Mental%20Health%20Act%20Cap%20308.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T17:13:11.269Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 165,
+    "title": "Mental Health Act",
+    "description": "Mental Health Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Mental Health Act(Commencement) Instrument.pdf",
+    "category": "constitutional",
+    "size": "0.28",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "mental",
+      "health"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Mental%20Health%20Act(Commencement)%20Instrument.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T17:13:12.874Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 166,
+    "title": "the Judicature (courts Fees) Rules,. S.i.13-1. Act",
+    "description": "the Judicature (courts Fees) Rules,. S.i.13-1. Act of 2026. This statute governs magistrate courts and their jurisdiction.",
+    "filename": "The Judicature (Courts Fees) Rules,. S.I.13-1..pdf",
+    "category": "constitutional",
+    "size": "0.23",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "judicature",
+      "(courts",
+      "fees)",
+      "rules,."
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Judicature%20(Courts%20Fees)%20Rules%2C.%20S.I.13-1..pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T17:13:14.483Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 167,
+    "title": "the Un Convention on the Rights of Persons With Disabilities Act",
+    "description": "the Un Convention on the Rights of Persons With Disabilities Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "The UN Convention on the Rights of Persons with Disabilities.pdf",
+    "category": "constitutional",
+    "size": "0.24",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "convention",
+      "rights",
+      "persons",
+      "with",
+      "disabilities"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20UN%20Convention%20on%20the%20Rights%20of%20Persons%20with%20Disabilities.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T17:13:17.390Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
