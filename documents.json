@@ -4858,5 +4858,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 159,
+    "title": "the 271 Act",
+    "description": "the 271 Act (Chapter Trustees Incorporation) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Trustees Incorporation  Act Cap 271.pdf",
+    "category": "constitutional",
+    "size": "0.99",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Trustees Incorporation",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Trustees%20Incorporation%20%20Act%20Cap%20271.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T16:56:07.461Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
