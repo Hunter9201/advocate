@@ -4707,5 +4707,128 @@
       "amendments": [],
       "commencement": "2023-01-01"
     }
+  },
+  {
+    "id": 153,
+    "title": "the Judicature(administration of Estates) Rules Si 13-7 Act",
+    "description": "the Judicature(administration of Estates) Rules Si 13-7 Act of 2026. This statute governs magistrate courts and their jurisdiction.",
+    "filename": "The Judicature(Administration of Estates) Rules SI 13-7.pdf",
+    "category": "constitutional",
+    "size": "2.87",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "judicature(administration",
+      "estates)",
+      "rules"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Judicature(Administration%20of%20Estates)%20Rules%20SI%2013-7.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T12:48:54.962Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 154,
+    "title": "the Probate (resealing)rules Si 160-1 Act",
+    "description": "the Probate (resealing)rules Si 160-1 Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "The Probate (Resealing)Rules SI 160-1.pdf",
+    "category": "constitutional",
+    "size": "1.57",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "probate",
+      "(resealing)rules"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Probate%20(Resealing)Rules%20SI%20160-1.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T12:48:58.165Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 155,
+    "title": "the 269 Act",
+    "description": "the 269 Act (Chapter Trust Corporations(Probate and Administration)) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Trust Corporations(Probate and Administration) Act Cap 269.pdf",
+    "category": "constitutional",
+    "size": "0.10",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Trust Corporations(Probate and Administration)",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Trust%20Corporations(Probate%20and%20Administration)%20Act%20Cap%20269.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T12:49:01.931Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 156,
+    "title": "the 271 Act",
+    "description": "the 271 Act (Chapter Trustees Incorporation) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Trustees Incorporation  Act Cap 271.pdf",
+    "category": "constitutional",
+    "size": "0.99",
+    "pages": 0,
+    "date": "2026-01-23",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Trustees Incorporation",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Trustees%20Incorporation%20%20Act%20Cap%20271.pdf",
+    "metadata": {
+      "uploaded": "2026-01-23T12:49:13.748Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
