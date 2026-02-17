@@ -6140,5 +6140,136 @@
       "amendments": [],
       "commencement": "2016-01-01"
     }
+  },
+  {
+    "id": 202,
+    "title": "EMPLOYMENT  ACT CAP 226",
+    "description": "the 226 Act (Chapter Employment) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Employment  Act Cap 226.pdf",
+    "category": "constitutional",
+    "size": "1.54",
+    "pages": 0,
+    "date": "2026-02-17",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Employment",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Employment%20%20Act%20Cap%20226.pdf",
+    "metadata": {
+      "uploaded": "2026-02-17T17:24:48.782Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 203,
+    "title": "EMPLOYMENT (SEXUAL HARASSMENT) REGULATIONS",
+    "description": "Employment (sexual Harassment) Regulations Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Employment (Sexual Harassment) Regulations.pdf",
+    "category": "constitutional",
+    "size": "0.23",
+    "pages": 0,
+    "date": "2026-02-17",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "employment",
+      "(sexual",
+      "harassment)",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Employment%20(Sexual%20Harassment)%20Regulations.pdf",
+    "metadata": {
+      "uploaded": "2026-02-17T17:24:56.845Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 204,
+    "title": "EMPLOYMENT(EMPLOYMENT OFCHILDREN) REGULATIONS.",
+    "description": "Employment(employment Ofchildren) Regulations. Act of 2026. This family law legislation governs marriage, divorce, and family matters.",
+    "filename": "Employment(Employment ofchildren) Regulations..pdf",
+    "category": "constitutional",
+    "size": "0.23",
+    "pages": 0,
+    "date": "2026-02-17",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "employment(employment",
+      "ofchildren)",
+      "regulations."
+    ],
+    "url": "https://hunter9201.github.io/advocate/Employment(Employment%20ofchildren)%20Regulations..pdf",
+    "metadata": {
+      "uploaded": "2026-02-17T17:25:01.635Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 205,
+    "title": "EMPLOYMENT(RECRUITMENT OF UGANDAN MIGRANT WORKERS) REGULATIONS 2021",
+    "description": "Employment(recruitment of Ugandan Migrant Workers) Regulations 2021 Act of 2021. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Employment(Recruitment of Ugandan Migrant Workers) Regulations 2021.pdf",
+    "category": "constitutional",
+    "size": "0.28",
+    "pages": 0,
+    "date": "2026-02-17",
+    "updated": false,
+    "year": 2021,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "employment(recruitment",
+      "ugandan",
+      "migrant",
+      "workers)",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Employment(Recruitment%20of%20Ugandan%20Migrant%20Workers)%20Regulations%202021.pdf",
+    "metadata": {
+      "uploaded": "2026-02-17T17:25:05.404Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2021-01-01"
+    }
   }
 ]
