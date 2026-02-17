@@ -6387,5 +6387,100 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 210,
+    "title": "NON-GOVERNMENTAL ORGANISATIONS ACT CAP 109",
+    "description": "the 109 Act (Chapter Non-Governmental Organisations) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Non-Governmental Organisations Act Cap 109.pdf",
+    "category": "constitutional",
+    "size": "1.06",
+    "pages": 0,
+    "date": "2026-02-17",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Non-Governmental Organisations",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Non-Governmental%20Organisations%20Act%20Cap%20109.pdf",
+    "metadata": {
+      "uploaded": "2026-02-17T17:45:35.260Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 211,
+    "title": "OCCUPATIONAN SAFETY AND HEALTH CAP 231",
+    "description": "Occupationan Safety and Health Act (Chapter 231) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Occupationan Safety and Health Cap 231.pdf",
+    "category": "constitutional",
+    "size": "2.31",
+    "pages": 0,
+    "date": "2026-02-17",
+    "updated": false,
+    "year": 2026,
+    "chapter": "231",
+    "actNumber": null,
+    "keywords": [
+      "occupationan",
+      "safety",
+      "health"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Occupationan%20Safety%20and%20Health%20Cap%20231.pdf",
+    "metadata": {
+      "uploaded": "2026-02-17T17:46:21.503Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 212,
+    "title": "THE COMPANIES (GENERAL) REGULATIONS S.I 7 OF 2016",
+    "description": "the Companies (general) Regulations S.i 7 of 2016 Act of 2016. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "The Companies (General) Regulations S.I 7 of 2016.pdf",
+    "category": "constitutional",
+    "size": "0.78",
+    "pages": 0,
+    "date": "2026-02-17",
+    "updated": false,
+    "year": 2016,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "companies",
+      "(general)",
+      "regulations"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Companies%20(General)%20Regulations%20S.I%207%20of%202016.pdf",
+    "metadata": {
+      "uploaded": "2026-02-17T17:46:25.098Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2016-01-01"
+    }
   }
 ]
