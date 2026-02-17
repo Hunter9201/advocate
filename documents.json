@@ -5918,5 +5918,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 195,
+    "title": "The Partnership Act Cap 110",
+    "description": "the 110 Act (Chapter Partnership) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Partnership Act Cap 110.pdf",
+    "category": "constitutional",
+    "size": "0.91",
+    "pages": 0,
+    "date": "2026-02-17",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Partnership",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Partnership%20Act%20Cap%20110.pdf",
+    "metadata": {
+      "uploaded": "2026-02-17T08:20:48.063Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
