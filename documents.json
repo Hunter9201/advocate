@@ -6800,5 +6800,39 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 223,
+    "title": "the Civil Procedure Rules Amended by Si 33 2019. Act",
+    "description": "the Civil Procedure Rules Amended by Si 33 2019. Act of 2019. This civil law statute governs private rights and remedies.",
+    "filename": "The Civil Procedure Rules Amended by SI 33 2019..pdf",
+    "category": "constitutional",
+    "size": "0.53",
+    "pages": 0,
+    "date": "2026-03-24",
+    "updated": false,
+    "year": 2019,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "civil",
+      "procedure",
+      "rules",
+      "amended"
+    ],
+    "url": "https://hunter9201.github.io/advocate/The%20Civil%20Procedure%20Rules%20Amended%20by%20SI%2033%202019..pdf",
+    "metadata": {
+      "uploaded": "2026-03-24T18:09:54.125Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2019-01-01"
+    }
   }
 ]
