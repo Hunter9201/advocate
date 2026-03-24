@@ -6673,5 +6673,37 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 219,
+    "title": "CIVIL PROCEDURE ACT CAP 71",
+    "description": "Civil Procedure Act of 2026. This civil law statute governs private rights and remedies.",
+    "filename": "Civil Procedure Act.pdf",
+    "category": "constitutional",
+    "size": "0.31",
+    "pages": 0,
+    "date": "2026-03-24",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "civil",
+      "procedure"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Civil%20Procedure%20Act.pdf",
+    "metadata": {
+      "uploaded": "2026-03-24T09:26:15.246Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
