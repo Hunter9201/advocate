@@ -6834,5 +6834,34 @@
       "amendments": [],
       "commencement": "2019-01-01"
     }
+  },
+  {
+    "id": 224,
+    "title": "REGISTRATION OF TITLES ACT Cap 238",
+    "description": "the 238 Act (Chapter RTA) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "RTA Act Cap 238.pdf",
+    "category": "property",
+    "size": "0.67",
+    "pages": 0,
+    "date": "2026-03-24",
+    "updated": false,
+    "year": 2026,
+    "chapter": "RTA",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/RTA%20Act%20Cap%20238.pdf",
+    "metadata": {
+      "uploaded": "2026-03-24T19:31:54.021Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
