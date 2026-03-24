@@ -6705,5 +6705,37 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 220,
+    "title": "GOVERNMENT  PROCEEDINGS CAP 287",
+    "description": "Government Proceedings Act (Chapter 287) of 2026. This administrative law regulates government agencies and procedures.",
+    "filename": "Government Proceedings Cap 287.pdf",
+    "category": "constitutional",
+    "size": "4.54",
+    "pages": 0,
+    "date": "2026-03-24",
+    "updated": false,
+    "year": 2026,
+    "chapter": "287",
+    "actNumber": null,
+    "keywords": [
+      "government",
+      "proceedings"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Government%20Proceedings%20Cap%20287.pdf",
+    "metadata": {
+      "uploaded": "2026-03-24T17:43:02.274Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
