@@ -243,6 +243,15 @@
             color: var(--law-navy);
         }
 
+        .last-sync {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            background: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+
         /* PDF Grid - force exactly 3 columns on mobile */
         .pdf-grid {
             display: grid;
@@ -532,6 +541,7 @@
         <div class="stats-left">
             <span><i class="fas fa-balance-scale"></i> <strong id="totalDocsCount">0</strong> Legal Instruments</span>
             <span><i class="fas fa-book-open"></i> <span id="displayedDocsCount">0</span> displayed</span>
+            <span id="lastSyncTime" class="last-sync"><i class="far fa-clock"></i> Last sync: never</span>
         </div>
         <div id="activeSearchBadge" class="search-query-badge" style="display: none;">
             <i class="fas fa-filter"></i> <span id="searchTermBadge"></span>
@@ -554,7 +564,7 @@
             <p>Authoritative collection of Acts, Regulations & Judicature guidelines</p>
         </div>
         <div class="copyright">
-            © 2025 Juris Uganda — Documents auto-sync from <a href="documents.json">documents.json</a> · Lex in Omnibus
+            © 2025 Juris Uganda — Documents auto-sync from <a href="documents.json" target="_blank">documents.json</a> · Lex in Omnibus
         </div>
     </div>
 </footer>
@@ -568,10 +578,12 @@
     const displayedDocsSpan = document.getElementById('displayedDocsCount');
     const activeSearchBadge = document.getElementById('activeSearchBadge');
     const searchTermBadge = document.getElementById('searchTermBadge');
+    const lastSyncSpan = document.getElementById('lastSyncTime');
 
     let allDocuments = [];
     let currentSearch = '';
     let debounceTimer;
+    let isFetching = false;
 
     const categoryMap = {
         constitutional: "⚖️ Constitution", criminal: "🔪 Criminal", civil: "📜 Civil", commercial: "💼 Commercial",
@@ -584,24 +596,37 @@
         return categoryMap[cat] || cat?.charAt(0).toUpperCase() + cat?.slice(1) || "Legal Document";
     }
 
-    async function fetchDocuments() {
+    // Fetch with cache-busting timestamp and no-store for guaranteed freshness
+    async function fetchDocuments(forceNoCache = true) {
+        if (isFetching) return false;
+        isFetching = true;
         try {
             showLoadingState();
-            const response = await fetch('documents.json');
+            // Use timestamp to bypass browser cache + 'no-cache' header
+            const cacheBuster = `?t=${Date.now()}`;
+            const response = await fetch(`documents.json${cacheBuster}`, {
+                cache: 'no-store',
+                headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' }
+            });
             if (!response.ok) throw new Error(`HTTP ${response.status}: Could not fetch documents.json`);
             const data = await response.json();
-            if (!Array.isArray(data)) throw new Error('Invalid data format');
+            if (!Array.isArray(data)) throw new Error('Invalid data format (expected array)');
             const validDocs = data.filter(doc => doc && doc.id && doc.title && doc.filename && doc.category);
-            if (validDocs.length === 0) throw new Error('No valid documents found');
+            if (validDocs.length === 0 && data.length > 0) throw new Error('No valid documents found in the array');
             allDocuments = validDocs;
+            // Update last sync time
+            const now = new Date();
+            lastSyncSpan.innerHTML = `<i class="far fa-clock"></i> Last sync: ${now.toLocaleTimeString()}`;
             renderDocuments(true);
             updateStatsUI();
             return true;
         } catch (err) {
-            console.error(err);
+            console.error('Fetch error:', err);
             showErrorState(err.message);
             updateStatsUIOnError();
             return false;
+        } finally {
+            isFetching = false;
         }
     }
 
@@ -637,6 +662,7 @@
         totalDocsSpan.innerText = '0';
         displayedDocsSpan.innerText = '0';
         activeSearchBadge.style.display = 'none';
+        lastSyncSpan.innerHTML = `<i class="far fa-clock"></i> Last sync: failed`;
     }
 
     function getFilteredDocuments() {
@@ -687,7 +713,6 @@
             for (const doc of filtered) {
                 const card = document.createElement('div');
                 card.className = 'pdf-card';
-                // Entire card clickable
                 card.addEventListener('click', (e) => {
                     openPDF(doc);
                 });
@@ -734,6 +759,18 @@
         }
     }
 
+    // Force refresh: always fetch with full cache busting and reset search
+    async function hardRefresh() {
+        refreshBtn.disabled = true;
+        refreshBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Syncing Lex...';
+        currentSearch = '';
+        searchInput.value = '';
+        updateSearchUI();
+        await fetchDocuments(true);
+        refreshBtn.disabled = false;
+        refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Library';
+    }
+
     function setupEvents() {
         searchInput.addEventListener('input', () => {
             currentSearch = searchInput.value.trim();
@@ -747,19 +784,18 @@
             renderDocuments();
             searchInput.focus();
         });
-        refreshBtn.addEventListener('click', async () => {
-            refreshBtn.disabled = true;
-            refreshBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Updating Lex...';
-            await fetchDocuments();
-            refreshBtn.disabled = false;
-            refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Library';
-        });
-        setInterval(() => { fetchDocuments(); }, 240000);
+        refreshBtn.addEventListener('click', hardRefresh);
+        // Auto-refresh every 3 minutes (to catch admin panel updates quickly)
+        setInterval(() => {
+            if (!isFetching) {
+                fetchDocuments(true).catch(console.warn);
+            }
+        }, 180000);
     }
 
     async function init() {
         setupEvents();
-        await fetchDocuments();
+        await fetchDocuments(true);
         if (allDocuments.length) renderDocuments(true);
     }
     init();
