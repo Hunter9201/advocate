@@ -585,15 +585,52 @@
     let debounceTimer;
     let isFetching = false;
 
+    // Expanded category map with a fallback for missing/undefined categories
     const categoryMap = {
-        constitutional: "⚖️ Constitution", criminal: "🔪 Criminal", civil: "📜 Civil", commercial: "💼 Commercial",
-        family: "👨‍👩‍👧 Family", property: "🏛️ Property", evidence: "📋 Evidence", procedure: "⚙️ Procedure",
-        judicature: "🏛️ Judicature", magistrate: "⚖️ Magistrate", administrative: "📁 Admin", employment: "👔 Employment",
-        international: "🌍 Intl. Law", other: "📘 Other Acts"
+        constitutional: "⚖️ Constitution",
+        criminal: "🔪 Criminal",
+        civil: "📜 Civil",
+        commercial: "💼 Commercial",
+        family: "👨‍👩‍👧 Family",
+        property: "🏛️ Property",
+        evidence: "📋 Evidence",
+        procedure: "⚙️ Procedure",
+        judicature: "🏛️ Judicature",
+        magistrate: "⚖️ Magistrate",
+        administrative: "📁 Admin",
+        employment: "👔 Employment",
+        international: "🌍 Intl. Law",
+        other: "📘 Other Acts"
     };
 
     function getCategoryDisplay(cat) {
-        return categoryMap[cat] || cat?.charAt(0).toUpperCase() + cat?.slice(1) || "Legal Document";
+        if (!cat) return "📄 General Document";
+        const lowerCat = String(cat).toLowerCase();
+        if (categoryMap[lowerCat]) return categoryMap[lowerCat];
+        // If category exists but not in map, display as-is (capitalized)
+        return cat.charAt(0).toUpperCase() + cat.slice(1);
+    }
+
+    function getCategoryIcon(cat) {
+        if (!cat) return "fa-file-alt";
+        const lowerCat = String(cat).toLowerCase();
+        const iconMap = {
+            constitutional: "fa-gavel",
+            criminal: "fa-handcuffs",
+            civil: "fa-scale-balanced",
+            commercial: "fa-chart-line",
+            family: "fa-heart",
+            property: "fa-building",
+            evidence: "fa-search",
+            procedure: "fa-tasks",
+            judicature: "fa-gavel",
+            magistrate: "fa-balance-scale",
+            administrative: "fa-folder-open",
+            employment: "fa-briefcase",
+            international: "fa-globe",
+            other: "fa-book"
+        };
+        return iconMap[lowerCat] || "fa-file-alt";
     }
 
     // Fetch with cache-busting timestamp and no-store for guaranteed freshness
@@ -602,7 +639,6 @@
         isFetching = true;
         try {
             showLoadingState();
-            // Use timestamp to bypass browser cache + 'no-cache' header
             const cacheBuster = `?t=${Date.now()}`;
             const response = await fetch(`documents.json${cacheBuster}`, {
                 cache: 'no-store',
@@ -611,8 +647,22 @@
             if (!response.ok) throw new Error(`HTTP ${response.status}: Could not fetch documents.json`);
             const data = await response.json();
             if (!Array.isArray(data)) throw new Error('Invalid data format (expected array)');
-            const validDocs = data.filter(doc => doc && doc.id && doc.title && doc.filename && doc.category);
-            if (validDocs.length === 0 && data.length > 0) throw new Error('No valid documents found in the array');
+
+            // Normalize documents: ensure required fields, assign default category if missing
+            const validDocs = data
+                .filter(doc => doc && doc.id && doc.title && doc.filename)
+                .map(doc => {
+                    // Ensure category is always set (default to 'other')
+                    if (!doc.category) doc.category = 'other';
+                    // Provide fallbacks for missing optional fields
+                    if (!doc.description) doc.description = `Official legal document from Uganda.`;
+                    if (!doc.year) doc.year = 'N/A';
+                    if (!doc.size) doc.size = '—';
+                    if (!doc.pages) doc.pages = '?';
+                    return doc;
+                });
+
+            if (validDocs.length === 0 && data.length > 0) throw new Error('No valid documents found after normalization');
             allDocuments = validDocs;
             // Update last sync time
             const now = new Date();
@@ -717,8 +767,8 @@
                     openPDF(doc);
                 });
 
-                const categoryIcon = doc.category === 'constitutional' ? 'fa-gavel' : (doc.category === 'criminal' ? 'fa-handcuffs' : 'fa-scale-balanced');
                 const catDisplay = getCategoryDisplay(doc.category);
+                const iconClass = getCategoryIcon(doc.category);
                 const highlightedTitle = currentSearch ? highlightText(doc.title, currentSearch) : (doc.title || 'Untitled');
                 const highlightedDesc = currentSearch ? highlightText(doc.description, currentSearch) : (doc.description || 'Official document from Uganda legal corpus.');
                 const formattedDate = doc.date ? new Date(doc.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Unknown';
@@ -726,7 +776,7 @@
                 card.innerHTML = `
                     <div class="pdf-card-header">
                         ${doc.updated ? '<span class="badge"><i class="fas fa-sync-alt"></i> Updated</span>' : ''}
-                        <div class="pdf-category"><i class="fas ${categoryIcon}"></i> ${catDisplay}</div>
+                        <div class="pdf-category"><i class="fas ${iconClass}"></i> ${catDisplay}</div>
                         <h3 class="pdf-title">${highlightedTitle}</h3>
                         <div class="pdf-meta">
                             <span><i class="fas fa-calendar-alt"></i> Year: ${doc.year || 'N/A'}</span>
