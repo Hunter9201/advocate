@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Juris Uganda | Legal Documents Library</title>
-    <!-- Google Fonts + Font Awesome for Law Graphics -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ---------- LAW THEME VARIABLES & RESETS ---------- */
         :root {
             --law-navy: #0a1c2f;
             --law-gold: #c5a572;
@@ -39,7 +37,6 @@
             position: relative;
         }
 
-        /* Legal parchment texture overlay */
         body::before {
             content: "";
             position: fixed;
@@ -53,13 +50,12 @@
             z-index: 0;
         }
 
-        /* Main container relative to texture */
         .site-header, .main-container, .site-footer {
             position: relative;
             z-index: 2;
         }
 
-        /* HEADER — JUDICIAL ELEGANCE */
+        /* Header */
         .site-header {
             background: linear-gradient(135deg, var(--law-navy) 0%, #112b44 100%);
             color: white;
@@ -96,7 +92,7 @@
 
         .logo-text h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
             font-weight: 700;
             letter-spacing: -0.5px;
             background: linear-gradient(120deg, #fff, var(--law-gold));
@@ -106,17 +102,16 @@
         }
 
         .logo-text .tagline {
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
             opacity: 0.85;
             letter-spacing: 0.5px;
             font-weight: 400;
         }
 
-        /* header search */
         .header-search {
             flex: 1;
             max-width: 480px;
-            min-width: 240px;
+            min-width: 200px;
         }
 
         .header-search-wrapper {
@@ -129,7 +124,7 @@
             padding: 0.9rem 1rem 0.9rem 3rem;
             border: none;
             border-radius: 60px;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 4vw, 0.95rem);
             background: rgba(255, 255, 255, 0.95);
             color: var(--law-navy);
             font-weight: 500;
@@ -179,7 +174,6 @@
             transform: translateY(-50%) rotate(90deg);
         }
 
-        /* refresh button */
         .refresh-button {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(4px);
@@ -193,6 +187,7 @@
             transition: var(--transition-smooth);
             color: white;
             cursor: pointer;
+            font-size: clamp(0.8rem, 3.5vw, 0.9rem);
         }
 
         .refresh-button i {
@@ -211,7 +206,7 @@
             transform: rotate(180deg);
         }
 
-        /* STATS BAR — legal elegance */
+        /* Stats bar */
         .legal-stats {
             background: rgba(10, 28, 47, 0.75);
             backdrop-filter: blur(8px);
@@ -225,12 +220,12 @@
             gap: 1rem;
             border-left: 4px solid var(--law-gold);
             box-shadow: var(--shadow-sm);
+            font-size: clamp(0.75rem, 3.5vw, 0.9rem);
         }
 
         .stats-left {
             display: flex;
             gap: 1.8rem;
-            font-size: 0.9rem;
             font-weight: 500;
         }
 
@@ -248,26 +243,30 @@
             color: var(--law-navy);
         }
 
-        /* PDF GRID */
+        /* PDF Grid - force exactly 3 columns on mobile */
         .pdf-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.8rem;
             margin-top: 1rem;
         }
 
-        /* CARD ANIMATION */
-        @keyframes fadeSlideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
+        /* For phones: enforce 3 columns with flexible widths */
+        @media (max-width: 768px) {
+            .pdf-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.8rem;
             }
         }
 
+        /* Extra small devices: keep 3 columns but reduce gap further */
+        @media (max-width: 480px) {
+            .pdf-grid {
+                gap: 0.6rem;
+            }
+        }
+
+        /* Card styling - fully clickable */
         .pdf-card {
             background: white;
             border-radius: var(--border-radius-card);
@@ -278,21 +277,23 @@
             display: flex;
             flex-direction: column;
             animation: fadeSlideUp 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-            backdrop-filter: blur(2px);
-            transform-origin: center;
+            cursor: pointer;
         }
 
         .pdf-card:hover {
-            transform: translateY(-6px) scale(1.01);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
             border-color: var(--law-gold);
         }
 
+        .pdf-card:active {
+            transform: scale(0.98);
+        }
+
         .pdf-card-header {
             background: linear-gradient(115deg, var(--law-navy) 0%, #1f3a4e 100%);
-            padding: 1.2rem 1.2rem 1rem;
+            padding: clamp(0.8rem, 3vw, 1.2rem) clamp(0.7rem, 2.5vw, 1.2rem) clamp(0.6rem, 2vw, 1rem);
             position: relative;
-            transition: var(--transition-smooth);
         }
 
         .pdf-card-header::after {
@@ -313,53 +314,49 @@
             backdrop-filter: blur(2px);
             padding: 0.2rem 0.8rem;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: clamp(0.6rem, 2.8vw, 0.7rem);
             font-weight: 600;
             letter-spacing: 0.3px;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
             color: #f3e1be;
-        }
-
-        .pdf-category i {
-            font-size: 0.7rem;
         }
 
         .pdf-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
+            font-size: clamp(0.85rem, 4vw, 1.25rem);
             font-weight: 700;
-            margin: 0.5rem 0 0.4rem;
+            margin: 0.3rem 0 0.2rem;
             line-height: 1.3;
             color: white;
-            min-height: 58px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            min-height: calc(clamp(0.85rem, 4vw, 1.25rem) * 2.6);
         }
 
         .pdf-meta {
             display: flex;
-            gap: 0.8rem;
-            font-size: 0.7rem;
+            gap: 0.6rem;
+            font-size: clamp(0.55rem, 2.5vw, 0.7rem);
             color: #cddce9;
-            margin-top: 0.5rem;
+            margin-top: 0.4rem;
             flex-wrap: wrap;
         }
 
         .pdf-card-body {
-            padding: 1.2rem;
+            padding: clamp(0.7rem, 3vw, 1.2rem);
             flex-grow: 1;
             background: white;
         }
 
         .pdf-description {
             color: #2c3e4e;
-            font-size: 0.85rem;
-            line-height: 1.45;
-            margin-bottom: 1.2rem;
+            font-size: clamp(0.65rem, 3vw, 0.85rem);
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -367,11 +364,13 @@
         .pdf-details {
             display: flex;
             justify-content: space-between;
-            font-size: 0.7rem;
+            font-size: clamp(0.55rem, 2.5vw, 0.7rem);
             background: #f8f4ec;
-            padding: 0.6rem 0.8rem;
+            padding: 0.4rem 0.6rem;
             border-radius: 40px;
             color: #5e6f8d;
+            gap: 0.3rem;
+            flex-wrap: wrap;
         }
 
         .pdf-details i {
@@ -390,41 +389,28 @@
             background: var(--law-navy);
             color: white;
             font-weight: 600;
-            padding: 0.9rem;
+            padding: clamp(0.5rem, 2.5vw, 0.9rem);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.7rem;
+            gap: 0.5rem;
             transition: var(--transition-smooth);
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: clamp(0.65rem, 3vw, 0.9rem);
             border-top: 1px solid rgba(197, 165, 114, 0.3);
-        }
-
-        .pdf-button i {
-            font-size: 1rem;
-            transition: transform 0.2s;
-        }
-
-        .pdf-button:hover {
-            background: var(--law-gold-dark);
-            letter-spacing: 0.3px;
-        }
-
-        .pdf-button:hover i {
-            transform: translateX(4px);
+            pointer-events: none;  /* Card handles click */
         }
 
         .badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 10px;
+            right: 10px;
             background: var(--law-gold);
             color: var(--law-navy);
             font-weight: bold;
-            padding: 3px 8px;
+            padding: 2px 6px;
             border-radius: 20px;
-            font-size: 0.65rem;
+            font-size: clamp(0.55rem, 2.5vw, 0.65rem);
         }
 
         /* Empty & Error States */
@@ -435,7 +421,7 @@
             border-radius: 2rem;
             margin: 2rem auto;
             border: 1px dashed var(--law-gold);
-            animation: fadeSlideUp 0.4s ease;
+            grid-column: 1 / -1;
         }
 
         .empty-state i, .error-state i {
@@ -444,7 +430,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Loading */
         .loading {
             grid-column: 1 / -1;
             text-align: center;
@@ -464,7 +449,6 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Footer */
         .site-footer {
             background: var(--law-navy);
             border-top: 4px solid var(--law-gold);
@@ -486,7 +470,11 @@
 
         .footer-logo h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+        }
+
+        .copyright {
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
         }
 
         .copyright a {
@@ -494,7 +482,6 @@
             text-decoration: none;
         }
 
-        /* highlight search */
         .highlight {
             background: #fdebb3;
             color: #2c3e2f;
@@ -503,20 +490,16 @@
             font-weight: 600;
         }
 
-        /* responsive */
         @media (max-width: 780px) {
             .header-container { flex-direction: column; text-align: center; }
             .header-search { max-width: 100%; order: 2; width: 100%; }
             .refresh-button { order: 3; }
-            .pdf-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         }
 
         @media (max-width: 550px) {
-            .pdf-grid { grid-template-columns: 1fr; }
             .legal-stats { flex-direction: column; align-items: center; text-align: center; }
         }
 
-        /* scrollbar law theme */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #e2dacf; }
         ::-webkit-scrollbar-thumb { background: var(--law-gold); border-radius: 10px; }
@@ -545,7 +528,6 @@
 </header>
 
 <main class="main-container">
-    <!-- Law-themed stats bar (dynamic) -->
     <div class="legal-stats" id="legalStats">
         <div class="stats-left">
             <span><i class="fas fa-balance-scale"></i> <strong id="totalDocsCount">0</strong> Legal Instruments</span>
@@ -556,7 +538,6 @@
         </div>
     </div>
 
-    <!-- PDF Grid -->
     <div class="pdf-grid" id="pdfGrid">
         <div class="loading">
             <div class="law-spinner"></div>
@@ -579,7 +560,6 @@
 </footer>
 
 <script>
-    // DOM elements
     const pdfGrid = document.getElementById('pdfGrid');
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearch');
@@ -593,7 +573,6 @@
     let currentSearch = '';
     let debounceTimer;
 
-    // Category mapping with icons
     const categoryMap = {
         constitutional: "⚖️ Constitution", criminal: "🔪 Criminal", civil: "📜 Civil", commercial: "💼 Commercial",
         family: "👨‍👩‍👧 Family", property: "🏛️ Property", evidence: "📋 Evidence", procedure: "⚙️ Procedure",
@@ -678,6 +657,11 @@
         return text.toString().replace(regex, '<span class="highlight">$1</span>');
     }
 
+    function openPDF(doc) {
+        const safeFilename = encodeURIComponent(doc.filename.trim());
+        window.open(safeFilename, '_blank');
+    }
+
     function renderDocuments(immediate = false) {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
@@ -703,6 +687,11 @@
             for (const doc of filtered) {
                 const card = document.createElement('div');
                 card.className = 'pdf-card';
+                // Entire card clickable
+                card.addEventListener('click', (e) => {
+                    openPDF(doc);
+                });
+
                 const categoryIcon = doc.category === 'constitutional' ? 'fa-gavel' : (doc.category === 'criminal' ? 'fa-handcuffs' : 'fa-scale-balanced');
                 const catDisplay = getCategoryDisplay(doc.category);
                 const highlightedTitle = currentSearch ? highlightText(doc.title, currentSearch) : (doc.title || 'Untitled');
@@ -728,30 +717,13 @@
                         </div>
                     </div>
                     <div class="pdf-card-footer">
-                        <button class="pdf-button" data-id="${doc.id}"><i class="fas fa-balance-scale"></i> Read Statute <i class="fas fa-arrow-right"></i></button>
+                        <button class="pdf-button"><i class="fas fa-balance-scale"></i> Read Statute <i class="fas fa-arrow-right"></i></button>
                     </div>
                 `;
                 pdfGrid.appendChild(card);
             }
-            // attach open handlers
-            document.querySelectorAll('.pdf-button[data-id]').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    const id = parseInt(btn.getAttribute('data-id'));
-                    const doc = allDocuments.find(d => d.id === id);
-                    if (doc) openPDF(doc);
-                });
-            });
             updateStatsUI();
         }, immediate ? 0 : 280);
-    }
-
-    function openPDF(doc) {
-        const safeFilename = encodeURIComponent(doc.filename.trim());
-        try {
-            window.open(safeFilename, '_blank');
-        } catch (err) {
-            alert(`Unable to open: ${doc.filename}\nConfirm file exists in the root directory.`);
-        }
     }
 
     function updateSearchUI() {
@@ -781,9 +753,7 @@
             await fetchDocuments();
             refreshBtn.disabled = false;
             refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Library';
-            setTimeout(() => { refreshBtn.style.opacity = '1'; }, 200);
         });
-        // auto refresh every 4 minutes
         setInterval(() => { fetchDocuments(); }, 240000);
     }
 
