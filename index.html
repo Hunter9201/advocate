@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Juris Uganda | Legal Documents Library</title>
+    <!-- Google Fonts + Font Awesome for Law Graphics -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ---------- LAW THEME VARIABLES & RESETS ---------- */
         :root {
             --law-navy: #0a1c2f;
             --law-gold: #c5a572;
@@ -37,6 +39,7 @@
             position: relative;
         }
 
+        /* Legal parchment texture overlay */
         body::before {
             content: "";
             position: fixed;
@@ -50,12 +53,13 @@
             z-index: 0;
         }
 
+        /* Main container relative to texture */
         .site-header, .main-container, .site-footer {
             position: relative;
             z-index: 2;
         }
 
-        /* Header */
+        /* HEADER — JUDICIAL ELEGANCE */
         .site-header {
             background: linear-gradient(135deg, var(--law-navy) 0%, #112b44 100%);
             color: white;
@@ -108,6 +112,7 @@
             font-weight: 400;
         }
 
+        /* header search */
         .header-search {
             flex: 1;
             max-width: 480px;
@@ -174,6 +179,7 @@
             transform: translateY(-50%) rotate(90deg);
         }
 
+        /* refresh button */
         .refresh-button {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(4px);
@@ -205,7 +211,7 @@
             transform: rotate(180deg);
         }
 
-        /* Stats bar */
+        /* STATS BAR — legal elegance */
         .legal-stats {
             background: rgba(10, 28, 47, 0.75);
             backdrop-filter: blur(8px);
@@ -242,55 +248,26 @@
             color: var(--law-navy);
         }
 
-        /* PDF Grid - ensures 3 cards per row on mobile */
+        /* PDF GRID */
         .pdf-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.8rem;
             margin-top: 1rem;
         }
 
-        /* For phones: at least 3 columns */
-        @media (max-width: 640px) {
-            .pdf-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.8rem;
+        /* CARD ANIMATION */
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* For very small phones (<= 400px) adjust card padding to fit three columns */
-        @media (max-width: 480px) {
-            .pdf-grid {
-                gap: 0.7rem;
-            }
-            .pdf-card-header {
-                padding: 0.8rem 0.6rem;
-            }
-            .pdf-title {
-                font-size: 0.9rem;
-                min-height: auto;
-            }
-            .pdf-description {
-                font-size: 0.7rem;
-                -webkit-line-clamp: 2;
-            }
-            .pdf-details {
-                font-size: 0.6rem;
-                padding: 0.3rem 0.5rem;
-            }
-            .pdf-category {
-                font-size: 0.6rem;
-            }
-            .pdf-meta {
-                font-size: 0.6rem;
-            }
-            .pdf-button {
-                padding: 0.5rem;
-                font-size: 0.7rem;
-            }
-        }
-
-        /* Card styling */
         .pdf-card {
             background: white;
             border-radius: var(--border-radius-card);
@@ -301,23 +278,21 @@
             display: flex;
             flex-direction: column;
             animation: fadeSlideUp 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-            cursor: pointer;
+            backdrop-filter: blur(2px);
+            transform-origin: center;
         }
 
         .pdf-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px) scale(1.01);
             box-shadow: var(--shadow-hover);
             border-color: var(--law-gold);
-        }
-
-        .pdf-card:active {
-            transform: scale(0.98);
         }
 
         .pdf-card-header {
             background: linear-gradient(115deg, var(--law-navy) 0%, #1f3a4e 100%);
             padding: 1.2rem 1.2rem 1rem;
             position: relative;
+            transition: var(--transition-smooth);
         }
 
         .pdf-card-header::after {
@@ -343,6 +318,10 @@
             letter-spacing: 0.3px;
             margin-bottom: 0.8rem;
             color: #f3e1be;
+        }
+
+        .pdf-category i {
+            font-size: 0.7rem;
         }
 
         .pdf-title {
@@ -420,7 +399,20 @@
             cursor: pointer;
             font-size: 0.9rem;
             border-top: 1px solid rgba(197, 165, 114, 0.3);
-            pointer-events: none;  /* Prevents double click; the whole card handles click */
+        }
+
+        .pdf-button i {
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .pdf-button:hover {
+            background: var(--law-gold-dark);
+            letter-spacing: 0.3px;
+        }
+
+        .pdf-button:hover i {
+            transform: translateX(4px);
         }
 
         .badge {
@@ -443,7 +435,7 @@
             border-radius: 2rem;
             margin: 2rem auto;
             border: 1px dashed var(--law-gold);
-            grid-column: 1 / -1;
+            animation: fadeSlideUp 0.4s ease;
         }
 
         .empty-state i, .error-state i {
@@ -452,6 +444,7 @@
             margin-bottom: 1rem;
         }
 
+        /* Loading */
         .loading {
             grid-column: 1 / -1;
             text-align: center;
@@ -471,6 +464,7 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        /* Footer */
         .site-footer {
             background: var(--law-navy);
             border-top: 4px solid var(--law-gold);
@@ -500,6 +494,7 @@
             text-decoration: none;
         }
 
+        /* highlight search */
         .highlight {
             background: #fdebb3;
             color: #2c3e2f;
@@ -508,16 +503,20 @@
             font-weight: 600;
         }
 
+        /* responsive */
         @media (max-width: 780px) {
             .header-container { flex-direction: column; text-align: center; }
             .header-search { max-width: 100%; order: 2; width: 100%; }
             .refresh-button { order: 3; }
+            .pdf-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         }
 
         @media (max-width: 550px) {
+            .pdf-grid { grid-template-columns: 1fr; }
             .legal-stats { flex-direction: column; align-items: center; text-align: center; }
         }
 
+        /* scrollbar law theme */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #e2dacf; }
         ::-webkit-scrollbar-thumb { background: var(--law-gold); border-radius: 10px; }
@@ -546,6 +545,7 @@
 </header>
 
 <main class="main-container">
+    <!-- Law-themed stats bar (dynamic) -->
     <div class="legal-stats" id="legalStats">
         <div class="stats-left">
             <span><i class="fas fa-balance-scale"></i> <strong id="totalDocsCount">0</strong> Legal Instruments</span>
@@ -556,6 +556,7 @@
         </div>
     </div>
 
+    <!-- PDF Grid -->
     <div class="pdf-grid" id="pdfGrid">
         <div class="loading">
             <div class="law-spinner"></div>
@@ -578,6 +579,7 @@
 </footer>
 
 <script>
+    // DOM elements
     const pdfGrid = document.getElementById('pdfGrid');
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearch');
@@ -591,6 +593,7 @@
     let currentSearch = '';
     let debounceTimer;
 
+    // Category mapping with icons
     const categoryMap = {
         constitutional: "⚖️ Constitution", criminal: "🔪 Criminal", civil: "📜 Civil", commercial: "💼 Commercial",
         family: "👨‍👩‍👧 Family", property: "🏛️ Property", evidence: "📋 Evidence", procedure: "⚙️ Procedure",
@@ -675,11 +678,6 @@
         return text.toString().replace(regex, '<span class="highlight">$1</span>');
     }
 
-    function openPDF(doc) {
-        const safeFilename = encodeURIComponent(doc.filename.trim());
-        window.open(safeFilename, '_blank');
-    }
-
     function renderDocuments(immediate = false) {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
@@ -705,12 +703,6 @@
             for (const doc of filtered) {
                 const card = document.createElement('div');
                 card.className = 'pdf-card';
-                // Make entire card clickable
-                card.addEventListener('click', (e) => {
-                    // Prevent bubbling if needed
-                    openPDF(doc);
-                });
-
                 const categoryIcon = doc.category === 'constitutional' ? 'fa-gavel' : (doc.category === 'criminal' ? 'fa-handcuffs' : 'fa-scale-balanced');
                 const catDisplay = getCategoryDisplay(doc.category);
                 const highlightedTitle = currentSearch ? highlightText(doc.title, currentSearch) : (doc.title || 'Untitled');
@@ -736,13 +728,30 @@
                         </div>
                     </div>
                     <div class="pdf-card-footer">
-                        <button class="pdf-button"><i class="fas fa-balance-scale"></i> Read Statute <i class="fas fa-arrow-right"></i></button>
+                        <button class="pdf-button" data-id="${doc.id}"><i class="fas fa-balance-scale"></i> Read Statute <i class="fas fa-arrow-right"></i></button>
                     </div>
                 `;
                 pdfGrid.appendChild(card);
             }
+            // attach open handlers
+            document.querySelectorAll('.pdf-button[data-id]').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    const doc = allDocuments.find(d => d.id === id);
+                    if (doc) openPDF(doc);
+                });
+            });
             updateStatsUI();
         }, immediate ? 0 : 280);
+    }
+
+    function openPDF(doc) {
+        const safeFilename = encodeURIComponent(doc.filename.trim());
+        try {
+            window.open(safeFilename, '_blank');
+        } catch (err) {
+            alert(`Unable to open: ${doc.filename}\nConfirm file exists in the root directory.`);
+        }
     }
 
     function updateSearchUI() {
@@ -772,7 +781,9 @@
             await fetchDocuments();
             refreshBtn.disabled = false;
             refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Library';
+            setTimeout(() => { refreshBtn.style.opacity = '1'; }, 200);
         });
+        // auto refresh every 4 minutes
         setInterval(() => { fetchDocuments(); }, 240000);
     }
 
