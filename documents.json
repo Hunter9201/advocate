@@ -6908,5 +6908,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 228,
+    "title": "LOCAL GOVERNMET ACT CAP 138",
+    "description": "the 138 Act (Chapter Local Government) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Local Government Act Cap 138.pdf",
+    "category": "constitutional",
+    "size": "5.06",
+    "pages": 0,
+    "date": "2026-03-26",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Local Government",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Local%20Government%20Act%20Cap%20138.pdf",
+    "metadata": {
+      "uploaded": "2026-03-26T22:24:38.169Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
