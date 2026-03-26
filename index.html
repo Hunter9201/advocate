@@ -2,217 +2,336 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uganda Legal Documents Library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Juris Uganda | Legal Documents Library</title>
+    <!-- Google Fonts + Font Awesome for Law Graphics -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* CSS Variables for Colors */
+        /* ---------- LAW THEME VARIABLES & RESETS ---------- */
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #c53030;
-            --accent-color: #2a4365;
-            --light-color: #f7fafc;
-            --dark-color: #2d3748;
-            --border-color: #e2e8f0;
-            --card-bg: #ffffff;
+            --law-navy: #0a1c2f;
+            --law-gold: #c5a572;
+            --law-gold-dark: #a77f46;
+            --law-marble: #fef9ef;
+            --law-burgundy: #7a2e3a;
+            --law-stone: #e8e2d4;
+            --law-slate: #2c3e4e;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 15px 30px -12px rgba(0, 0, 0, 0.15);
+            --shadow-hover: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+            --transition-smooth: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --border-radius-card: 1.2rem;
         }
 
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
+            background: linear-gradient(145deg, #f4efe7 0%, #eae3d7 100%);
+            color: #1f2a3e;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
             min-height: 100vh;
+            position: relative;
         }
 
-        /* Header */
+        /* Legal parchment texture overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.03"><path fill="none" stroke="%233d2b1a" stroke-width="0.6" d="M30 10 L170 10 M30 30 L170 30 M30 50 L170 50 M30 70 L170 70 M30 90 L170 90 M30 110 L170 110 M30 130 L170 130 M30 150 L170 150 M30 170 L170 170 M30 190 L170 190 M10 30 L10 170 M30 30 L30 170 M50 30 L50 170 M70 30 L70 170 M90 30 L90 170 M110 30 L110 170 M130 30 L130 170 M150 30 L150 170 M170 30 L170 170"/><circle cx="40" cy="40" r="2" fill="%233d2b1a"/><circle cx="160" cy="40" r="2"/><circle cx="40" cy="160" r="2"/><circle cx="160" cy="160" r="2"/></svg>');
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Main container relative to texture */
+        .site-header, .main-container, .site-footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* HEADER — JUDICIAL ELEGANCE */
         .site-header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--law-navy) 0%, #112b44 100%);
             color: white;
-            padding: 1.2rem 0;
-            border-bottom: 4px solid var(--secondary-color);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid var(--law-gold);
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.2);
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(2px);
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 1.2rem;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 1rem;
         }
 
-        .logo-icon {
-            color: var(--secondary-color);
-            font-size: 1.8rem;
+        .law-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.2));
+            transition: var(--transition-smooth);
         }
 
         .logo-text h1 {
-            font-size: 1.6rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
             font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(120deg, #fff, var(--law-gold));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .logo-text .tagline {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 0.8rem;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+            font-weight: 400;
         }
 
-        /* Header Search */
+        /* header search */
         .header-search {
             flex: 1;
-            max-width: 500px;
-            min-width: 250px;
+            max-width: 480px;
+            min-width: 240px;
         }
 
         .header-search-wrapper {
             position: relative;
+            transition: var(--transition-smooth);
         }
 
         .header-search-input {
             width: 100%;
-            padding: 12px 20px 12px 45px;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 1rem;
-            outline: none;
-            background-color: white;
-            color: var(--dark-color);
-            transition: all 0.3s ease;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--law-navy);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+            font-family: 'Inter', sans-serif;
         }
 
         .header-search-input:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(197, 48, 48, 0.1);
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(197, 165, 114, 0.4), 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: scale(1.01);
         }
 
         .header-search-icon {
             position: absolute;
-            left: 15px;
+            left: 1.2rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            pointer-events: none;
+            color: var(--law-gold-dark);
+            font-size: 1.2rem;
         }
 
         .header-clear-search {
             position: absolute;
-            right: 15px;
+            right: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            background: none;
+            background: #e2e0db;
             border: none;
-            color: #a0aec0;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0;
+            border-radius: 50%;
             width: 24px;
             height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: color 0.3s ease;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            color: #4a3b28;
         }
 
         .header-clear-search:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Main Content */
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 20px 50px;
-        }
-
-        /* HIDDEN: Removed page-header section */
-        .page-header {
-            display: none;
-        }
-
-        /* HIDDEN: Removed stats bar */
-        .stats-bar {
-            display: none;
-        }
-
-        /* PDF Grid */
-        .pdf-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 18px;
-            margin-top: 20px;
-        }
-
-        .pdf-card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            min-height: 280px;
-        }
-
-        .pdf-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .pdf-card-header {
-            background-color: var(--primary-color);
+            background: var(--law-gold);
             color: white;
-            padding: 15px;
-            position: relative;
+            transform: translateY(-50%) rotate(90deg);
         }
 
-        .pdf-card-header:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: var(--secondary-color);
+        /* refresh button */
+        .refresh-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(197, 165, 114, 0.5);
+            padding: 0.7rem 1.3rem;
+            border-radius: 40px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: var(--transition-smooth);
+            color: white;
+            cursor: pointer;
         }
 
-        .pdf-category {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 8px;
+        .refresh-button i {
+            font-size: 1rem;
+            transition: transform 0.4s ease;
+        }
+
+        .refresh-button:hover {
+            background: var(--law-gold);
+            border-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+        }
+
+        .refresh-button:hover i {
+            transform: rotate(180deg);
+        }
+
+        /* STATS BAR — legal elegance */
+        .legal-stats {
+            background: rgba(10, 28, 47, 0.75);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.5rem 1.5rem;
+            margin: 1.2rem 0 1.8rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-left: 4px solid var(--law-gold);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stats-left {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
-        .pdf-title {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
+        .stats-left span i {
+            color: var(--law-gold);
+            margin-right: 6px;
+        }
+
+        .search-query-badge {
+            background: var(--law-gold);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
             font-weight: 600;
+            color: var(--law-navy);
+        }
+
+        /* PDF GRID */
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        /* CARD ANIMATION */
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pdf-card {
+            background: white;
+            border-radius: var(--border-radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(197, 165, 114, 0.3);
+            display: flex;
+            flex-direction: column;
+            animation: fadeSlideUp 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            backdrop-filter: blur(2px);
+            transform-origin: center;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--law-gold);
+        }
+
+        .pdf-card-header {
+            background: linear-gradient(115deg, var(--law-navy) 0%, #1f3a4e 100%);
+            padding: 1.2rem 1.2rem 1rem;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .pdf-card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--law-gold), transparent);
+        }
+
+        .pdf-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(197, 165, 114, 0.2);
+            backdrop-filter: blur(2px);
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.8rem;
+            color: #f3e1be;
+        }
+
+        .pdf-category i {
+            font-size: 0.7rem;
+        }
+
+        .pdf-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0.5rem 0 0.4rem;
             line-height: 1.3;
-            min-height: 50px;
+            color: white;
+            min-height: 58px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -221,772 +340,459 @@
 
         .pdf-meta {
             display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            opacity: 0.9;
+            gap: 0.8rem;
+            font-size: 0.7rem;
+            color: #cddce9;
+            margin-top: 0.5rem;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 5px;
         }
 
         .pdf-card-body {
-            padding: 15px;
+            padding: 1.2rem;
             flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            background: white;
         }
 
         .pdf-description {
-            color: #4a5568;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            font-size: 0.9rem;
+            color: #2c3e4e;
+            font-size: 0.85rem;
+            line-height: 1.45;
+            margin-bottom: 1.2rem;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            flex-grow: 1;
         }
 
         .pdf-details {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
-            color: #718096;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 10px;
+            font-size: 0.7rem;
+            background: #f8f4ec;
+            padding: 0.6rem 0.8rem;
+            border-radius: 40px;
+            color: #5e6f8d;
         }
 
-        .pdf-details span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        .pdf-details i {
+            margin-right: 4px;
+            color: var(--law-gold-dark);
         }
 
         .pdf-card-footer {
             padding: 0;
-            background-color: var(--primary-color);
-            border-top: none;
             margin-top: auto;
         }
 
         .pdf-button {
             width: 100%;
-            padding: 14px 20px;
-            text-align: center;
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
             border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
+            background: var(--law-navy);
+            color: white;
+            font-weight: 600;
+            padding: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background-color: var(--primary-color);
-            color: white;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 0.7rem;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(197, 165, 114, 0.3);
+        }
+
+        .pdf-button i {
+            font-size: 1rem;
+            transition: transform 0.2s;
         }
 
         .pdf-button:hover {
-            background-color: var(--accent-color);
+            background: var(--law-gold-dark);
+            letter-spacing: 0.3px;
         }
+
+        .pdf-button:hover i {
+            transform: translateX(4px);
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--law-gold);
+            color: var(--law-navy);
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+        }
+
+        /* Empty & Error States */
+        .empty-state, .error-state {
+            text-align: center;
+            padding: 3.5rem 2rem;
+            background: rgba(255, 248, 235, 0.9);
+            border-radius: 2rem;
+            margin: 2rem auto;
+            border: 1px dashed var(--law-gold);
+            animation: fadeSlideUp 0.4s ease;
+        }
+
+        .empty-state i, .error-state i {
+            font-size: 3.5rem;
+            color: var(--law-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Loading */
+        .loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .law-spinner {
+            display: inline-block;
+            width: 54px;
+            height: 54px;
+            border: 4px solid rgba(197, 165, 114, 0.3);
+            border-top: 4px solid var(--law-gold);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Footer */
         .site-footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 30px 0;
-            margin-top: 50px;
-            border-top: 4px solid var(--secondary-color);
+            background: var(--law-navy);
+            border-top: 4px solid var(--law-gold);
+            margin-top: 3rem;
+            padding: 2rem 1rem;
         }
 
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            text-align: center;
+        }
+
+        .footer-logo i {
+            font-size: 2rem;
+            color: var(--law-gold);
+            margin-bottom: 0.5rem;
         }
 
         .footer-logo h3 {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
-            margin-bottom: 5px;
         }
 
-        .footer-logo p {
-            font-size: 0.9rem;
-            opacity: 0.8;
+        .copyright a {
+            color: var(--law-gold);
+            text-decoration: none;
         }
 
-        .copyright {
-            width: 100%;
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Empty State */
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #718096;
-        }
-
-        .empty-state h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        /* Error State */
-        .error-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #e53e3e;
-        }
-
-        .error-state h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        /* Refresh Button */
-        .refresh-button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.3s;
-        }
-
-        .refresh-button:hover {
-            background-color: var(--accent-color);
-        }
-
-        /* Badge */
-        .badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
-        .category-badge {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        /* Loading State */
-        .loading {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            color: var(--primary-color);
-        }
-
-        .grid-loading-spinner {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border-color);
-            border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* HIGHLIGHT SEARCH TERMS */
+        /* highlight search */
         .highlight {
-            background-color: #fff3cd;
-            padding: 2px 4px;
+            background: #fdebb3;
+            color: #2c3e2f;
+            padding: 0 2px;
             border-radius: 4px;
-            color: var(--primary-color);
             font-weight: 600;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-
-            .header-search {
-                max-width: 100%;
-                order: 3;
-                width: 100%;
-            }
-
-            .logo-container {
-                justify-content: center;
-            }
-
-            .pdf-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-            }
-
-            .pdf-card {
-                min-height: 260px;
-            }
-
-            .pdf-title {
-                font-size: 1rem;
-                min-height: 45px;
-                -webkit-line-clamp: 2;
-            }
-
-            .pdf-description {
-                font-size: 0.85rem;
-                margin-bottom: 12px;
-                -webkit-line-clamp: 2;
-            }
-
-            .pdf-details {
-                font-size: 0.75rem;
-            }
-
-            .pdf-button {
-                padding: 12px 15px;
-                font-size: 0.9rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.4rem;
-            }
+        /* responsive */
+        @media (max-width: 780px) {
+            .header-container { flex-direction: column; text-align: center; }
+            .header-search { max-width: 100%; order: 2; width: 100%; }
+            .refresh-button { order: 3; }
+            .pdf-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         }
 
-        @media (max-width: 480px) {
-            .pdf-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .pdf-card {
-                min-height: 240px;
-            }
-
-            .pdf-title {
-                font-size: 0.95rem;
-                min-height: 40px;
-                -webkit-line-clamp: 2;
-            }
-
-            .pdf-card-header {
-                padding: 12px;
-            }
-
-            .pdf-card-body {
-                padding: 12px;
-            }
-
-            .pdf-description {
-                font-size: 0.8rem;
-                -webkit-line-clamp: 2;
-            }
-
-            .pdf-button {
-                padding: 10px 12px;
-                font-size: 0.85rem;
-            }
-
-            .header-search-input {
-                font-size: 0.95rem;
-                padding: 12px 20px 12px 40px;
-            }
-
-            .header-search-icon {
-                font-size: 1rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.4rem;
-            }
+        @media (max-width: 550px) {
+            .pdf-grid { grid-template-columns: 1fr; }
+            .legal-stats { flex-direction: column; align-items: center; text-align: center; }
         }
 
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .pdf-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-        }
-
-        @media (min-width: 1025px) {
-            .pdf-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 22px;
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            .site-header,
-            .site-footer,
-            .pdf-button {
-                display: none !important;
-            }
-            
-            .pdf-card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-        }
+        /* scrollbar law theme */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #e2dacf; }
+        ::-webkit-scrollbar-thumb { background: var(--law-gold); border-radius: 10px; }
     </style>
 </head>
 <body>
-    <!-- Header with integrated search -->
-    <header class="site-header">
-        <div class="header-container">
-            <div class="logo-container">
-                <div class="logo-icon">⚖️</div>
-                <div class="logo-text">
-                    <h1>UGANDA LEGAL DOCUMENTS LIBRARY</h1>
-                    <div class="tagline">Search Statutes, Acts, Regulations & Guidelines</div>
-                </div>
-            </div>
-            
-            <!-- Search in header -->
-            <div class="header-search">
-                <div class="header-search-wrapper">
-                    <div class="header-search-icon">🔍</div>
-                    <input type="text" class="header-search-input" id="searchInput" 
-                           placeholder="Search documents by title, category, or description..." 
-                           autocomplete="off">
-                    <button class="header-clear-search" id="clearSearch" style="display: none;" title="Clear search">×</button>
-                </div>
-            </div>
-            
-            <button id="refreshDataBtn" class="refresh-button" title="Refresh from documents.json">
-                🔄 Refresh
-            </button>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-container">
-        <!-- HIDDEN: Removed page-header section -->
-        <div class="page-header" style="display: none;">
-            <!-- Content removed -->
-        </div>
-
-        <!-- HIDDEN: Removed stats bar -->
-        <div class="stats-bar" style="display: none;">
-            <!-- Stats removed -->
-        </div>
-
-        <!-- PDF Grid -->
-        <div class="pdf-grid" id="pdfGrid">
-            <!-- PDF cards will be dynamically generated here -->
-            <div class="loading">
-                <div class="grid-loading-spinner"></div>
-                <p>Loading documents from admin panel...</p>
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+            <div class="law-icon"><i class="fas fa-gavel"></i> <i class="fas fa-scale-balanced"></i></div>
+            <div class="logo-text">
+                <h1>JURIS UGANDA</h1>
+                <div class="tagline">Themis Lex · Statutes & Authorities</div>
             </div>
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <h3>Uganda Legal Documents Library</h3>
-                <p>Comprehensive collection of Ugandan legal statutes and regulations</p>
-            </div>
-            <div class="copyright">
-                &copy; 2024 Uganda Legal Documents Library. Documents auto-update from <a href="documents.json" style="color: #90cdf4;">documents.json</a>
+        <div class="header-search">
+            <div class="header-search-wrapper">
+                <i class="fas fa-search header-search-icon"></i>
+                <input type="text" class="header-search-input" id="searchInput" placeholder="Search by title, category, description, year...">
+                <button class="header-clear-search" id="clearSearch" style="display: none;" aria-label="Clear">×</button>
             </div>
         </div>
-    </footer>
+        <button id="refreshDataBtn" class="refresh-button"><i class="fas fa-sync-alt"></i> Refresh Library</button>
+    </div>
+</header>
 
-    <script>
-        // DOM Elements
-        const pdfGrid = document.getElementById('pdfGrid');
-        const searchInput = document.getElementById('searchInput');
-        const clearSearch = document.getElementById('clearSearch');
-        const refreshDataBtn = document.getElementById('refreshDataBtn');
-        
-        // State
-        let allDocuments = [];
-        let currentSearch = '';
-        let searchDebounceTimer;
+<main class="main-container">
+    <!-- Law-themed stats bar (dynamic) -->
+    <div class="legal-stats" id="legalStats">
+        <div class="stats-left">
+            <span><i class="fas fa-balance-scale"></i> <strong id="totalDocsCount">0</strong> Legal Instruments</span>
+            <span><i class="fas fa-book-open"></i> <span id="displayedDocsCount">0</span> displayed</span>
+        </div>
+        <div id="activeSearchBadge" class="search-query-badge" style="display: none;">
+            <i class="fas fa-filter"></i> <span id="searchTermBadge"></span>
+        </div>
+    </div>
 
-        // Category display names mapping
-        const categoryNames = {
-            constitutional: "Constitutional Law",
-            criminal: "Criminal Law",
-            civil: "Civil Law",
-            commercial: "Commercial Law",
-            family: "Family Law",
-            property: "Property Law",
-            evidence: "Evidence Law",
-            procedure: "Procedure",
-            judicature: "Judicature",
-            magistrate: "Magistrate Courts",
-            administrative: "Administrative Law",
-            employment: "Employment Law",
-            international: "International Law",
-            other: "Other Acts"
-        };
+    <!-- PDF Grid -->
+    <div class="pdf-grid" id="pdfGrid">
+        <div class="loading">
+            <div class="law-spinner"></div>
+            <p><i class="fas fa-landmark"></i> Summoning legal documents...</p>
+        </div>
+    </div>
+</main>
 
-        // Get category name with fallback
-        function getCategoryName(categoryKey) {
-            return categoryNames[categoryKey] || categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1);
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <i class="fas fa-gavel"></i><i class="fas fa-scale-balanced"></i>
+            <h3>Uganda Legal Repository</h3>
+            <p>Authoritative collection of Acts, Regulations & Judicature guidelines</p>
+        </div>
+        <div class="copyright">
+            © 2025 Juris Uganda — Documents auto-sync from <a href="documents.json">documents.json</a> · Lex in Omnibus
+        </div>
+    </div>
+</footer>
+
+<script>
+    // DOM elements
+    const pdfGrid = document.getElementById('pdfGrid');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearch');
+    const refreshBtn = document.getElementById('refreshDataBtn');
+    const totalDocsSpan = document.getElementById('totalDocsCount');
+    const displayedDocsSpan = document.getElementById('displayedDocsCount');
+    const activeSearchBadge = document.getElementById('activeSearchBadge');
+    const searchTermBadge = document.getElementById('searchTermBadge');
+
+    let allDocuments = [];
+    let currentSearch = '';
+    let debounceTimer;
+
+    // Category mapping with icons
+    const categoryMap = {
+        constitutional: "⚖️ Constitution", criminal: "🔪 Criminal", civil: "📜 Civil", commercial: "💼 Commercial",
+        family: "👨‍👩‍👧 Family", property: "🏛️ Property", evidence: "📋 Evidence", procedure: "⚙️ Procedure",
+        judicature: "🏛️ Judicature", magistrate: "⚖️ Magistrate", administrative: "📁 Admin", employment: "👔 Employment",
+        international: "🌍 Intl. Law", other: "📘 Other Acts"
+    };
+
+    function getCategoryDisplay(cat) {
+        return categoryMap[cat] || cat?.charAt(0).toUpperCase() + cat?.slice(1) || "Legal Document";
+    }
+
+    async function fetchDocuments() {
+        try {
+            showLoadingState();
+            const response = await fetch('documents.json');
+            if (!response.ok) throw new Error(`HTTP ${response.status}: Could not fetch documents.json`);
+            const data = await response.json();
+            if (!Array.isArray(data)) throw new Error('Invalid data format');
+            const validDocs = data.filter(doc => doc && doc.id && doc.title && doc.filename && doc.category);
+            if (validDocs.length === 0) throw new Error('No valid documents found');
+            allDocuments = validDocs;
+            renderDocuments(true);
+            updateStatsUI();
+            return true;
+        } catch (err) {
+            console.error(err);
+            showErrorState(err.message);
+            updateStatsUIOnError();
+            return false;
         }
+    }
 
-        // Fetch documents from documents.json
-        async function fetchDocuments() {
-            try {
-                showLoading();
-                
-                // Clear any previous error state
-                pdfGrid.innerHTML = '';
-                
-                const response = await fetch('documents.json');
-                
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch documents.json: ${response.status} ${response.statusText}`);
-                }
-                
-                const data = await response.json();
-                
-                if (!Array.isArray(data)) {
-                    throw new Error('documents.json does not contain a valid array');
-                }
-                
-                // Validate each document has required fields
-                const validDocuments = data.filter(doc => 
-                    doc && 
-                    doc.id && 
-                    doc.title && 
-                    doc.filename && 
-                    doc.category
-                );
-                
-                if (validDocuments.length === 0) {
-                    throw new Error('No valid documents found in documents.json');
-                }
-                
-                allDocuments = validDocuments;
-                renderDocuments(true);
-                return true;
-                
-            } catch (error) {
-                console.error('Error fetching documents:', error);
-                showError(`Failed to load documents: ${error.message}`);
-                return false;
+    function showLoadingState() {
+        pdfGrid.innerHTML = `<div class="loading"><div class="law-spinner"></div><p><i class="fas fa-gavel"></i> Loading legislative archive...</p></div>`;
+    }
+
+    function showErrorState(msg) {
+        pdfGrid.innerHTML = `
+            <div class="error-state">
+                <i class="fas fa-landmark"></i>
+                <h3 style="color: var(--law-burgundy);">Judicial Notice: Unavailable</h3>
+                <p>${msg}</p>
+                <p style="margin-top: 0.8rem;">Ensure <strong>documents.json</strong> exists and is correctly formatted.</p>
+                <button onclick="location.reload()" class="refresh-button" style="margin-top: 1rem; background: var(--law-navy);"><i class="fas fa-redo-alt"></i> Reload Repository</button>
+            </div>`;
+    }
+
+    function updateStatsUI() {
+        const total = allDocuments.length;
+        totalDocsSpan.innerText = total;
+        const filteredCount = getFilteredDocuments().length;
+        displayedDocsSpan.innerText = filteredCount;
+        if (currentSearch.trim() !== '') {
+            activeSearchBadge.style.display = 'inline-flex';
+            searchTermBadge.innerText = `“${currentSearch}”`;
+        } else {
+            activeSearchBadge.style.display = 'none';
+        }
+    }
+
+    function updateStatsUIOnError() {
+        totalDocsSpan.innerText = '0';
+        displayedDocsSpan.innerText = '0';
+        activeSearchBadge.style.display = 'none';
+    }
+
+    function getFilteredDocuments() {
+        if (!currentSearch.trim()) return [...allDocuments];
+        const term = currentSearch.toLowerCase();
+        return allDocuments.filter(doc => 
+            (doc.title?.toLowerCase().includes(term)) ||
+            (doc.description?.toLowerCase().includes(term)) ||
+            (doc.category?.toLowerCase().includes(term)) ||
+            (doc.year?.toString().includes(term)) ||
+            (doc.filename?.toLowerCase().includes(term))
+        );
+    }
+
+    function highlightText(text, term) {
+        if (!term || !text) return text || '';
+        const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.toString().replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    function renderDocuments(immediate = false) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            const filtered = getFilteredDocuments();
+            if (filtered.length === 0 && allDocuments.length > 0) {
+                pdfGrid.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <h3>No precedent matches</h3>
+                        <p>No document found for <strong>“${currentSearch}”</strong>. Try a different legal term.</p>
+                    </div>`;
+                updateStatsUI();
+                return;
             }
-        }
-
-        // Show loading state
-        function showLoading() {
-            pdfGrid.innerHTML = `
-                <div class="loading">
-                    <div class="grid-loading-spinner"></div>
-                    <p>Loading documents from admin panel...</p>
-                </div>
-            `;
-        }
-
-        // Show error state
-        function showError(message) {
-            pdfGrid.innerHTML = `
-                <div class="error-state">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">⚠️</div>
-                    <h3>Unable to Load Documents</h3>
-                    <p>${message}</p>
-                    <p style="margin-top: 15px; color: #718096; font-size: 0.9rem;">
-                        Make sure documents.json exists and contains valid data.<br>
-                        If you just uploaded documents, refresh this page in a few seconds.
-                    </p>
-                    <button onclick="fetchDocuments()" class="refresh-button" style="margin-top: 20px;">
-                        🔄 Try Again
-                    </button>
-                </div>
-            `;
-        }
-
-        // Show empty state (no search results)
-        function showEmptyState(searchTerm = '') {
-            pdfGrid.innerHTML = `
-                <div class="empty-state">
-                    <div style="font-size: 4rem; margin-bottom: 20px; color: #cbd5e0;">🔍</div>
-                    <h3>No documents found</h3>
-                    <p>${searchTerm ? `No documents match "${searchTerm}"` : 'No documents available'}</p>
-                    <p style="margin-top: 15px; color: #718096; font-size: 0.9rem;">
-                        ${searchTerm ? 'Try a different search term' : 'Upload documents using the admin panel'}
-                    </p>
-                </div>
-            `;
-        }
-
-        // Get PDF URL
-        function getPDFUrl(filename) {
-            // Clean filename and URL encode
-            const cleanFilename = filename.trim().replace(/\s+/g, ' ');
-            return encodeURIComponent(cleanFilename);
-        }
-
-        // Open PDF with error handling
-        async function openPDF(doc) {
-            const pdfUrl = getPDFUrl(doc.filename);
-            
-            try {
-                // Try to open the PDF
-                window.open(pdfUrl, '_blank');
-                
-                // Log for debugging
-                console.log(`Opening PDF: ${pdfUrl}`);
-                
-            } catch (error) {
-                console.error('Error opening PDF:', error);
-                alert(`Unable to open document: ${doc.filename}\n\nIf the file doesn't exist, upload it using the admin panel.`);
+            if (allDocuments.length === 0 && filtered.length === 0) {
+                pdfGrid.innerHTML = `<div class="empty-state"><i class="fas fa-file-alt"></i><h3>Library vacant</h3><p>Upload documents via admin panel (documents.json).</p></div>`;
+                updateStatsUI();
+                return;
             }
-        }
 
-        // Highlight search terms in text
-        function highlightText(text, searchTerm) {
-            if (!searchTerm || !text) return text || '';
-            
-            const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-            return text.toString().replace(regex, '<span class="highlight">$1</span>');
-        }
-
-        // Render documents to the grid
-        function renderDocuments(immediate = false) {
-            if (!immediate) {
-                showLoading();
-            }
-            
-            // Clear previous timer
-            clearTimeout(searchDebounceTimer);
-            
-            // Debounce the search for better performance
-            searchDebounceTimer = setTimeout(() => {
-                pdfGrid.innerHTML = '';
+            pdfGrid.innerHTML = '';
+            filtered.sort((a,b) => (a.title || '').localeCompare(b.title || ''));
+            for (const doc of filtered) {
+                const card = document.createElement('div');
+                card.className = 'pdf-card';
+                const categoryIcon = doc.category === 'constitutional' ? 'fa-gavel' : (doc.category === 'criminal' ? 'fa-handcuffs' : 'fa-scale-balanced');
+                const catDisplay = getCategoryDisplay(doc.category);
+                const highlightedTitle = currentSearch ? highlightText(doc.title, currentSearch) : (doc.title || 'Untitled');
+                const highlightedDesc = currentSearch ? highlightText(doc.description, currentSearch) : (doc.description || 'Official document from Uganda legal corpus.');
+                const formattedDate = doc.date ? new Date(doc.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Unknown';
                 
-                // Filter documents based on search
-                let filteredDocs = allDocuments;
-                
-                if (currentSearch.trim()) {
-                    const searchLower = currentSearch.toLowerCase();
-                    filteredDocs = allDocuments.filter(doc => {
-                        const title = doc.title ? doc.title.toLowerCase() : '';
-                        const description = doc.description ? doc.description.toLowerCase() : '';
-                        const category = doc.category ? doc.category.toLowerCase() : '';
-                        const year = doc.year ? doc.year.toString().toLowerCase() : '';
-                        const filename = doc.filename ? doc.filename.toLowerCase() : '';
-                        
-                        return (
-                            title.includes(searchLower) ||
-                            description.includes(searchLower) ||
-                            category.includes(searchLower) ||
-                            year.includes(searchLower) ||
-                            filename.includes(searchLower)
-                        );
-                    });
-                }
-                
-                // Sort documents by title (or by date if available)
-                filteredDocs.sort((a, b) => {
-                    if (a.title && b.title) {
-                        return a.title.localeCompare(b.title);
-                    }
-                    return 0;
-                });
-                
-                // Display message if no documents found
-                if (filteredDocs.length === 0) {
-                    showEmptyState(currentSearch);
-                    return;
-                }
-                
-                // Create document cards
-                filteredDocs.forEach(doc => {
-                    const docCard = document.createElement('div');
-                    docCard.className = 'pdf-card';
-                    
-                    // Format date for display
-                    let formattedDate = 'Unknown date';
-                    if (doc.date) {
-                        try {
-                            formattedDate = new Date(doc.date).toLocaleDateString('en-US', {
-                                year: 'numeric',
-                                month: 'short',
-                                day: 'numeric'
-                            });
-                        } catch (e) {
-                            formattedDate = doc.date;
-                        }
-                    }
-                    
-                    // Get category display name
-                    const categoryDisplay = getCategoryName(doc.category);
-                    
-                    // Highlight search terms in title and description
-                    const highlightedTitle = currentSearch ? 
-                        highlightText(doc.title, currentSearch) : (doc.title || 'Untitled Document');
-                    const highlightedDescription = currentSearch ? 
-                        highlightText(doc.description, currentSearch) : (doc.description || 'No description available');
-                    
-                    // Create card HTML
-                    docCard.innerHTML = `
-                        <div class="pdf-card-header">
-                            ${doc.updated ? '<span class="badge">Updated</span>' : ''}
-                            <div class="pdf-category">${categoryDisplay}</div>
-                            <h3 class="pdf-title">${highlightedTitle}</h3>
-                            <div class="pdf-meta">
-                                <span>📅 Year: ${doc.year || 'N/A'}</span>
-                                <span>📅 Added: ${formattedDate}</span>
-                            </div>
+                card.innerHTML = `
+                    <div class="pdf-card-header">
+                        ${doc.updated ? '<span class="badge"><i class="fas fa-sync-alt"></i> Updated</span>' : ''}
+                        <div class="pdf-category"><i class="fas ${categoryIcon}"></i> ${catDisplay}</div>
+                        <h3 class="pdf-title">${highlightedTitle}</h3>
+                        <div class="pdf-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Year: ${doc.year || 'N/A'}</span>
+                            <span><i class="fas fa-calendar-plus"></i> ${formattedDate}</span>
                         </div>
-                        <div class="pdf-card-body">
-                            <p class="pdf-description">${highlightedDescription}</p>
-                            <div class="pdf-details">
-                                <span>📄 ${doc.size || 'Unknown size'}</span>
-                                <span>📑 ${doc.pages || '?'} pages</span>
-                                <span class="category-badge">${categoryDisplay}</span>
-                            </div>
+                    </div>
+                    <div class="pdf-card-body">
+                        <p class="pdf-description">${highlightedDesc}</p>
+                        <div class="pdf-details">
+                            <span><i class="fas fa-file-pdf"></i> ${doc.size || '—'}</span>
+                            <span><i class="fas fa-receipt"></i> ${doc.pages || '?'} pages</span>
+                            <span><i class="fas fa-tag"></i> ${catDisplay}</span>
                         </div>
-                        <div class="pdf-card-footer">
-                            <button class="pdf-button" data-id="${doc.id}" title="Open ${doc.filename}">
-                                <span>📖</span> Open Document
-                            </button>
-                        </div>
-                    `;
-                    
-                    pdfGrid.appendChild(docCard);
-                });
-                
-                // Add event listeners to open buttons
-                document.querySelectorAll('.pdf-button[data-id]').forEach(btn => {
-                    btn.addEventListener('click', async function() {
-                        const docId = parseInt(this.getAttribute('data-id'));
-                        const doc = allDocuments.find(d => d.id === docId);
-                        if (doc) {
-                            await openPDF(doc);
-                        }
-                    });
-                });
-                
-            }, immediate ? 0 : 300);
-        }
-
-        // Update search UI state
-        function updateSearchUI() {
-            if (searchInput.value.trim()) {
-                clearSearch.style.display = 'flex';
-            } else {
-                clearSearch.style.display = 'none';
+                    </div>
+                    <div class="pdf-card-footer">
+                        <button class="pdf-button" data-id="${doc.id}"><i class="fas fa-balance-scale"></i> Read Statute <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                `;
+                pdfGrid.appendChild(card);
             }
-        }
-
-        // Event Listeners
-        function setupEventListeners() {
-            // Real-time search input
-            searchInput.addEventListener('input', function() {
-                currentSearch = this.value.trim();
-                updateSearchUI();
-                renderDocuments();
-            });
-
-            // Clear search button
-            clearSearch.addEventListener('click', function() {
-                searchInput.value = '';
-                currentSearch = '';
-                updateSearchUI();
-                renderDocuments();
-                searchInput.focus();
-            });
-
-            // Enter key to search (for accessibility)
-            searchInput.addEventListener('keyup', function(event) {
-                if (event.key === 'Escape') {
-                    this.value = '';
-                    currentSearch = '';
-                    updateSearchUI();
-                    renderDocuments();
-                }
-            });
-
-            // Refresh data button
-            refreshDataBtn.addEventListener('click', async function() {
-                this.disabled = true;
-                this.innerHTML = '⏳ Refreshing...';
-                
-                const success = await fetchDocuments();
-                
-                this.disabled = false;
-                this.innerHTML = '🔄 Refresh';
-                
-                if (success) {
-                    // Show success message briefly
-                    const originalText = this.textContent;
-                    this.textContent = '✅ Refreshed!';
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                    }, 2000);
-                }
-            });
-
-            // Auto-refresh every 5 minutes (optional)
-            setInterval(() => {
-                fetchDocuments().then(success => {
-                    if (success) {
-                        console.log('Auto-refreshed documents from documents.json');
-                    }
+            // attach open handlers
+            document.querySelectorAll('.pdf-button[data-id]').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    const doc = allDocuments.find(d => d.id === id);
+                    if (doc) openPDF(doc);
                 });
-            }, 5 * 60 * 1000); // 5 minutes
-
-            // Auto-focus search on page load
-            window.addEventListener('load', () => {
-                searchInput.focus();
             });
-        }
+            updateStatsUI();
+        }, immediate ? 0 : 280);
+    }
 
-        // Initialize
-        async function initialize() {
-            console.log('📚 Uganda Legal Documents Library - Initializing');
-            console.log('Fetching documents from: documents.json');
-            
-            setupEventListeners();
+    function openPDF(doc) {
+        const safeFilename = encodeURIComponent(doc.filename.trim());
+        try {
+            window.open(safeFilename, '_blank');
+        } catch (err) {
+            alert(`Unable to open: ${doc.filename}\nConfirm file exists in the root directory.`);
+        }
+    }
+
+    function updateSearchUI() {
+        if (searchInput.value.trim()) {
+            clearSearchBtn.style.display = 'flex';
+        } else {
+            clearSearchBtn.style.display = 'none';
+        }
+    }
+
+    function setupEvents() {
+        searchInput.addEventListener('input', () => {
+            currentSearch = searchInput.value.trim();
+            updateSearchUI();
+            renderDocuments();
+        });
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            currentSearch = '';
+            updateSearchUI();
+            renderDocuments();
+            searchInput.focus();
+        });
+        refreshBtn.addEventListener('click', async () => {
+            refreshBtn.disabled = true;
+            refreshBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Updating Lex...';
             await fetchDocuments();
-            
-            console.log('✅ Frontend initialized successfully');
-            console.log('ℹ️ Documents will auto-update when admin panel uploads new files');
-        }
+            refreshBtn.disabled = false;
+            refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Library';
+            setTimeout(() => { refreshBtn.style.opacity = '1'; }, 200);
+        });
+        // auto refresh every 4 minutes
+        setInterval(() => { fetchDocuments(); }, 240000);
+    }
 
-        // Start the application
-        initialize();
-    </script>
+    async function init() {
+        setupEvents();
+        await fetchDocuments();
+        if (allDocuments.length) renderDocuments(true);
+    }
+    init();
+</script>
 </body>
 </html>
