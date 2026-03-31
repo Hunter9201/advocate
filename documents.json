@@ -6966,5 +6966,37 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 230,
+    "title": "Excise Duty Act",
+    "description": "Excise Duty Act (Chapter 2) of 2025. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "EXCISE DUTY ACT NO.2 2025.pdf",
+    "category": "constitutional",
+    "size": "1.70",
+    "pages": 0,
+    "date": "2026-03-31",
+    "updated": false,
+    "year": 2025,
+    "chapter": "2",
+    "actNumber": null,
+    "keywords": [
+      "excise",
+      "duty"
+    ],
+    "url": "https://hunter9201.github.io/advocate/EXCISE%20DUTY%20ACT%20NO.2%202025.pdf",
+    "metadata": {
+      "uploaded": "2026-03-31T11:00:45.809Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2025-01-01"
+    }
   }
 ]
