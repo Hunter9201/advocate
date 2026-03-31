@@ -7243,5 +7243,36 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 239,
+    "title": "Income Tax Act",
+    "description": "Income Tax Act (Chapter 2) of 2025. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "INCOME TAX ACT NO.2 2025.pdf",
+    "category": "constitutional",
+    "size": "1.50",
+    "pages": 0,
+    "date": "2026-03-31",
+    "updated": false,
+    "year": 2025,
+    "chapter": "2",
+    "actNumber": null,
+    "keywords": [
+      "income"
+    ],
+    "url": "https://hunter9201.github.io/advocate/INCOME%20TAX%20ACT%20NO.2%202025.pdf",
+    "metadata": {
+      "uploaded": "2026-03-31T19:59:45.284Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2025-01-01"
+    }
   }
 ]
