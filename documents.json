@@ -7177,5 +7177,71 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 237,
+    "title": "External Trade Act",
+    "description": "External Trade Act (Chapter 2025) of 2026. This commercial law act regulates business and trade activities.",
+    "filename": "EXTERNAL TRADE ACT 2025.pdf",
+    "category": "constitutional",
+    "size": "1.71",
+    "pages": 0,
+    "date": "2026-03-31",
+    "updated": false,
+    "year": 2026,
+    "chapter": "2025",
+    "actNumber": null,
+    "keywords": [
+      "external",
+      "trade"
+    ],
+    "url": "https://hunter9201.github.io/advocate/EXTERNAL%20TRADE%20ACT%202025.pdf",
+    "metadata": {
+      "uploaded": "2026-03-31T19:53:23.800Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 238,
+    "title": "Hide and Skins (export Duty) Act",
+    "description": "Hide and Skins (export Duty) Act (Chapter 2025) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "HIDE AND SKINS (EXPORT DUTY) ACT 2025.pdf",
+    "category": "constitutional",
+    "size": "0.40",
+    "pages": 0,
+    "date": "2026-03-31",
+    "updated": false,
+    "year": 2026,
+    "chapter": "2025",
+    "actNumber": null,
+    "keywords": [
+      "hide",
+      "skins",
+      "(export",
+      "duty)"
+    ],
+    "url": "https://hunter9201.github.io/advocate/HIDE%20AND%20SKINS%20(EXPORT%20DUTY)%20ACT%202025.pdf",
+    "metadata": {
+      "uploaded": "2026-03-31T19:53:25.826Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
