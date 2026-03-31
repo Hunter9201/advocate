@@ -7119,5 +7119,63 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 235,
+    "title": "the 89 Act",
+    "description": "the 89 Act (Chapter REVISED PENSIONS) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "REVISED_PENSIONS_ACT_CAP_89.pdf",
+    "category": "constitutional",
+    "size": "2.11",
+    "pages": 0,
+    "date": "2026-03-31",
+    "updated": false,
+    "year": 2026,
+    "chapter": "REVISED PENSIONS",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/REVISED_PENSIONS_ACT_CAP_89.pdf",
+    "metadata": {
+      "uploaded": "2026-03-31T12:31:44.095Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 236,
+    "title": "the 292 Act",
+    "description": "the 292 Act (Chapter REVISED SALES OF GOODS AND SUPPLY OF SERVICE) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "REVISED_SALES_OF_GOODS_AND_SUPPLY_OF_SERVICE_ACT_CAP_292.pdf",
+    "category": "constitutional",
+    "size": "25.91",
+    "pages": 0,
+    "date": "2026-03-31",
+    "updated": false,
+    "year": 2026,
+    "chapter": "REVISED SALES OF GOODS AND SUPPLY OF SERVICE",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/REVISED_SALES_OF_GOODS_AND_SUPPLY_OF_SERVICE_ACT_CAP_292.pdf",
+    "metadata": {
+      "uploaded": "2026-03-31T12:32:03.736Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
