@@ -7027,5 +7027,68 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 232,
+    "title": "Value Added Tax Act",
+    "description": "Value Added Tax Act (Chapter 2025) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "VALUE ADDED TAX ACT 2025.pdf",
+    "category": "constitutional",
+    "size": "1.26",
+    "pages": 0,
+    "date": "2026-03-31",
+    "updated": false,
+    "year": 2026,
+    "chapter": "2025",
+    "actNumber": null,
+    "keywords": [
+      "value",
+      "added"
+    ],
+    "url": "https://hunter9201.github.io/advocate/VALUE%20ADDED%20TAX%20ACT%202025.pdf",
+    "metadata": {
+      "uploaded": "2026-03-31T11:52:21.786Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 233,
+    "title": "Tax Procedures Act",
+    "description": "Tax Procedures Act (Chapter 2025) of 2026. This civil law statute governs private rights and remedies.",
+    "filename": "TAX PROCEDURES ACT 2025.pdf",
+    "category": "constitutional",
+    "size": "2.34",
+    "pages": 0,
+    "date": "2026-03-31",
+    "updated": false,
+    "year": 2026,
+    "chapter": "2025",
+    "actNumber": null,
+    "keywords": [
+      "procedures"
+    ],
+    "url": "https://hunter9201.github.io/advocate/TAX%20PROCEDURES%20ACT%202025.pdf",
+    "metadata": {
+      "uploaded": "2026-03-31T11:52:37.135Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
