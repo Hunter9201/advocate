@@ -7477,5 +7477,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 247,
+    "title": "UPDF ACT CAP 330",
+    "description": "2005-7 Act of 2005. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "2005-7.pdf",
+    "category": "constitutional",
+    "size": "1.49",
+    "pages": 0,
+    "date": "2026-04-01",
+    "updated": false,
+    "year": 2005,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/2005-7.pdf",
+    "metadata": {
+      "uploaded": "2026-04-01T08:25:32.108Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2005-01-01"
+    }
   }
 ]
