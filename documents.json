@@ -7390,5 +7390,63 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 244,
+    "title": "Trade Licensing Act Cap 79",
+    "description": "the 79 Act (Chapter Revised Trade Licensing) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Revised Trade Licensing Act Cap 79.pdf",
+    "category": "constitutional",
+    "size": "0.98",
+    "pages": 0,
+    "date": "2026-04-01",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Revised Trade Licensing",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Revised%20Trade%20Licensing%20Act%20Cap%2079.pdf",
+    "metadata": {
+      "uploaded": "2026-04-01T07:27:03.037Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
+  },
+  {
+    "id": 245,
+    "title": "TRADE_(Licencing)_ACT_CAP_79",
+    "description": "the 79 Act (Chapter REVISED TRADE (Licencing)) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "REVISED TRADE_(Licencing)_ACT_CAP_79.pdf",
+    "category": "constitutional",
+    "size": "0.69",
+    "pages": 0,
+    "date": "2026-04-01",
+    "updated": false,
+    "year": 2026,
+    "chapter": "REVISED TRADE (Licencing)",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/REVISED%20TRADE_(Licencing)_ACT_CAP_79.pdf",
+    "metadata": {
+      "uploaded": "2026-04-01T07:27:05.410Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
