@@ -7448,5 +7448,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 246,
+    "title": "WATER_ACT_CAP_164",
+    "description": "the 164 Act (Chapter REVISED WATER) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "REVISED WATER_ACT_CAP_164.pdf",
+    "category": "constitutional",
+    "size": "16.20",
+    "pages": 0,
+    "date": "2026-04-01",
+    "updated": false,
+    "year": 2026,
+    "chapter": "REVISED WATER",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/REVISED%20WATER_ACT_CAP_164.pdf",
+    "metadata": {
+      "uploaded": "2026-04-01T08:03:58.147Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
