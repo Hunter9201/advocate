@@ -28,6 +28,7 @@
             box-sizing: border-box;
         }
 
+        /* Clean, classic law-library background – subtle marble texture */
         body {
             background: linear-gradient(145deg, #f4efe7 0%, #eae3d7 100%);
             color: #1f2a3e;
@@ -37,6 +38,7 @@
             position: relative;
         }
 
+        /* Delicate legal pattern (barely visible) for classic atmosphere */
         body::before {
             content: "";
             position: fixed;
@@ -50,7 +52,7 @@
             z-index: 0;
         }
 
-        .site-header, .main-container, .site-footer {
+        .site-header, .main-container, .site-footer, .profile-section {
             position: relative;
             z-index: 2;
         }
@@ -64,7 +66,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(2px);
         }
 
         .header-container {
@@ -105,7 +106,6 @@
             font-size: clamp(0.7rem, 3vw, 0.85rem);
             opacity: 0.85;
             letter-spacing: 0.5px;
-            font-weight: 400;
         }
 
         .header-search {
@@ -116,7 +116,6 @@
 
         .header-search-wrapper {
             position: relative;
-            transition: var(--transition-smooth);
         }
 
         .header-search-input {
@@ -130,14 +129,12 @@
             font-weight: 500;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: var(--transition-smooth);
-            font-family: 'Inter', sans-serif;
         }
 
         .header-search-input:focus {
             outline: none;
             background: white;
-            box-shadow: 0 0 0 3px rgba(197, 165, 114, 0.4), 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: scale(1.01);
+            box-shadow: 0 0 0 3px rgba(197, 165, 114, 0.4);
         }
 
         .header-search-icon {
@@ -162,7 +159,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
             cursor: pointer;
             transition: var(--transition-smooth);
             color: #4a3b28;
@@ -191,7 +187,6 @@
         }
 
         .refresh-button i {
-            font-size: 1rem;
             transition: transform 0.4s ease;
         }
 
@@ -199,11 +194,6 @@
             background: var(--law-gold);
             border-color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-        }
-
-        .refresh-button:hover i {
-            transform: rotate(180deg);
         }
 
         /* Stats bar */
@@ -249,10 +239,74 @@
             background: rgba(0,0,0,0.3);
             padding: 0.2rem 0.8rem;
             border-radius: 40px;
-            letter-spacing: 0.3px;
         }
 
-        /* PDF Grid - force exactly 3 columns on mobile */
+        /* PROFESSIONAL PROFILE SECTION – image as profile picture + name below */
+        .profile-section {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-md);
+            margin: 1rem 0 2rem 0;
+            padding: 1.8rem 1rem;
+            text-align: center;
+            border: 1px solid rgba(197, 165, 114, 0.4);
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(0px);
+        }
+
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--law-gold);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            background: #f8f4ec;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
+        }
+
+        .profile-name {
+            margin-top: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--law-navy);
+            letter-spacing: -0.3px;
+        }
+
+        .profile-title {
+            font-size: 0.9rem;
+            color: var(--law-gold-dark);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 0.2rem;
+            border-top: 1px solid rgba(197, 165, 114, 0.4);
+            display: inline-block;
+            padding-top: 0.4rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-image {
+                width: 110px;
+                height: 110px;
+            }
+            .profile-name {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* PDF Grid – exactly 3 columns on mobile */
         .pdf-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -260,7 +314,6 @@
             margin-top: 1rem;
         }
 
-        /* For phones: enforce 3 columns with flexible widths */
         @media (max-width: 768px) {
             .pdf-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -268,14 +321,13 @@
             }
         }
 
-        /* Extra small devices: keep 3 columns but reduce gap further */
         @media (max-width: 480px) {
             .pdf-grid {
                 gap: 0.6rem;
             }
         }
 
-        /* Card styling - fully clickable */
+        /* Card styling – fully clickable */
         .pdf-card {
             background: white;
             border-radius: var(--border-radius-card);
@@ -293,10 +345,6 @@
             transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
             border-color: var(--law-gold);
-        }
-
-        .pdf-card:active {
-            transform: scale(0.98);
         }
 
         .pdf-card-header {
@@ -341,16 +389,6 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            min-height: calc(clamp(0.85rem, 4vw, 1.25rem) * 2.6);
-        }
-
-        .pdf-meta {
-            display: flex;
-            gap: 0.6rem;
-            font-size: clamp(0.55rem, 2.5vw, 0.7rem);
-            color: #cddce9;
-            margin-top: 0.4rem;
-            flex-wrap: wrap;
         }
 
         .pdf-card-body {
@@ -387,11 +425,6 @@
             color: var(--law-gold-dark);
         }
 
-        .pdf-card-footer {
-            padding: 0;
-            margin-top: auto;
-        }
-
         .pdf-button {
             width: 100%;
             border: none;
@@ -404,10 +437,9 @@
             justify-content: center;
             gap: 0.5rem;
             transition: var(--transition-smooth);
-            cursor: pointer;
             font-size: clamp(0.65rem, 3vw, 0.9rem);
             border-top: 1px solid rgba(197, 165, 114, 0.3);
-            pointer-events: none;  /* Card handles click */
+            pointer-events: none;
         }
 
         .badge {
@@ -422,7 +454,6 @@
             font-size: clamp(0.55rem, 2.5vw, 0.65rem);
         }
 
-        /* Empty & Error States */
         .empty-state, .error-state {
             text-align: center;
             padding: 3.5rem 2rem;
@@ -431,12 +462,6 @@
             margin: 2rem auto;
             border: 1px dashed var(--law-gold);
             grid-column: 1 / -1;
-        }
-
-        .empty-state i, .error-state i {
-            font-size: 3.5rem;
-            color: var(--law-gold);
-            margin-bottom: 1rem;
         }
 
         .loading {
@@ -537,6 +562,15 @@
 </header>
 
 <main class="main-container">
+    <!-- PROFESSIONAL PROFILE SECTION: image as profile picture + name below -->
+    <div class="profile-section">
+        <div class="profile-card">
+            <img class="profile-image" src="https://i.postimg.cc/mZ63fJ5n/Whats-App-Image-2026-04-16-at-16-29-32.jpg" alt="Baluti Bwanika Arthur - Legal Counsel">
+            <div class="profile-name">Baluti Bwanika Arthur</div>
+            <div class="profile-title">Principal Legal Researcher & Advocate</div>
+        </div>
+    </div>
+
     <div class="legal-stats" id="legalStats">
         <div class="stats-left">
             <span><i class="fas fa-balance-scale"></i> <strong id="totalDocsCount">0</strong> Legal Instruments</span>
@@ -585,7 +619,6 @@
     let debounceTimer;
     let isFetching = false;
 
-    // Expanded category map with a fallback for missing/undefined categories
     const categoryMap = {
         constitutional: "⚖️ Constitution",
         criminal: "🔪 Criminal",
@@ -607,7 +640,6 @@
         if (!cat) return "📄 General Document";
         const lowerCat = String(cat).toLowerCase();
         if (categoryMap[lowerCat]) return categoryMap[lowerCat];
-        // If category exists but not in map, display as-is (capitalized)
         return cat.charAt(0).toUpperCase() + cat.slice(1);
     }
 
@@ -633,8 +665,7 @@
         return iconMap[lowerCat] || "fa-file-alt";
     }
 
-    // Fetch with cache-busting timestamp and no-store for guaranteed freshness
-    async function fetchDocuments(forceNoCache = true) {
+    async function fetchDocuments() {
         if (isFetching) return false;
         isFetching = true;
         try {
@@ -648,13 +679,10 @@
             const data = await response.json();
             if (!Array.isArray(data)) throw new Error('Invalid data format (expected array)');
 
-            // Normalize documents: ensure required fields, assign default category if missing
             const validDocs = data
                 .filter(doc => doc && doc.id && doc.title && doc.filename)
                 .map(doc => {
-                    // Ensure category is always set (default to 'other')
                     if (!doc.category) doc.category = 'other';
-                    // Provide fallbacks for missing optional fields
                     if (!doc.description) doc.description = `Official legal document from Uganda.`;
                     if (!doc.year) doc.year = 'N/A';
                     if (!doc.size) doc.size = '—';
@@ -664,7 +692,6 @@
 
             if (validDocs.length === 0 && data.length > 0) throw new Error('No valid documents found after normalization');
             allDocuments = validDocs;
-            // Update last sync time
             const now = new Date();
             lastSyncSpan.innerHTML = `<i class="far fa-clock"></i> Last sync: ${now.toLocaleTimeString()}`;
             renderDocuments(true);
@@ -763,9 +790,7 @@
             for (const doc of filtered) {
                 const card = document.createElement('div');
                 card.className = 'pdf-card';
-                card.addEventListener('click', (e) => {
-                    openPDF(doc);
-                });
+                card.addEventListener('click', () => openPDF(doc));
 
                 const catDisplay = getCategoryDisplay(doc.category);
                 const iconClass = getCategoryIcon(doc.category);
@@ -809,14 +834,13 @@
         }
     }
 
-    // Force refresh: always fetch with full cache busting and reset search
     async function hardRefresh() {
         refreshBtn.disabled = true;
         refreshBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Syncing Lex...';
         currentSearch = '';
         searchInput.value = '';
         updateSearchUI();
-        await fetchDocuments(true);
+        await fetchDocuments();
         refreshBtn.disabled = false;
         refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Library';
     }
@@ -835,17 +859,14 @@
             searchInput.focus();
         });
         refreshBtn.addEventListener('click', hardRefresh);
-        // Auto-refresh every 3 minutes (to catch admin panel updates quickly)
         setInterval(() => {
-            if (!isFetching) {
-                fetchDocuments(true).catch(console.warn);
-            }
+            if (!isFetching) fetchDocuments().catch(console.warn);
         }, 180000);
     }
 
     async function init() {
         setupEvents();
-        await fetchDocuments(true);
+        await fetchDocuments();
         if (allDocuments.length) renderDocuments(true);
     }
     init();
