@@ -28,7 +28,6 @@
             box-sizing: border-box;
         }
 
-        /* Clean, classic law-library background – subtle marble texture */
         body {
             background: linear-gradient(145deg, #f4efe7 0%, #eae3d7 100%);
             color: #1f2a3e;
@@ -38,7 +37,6 @@
             position: relative;
         }
 
-        /* Delicate legal pattern (barely visible) for classic atmosphere */
         body::before {
             content: "";
             position: fixed;
@@ -52,7 +50,7 @@
             z-index: 0;
         }
 
-        .site-header, .main-container, .site-footer, .profile-section {
+        .site-header, .main-container, .site-footer {
             position: relative;
             z-index: 2;
         }
@@ -196,16 +194,16 @@
             transform: translateY(-2px);
         }
 
-        /* Stats bar */
+        /* Stats bar + profile integration – space efficient */
         .legal-stats {
             background: rgba(10, 28, 47, 0.75);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 0.5rem 1.5rem;
+            padding: 0.6rem 1.5rem;
             margin: 1.2rem 0 1.8rem 0;
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
             border-left: 4px solid var(--law-gold);
@@ -241,68 +239,61 @@
             border-radius: 40px;
         }
 
-        /* PROFESSIONAL PROFILE SECTION – image as profile picture + name below */
-        .profile-section {
-            background: white;
-            border-radius: 1.5rem;
-            box-shadow: var(--shadow-md);
-            margin: 1rem 0 2rem 0;
-            padding: 1.8rem 1rem;
-            text-align: center;
-            border: 1px solid rgba(197, 165, 114, 0.4);
-            transition: var(--transition-smooth);
-            backdrop-filter: blur(0px);
-        }
-
-        .profile-card {
+        /* Compact profile widget inside stats bar – saves vertical space */
+        .profile-widget {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.08);
+            padding: 0.3rem 0.8rem 0.3rem 0.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(2px);
+            transition: var(--transition-smooth);
         }
-
-        .profile-image {
-            width: 140px;
-            height: 140px;
+        .profile-widget:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .profile-avatar {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--law-gold);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
-            background: #f8f4ec;
+            border: 2px solid var(--law-gold);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            background: #f0e6d8;
         }
-
-        .profile-image:hover {
-            transform: scale(1.02);
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
         }
-
-        .profile-name {
-            margin-top: 1rem;
+        .profile-info .name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--law-navy);
-            letter-spacing: -0.3px;
-        }
-
-        .profile-title {
             font-size: 0.9rem;
-            color: var(--law-gold-dark);
+            color: white;
+            letter-spacing: 0.3px;
+        }
+        .profile-info .title {
+            font-size: 0.6rem;
+            color: var(--law-gold);
             font-weight: 500;
-            letter-spacing: 0.5px;
-            margin-top: 0.2rem;
-            border-top: 1px solid rgba(197, 165, 114, 0.4);
-            display: inline-block;
-            padding-top: 0.4rem;
+            opacity: 0.9;
         }
 
-        @media (max-width: 768px) {
-            .profile-image {
-                width: 110px;
-                height: 110px;
+        @media (max-width: 780px) {
+            .legal-stats {
+                flex-direction: column;
+                align-items: stretch;
+                border-radius: 30px;
             }
-            .profile-name {
-                font-size: 1.4rem;
+            .stats-left {
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .profile-widget {
+                align-self: flex-end;
+                margin-top: 0.2rem;
             }
         }
 
@@ -327,7 +318,7 @@
             }
         }
 
-        /* Card styling – fully clickable */
+        /* Card styling */
         .pdf-card {
             background: white;
             border-radius: var(--border-radius-card);
@@ -416,7 +407,6 @@
             padding: 0.4rem 0.6rem;
             border-radius: 40px;
             color: #5e6f8d;
-            gap: 0.3rem;
             flex-wrap: wrap;
         }
 
@@ -482,6 +472,10 @@
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         .site-footer {
             background: var(--law-navy);
@@ -531,7 +525,8 @@
         }
 
         @media (max-width: 550px) {
-            .legal-stats { flex-direction: column; align-items: center; text-align: center; }
+            .legal-stats { flex-direction: column; align-items: stretch; }
+            .stats-left { flex-wrap: wrap; justify-content: space-between; }
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -562,23 +557,25 @@
 </header>
 
 <main class="main-container">
-    <!-- PROFESSIONAL PROFILE SECTION: image as profile picture + name below -->
-    <div class="profile-section">
-        <div class="profile-card">
-            <img class="profile-image" src="https://i.postimg.cc/mZ63fJ5n/Whats-App-Image-2026-04-16-at-16-29-32.jpg" alt="Baluti Bwanika Arthur - Legal Counsel">
-            <div class="profile-name">Baluti Bwanika Arthur</div>
-            <div class="profile-title">Principal Legal Researcher & Advocate</div>
-        </div>
-    </div>
-
+    <!-- Compact stats bar with integrated profile widget – saves space -->
     <div class="legal-stats" id="legalStats">
         <div class="stats-left">
             <span><i class="fas fa-balance-scale"></i> <strong id="totalDocsCount">0</strong> Legal Instruments</span>
             <span><i class="fas fa-book-open"></i> <span id="displayedDocsCount">0</span> displayed</span>
             <span id="lastSyncTime" class="last-sync"><i class="far fa-clock"></i> Last sync: never</span>
         </div>
-        <div id="activeSearchBadge" class="search-query-badge" style="display: none;">
-            <i class="fas fa-filter"></i> <span id="searchTermBadge"></span>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <div id="activeSearchBadge" class="search-query-badge" style="display: none;">
+                <i class="fas fa-filter"></i> <span id="searchTermBadge"></span>
+            </div>
+            <!-- Profile widget: circular image + name below (compact vertical) -->
+            <div class="profile-widget">
+                <img class="profile-avatar" src="https://i.postimg.cc/mZ63fJ5n/Whats-App-Image-2026-04-16-at-16-29-32.jpg" alt="Baluti Bwanika Arthur">
+                <div class="profile-info">
+                    <span class="name">Baluti Bwanika Arthur</span>
+                    <span class="title">Principal Legal Researcher</span>
+                </div>
+            </div>
         </div>
     </div>
 
