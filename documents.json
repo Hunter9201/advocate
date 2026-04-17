@@ -7564,5 +7564,36 @@
       "amendments": [],
       "commencement": "2025-01-01"
     }
+  },
+  {
+    "id": 250,
+    "title": "PROTECTION OF SOVEREIGNTY BILL,",
+    "description": "Camscanner 31-03-2026 09.42 Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "CamScanner 31-03-2026 09.42.pdf",
+    "category": "constitutional",
+    "size": "6.02",
+    "pages": 0,
+    "date": "2026-04-17",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "camscanner"
+    ],
+    "url": "https://hunter9201.github.io/advocate/CamScanner%2031-03-2026%2009.42.pdf",
+    "metadata": {
+      "uploaded": "2026-04-17T06:09:14.253Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
