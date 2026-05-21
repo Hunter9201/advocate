@@ -1,1 +1,4 @@
-{"last":"2026-04-17T23:57:43.716Z","msg":"New pleadings uploaded"}
+{
+  "last_deployment": "2026-05-21T17:33:42.848Z",
+  "trigger": "Publish 1 legal document(s)"
+}
