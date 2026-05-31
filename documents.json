@@ -7682,5 +7682,34 @@
       "amendments": [],
       "commencement": "1997-01-01"
     }
+  },
+  {
+    "id": 254,
+    "title": "NSSF ACT CAP 230",
+    "description": "the 230 Act (Chapter nssf) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "nssf_act_cap_230.pdf",
+    "category": "constitutional",
+    "size": "1.06",
+    "pages": 0,
+    "date": "2026-05-31",
+    "updated": false,
+    "year": 2026,
+    "chapter": "nssf",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/nssf_act_cap_230.pdf",
+    "metadata": {
+      "uploaded": "2026-05-31T09:38:35.263Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
