@@ -7653,5 +7653,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 253,
+    "title": "ELECTROL COMMISSION ACT CAP 176",
+    "description": "1997-3 Act of 1997. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "1997-3.pdf",
+    "category": "constitutional",
+    "size": "0.81",
+    "pages": 0,
+    "date": "2026-05-31",
+    "updated": false,
+    "year": 1997,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/1997-3.pdf",
+    "metadata": {
+      "uploaded": "2026-05-31T09:30:39.268Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "1997-01-01"
+    }
   }
 ]
