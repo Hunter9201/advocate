@@ -7711,5 +7711,36 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 255,
+    "title": "Guidelineson Special-Certificates-of-Title",
+    "description": "Guidelines-on-issuance-of-special-certificates-of-title-final Act of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Guidelines-on-Issuance-of-Special-Certificates-of-Title-Final.pdf",
+    "category": "property",
+    "size": "0.09",
+    "pages": 0,
+    "date": "2026-10-26",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "guidelines-on-issuance-of-special-certificates-of-title-final"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Guidelines-on-Issuance-of-Special-Certificates-of-Title-Final.pdf",
+    "metadata": {
+      "uploaded": "2026-10-26T14:59:15.026Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
