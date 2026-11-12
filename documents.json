@@ -7742,5 +7742,38 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 256,
+    "title": "Judicature ( Judicial Review) Rules 2019",
+    "description": "Judicature Review Rules Act of 2026. This statute governs magistrate courts and their jurisdiction.",
+    "filename": "Judicature Review Rules.pdf",
+    "category": "constitutional",
+    "size": "0.72",
+    "pages": 0,
+    "date": "2026-11-12",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "judicature",
+      "review",
+      "rules"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Judicature%20Review%20Rules.pdf",
+    "metadata": {
+      "uploaded": "2026-11-12T22:00:42.021Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
