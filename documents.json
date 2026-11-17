@@ -7775,5 +7775,40 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 257,
+    "title": "Judicature (fundamental and Other Human Rights and Freedoms) Act",
+    "description": "Judicature (fundamental and Other Human Rights and Freedoms) Act of 2026. This statute governs magistrate courts and their jurisdiction.",
+    "filename": "Judicature (Fundamental and Other Human Rights and Freedoms).pdf",
+    "category": "constitutional",
+    "size": "0.71",
+    "pages": 0,
+    "date": "2026-11-17",
+    "updated": false,
+    "year": 2026,
+    "chapter": null,
+    "actNumber": null,
+    "keywords": [
+      "judicature",
+      "(fundamental",
+      "other",
+      "human",
+      "rights"
+    ],
+    "url": "https://hunter9201.github.io/advocate/Judicature%20(Fundamental%20and%20Other%20Human%20Rights%20and%20Freedoms).pdf",
+    "metadata": {
+      "uploaded": "2026-11-17T19:48:32.362Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
