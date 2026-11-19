@@ -7911,5 +7911,34 @@
       "amendments": [],
       "commencement": "2026-01-01"
     }
+  },
+  {
+    "id": 261,
+    "title": "the 348 Act",
+    "description": "the 348 Act (Chapter Civil Aviation Authority) of 2026. This Ugandan legislation is part of the country's legal framework.",
+    "filename": "Civil Aviation Authority Act Cap 348.pdf",
+    "category": "other",
+    "size": "0.86",
+    "pages": 0,
+    "date": "2026-11-19",
+    "updated": false,
+    "year": 2026,
+    "chapter": "Civil Aviation Authority",
+    "actNumber": null,
+    "keywords": [],
+    "url": "https://hunter9201.github.io/advocate/Civil%20Aviation%20Authority%20Act%20Cap%20348.pdf",
+    "metadata": {
+      "uploaded": "2026-11-19T22:29:00.939Z",
+      "fileType": "pdf",
+      "verified": false,
+      "source": "Admin Panel Upload"
+    },
+    "legalInfo": {
+      "jurisdiction": "Uganda",
+      "documentType": "Act",
+      "status": "Current",
+      "amendments": [],
+      "commencement": "2026-01-01"
+    }
   }
 ]
